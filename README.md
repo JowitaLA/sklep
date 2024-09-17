@@ -30,15 +30,15 @@ Poniżej przedstawiona jest Lista Zadań do zrobienia, w celu napisania strony i
             - [ ] Po naciścięciu przenosi do podstrony "Kontakt"
         - [ ] Koszyk:
             - [x] Interaktywna ikona koszyka
-            - > Po naciścięciu ikony koszyka:
-                - > Gdy są produkty w koszyku:
+            - Po naciścięciu ikony koszyka:
+                - Gdy są produkty w koszyku:
                     - [ ] Otwiera się miejsce z listą produktów w koszyku użytkownika
                     - [ ] Na dole wyświetla się przycisk "Przejdź do płatności"
-                - > Gdy nie ma produktów w koszyku:
+                - Gdy nie ma produktów w koszyku:
                     - [ ] Otwiera się miejsce z napisem "Brak przedmiotów w koszyku"
         - [ ] Moje konto:
             - [x] Interaktywna ikona telefonu + napis "Moje Konto"
-            > Po naciścięciu ikony konta:
+            Po naciścięciu ikony konta:
                 - Gdy użytkownik jest zalogowany:
                     - [ ] Wyświetla się "Moje konto"
                     - [ ] ...
@@ -48,7 +48,7 @@ Poniżej przedstawiona jest Lista Zadań do zrobienia, w celu napisania strony i
     - [ ] Footer:
         - [ ] Dodanie interaktywnego Logo
         - [ ] Dodanie interaktywnej nazwy sklepu
-        > W liście `Zakupy`:
+        - W liście `Zakupy`:
 
             - [x] Dodanie interaktywnego napisu `Konto`
             - [ ] Po naciśnięciu napisu `Konto`:
