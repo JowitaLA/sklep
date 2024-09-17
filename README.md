@@ -62,6 +62,7 @@ Lista rzeczy, będące w tle tworzenia sklepu
             - [ ] Po naciśnięciu napisu `Zwroty i reklamacje`, przenosi na podstronę `Zwroty i Reklamacje`
             - [x] Dodanie interaktywnego napisu `Pomoc`
             - [ ] Po naciśnięciu napisu `Pomoc`, przenosi na podstronę `Pomoc`
+
         - W liście `Informacje`:
             - [x] Dodanie interaktywnego napisu `Sposoby dostawy`
             - [ ] Po naciśnięciu napisu `Sposoby dostawy`, przenosi na podstronę `Sposoby Dostawy`
@@ -71,6 +72,7 @@ Lista rzeczy, będące w tle tworzenia sklepu
             - [ ] Po naciśnięciu napisu `Regulamin`, przenosi na podstronę `Regulamin`
             - [x] Dodanie interaktywnego napisu `O nas`
             - [ ] Po naciśnięciu napisu `O nas`, przenosi na podstronę `O nas`
+            
         - W liście `Kontakt`:
             - [x] Dodanie interaktywnej ikony Facebooka + napisu `Facebook`
             - [x] Po naciśnięciu ikony `Facebook`, przenosi na stronę `www.facebook.com`
@@ -101,7 +103,8 @@ Lista z danymi podstronami oraz tym, co powinno się w nich znajdować
         - [x] Utworzenie interaktywnego przycisku `Czytaj więcej...` dla panelu `O nas`
         - [ ] Po naciśnięciu przycisku z panelu `O nas`, użytkownik powinien być przeniesiony na podstronę `O nas`
 - [ ] Dodanie `Nasze kategorie`
-    - [ ] ...
+    - [ ] Wygenerowanie interaktywnych ikon i nazw na podstawie `icon` i `title` z tabeli `categories` z Bazy Danych
+    - [ ] Po naciśnięciu ikon, użytkownik przenoszony jest na podstronę z produktami, z danej kategorii
 
 ### Logowanie
 
