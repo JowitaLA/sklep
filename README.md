@@ -101,7 +101,7 @@ Lista z danymi podstronami oraz tym, co powinno się w nich znajdować
         - [x] Utworzenie interaktywnego przycisku `Czytaj więcej...` dla panelu `O nas`
         - [ ] Po naciśnięciu przycisku z panelu `O nas`, użytkownik powinien być przeniesiony na podstronę `O nas`
 - [ ] Dodanie `Nasze kategorie`
-    - 
+    - [ ] ...
 
 ### Logowanie
 
