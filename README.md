@@ -1,23 +1,23 @@
 # Lista Zadań Do Zrobienia
 Poniżej przedstawiona jest Lista Zadań do zrobienia, w celu napisania strony internetowej. Lista zadań może się zmieniać. Po ukończeniu danego zadania, w pliku README należy zmienić ``- [ ]`` na ``- [x]``.
 
-### Spis
-[Tło sklepu](https://github.com/JowitaLA/sklep?tab=readme-ov-file#t%C5%82o-sklepu) 
-[Strona Główna](https://github.com/JowitaLA/sklep?tab=readme-ov-file#strona-g%C5%82%C3%B3wna)
-[Logowanie](https://github.com/JowitaLA/sklep?tab=readme-ov-file#logowanie)
-[Zarządzanie](https://github.com/JowitaLA/sklep?tab=readme-ov-file#zarz%C4%85dzanie)
-[Koszyk](https://github.com/JowitaLA/sklep?tab=readme-ov-file#koszyk)
-[Kontakt](https://github.com/JowitaLA/sklep?tab=readme-ov-file#kontakt)
-[Rejestracja](https://github.com/JowitaLA/sklep?tab=readme-ov-file#rejestracja)
-[Feedback](https://github.com/JowitaLA/sklep?tab=readme-ov-file#feedback)
-[Regulamin](https://github.com/JowitaLA/sklep?tab=readme-ov-file#regulamin)
-[Newsletter](https://github.com/JowitaLA/sklep?tab=readme-ov-file#newsletter)
-[Kategorie](https://github.com/JowitaLA/sklep?tab=readme-ov-file#kategorie)
-[Produkty](https://github.com/JowitaLA/sklep?tab=readme-ov-file#produkty)
-[Polityka Prywatności](https://github.com/JowitaLA/sklep?tab=readme-ov-file#polityka-prywatno%C5%9Bci)
-[Zwroty i Reklamacje](https://github.com/JowitaLA/sklep?tab=readme-ov-file#zwroty-i-reklamacje)
-[Dostawy](https://github.com/JowitaLA/sklep?tab=readme-ov-file#dostawy)
-[O nas](https://github.com/JowitaLA/sklep?tab=readme-ov-file#o-nas)
+### Spis Treści
+1. [Tło sklepu](https://github.com/JowitaLA/sklep?tab=readme-ov-file#t%C5%82o-sklepu) 
+2. [Strona Główna](https://github.com/JowitaLA/sklep?tab=readme-ov-file#strona-g%C5%82%C3%B3wna)
+3. [Logowanie](https://github.com/JowitaLA/sklep?tab=readme-ov-file#logowanie)
+4. [Zarządzanie](https://github.com/JowitaLA/sklep?tab=readme-ov-file#zarz%C4%85dzanie)
+5. [Koszyk](https://github.com/JowitaLA/sklep?tab=readme-ov-file#koszyk)
+6. [Kontakt](https://github.com/JowitaLA/sklep?tab=readme-ov-file#kontakt)
+7. [Rejestracja](https://github.com/JowitaLA/sklep?tab=readme-ov-file#rejestracja)
+8. [Feedback](https://github.com/JowitaLA/sklep?tab=readme-ov-file#feedback)
+9. [Regulamin](https://github.com/JowitaLA/sklep?tab=readme-ov-file#regulamin)
+10. [Newsletter](https://github.com/JowitaLA/sklep?tab=readme-ov-file#newsletter)
+11. [Kategorie](https://github.com/JowitaLA/sklep?tab=readme-ov-file#kategorie)
+12. [Produkty](https://github.com/JowitaLA/sklep?tab=readme-ov-file#produkty)
+13. [Polityka Prywatności](https://github.com/JowitaLA/sklep?tab=readme-ov-file#polityka-prywatno%C5%9Bci)
+14. [Zwroty i Reklamacje](https://github.com/JowitaLA/sklep?tab=readme-ov-file#zwroty-i-reklamacje)
+15. [Dostawy](https://github.com/JowitaLA/sklep?tab=readme-ov-file#dostawy)
+16. [O nas](https://github.com/JowitaLA/sklep?tab=readme-ov-file#o-nas)
 
 ## Tło Sklepu
 Lista rzeczy, będące w tle tworzenia sklepu
