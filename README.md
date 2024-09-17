@@ -4,20 +4,23 @@ Poniżej przedstawiona jest Lista Zadań do zrobienia, w celu napisania strony i
 ### Spis Treści
 1. [Tło sklepu](https://github.com/JowitaLA/sklep?tab=readme-ov-file#t%C5%82o-sklepu) 
 2. [Strona Główna](https://github.com/JowitaLA/sklep?tab=readme-ov-file#strona-g%C5%82%C3%B3wna)
-3. [Logowanie](https://github.com/JowitaLA/sklep?tab=readme-ov-file#logowanie)
-4. [Zarządzanie](https://github.com/JowitaLA/sklep?tab=readme-ov-file#zarz%C4%85dzanie)
-5. [Koszyk](https://github.com/JowitaLA/sklep?tab=readme-ov-file#koszyk)
-6. [Kontakt](https://github.com/JowitaLA/sklep?tab=readme-ov-file#kontakt)
-7. [Rejestracja](https://github.com/JowitaLA/sklep?tab=readme-ov-file#rejestracja)
-8. [Feedback](https://github.com/JowitaLA/sklep?tab=readme-ov-file#feedback)
-9. [Regulamin](https://github.com/JowitaLA/sklep?tab=readme-ov-file#regulamin)
-10. [Newsletter](https://github.com/JowitaLA/sklep?tab=readme-ov-file#newsletter)
-11. [Kategorie](https://github.com/JowitaLA/sklep?tab=readme-ov-file#kategorie)
-12. [Produkty](https://github.com/JowitaLA/sklep?tab=readme-ov-file#produkty)
-13. [Polityka Prywatności](https://github.com/JowitaLA/sklep?tab=readme-ov-file#polityka-prywatno%C5%9Bci)
-14. [Zwroty i Reklamacje](https://github.com/JowitaLA/sklep?tab=readme-ov-file#zwroty-i-reklamacje)
-15. [Dostawy](https://github.com/JowitaLA/sklep?tab=readme-ov-file#dostawy)
-16. [O nas](https://github.com/JowitaLA/sklep?tab=readme-ov-file#o-nas)
+3. [Newsletter](https://github.com/JowitaLA/sklep?tab=readme-ov-file#newsletter)
+4. [Feedback](https://github.com/JowitaLA/sklep?tab=readme-ov-file#feedback)
+5. [Logowanie](https://github.com/JowitaLA/sklep?tab=readme-ov-file#logowanie)
+6. [Rejestracja](https://github.com/JowitaLA/sklep?tab=readme-ov-file#rejestracja)
+7. [Zarządzanie](https://github.com/JowitaLA/sklep?tab=readme-ov-file#zarz%C4%85dzanie)
+8. [Lista Produktów](https://github.com/JowitaLA/sklep?tab=readme-ov-file#lista-produkt%C3%B3w)
+9. [Kategorie](https://github.com/JowitaLA/sklep?tab=readme-ov-file#kategorie)
+10. [Produkty](https://github.com/JowitaLA/sklep?tab=readme-ov-file#produkty)
+11. [Koszyk](https://github.com/JowitaLA/sklep?tab=readme-ov-file#koszyk)
+12. [Historia Zamówień](https://github.com/JowitaLA/sklep?tab=readme-ov-file#historia-zam%C3%B3wie%C5%84)
+13. [Płatność](https://github.com/JowitaLA/sklep?tab=readme-ov-file#p%C5%82atno%C5%9B%C4%87)
+14. [O nas](https://github.com/JowitaLA/sklep?tab=readme-ov-file#o-nas)
+15. [Kontakt](https://github.com/JowitaLA/sklep?tab=readme-ov-file#kontakt)
+16. [Dostawy](https://github.com/JowitaLA/sklep?tab=readme-ov-file#dostawy)
+17. [Regulamin](https://github.com/JowitaLA/sklep?tab=readme-ov-file#regulamin)
+18. [Polityka Prywatności](https://github.com/JowitaLA/sklep?tab=readme-ov-file#polityka-prywatno%C5%9Bci)
+19. [Zwroty i Reklamacje](https://github.com/JowitaLA/sklep?tab=readme-ov-file#zwroty-i-reklamacje)
 
 ## Tło Sklepu
 Lista rzeczy, będące w tle tworzenia sklepu
@@ -134,6 +137,22 @@ Lista z danymi podstronami oraz tym, co powinno się w nich znajdować
     - [ ] Wygenerowanie 12 ostatnio dodanych produktów na podstawie `created_at` z tabeli `products` z Bazy Danych
     - [ ] Po naciśnięciu produktu, otwiera się podstrona z danym produktem
 
+### Newsletter
+- [ ] Utworzenie pliku statute.html
+- [ ] Stworzenie wielkiego tytułu strony `Zapisz się do Newsettera`
+- [ ] Dodanie krótniego opisu
+- [ ] Dodanie miejsca na wpisanie maila
+- [ ] Dodanie przycisku na potwierdzenie i przesłanie danych do tabeli `newsletter` w Bazie Danych
+- [ ] Dodanie alertów (Np. Że E-mail został dodany)
+
+### Feedback
+- [ ] Utworzenie pliku feedback.html
+- [ ] Stworzenie wielkiego tytułu strony `Zostaw Nam swoją opinię`
+- [ ] Stworzenie kilku pytań z odpowiedziami do wyboru
+- [ ] Dodanie przycisku `Wyślij Feedback`
+- [ ] Zapisanie odpowiedzi w tabeli `feedback` w Bazie Danych
+- [ ] Dodanie możliwych alertów (Np. Zaloguj się, Wysłano Twoją Opinię bądź Zaktualizowano Twoją opinię)
+- [ ] Sprawdzenie czy użytkownik jest zalogowany
 
 ### Logowanie
 - [ ] Utworzenie pliku login.html
@@ -142,46 +161,6 @@ Lista z danymi podstronami oraz tym, co powinno się w nich znajdować
 - [ ] Utworznie przycisku `Zaloguj`
 - [ ] Sprawdzenie danych wpisanych przez użytkownika z Bazą Danych
 - [ ] Dodanie alertów (np. Źle wpisane hasło bądź login)
-
-### Produkty
-- [ ] Utworzenie pliku product.html
-- [ ] Wygenerowanie tytułu produktu
-- [ ] Wygenerowanie zdjęcia produktu
-- [ ] Wygenerowanie opisu produktu
-- [ ] Dodanie przycisku `Kup`/`Dodaj do koszyka`
-- [ ] Dodanie produktu do koszyka użytkownika po naciśnięciu przycisku `Kup`/`Dodaj do koszyka`
-
-### Zarządzanie
-- [ ] Utworzenie pliku management.html
-- [ ] Utworzenie listy użytkowników 
-- [ ] Dodanie możliwości edycji użytkowników
-- [ ] Utworzenie listy kategorii
-- [ ] Dodanie możliwości edycji kategorii
-- [ ] Utworzenie listy produktów
-- [ ] Dodanie możliwości edycji produktów
-
-### Koszyk
-- [ ] Utworzenie pliku basket.html
-- Gdy użytkownik dodał jakiś produkt do koszyka:
-- [ ] Wygenerowanie wszystkich produktów dodanych przez użytkownika
-- [ ] Dodanie miejsca do wpisania kodu
-- [ ] Sprawdzenie kodu wpisanego przez użytkownika z tabelą `codes` w Bazie Danych
-- [ ] Dodanie alertów (np. z wpisaniem błędnego kodu)
-- [ ] Dodanie na dole przycisku `Przejdź do płatności`
-- Gdy użytkownik nie dodał produktu:
-- [ ] Wyświetlenie wiadomości `Nie posiadasz żadnych produktów w koszyku`
-
-### Płatność
-- [ ] Dodanie przycisku `Kup` po którym:
-    - [ ] `amount` z tabeli `products` zmieni się o `amount-1`
-    - [ ] Wyskoczy alert `Płatność została zrealizowana pomyślnie`
-    - [ ] zmiana statusu historii zamówień
-- [ ] Dodanie przycisku `Wróć do strony głównej`, dzięki któremu użytkownik wróci na podstronę `Strona Główna`
-
-### Kontakt
-- [ ] Utworzenie pliku contact.html
-- [ ] Stworzenie wielkiego tytułu strony `Kontakt`
-- [ ] Stworzenie opisu związanego z Kontaktem ze stroną i pracownikami strony
 
 ### Rejestracja
 - [ ] Utworzenie pliku register.html
@@ -194,14 +173,44 @@ Lista z danymi podstronami oraz tym, co powinno się w nich znajdować
 - [ ] Sprawdzenie danych wpisanych przez użytkownika z Bazą Danych
 - [ ] Dodanie alertów (Np. Źle wpisane hasło bądź zajęty login)
 
-### Feedback
-- [ ] Utworzenie pliku feedback.html
-- [ ] Stworzenie wielkiego tytułu strony `Zostaw Nam swoją opinię`
-- [ ] Stworzenie kilku pytań z odpowiedziami do wyboru
-- [ ] Dodanie przycisku `Wyślij Feedback`
-- [ ] Zapisanie odpowiedzi w tabeli `feedback` w Bazie Danych
-- [ ] Dodanie możliwych alertów (Np. Zaloguj się, Wysłano Twoją Opinię bądź Zaktualizowano Twoją opinię)
-- [ ] Sprawdzenie czy użytkownik jest zalogowany
+### Zarządzanie
+- [ ] Utworzenie pliku management.html
+- [ ] Utworzenie listy użytkowników 
+- [ ] Dodanie możliwości edycji użytkowników
+- [ ] Utworzenie listy kategorii
+- [ ] Dodanie możliwości edycji kategorii
+- [ ] Utworzenie listy produktów
+- [ ] Dodanie możliwości edycji produktów
+
+### Lista Produktów
+- [ ] Dodanie pliku products_list.html
+- [ ] Wygenerowanie produktów z tego, co podał użytkownik: z nazwy, kategorii bądź daty
+- [ ] Dodanie stronnicowania (maksymalna ilośc produktów np. 28 na stronę)
+
+### Kategorie
+- [ ] Dodanie pliku categories.html
+- [ ] Wyświetlenie wszystkich kategorii z tabeli `categories` z Bazy Danych
+- [ ] Wyświetlenie ich wszystkich tytułów i opisów
+- [ ] Dodanie do każdej kategorii interakcji, przenoszącej do wszystkich przedmiotów, które posiadają kategorię wybraną przez użytkownika
+
+### Produkty
+- [ ] Utworzenie pliku product.html
+- [ ] Wygenerowanie tytułu produktu
+- [ ] Wygenerowanie zdjęcia produktu
+- [ ] Wygenerowanie opisu produktu
+- [ ] Dodanie przycisku `Kup`/`Dodaj do koszyka`
+- [ ] Dodanie produktu do koszyka użytkownika po naciśnięciu przycisku `Kup`/`Dodaj do koszyka`
+
+### Koszyk
+- [ ] Utworzenie pliku basket.html
+- Gdy użytkownik dodał jakiś produkt do koszyka:
+- [ ] Wygenerowanie wszystkich produktów dodanych przez użytkownika
+- [ ] Dodanie miejsca do wpisania kodu
+- [ ] Sprawdzenie kodu wpisanego przez użytkownika z tabelą `codes` w Bazie Danych
+- [ ] Dodanie alertów (np. z wpisaniem błędnego kodu)
+- [ ] Dodanie na dole przycisku `Przejdź do płatności`
+- Gdy użytkownik nie dodał produktu:
+- [ ] Wyświetlenie wiadomości `Nie posiadasz żadnych produktów w koszyku`
 
 ### Historia Zamówień
 - [ ] Utworzenie pliku history_orders.html
@@ -213,29 +222,32 @@ Lista z danymi podstronami oraz tym, co powinno się w nich znajdować
 - Gdy użytkownik nie jest zalogowany:
     - [ ] Wyświetl automatycznie podstronę `Logowania`
 
+### Płatność
+- [ ] Dodanie przycisku `Kup` po którym:
+    - [ ] `amount` z tabeli `products` zmieni się o `amount-1`
+    - [ ] Wyskoczy alert `Płatność została zrealizowana pomyślnie`
+    - [ ] zmiana statusu historii zamówień
+- [ ] Dodanie przycisku `Wróć do strony głównej`, dzięki któremu użytkownik wróci na podstronę `Strona Główna`
+
+### O Nas
+- [ ] Utworzenie pliku about.html
+- [ ] Stworzenie wielkiego tytułu strony `O nas`
+- [ ] Stworzenie opisu związanego z informacją na temat firmy
+
+### Kontakt
+- [ ] Utworzenie pliku contact.html
+- [ ] Stworzenie wielkiego tytułu strony `Kontakt`
+- [ ] Stworzenie opisu związanego z Kontaktem ze stroną i pracownikami strony
+
+### Dostawy
+- [ ] Utworzenie pliku delivery.html
+- [ ] Stworzenie wielkiego tytułu strony `Dostawy`
+- [ ] Stworzenie opisu związanego z informacją na temat Dostaw
+
 ### Regulamin
 - [ ] Utworzenie pliku statute.html
 - [ ] Stworzenie wielkiego tytułu strony `Regulamin Sklepu`
 - [ ] Stworzenie podpunktów regulaminu
-
-### Newsletter
-- [ ] Utworzenie pliku statute.html
-- [ ] Stworzenie wielkiego tytułu strony `Zapisz się do Newsettera`
-- [ ] Dodanie krótniego opisu
-- [ ] Dodanie miejsca na wpisanie maila
-- [ ] Dodanie przycisku na potwierdzenie i przesłanie danych do tabeli `newsletter` w Bazie Danych
-- [ ] Dodanie alertów (Np. Że E-mail został dodany)
-
-### Kategorie
-- [ ] Dodanie pliku categories.html
-- [ ] Wyświetlenie wszystkich kategorii z tabeli `categories` z Bazy Danych
-- [ ] Wyświetlenie ich wszystkich tytułów i opisów
-- [ ] Dodanie do każdej kategorii interakcji, przenoszącej do wszystkich przedmiotów, które posiadają kategorię wybraną przez użytkownika
-
-### Lista Produktów
-- [ ] Dodanie pliku products_list.html
-- [ ] Wygenerowanie produktów z tego, co podał użytkownik: z nazwy, kategorii bądź daty
-- [ ] Dodanie stronnicowania (maksymalna ilośc produktów np. 28 na stronę)
 
 ### Polityka Prywatności
 - [ ] Utworzenie pliku privacy_policy.html
@@ -246,13 +258,3 @@ Lista z danymi podstronami oraz tym, co powinno się w nich znajdować
 - [ ] Utworzenie pliku returns_and_complaints.html
 - [ ] Stworzenie wielkiego tytułu strony `Zwroty i Reklamacje`
 - [ ] Stworzenie opisu związanego z informacją na temat Zwrotów i Reklamacji
-
-### Dostawy
-- [ ] Utworzenie pliku delivery.html
-- [ ] Stworzenie wielkiego tytułu strony `Dostawy`
-- [ ] Stworzenie opisu związanego z informacją na temat Dostaw
-
-### O Nas
-- [ ] Utworzenie pliku about.html
-- [ ] Stworzenie wielkiego tytułu strony `O nas`
-- [ ] Stworzenie opisu związanego z informacją na temat firmy
