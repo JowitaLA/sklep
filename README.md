@@ -1,6 +1,6 @@
-Strona główna:
-    [ ] Head:
-        [ ] Interaktywne logo:
+## Strona główna:
+    - [ ] Head:
+        - [ ] Interaktywne logo:
             [ ] format PNG
             Po naciśnięciu przenosi zawsze do strony głównej
         [ ] Wyszukiwarka:
