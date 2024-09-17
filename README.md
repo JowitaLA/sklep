@@ -25,12 +25,15 @@ Lista rzeczy, będące w tle tworzenia sklepu
 - [ ] Znalezienie i implementacja Frameworka
 - [x] Znalezienie i implementacja Stylu -> Bootstrap
 - [ ] Połączenie Bazy Danych z Projektem
-- [x] Utworzenie Bazy Danych:
+- [ ] Utworzenie Bazy Danych:
     - [x] Produkty
     - [x] Użytkownicy
     - [x] Historia Zamówień
     - [x] Kategorie
     - [x] Rangi
+    - [ ] Kody Rabatowe
+    - [ ] Feedback
+    - [ ] Newsletter
 - [ ] Utworzenie Podstawowego Szablonu: 
     - [ ] Head:
         - [ ] Logo: 
@@ -41,26 +44,26 @@ Lista rzeczy, będące w tle tworzenia sklepu
             - [x] Miejsce na wpisanie nazwy wyszukiwanego produktu
             - [x] Miejsce na wybór kategorii
             - [ ] Wygenerowanie kategorii z tabeli `contacts` z Bazy Danych
-            - [x] Przycisk "Szukaj"
+            - [x] Przycisk `Szukaj`
             - [ ] Po uzupełnieniu wszystkiego, wyszukuje z bazy danych:
                 - [ ] Produkty, zawierające podany tekst w swojej nazwie (`title` bądź `description` z tabelii `products`)
                 - [ ] Produkty z danej kategorii (jak nie została wybrana => jest to `null` => czyli wyszukuje z każdej kategorii)            
         - [ ] Kontakt:
             - [x] Interaktywna ikona telefonu
-            - [ ] Po naciścięciu przenosi do podstrony "Kontakt"
+            - [ ] Po naciścięciu przenosi do podstrony `Kontakt`
         - [ ] Koszyk:
             - [x] Interaktywna ikona koszyka
             - Po naciścięciu ikony koszyka:
                 - Gdy są produkty w koszyku:
                     - [ ] Otwiera się miejsce z listą produktów w koszyku użytkownika
-                    - [ ] Na dole wyświetla się przycisk "Przejdź do płatności"
+                    - [ ] Na dole wyświetla się przycisk `Otwórz koszyk`
                 - Gdy nie ma produktów w koszyku:
-                    - [ ] Otwiera się miejsce z napisem "Brak przedmiotów w koszyku"
+                    - [ ] Otwiera się miejsce z napisem `Brak przedmiotów w koszyku`
         - [ ] Moje konto:
-            - [x] Interaktywna ikona telefonu + napis "Moje Konto"
+            - [x] Interaktywna ikona telefonu + napis `Moje Konto`
             Po naciścięciu ikony konta:
                 - Gdy użytkownik jest zalogowany:
-                    - [ ] Wyświetla się "Moje konto"
+                    - [ ] Wyświetla się `Moje konto`
                     - [ ] ...
                 - Gdy użytkownik nie jest zalogowany:
                     - [ ] ...
@@ -123,6 +126,12 @@ Lista z danymi podstronami oraz tym, co powinno się w nich znajdować
     - [ ] Po naciśnięciu ikon, użytkownik przenoszony jest na podstronę z produktami, z danej kategorii
 
 ### Logowanie
+- [ ] Utworzenie pliku login.html
+- [ ] Utworzenie miejsca na wpisanie loginu
+- [ ] Utworzenie miejsca na wpisanie hasła
+- [ ] Utworznie przycisku `Zaloguj`
+- [ ] Sprawdzenie danych wpisanych przez użytkownika z Bazą Danych
+- [ ] Dodanie alertów (np. Źle wpisane hasło bądź login)
 
 ### Zarządzanie
 - [ ] lista użytkowników wraz z możliwością edycji
@@ -130,14 +139,43 @@ Lista z danymi podstronami oraz tym, co powinno się w nich znajdować
 - [ ] lista produktów z możliwością edycji
 
 ### Koszyk
+- [ ] Utworzenie pliku basket.html
+- Gdy użytkownik dodał jakiś produkt do koszyka:
+- [ ] Wygenerowanie wszystkich produktów dodanych przez użytkownika
+- [ ] Dodanie miejsca do wpisania kodu
+- [ ] Sprawdzenie kodu wpisanego przez użytkownika z tabelą `codes` w Bazie Danych
+- [ ] Dodanie alertów (np. z wpisaniem błędnego kodu)
+- [ ] Dodanie na dole przycisku `Przejdź do płatności`
+- Gdy użytkownik nie dodał produktu:
+- [ ] Wyświetlenie wiadomości `Nie posiadasz żadnych produktów w koszyku`
 
 ### Kontakt
+- [ ] Utworzenie pliku contact.html
+- [ ] Stworzenie wielkiego tytułu strony `Kontakt`
+- [ ] Stworzenie opisu związanego z Kontaktem ze stroną i pracownikami strony
 
 ### Rejestracja
+- [ ] Utworzenie pliku register.html
+- [ ] Utworzenie miejsca na wpisanie loginu
+- [ ] Utworzenie miejsca na wpisanie maila
+- [ ] Utworzenie miejsca na wpisanie hasła
+- [ ] Utworzenie miejsca na powtórzenie hasła
+- [ ] Utworzenie miejsca z płcią do wyboru
+- [ ] Utworznie przycisku `Zarejestruj`
+- [ ] Sprawdzenie danych wpisanych przez użytkownika z Bazą Danych
+- [ ] Dodanie alertów (Np. Źle wpisane hasło bądź zajęty login)
 
 ### Feedback
+- [ ] Utworzenie pliku feedback.html
+- [ ] Stworzenie wielkiego tytułu strony `Zostaw Nam swoją opinię`
+- [ ] Stworzenie kilku pytań z odpowiedziami do wyboru
+- [ ] Dodanie przycisku `Wyślij Feedback`
+- [ ] Zapisanie odpowiedzi w tabeli `feedback` w Bazie Danych
+- [ ] Dodanie możliwych alertów (Np. Zaloguj się, Wysłano Twoją Opinię bądź Zaktualizowano Twoją opinię)
+- [ ] Sprawdzenie czy użytkownik jest zalogowany
 
 ### Regulamin
+
 
 ### Newsletter
 
