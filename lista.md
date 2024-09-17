@@ -29,7 +29,7 @@ Strona główna:
             [ ] Interaktywna ikona telefonu wraz z napisem "Moje Konto"
              Po naciścięciu ikony konta:
                 [ ] Gdy użytkownik jest zalogowany:
-                    [ ] 
+                    [ ] Wyświetla się "Moje konto"
 
     
     Body:
