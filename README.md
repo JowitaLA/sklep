@@ -1,6 +1,24 @@
 # Lista Zadań Do Zrobienia
 Poniżej przedstawiona jest Lista Zadań do zrobienia, w celu napisania strony internetowej. Lista zadań może się zmieniać. Po ukończeniu danego zadania, w pliku README należy zmienić ``- [ ]`` na ``- [x]``.
 
+### Spis
+[Tło sklepu](https://github.com/JowitaLA/sklep?tab=readme-ov-file#t%C5%82o-sklepu) 
+[Strona Główna](https://github.com/JowitaLA/sklep?tab=readme-ov-file#strona-g%C5%82%C3%B3wna)
+[Logowanie](https://github.com/JowitaLA/sklep?tab=readme-ov-file#logowanie)
+[Zarządzanie](https://github.com/JowitaLA/sklep?tab=readme-ov-file#zarz%C4%85dzanie)
+[Koszyk](https://github.com/JowitaLA/sklep?tab=readme-ov-file#koszyk)
+[Kontakt](https://github.com/JowitaLA/sklep?tab=readme-ov-file#kontakt)
+[Rejestracja](https://github.com/JowitaLA/sklep?tab=readme-ov-file#rejestracja)
+[Feedback](https://github.com/JowitaLA/sklep?tab=readme-ov-file#feedback)
+[Regulamin](https://github.com/JowitaLA/sklep?tab=readme-ov-file#regulamin)
+[Newsletter](https://github.com/JowitaLA/sklep?tab=readme-ov-file#newsletter)
+[Kategorie](https://github.com/JowitaLA/sklep?tab=readme-ov-file#kategorie)
+[Produkty](https://github.com/JowitaLA/sklep?tab=readme-ov-file#produkty)
+[Polityka Prywatności](https://github.com/JowitaLA/sklep?tab=readme-ov-file#polityka-prywatno%C5%9Bci)
+[Zwroty i Reklamacje](https://github.com/JowitaLA/sklep?tab=readme-ov-file#zwroty-i-reklamacje)
+[Dostawy](https://github.com/JowitaLA/sklep?tab=readme-ov-file#dostawy)
+[O nas](https://github.com/JowitaLA/sklep?tab=readme-ov-file#o-nas)
+
 ## Tło Sklepu
 Lista rzeczy, będące w tle tworzenia sklepu
 
@@ -62,7 +80,6 @@ Lista rzeczy, będące w tle tworzenia sklepu
             - [ ] Po naciśnięciu napisu `Zwroty i reklamacje`, przenosi na podstronę `Zwroty i Reklamacje`
             - [x] Dodanie interaktywnego napisu `Pomoc`
             - [ ] Po naciśnięciu napisu `Pomoc`, przenosi na podstronę `Pomoc`
-
         - W liście `Informacje`:
             - [x] Dodanie interaktywnego napisu `Sposoby dostawy`
             - [ ] Po naciśnięciu napisu `Sposoby dostawy`, przenosi na podstronę `Sposoby Dostawy`
@@ -72,7 +89,6 @@ Lista rzeczy, będące w tle tworzenia sklepu
             - [ ] Po naciśnięciu napisu `Regulamin`, przenosi na podstronę `Regulamin`
             - [x] Dodanie interaktywnego napisu `O nas`
             - [ ] Po naciśnięciu napisu `O nas`, przenosi na podstronę `O nas`
-            
         - W liście `Kontakt`:
             - [x] Dodanie interaktywnej ikony Facebooka + napisu `Facebook`
             - [x] Po naciśnięciu ikony `Facebook`, przenosi na stronę `www.facebook.com`
@@ -89,7 +105,7 @@ Lista z danymi podstronami oraz tym, co powinno się w nich znajdować
 - [ ] Dodanie interaktywnych paneli:
     - [x] Panele same się mają po czasie przesuwać
     - [x] Mają wyświetlać się strzałki dzięki którym użytkownik może przesunąć między sobą panele
-    - Panele:
+    - W dostępnych panelach:
         - [x] Utworzenie panelu `Gwarancja niskich cen`
         - [x] Utworzenie opisu panelu `Gwarancji niskich cen`
         - [x] Utworzenie interaktywnego przycisku `Dołącz do nas już teraz` dla panelu `Gwarancja niskich cen`
