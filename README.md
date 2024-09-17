@@ -2,6 +2,8 @@
 Poniżej przedstawiona jest Lista Zadań do zrobienia, w celu napisania strony internetowej. Lista zadań może się zmieniać. Po ukończeniu danego zadania, w pliku README należy zmienić ``- [ ]`` na ``- [x]``.
 
 ## Tło Sklepu
+Lista rzeczy, będące w tle tworzenia sklepu
+
 - [ ] Znalezienie i implementacja Frameworka
 - [x] Znalezienie i implementacja Stylu -> Bootstrap
 - [ ] Połączenie Bazy Danych z Projektem
@@ -44,42 +46,62 @@ Poniżej przedstawiona jest Lista Zadań do zrobienia, w celu napisania strony i
                     - [ ] ...
                 - Gdy użytkownik nie jest zalogowany:
                     - [ ] ...
-
     - [ ] Footer:
-        - [ ] Dodanie interaktywnego Logo
-        - [ ] Dodanie interaktywnej nazwy sklepu
+        - [ ] Dodanie interaktywnego Logo w formacie PNG
+        - [x] Dodanie interaktywnej nazwy sklepu
         - W liście `Zakupy`:
-
             - [x] Dodanie interaktywnego napisu `Konto`
             - [ ] Po naciśnięciu napisu `Konto`:
-                - [ ] Jeżeli użytkownik jest zalogowany przenosi na `Moje Konto`
-                - [ ] Jeżeli użytkownik nie jest zalogowany przenosi na `Rejestracja` 
+                - [ ] Jeżeli użytkownik jest zalogowany przenosi na podstronę `Moje Konto`
+                - [ ] Jeżeli użytkownik nie jest zalogowany przenosi na podstronę `Rejestracja` 
             - [x] Dodanie interaktywnego napisu `Koszyk`
-            - [ ] Po naciśnięciu napisu `Koszyk`, przenosi na podstrone `Mój Koszyk`
+            - [ ] Po naciśnięciu napisu `Koszyk`, przenosi na podstronę `Mój Koszyk`
             - [x] Dodanie interaktywnego napisu `Polityka prywatności`
-            - [ ] Po naciśnięciu napisu `Polityka prywatności`, przenosi na podstrone `Polityka Prywatności`
+            - [ ] Po naciśnięciu napisu `Polityka prywatności`, przenosi na podstronę `Polityka Prywatności`
             - [x] Dodanie interaktywnego napisu `Zwroty i reklamacje`
-            - [ ] Po naciśnięciu napisu `Zwroty i reklamacje`, przenosi na podstrone `Zwroty i Reklamacje`
+            - [ ] Po naciśnięciu napisu `Zwroty i reklamacje`, przenosi na podstronę `Zwroty i Reklamacje`
             - [x] Dodanie interaktywnego napisu `Pomoc`
-            - [ ] Po naciśnięciu napisu `Pomoc`, przenosi na podstrone `Pomoc`
-        W liście `Zakupy`:
+            - [ ] Po naciśnięciu napisu `Pomoc`, przenosi na podstronę `Pomoc`
+        - W liście `Informacje`:
             - [x] Dodanie interaktywnego napisu `Sposoby dostawy`
-            - [ ] Po naciśnięciu napisu `Sposoby dostawy`, przenosi na podstrone `Sposoby Dostawy`
+            - [ ] Po naciśnięciu napisu `Sposoby dostawy`, przenosi na podstronę `Sposoby Dostawy`
             - [x] Dodanie interaktywnego napisu `Kategorie`
-            - [ ] Po naciśnięciu napisu `Kategorie`, przenosi na podstrone `Kategorie`
+            - [ ] Po naciśnięciu napisu `Kategorie`, przenosi na podstronę `Kategorie`
             - [x] Dodanie interaktywnego napisu `Regulamin`
-            - [ ] Po naciśnięciu napisu `Regulamin`, przenosi na podstrone `Regulamin`
+            - [ ] Po naciśnięciu napisu `Regulamin`, przenosi na podstronę `Regulamin`
             - [x] Dodanie interaktywnego napisu `O nas`
-            - [ ] Po naciśnięciu napisu `O nas`, przenosi na podstrone `O nas`
-        W liście `Kontakt`:
+            - [ ] Po naciśnięciu napisu `O nas`, przenosi na podstronę `O nas`
+        - W liście `Kontakt`:
             - [x] Dodanie interaktywnej ikony Facebooka + napisu `Facebook`
             - [x] Po naciśnięciu ikony `Facebook`, przenosi na stronę `www.facebook.com`
             - [x] Dodanie interaktywnej ikony Telefonu + napisu `+48 123 456 789`
             - [x] Po naciśnięciu ikony `telefonu`, dzwoni na podany numer
             - [x] Dodanie interaktywnej ikony Poczty + napisu `Poczta@mail.com`
-            - [ ] Po naciśnięciu ikony `poczty`, przenosi na podstrone `Kontakt`
+            - [ ] Po naciśnięciu ikony `poczty`, przenosi na podstronę `Kontakt`
+
+## Podstrony
+Lista z danymi podstronami oraz tym, co powinno się w nich znajdować
 
 ### Strona główna
+- [ ] Utworzenie pliku main.html
+- [ ] Dodanie interaktywnych paneli:
+    - [x] Panele same się mają po czasie przesuwać
+    - [x] Mają wyświetlać się strzałki dzięki którym użytkownik może przesunąć między sobą panele
+    - Panele:
+        - [x] Utworzenie panelu `Gwarancja niskich cen`
+        - [x] Utworzenie opisu panelu `Gwarancji niskich cen`
+        - [x] Utworzenie interaktywnego przycisku `Dołącz do nas już teraz` dla panelu `Gwarancja niskich cen`
+        - [ ] Po naciśnięciu przycisku z panelu `Gwarancja niskich cen`, użytkownik powinien być przeniesiony na podstronę `Rejestracja`
+        - [x] Utworzenie panelu `Nie wiesz co kupić`
+        - [x] Utworzenie opisu panelu `Nie wiesz co kupić`
+        - [x] Utworzenie interaktywnego przycisku `Nasze Kategorie` dla panelu `Nie wiesz co kupić`
+        - [ ] Po naciśnięciu przycisku z panelu `Nie wiesz co kupić`, użytkownik powinien być przeniesiony na podstronę `Kategorie`
+        - [x] Utworzenie panelu `O nas`
+        - [x] Utworzenie opisu panelu `O nas`
+        - [x] Utworzenie interaktywnego przycisku `Czytaj więcej...` dla panelu `O nas`
+        - [ ] Po naciśnięciu przycisku z panelu `O nas`, użytkownik powinien być przeniesiony na podstronę `O nas`
+- [ ] Dodanie `Nasze kategorie`
+    - 
 
 ### Logowanie
 
