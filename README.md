@@ -11,14 +11,12 @@ Poniżej przedstawiona jest Lista Zadań do zrobienia, w celu napisania strony i
     - [x] Historia Zamówień
     - [x] Kategorie
     - [x] Rangi
-
 - [ ] Utworzenie Podstawowego Szablonu: 
     - [ ] Head:
         - [ ] Logo: 
             - [x] Interaktywne logo 
             - [ ] Format PNG
             - [ ] Po naciścięciu, przenosi do Strony Głównej
-
         - [ ] Wyszukiwarka:
             - [x] Miejsce na wpisanie nazwy wyszukiwanego produktu
             - [x] Miejsce na wybór kategorii
@@ -26,33 +24,32 @@ Poniżej przedstawiona jest Lista Zadań do zrobienia, w celu napisania strony i
             - [x] Przycisk "Szukaj"
             - [ ] Po uzupełnieniu wszystkiego, wyszukuje z bazy danych:
                 - [ ] Produkty, zawierające podany tekst w swojej nazwie (`title` bądź `description` z tabelii `products`)
-                - [ ] Produkty z danej kategorii (jak nie została wybrana => jest to `null` => czyli wyszukuje z każdej kategorii)
-                      
+                - [ ] Produkty z danej kategorii (jak nie została wybrana => jest to `null` => czyli wyszukuje z każdej kategorii)            
         - [ ] Kontakt:
             - [x] Interaktywna ikona telefonu
             - [ ] Po naciścięciu przenosi do podstrony "Kontakt"
-
         - [ ] Koszyk:
             - [x] Interaktywna ikona koszyka
-            Po naciścięciu ikony koszyka:
-                - [ ] Gdy są produkty w koszyku:
+            - > Po naciścięciu ikony koszyka:
+                - > Gdy są produkty w koszyku:
                     - [ ] Otwiera się miejsce z listą produktów w koszyku użytkownika
                     - [ ] Na dole wyświetla się przycisk "Przejdź do płatności"
-                - [ ] Gdy nie ma produktów w koszyku:
+                - > Gdy nie ma produktów w koszyku:
                     - [ ] Otwiera się miejsce z napisem "Brak przedmiotów w koszyku"
-          
         - [ ] Moje konto:
             - [x] Interaktywna ikona telefonu + napis "Moje Konto"
-            Po naciścięciu ikony konta:
-                - [ ] Gdy użytkownik jest zalogowany:
+            > Po naciścięciu ikony konta:
+                - Gdy użytkownik jest zalogowany:
                     - [ ] Wyświetla się "Moje konto"
                     - [ ] ...
-                - [ ] Gdy użytkownik nie jest zalogowany:
+                - Gdy użytkownik nie jest zalogowany:
                     - [ ] ...
+
     - [ ] Footer:
         - [ ] Dodanie interaktywnego Logo
         - [ ] Dodanie interaktywnej nazwy sklepu
-        W liście `Zakupy`:
+        > W liście `Zakupy`:
+
             - [x] Dodanie interaktywnego napisu `Konto`
             - [ ] Po naciśnięciu napisu `Konto`:
                 - [ ] Jeżeli użytkownik jest zalogowany przenosi na `Moje Konto`
