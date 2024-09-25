@@ -25,7 +25,7 @@ Poniżej przedstawiona jest Lista Zadań do zrobienia, w celu napisania strony i
 ## Tło Sklepu
 Lista rzeczy, będące w tle tworzenia sklepu
 
-- [ ] Znalezienie i implementacja Frameworka -> Laravel
+- [-] Znalezienie i implementacja Frameworka (raczej bez, wszystkie frameworki są o dupe rozbić)
 - [x] Znalezienie i implementacja Stylu -> Bootstrap
     - [x] Utworzenie przycisku zmiany motywu
 - [ ] Połączenie Bazy Danych z Projektem
