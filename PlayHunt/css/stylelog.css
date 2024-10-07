@@ -1,0 +1,113 @@
+/*
+body{
+	width:90%;
+	margin: 2em auto;
+}
+
+.header, .footer, .content { 
+	margin: 1em auto;
+	border: 0.01em solid #aaa;
+	border-radius: 1em;
+	padding: 1em;
+	background: #f5f5f5;
+    box-shadow: 0.2em 0.2em 0.4em #ccc;
+}
+
+.header, .footer{ 
+	text-align: center;
+}
+
+.messages {	margin: 1em auto; }
+
+.err, .inf, .res {
+	padding: 1em 1em 1em 3em;
+	border-radius: 1em;
+	color: #222;
+}
+
+.err { background-color: #f88; }
+.inf { background-color: #8f8; }
+.res { background-color: #ff0; }
+///////////////////////////////////////////////*/
+.splash-container {
+	background: #040 url("../img/tlo.jpg") no-repeat center top;
+	background-size: 100% 100%;
+	height: 100%;
+}
+
+
+/*zaloguj sie do systemu*/
+.splash-subhead {
+	margin: 200px 2px;
+	background-color: #778899;
+}
+
+/*idź do formularza*/
+.home-menu a {
+	color: #black;
+}
+
+.footer{
+	font-size: 87.5%;
+	background: #778899;
+	color: black;
+}
+
+.splash-head {
+	/*border: 0;*/
+	border-color: #778899;
+	color: white;
+	font-weight: 500;
+	background-color: #778899;
+	opacity: 0.7;
+}
+
+#oblicz {
+    background: #290066;
+}
+
+#menu {
+	background-color: #778899;
+}
+
+.logowanie {
+	margin-bottom: 10em;
+	background-color: #778899;
+	border: none;
+	border-color:#778899;
+	border-style: inset;
+	color: white;
+	padding: 15px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 20px;
+	margin: 0px 0px;
+	cursor: pointer;
+}
+
+.content-wrapper {
+	top: 100%;
+}
+
+
+.err {
+	padding: 1em 1em 1em 3em;
+	border-radius: 1em;
+	background-color: #f88;
+	color: #222;
+}
+
+.inf {
+	padding: 1em 1em 1em 3em;
+	border-radius: 1em;
+	background-color: #8f8;
+	color: #222;
+}
+
+.res {
+	padding: 1em 1em 1em 1.5em;
+	border-radius: 1em;
+	background-color: #ff0;
+	color: #222;
+}
