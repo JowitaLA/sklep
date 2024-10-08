@@ -3,14 +3,22 @@
 use core\App;
 use core\Utils;
 
-App::getRouter()->setDefaultRoute('main'); #default action
-//App::getRouter()->setLoginRoute('login'); #action to forward if no permissions
+App::getRouter()->setDefaultRoute('main');  # Podstawowy Widok 
+App::getRouter()->setLoginRoute('login');   # Widok, do którego użytkownik jest przenoszony gdy nie posiada permisji
 
-Utils::addRoute('main', 'MainCtrl');
+/*===========================/ Główny Widok /===========================*/
 
-Utils::addRoute('login', 'LoginCtrl');
-Utils::addRoute('logout', 'LoginCtrl');
+Utils::addRoute('main', 'MainCtrl');        # Wygeneruj główny widok
 
-Utils::addRoute('forgot_pass', 'Forgot_Pass');
+/*===========================/ Logowanie /===========================*/
 
-Utils::addRoute('register', 'RegisterCtrl');
+Utils::addRoute('loginShow', 'SignCtrl');                   # Wygeneruj widok Logowania
+Utils::addRoute('login', 'SignCtrl');                       # Logowanie   (Sprawdzenie danych, rozpoczęcie sesji)
+
+Utils::addRoute('registerShow', 'SignCtrl');                # Wygeneruj widok Rejestracji
+Utils::addRoute('register', 'SignCtrl');                    # Rejestracja (Dodanie użytkownika do Bazy Danych)
+
+Utils::addRoute('resetPasswordShow', 'SignCtrl');           # Wygeneruj widok Resetowania Hasła
+Utils::addRoute('resetPassword', 'SignCtrl');               # Resetowanie Hasła
+
+Utils::addRoute('logout', 'SignCtrl', ['user','admin']);    # Wylogowanie (Zakończenie sesji)

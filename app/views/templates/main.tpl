@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <script src="{$conf->app_url}/assets/js/color-modes.js"></script>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{$page_description|default:"Domyślny opis"}">
-    <link rel="icon" href="{$conf->app_url}/assets/img/favicon.png" type="image/png">
+    <link rel="icon" href="{$conf->app_url}/assets/img/logo.png" type="image/png">
 
     <title>Yups</title>
 
@@ -29,7 +29,11 @@
                 <div class="row w-100 align-items-center">
                     <!-- Lewa część - Nazwa Sklepu -->
                     <div class="col-6 col-md-3">
-                        <a class="navbar-brand" href="#">Yups</a>
+                        <a class="navbar-brand" href="{$conf->action_url}main">
+                            <img src="{$conf->app_url}/assets/img/logo.png" alt="Logo"
+                                style="height: 25px; width: auto; vertical-align: middle;">
+                            Yups
+                        </a>
                     </div>
 
                     <!-- Prawa część na telefonach - Przycisk menu -->
@@ -49,11 +53,12 @@
                             <div class="input-group" style="width: 200px;">
                                 <select class="form-select" aria-label="Wybierz kategorię">
                                     <option selected>Kategoria</option>
-                                    <option value="1">Elektronika</option>
-                                    <option value="2">Roślinność</option>
-                                    <option value="3">Dom i Ogród</option>
+                                    <option class = "option_select" value="1">Elektronika</option>
+                                    <option class = "option_select" value="2">Roślinność</option>
+                                    <option class = "option_select" value="3">Dom i Ogród</option>
                                 </select>
                             </div>
+
                             <button class="btn btn-primary ms-2" type="submit" style="flex-grow: 2; max-width: 150px;">
                                 Szukaj
                             </button>
@@ -83,7 +88,7 @@
                                 <button id="theme-toggle-btn" class="btn nav-link" type="button"
                                     aria-label="Zmień motyw" data-bs-toggle="tooltip" data-bs-placement="bottom"
                                     title="Zmień motyw">
-                                    <i id="theme-icon" class="fa fa-moon-o"></i>
+                                    <i id="theme-icon" class="bi bi-moon"></i>
                                 </button>
                             </li>
 
@@ -94,15 +99,29 @@
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="bi bi-person-circle"></i> Moje Konto
                                 </a>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
-                                    <li><a class="dropdown-item" href="#">Profil</a></li>
-                                    <li><a class="dropdown-item" href="#">Zamówienia</a></li>
-                                    <li><a class="dropdown-item" href="#">Ustawienia</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Wyloguj się</a></li>
-                                </ul>
+                                {if count($conf->roles)>0}
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+                                        <li><a class="dropdown-item text-center" href="#">Profil</a></li>
+                                        <li><a class="dropdown-item text-center" href="#">Zamówienia</a></li>
+                                        <li><a class="dropdown-item text-center" href="#">Ustawienia</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item text-center" href="{$conf->action_url}logout">Wyloguj
+                                                się</a></li>
+                                    {else}
+                                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+                                            <li><a class="dropdown-item text-center"
+                                                    href="{$conf->action_url}loginShow">Zaloguj się</a></li>
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <li><a class="dropdown-item text-center"
+                                                    href="{$conf->action_url}registerShow">Nie masz jeszcze
+                                                    konta?<br>Zarejestruj się!</a></li>
+                                        {/if}
+
+                                    </ul>
                             </li>
 
                         </ul>
@@ -172,40 +191,9 @@
         </nav>
     </header>
 
-    {* 
-    <div id="menu" class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed">
-        <a class="pure-menu-heading" href=""><b>Strona główna</a>
-        <ul>
-
-            {if count($conf->roles)>0}
-                <li class="pure-menu-selected"><a href="{$conf->action_url}logout">Wyloguj</a></li>
-            {else}
-                <li class="pure-menu-selected"><a href="{$conf->action_url}logout">Logowanie</a></li>
-            {/if}
-            <li class="pure-menu-selected"><a href="{$conf->action_url}options">Opcje</a></li>
-            <li class="pure-menu-selected"><a href="{$conf->action_url}logout">Kontakt</a></li>
-            <li class="pure-menu-selected"><a href="https://www.huntshowdown.com/">Główna strona gry</a></li>
-        </ul>
-    </div> *}
     <main>
         {block name=content} Domyślna treść zawartości {/block}
     </main>
-
-
-    {* <div class="splash-container">
-        <div class="splash">
-            <h1 class="splash-head">{$page_title|default:"Tytuł domyślny"}</h1>
-            <p class="splash-subhead">
-                {$page_description|default:"Opis domyślny"}
-            </p>
-            {if count($conf->roles)==0}
-                <p>
-                    <a href="{$conf->action_url}login" class="logowanie">Dołącz do nas już teraz!</a>
-                </p>
-            {/if}
-        </div>
-
-    </div> *}
 
     <hr class="featurette-divider">
     <div class="container">
@@ -260,27 +248,6 @@
             </div>
         </footer>
     </div>
-
-
-
-    {* <script>
-        window.onload = function() {
-            const header = document.querySelector('header');
-            const main = document.querySelector('main');
-            const headerHeight = header.offsetHeight;
-            main.style.marginTop = headerHeight + 'px'; // Ustawia margines na wysokość nagłówka
-        };
-
-        window.onresize = function() {
-            const header = document.querySelector('header');
-            const main = document.querySelector('main');
-            const headerHeight = header.offsetHeight;
-            main.style.marginTop = headerHeight +
-            'px'; // Ustawia margines na wysokość nagłówka przy zmianie rozmiaru
-        };
-    </script> *}
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>

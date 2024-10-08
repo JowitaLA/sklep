@@ -41,7 +41,7 @@
 			{if count($conf->roles)>0}
 				<li class="pure-menu-selected"><a href="{$conf->action_url}logout">Wyloguj</a></li>
 			{else}	
-				<li class="pure-menu-selected"><a href="{$conf->action_url}logout">Logowanie</a></li>
+				<li class="pure-menu-selected"><a href="{$conf->action_url}login">Logowanie</a></li>
 			{/if}
 			<li class="pure-menu-selected"><a href="{$conf->action_url}options">Opcje</a></li>
 			<li class="pure-menu-selected"><a href="{$conf->action_url}logout">Kontakt</a></li>

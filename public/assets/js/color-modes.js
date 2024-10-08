@@ -35,11 +35,11 @@ document.addEventListener('DOMContentLoaded', function () {
     localStorage.setItem('theme', theme);
     
     if (theme === 'light') {
-      themeIcon.classList.remove('fa-sun-o');
-      themeIcon.classList.add('fa-moon-o');
+      themeIcon.classList.remove('bi-sun');
+      themeIcon.classList.add('bi-moon');
     } else {
-      themeIcon.classList.remove('fa-moon-o');
-      themeIcon.classList.add('fa-sun-o');
+      themeIcon.classList.remove('bi-moon');
+      themeIcon.classList.add('bi-sun');
     }
   }
 

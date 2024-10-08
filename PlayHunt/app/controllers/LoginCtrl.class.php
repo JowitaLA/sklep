@@ -80,6 +80,6 @@ class LoginCtrl{
 	
 	public function generateView(){
 		getSmarty()->assign('form',$this->form); // dane formularza do widoku
-		getSmarty()->display('login.tpl');
+		//getSmarty()->display('login.tpl');
 	}
 }

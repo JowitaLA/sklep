@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-10-07 19:19:33
+/* Smarty version 4.3.4, created on 2024-10-09 01:49:09
   from 'C:\xampp\htdocs\Sklep\app\views\templates\main.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_67041825dc5562_49943234',
+  'unifunc' => 'content_6705c4f514dc31_59559802',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5586da8033aa19671364fdec23865787aba8716c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Sklep\\app\\views\\templates\\main.tpl',
-      1 => 1728321572,
+      1 => 1728431291,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67041825dc5562_49943234 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6705c4f514dc31_59559802 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -34,11 +34,11 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 /assets/js/color-modes.js"><?php echo '</script'; ?>
 >
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="<?php echo (($tmp = $_smarty_tpl->tpl_vars['page_description']->value ?? null)===null||$tmp==='' ? "Domyślny opis" ?? null : $tmp);?>
 ">
     <link rel="icon" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
-/assets/img/favicon.png" type="image/png">
+/assets/img/logo.png" type="image/png">
 
     <title>Yups</title>
 
@@ -62,7 +62,13 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
                 <div class="row w-100 align-items-center">
                     <!-- Lewa część - Nazwa Sklepu -->
                     <div class="col-6 col-md-3">
-                        <a class="navbar-brand" href="#">Yups</a>
+                        <a class="navbar-brand" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+main">
+                            <img src="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
+/assets/img/logo.png" alt="Logo"
+                                style="height: 25px; width: auto; vertical-align: middle;">
+                            Yups
+                        </a>
                     </div>
 
                     <!-- Prawa część na telefonach - Przycisk menu -->
@@ -82,11 +88,12 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
                             <div class="input-group" style="width: 200px;">
                                 <select class="form-select" aria-label="Wybierz kategorię">
                                     <option selected>Kategoria</option>
-                                    <option value="1">Elektronika</option>
-                                    <option value="2">Roślinność</option>
-                                    <option value="3">Dom i Ogród</option>
+                                    <option class = "option_select" value="1">Elektronika</option>
+                                    <option class = "option_select" value="2">Roślinność</option>
+                                    <option class = "option_select" value="3">Dom i Ogród</option>
                                 </select>
                             </div>
+
                             <button class="btn btn-primary ms-2" type="submit" style="flex-grow: 2; max-width: 150px;">
                                 Szukaj
                             </button>
@@ -116,7 +123,7 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
                                 <button id="theme-toggle-btn" class="btn nav-link" type="button"
                                     aria-label="Zmień motyw" data-bs-toggle="tooltip" data-bs-placement="bottom"
                                     title="Zmień motyw">
-                                    <i id="theme-icon" class="fa fa-moon-o"></i>
+                                    <i id="theme-icon" class="bi bi-moon"></i>
                                 </button>
                             </li>
 
@@ -127,15 +134,32 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="bi bi-person-circle"></i> Moje Konto
                                 </a>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
-                                    <li><a class="dropdown-item" href="#">Profil</a></li>
-                                    <li><a class="dropdown-item" href="#">Zamówienia</a></li>
-                                    <li><a class="dropdown-item" href="#">Ustawienia</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Wyloguj się</a></li>
-                                </ul>
+                                <?php if (count($_smarty_tpl->tpl_vars['conf']->value->roles) > 0) {?>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+                                        <li><a class="dropdown-item text-center" href="#">Profil</a></li>
+                                        <li><a class="dropdown-item text-center" href="#">Zamówienia</a></li>
+                                        <li><a class="dropdown-item text-center" href="#">Ustawienia</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item text-center" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+logout">Wyloguj
+                                                się</a></li>
+                                    <?php } else { ?>
+                                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+                                            <li><a class="dropdown-item text-center"
+                                                    href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+loginShow">Zaloguj się</a></li>
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <li><a class="dropdown-item text-center"
+                                                    href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+registerShow">Nie masz jeszcze
+                                                    konta?<br>Zarejestruj się!</a></li>
+                                        <?php }?>
+
+                                    </ul>
                             </li>
 
                         </ul>
@@ -205,15 +229,13 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
         </nav>
     </header>
 
-        <main>
+    <main>
         <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_98610486567041825dc4648_38309761', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_7283070956705c4f514cf82_84838338', 'content');
 ?>
 
     </main>
 
-
-    
     <hr class="featurette-divider">
     <div class="container">
         <footer class=" row row-cols-1 row-cols-sm-2 row-cols-md-5 py-1 my-4">
@@ -267,11 +289,6 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_98610486567041825d
             </div>
         </footer>
     </div>
-
-
-
-    
-
     <?php echo '<script'; ?>
  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"><?php echo '</script'; ?>
 >
@@ -281,12 +298,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_98610486567041825d
 
 </html><?php }
 /* {block 'content'} */
-class Block_98610486567041825dc4648_38309761 extends Smarty_Internal_Block
+class Block_7283070956705c4f514cf82_84838338 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_98610486567041825dc4648_38309761',
+    0 => 'Block_7283070956705c4f514cf82_84838338',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

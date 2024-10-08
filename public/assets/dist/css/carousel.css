@@ -8,6 +8,49 @@ body {
   color: rgb(var(--bs-tertiary-color-rgb));
 }
 
+/* Zmieniamy obramowanie i cień na pomarańczowy, gdy pole jest zaznaczone */
+.form-control:focus {
+  border-color: rgba(233, 125, 1, 1) !important; /* Pomarańczowy kolor obramowania */
+  box-shadow: 0 0 0 0.10rem rgba(255, 136, 0, 0.5) !important; /* Pomarańczowy cień */
+  outline: none !important; /* Usuwa domyślny outline */
+}
+
+.form-control:hover {
+  border-color: rgba(233, 125, 1, 0.8) !important; /* Pomarańczowy kolor obramowania */
+  box-shadow: 0 0 0 0.10rem rgba(255, 136, 0, 0.5) !important; /* Pomarańczowy cień */
+  outline: none !important; /* Usuwa domyślny outline */
+}
+
+
+/* Pomarańczowy kolor obramowania przy fokusie */
+.form-select:focus {
+  border-color: rgba(233, 125, 1, 1) !important; /* Pomarańczowy kolor obramowania */
+  box-shadow: 0 0 0 0.10rem rgba(255, 136, 0, 0.5) !important; /* Pomarańczowy cień */
+  
+  outline: none !important; /* Usuwa domyślny outline */
+}
+
+/* Pomarańczowy kolor obramowania przy najeżdżaniu */
+.form-select:hover {
+  border-color: rgba(233, 125, 1, 1) !important; /* Pomarańczowe obramowanie */
+  box-shadow: 0 0 0 0.10rem rgba(255, 136, 0, 0.5) !important; /* Pomarańczowy cień */
+  
+  outline: none !important; /* Usuwa domyślny outline */
+}
+
+/* Zmiana koloru zaznaczonego tekstu w całej stronie */
+::selection {
+  background-color: rgba(233, 125, 1, 0.8) !important; /* Pomarańczowe tło */
+  color: white; /* Kolor tekstu */
+}
+
+/* Dla Firefoxa */
+::-moz-selection {
+  background-color: rgba(233, 125, 1, 0.8) !important; /* Pomarańczowe tło */
+  color: white; /* Kolor tekstu */
+}
+
+
 .bd-placeholder-img {
   font-size: 1.125rem;
   text-anchor: middle;
@@ -257,10 +300,6 @@ a {
   margin-left: .75rem;
 }
 /* rtl:end:ignore */
-
-#theme-toggle-btn i {
-  font-size: 1.2rem; /* lub inny rozmiar pasujący do reszty */
-}
 
 /* Featurettes
 ------------------------- */

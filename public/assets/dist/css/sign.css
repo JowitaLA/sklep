@@ -1,0 +1,65 @@
+html,
+body {
+  height: 100%;
+}
+
+/* Zmieniamy obramowanie i cień na pomarańczowy, gdy pole jest zaznaczone */
+.form-control:focus {
+  border-color:  rgba(233, 125, 1, 1); /* Pomarańczowy kolor obramowania */
+  box-shadow: 0 0 0 0.10rem rgba(255, 136, 0, 0.5); /* Pomarańczowy cień */
+  outline: none; /* Usuwa domyślny outline */
+}
+
+/* Zmiana koloru zaznaczonego tekstu w całej stronie */
+::selection {
+  background-color:  rgba(233, 125, 1, 0.8); /* Pomarańczowe tło */
+  color: white; /* Kolor tekstu */
+}
+
+/* Dla Firefoxa */
+::-moz-selection {
+  background-color:  rgba(233, 125, 1, 0.8); /* Pomarańczowe tło */
+  color: white; /* Kolor tekstu */
+}
+
+.form-sign {
+  max-width: 330px;
+  padding: 1rem;
+}
+
+.form-sign .top-field {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-sign .middle-field {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-sign .down-field {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.form-sign .solo-field {
+  margin-bottom: 10px;
+}
+
+.form-sign .form-floating:focus-within {
+  z-index: 2;
+}
+
+.no-underline {
+  text-decoration: none;
+  color: inherit; /* lub możesz ustawić na konkretny kolor, np. black */
+}
+
+.color-orange {
+  text-decoration: none;
+  color: rgba(233, 125, 1, 0.904); /* lub możesz ustawić na konkretny kolor, np. black */
+}
