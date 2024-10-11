@@ -21,6 +21,10 @@ body {
   outline: none !important; /* Usuwa domyślny outline */
 }
 
+.alert {
+  z-index: 1050; /* Upewnij się, że z-index jest wyższy niż inne elementy */
+  position: relative; /* Musisz ustawić pozycjonowanie, aby z-index zadziałał */
+}
 
 /* Pomarańczowy kolor obramowania przy fokusie */
 .form-select:focus {

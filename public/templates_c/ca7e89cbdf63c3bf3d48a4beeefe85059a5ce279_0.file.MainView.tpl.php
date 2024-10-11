@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-10-07 17:57:22
+/* Smarty version 4.3.4, created on 2024-10-10 02:52:13
   from 'C:\xampp\htdocs\Sklep\app\views\MainView.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_670404e2993eb4_19720141',
+  'unifunc' => 'content_6707253d617652_90734130',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ca7e89cbdf63c3bf3d48a4beeefe85059a5ce279' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Sklep\\app\\views\\MainView.tpl',
-      1 => 1728316641,
+      1 => 1728521420,
       2 => 'file',
     ),
   ),
@@ -20,23 +20,24 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_670404e2993eb4_19720141 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6707253d617652_90734130 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
+
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1442437371670404e2988c45_73007997', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_20215968336707253d60c619_00367912', 'content');
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, "templates/main.tpl");
 }
 /* {block 'content'} */
-class Block_1442437371670404e2988c45_73007997 extends Smarty_Internal_Block
+class Block_20215968336707253d60c619_00367912 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_1442437371670404e2988c45_73007997',
+    0 => 'Block_20215968336707253d60c619_00367912',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -99,7 +100,6 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
          <span class="visually-hidden">Next</span>
       </button>
    </div>
-
    <!-- Nasze Kategorie -->
    <div id="categories" class="categories">
       <h2>Nasze kategorie</h2>

@@ -1,50 +1,305 @@
 <?php
+
 namespace app\controllers;
 
+require __DIR__ . '/../../lib/PHPMailer/src/Exception.php';
+require __DIR__ . '/../../lib/PHPMailer/src/PHPMailer.php';
+require __DIR__ . '/../../lib/PHPMailer/src/SMTP.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 use core\App;
-use core\Utils;
-
+use core\ParamUtils;
+use core\RoleUtils;
 use app\forms\LoginForm;
+use app\forms\RegisterForm;
 
-class SignCtrl{
-	public function action_login(){
-		// logowanie 
+
+class SignCtrl
+{
+	private $login;
+	private $register;
+	private $name;
+	private $password;
+	private $role;
+	private $idUser;
+
+	private $mail;
+
+
+	public function __construct()
+	{
+		//stworzenie potrzebnych obiektów
+		$this->login = new LoginForm();
+		$this->register = new RegisterForm();
+		$this->mail = new PHPMailer(true);
 	}
 
-	public function action_loginShow(){
-		App::getSmarty()->assign("title","Logowanie");        
-        App::getSmarty()->assign("button_title","Zaloguj się");               
+	public function action_login()
+	{
+		if ($this->validate_login()) {
+			//zalogowany => przekieruj na główną akcję (z przekazaniem messages przez sesję)
+			App::getMessages()->addMessage(new \core\Message("Zalogowano", \core\Message::INFO));
+			App::getSmarty()->display("MainView.tpl");
+		} else {
+			//niezalogowany => pozostań na stronie logowania			
+			$this->action_loginShow();
+		}
+	}
+
+	public function validate_login()
+	{
+		$this->login->login = ParamUtils::getFromRequest('l_name');
+		$this->login->pass = ParamUtils::getFromRequest('l_password');
+
+		//nie ma sensu walidować dalej, gdy brak parametrów
+		if (!isset($this->login->login)) {
+			App::getMessages()->addMessage(new \core\Message("Brak parametrów", \core\Message::WARNING));
+			return false;
+		}
+
+		// sprawdzenie, czy potrzebne wartości zostały przekazane
+		if (empty($this->login->login)) {
+			App::getMessages()->addMessage(new \core\Message("Nie podano loginu", \core\Message::WARNING));
+		}
+		if (empty($this->login->pass)) {
+			App::getMessages()->addMessage(new \core\Message("Nie podano hasła", \core\Message::WARNING));
+		}
+
+		//nie ma sensu walidować dalej, gdy brak wartości
+		if (App::getMessages()->isWarning()) return false;
+
+		//sprawdzenie, czy dane logowania poprawne
+		// GET password From users WHERE login => $this->login->login //
+		$this->password = App::getDB()->get("users", "password", [
+			"login" => $this->login->login
+		]);
+		if ($this->login->pass == $this->password) {
+			RoleUtils::addRole('user');
+
+			$this->idUser = App::getDB()->select("users", "id_user", [
+				"login" => $this->login->login
+			]);
+
+			$this->role = App::getDB()->get("users_rangs", "id_rang", [
+				"id_user" => $this->idUser
+			]);
+
+			$this->role = App::getDB()->get("rangs", "name", [
+				"id_rang" => $this->role
+			]);
+
+			if ($this->role != "user") RoleUtils::addRole($this->role);
+		} else {
+			App::getMessages()->addMessage(new \core\Message("Niepoprawny login lub hasło", \core\Message::ERROR));
+		}
+
+		return ! App::getMessages()->isError();
+	}
+
+	public function action_loginShow()
+	{
+		App::getSmarty()->assign("title", "Logowanie");
+		App::getSmarty()->assign("button_title", "Zaloguj się");
 
 		App::getSmarty()->display("SignView.tpl");
 	}
 
-	public function action_logout(){
+	public function action_logout()
+	{
 		// 1. zakończenie sesji
 		session_destroy();
+		//App::getMessages()->addMessage(new \core\Message("Wylogowano", \core\Message::INFO));
 		// 2. idź na stronę główną - system automatycznie przekieruje do strony logowania
-		redirectTo('main.tpl');
-	}	
 
-	public function action_register(){
-		// rejestracja
+		App::getRouter()->redirectTo("logoutShow");
 	}
 
-	public function action_registerShow(){
-		App::getSmarty()->assign("title","Rejestracja");        
-        App::getSmarty()->assign("button_title","Zarejestruj się");               
-
-		App::getSmarty()->display("SignView.tpl");  
+	public function action_logoutShow()
+	{
+		// 1. zakończenie sesji
+		App::getMessages()->addMessage(new \core\Message("Wylogowano", \core\Message::INFO));
+		// 2. idź na stronę główną - system automatycznie przekieruje do strony logowania
+		App::getRouter()->forwardTo("main");
 	}
 
-	public function action_resetPassword(){
+	public function action_register()
+	{
+		if ($this->validate_register()) {
+			App::getDB()->insert("users", [
+				"login" => $this->register->register,
+				"password" => $this->register->first_password,
+				"mail" => $this->register->email,
+				"status" => "inactive"
+			]);
+
+			$this->idUser = App::getDB()->id();
+
+			App::getDB()->insert("users_rangs", [
+				"id_user" => $this->idUser,
+				"id_rang" => "6",
+			]);
+
+			// Tworzenie tokena
+			$token = bin2hex(random_bytes(32));
+
+			// Zapisanie tokena do bazy danych 
+			App::getDB()->query("INSERT INTO tokens (id_user, token_value) VALUES ('$this->idUser', '$token')");
+
+			// Wysłanie linku weryfikacyjnego
+			$verificationLink = "https://twojastrona.pl/verify.php?token=" . $token;
+			
+				$this->mail->Body = 'Kliknij w poniższy link, aby zweryfikować swój adres e-mail: <a href="' . $verificationLink . '">Potwierdź rejestrację</a>.';
+				$this->mail->send();
+
+			//dodany do BD => przekieruj na ekran z logowaniem
+			App::getMessages()->addMessage(new \core\Message("Zarejestrowano", \core\Message::INFO));
+
+			$this->action_loginShow();
+		} else {
+			//niezalogowany => pozostań na stronie logowania			
+			$this->action_registerShow();
+		}
+	}
+
+	public function validate_register()
+	{
+		$this->register->register 			= ParamUtils::getFromRequest('r_name');
+		$this->register->email 				= ParamUtils::getFromRequest('r_email');
+		$this->register->first_password 	= ParamUtils::getFromRequest('r_first_password');
+		$this->register->second_password 	= ParamUtils::getFromRequest('r_second_password');
+		$this->register->terms_accepted 	= ParamUtils::getFromRequest('terms_accepted');
+
+
+		//nie ma sensu walidować dalej, gdy brak parametrów
+		if (!isset($this->register->register)) {
+			App::getMessages()->addMessage(new \core\Message("Brak parametrów", \core\Message::WARNING));
+			return false;
+		}
+
+		// sprawdzenie, czy potrzebne wartości zostały przekazane
+		if (empty($this->register->register)) {
+			App::getMessages()->addMessage(new \core\Message("Nie podano nazwy użytkownika", \core\Message::WARNING));
+		}
+		if (empty($this->register->email)) {
+			App::getMessages()->addMessage(new \core\Message("Nie podano e-maila", \core\Message::WARNING));
+		}
+
+		// sprawdzenie, czy potrzebne wartości zostały przekazane
+		if (empty($this->register->fist_password) && empty($this->register->second_password)) {
+			App::getMessages()->addMessage(new \core\Message("Nie podano hasła", \core\Message::WARNING));
+		}
+
+		//nie ma sensu walidować dalej, gdy brak wartości
+		if (App::getMessages()->isWarning()) return false;
+
+		//sprawdzenie, czy nazwa użytkownika ma od 5 do 20 znaków
+		if (strlen($this->register->register) < '5' && strlen($this->register->register) < '20') {
+			App::getMessages()->addMessage(new \core\Message("Nazwa użytkownika powinna się składać od 5 do 20 znaków.", \core\Message::ERROR));
+		}
+
+		//sprawdzenie, czy e-mail jest e-mailem 
+		if (!filter_var($this->register->email, FILTER_VALIDATE_EMAIL)) {
+			App::getMessages()->addMessage(new \core\Message("Podany adres e-mail jest nieprawidłowy.", \core\Message::ERROR));
+		}
+
+		//sprawdzenie, czy hasło ma przynajmniej jeden znak specjalny, liczbę, wielką literę oraz składa sie z 8 znaków
+		$password = $this->register->second_password;
+
+		if (
+			strlen($password) < 8 || // Sprawdzenie długości hasła
+			!preg_match('/[A-Z]/', $password) || // Sprawdzenie, czy jest wielka litera
+			!preg_match('/[0-9]/', $password) || // Sprawdzenie, czy jest cyfra
+			!preg_match('/[\W]/', $password) // Sprawdzenie, czy jest znak specjalny
+		) {
+			App::getMessages()->addMessage(new \core\Message("Hasło musi mieć co najmniej 8 znaków, zawierać przynajmniej jedną wielką literę, cyfrę oraz znak specjalny.", \core\Message::ERROR));
+		}
+
+		//sprawdzenie, czy oba hasła się pokrywają
+		$password = $this->register->second_password;
+		$confirmPassword = $this->register->second_password;
+
+		if ($password !== $confirmPassword) {
+			App::getMessages()->addMessage(new \core\Message("Hasła muszą być takie same.", \core\Message::ERROR));
+		}
+
+		//sprawdzenie, czy regulamin został zaakceptowany
+		if (!isset($this->register->terms_accepted)) {
+			App::getMessages()->addMessage(new \core\Message("Musisz zaakceptować regulamin, aby kontynuować.", \core\Message::ERROR));
+		}
+		if (App::getMessages()->isError()) return false;
+
+		//sprawdzenie, czy nazwa użytkownika jest zajęta
+		$this->name = App::getDB()->get("users", "login", [
+			"login" => $this->register->register
+		]);
+		if ($this->register->register == $this->name) {
+			App::getMessages()->addMessage(new \core\Message("Użytkownik z takim loginem już istnieje", \core\Message::ERROR));
+		}
+
+		//sprawdzenie, czy użytkownika email nie znajduje się w bazie danych
+		$email = App::getDB()->get("users", "mail", [
+			"mail" => $this->register->email
+		]);
+		if ($email == $this->register->email) {
+			App::getMessages()->addMessage(new \core\Message("Użytkownik z takim mailem już istnieje", \core\Message::ERROR));
+		}
+
+		//pomyślne zarejestrowanie użytkownika
+		return ! App::getMessages()->isError();
+	}
+
+	public function action_registerShow()
+	{
+		App::getSmarty()->assign("title", "Rejestracja");
+		App::getSmarty()->assign("button_title", "Zarejestruj się");
+
+		App::getSmarty()->display("SignView.tpl");
+	}
+
+	public function action_resetPassword()
+	{
 		// reset hasła
 	}
 
-	public function action_resetPasswordShow(){
-		App::getSmarty()->assign("title","Resetuj Hasło");        
-        App::getSmarty()->assign("button_title","Zresetuj Hasło");               
+	public function action_resetPasswordShow()
+	{
+		App::getSmarty()->assign("title", "Resetuj Hasło");
+		App::getSmarty()->assign("button_title", "Zresetuj Hasło");
 
-		App::getSmarty()->display("SignView.tpl"); 
+		App::getSmarty()->display("SignView.tpl");
+	}
+
+	public function send_mail()
+	{
+		try {
+
+			// Ustawienie języka na polski
+			$this->mail->setLanguage('pl', 'phpmailer/language/');
+
+			// Konfiguracja SMTP
+			$this->mail->isSMTP();
+			$this->mail->Host       = 'smtp.poczta.onet.pl';
+			$this->mail->SMTPAuth   = true;
+			$this->mail->Username   = 'jowisz1@onet.pl';
+			$this->mail->Password   = 'Ddipcdp$c1';
+			$this->mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+			$this->mail->Port       = 587;
+
+			// Odbiorca i nadawca
+			$this->mail->setFrom('jowisz1@onet.pl', 'Jowisz1');
+			$this->mail->addAddress('yloru@onet.pl');  // Odbiorca
+
+			// Treść wiadomości
+			$this->mail->isHTML(true);
+			$this->mail->Subject = 'Weryfikacja Sklep';
+
+			// Wyślij wiadomość
+			$this->mail->send();
+			echo "<script>console.log('Wysłano wiadomość');</script>";
+		} catch (Exception $e) {
+			echo "<script>console.log('Nie udało się wysłać wiadomości. Błąd: {$this->mail->ErrorInfo}');</script>";
+		}
 	}
 }

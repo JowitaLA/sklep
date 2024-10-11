@@ -25,10 +25,10 @@ Poniżej przedstawiona jest Lista Zadań do zrobienia, w celu napisania strony i
 ## Tło Sklepu
 Lista rzeczy, będące w tle tworzenia sklepu
 
-- [-] Znalezienie i implementacja Frameworka (raczej bez, wszystkie frameworki są o dupe rozbić)
+- [x] Znalezienie i implementacja Frameworka (Amelia Framework)
 - [x] Znalezienie i implementacja Stylu -> Bootstrap
     - [x] Utworzenie przycisku zmiany motywu
-- [ ] Połączenie Bazy Danych z Projektem
+- [x] Połączenie Bazy Danych z Projektem
 - [ ] Utworzenie Bazy Danych:
     - [x] Produkty
     - [x] Użytkownicy
@@ -42,8 +42,8 @@ Lista rzeczy, będące w tle tworzenia sklepu
     - [ ] Head:
         - [ ] Logo: 
             - [x] Interaktywne logo 
-            - [ ] Format PNG
-            - [ ] Po naciścięciu, przenosi do Strony Głównej
+            - [x] Format PNG
+            - [x] Po naciścięciu, przenosi do Strony Głównej
         - [ ] Wyszukiwarka:
             - [x] Miejsce na wpisanie nazwy wyszukiwanego produktu
             - [x] Miejsce na wybór kategorii
@@ -68,15 +68,16 @@ Lista rzeczy, będące w tle tworzenia sklepu
             - Po naciścięciu ikony konta:
                 - Gdy użytkownik jest zalogowany:
                     - [ ] Wyświetla się interaktywny napis `Moje Dane`
-                    - [ ] Po naciścięciu napisu, użytkownik przenoszony jest na podstronę `Rejestracja`
+                    - [ ] Po naciścięciu napisu, użytkownik przenoszony jest na podstronę `Dane`
                     - [ ] Wyświetla się interaktywny napis `Mój Koszyk`
                     - [ ] Po naciścięciu napisu, użytkownik przenoszony jest na podstronę `Koszyk`
                     - [ ] Wyświetla się interaktywny napis `Historia Zamówień`
                     - [ ] Po naciścięciu napisu, użytkownik przenoszony jest na podstronę `Historia Zamówień`
                 - Gdy użytkownik nie jest zalogowany:
-                    - [ ] Wyświetla się przycisk `Zaloguj się`
-                    - [ ] Wyświetla się interaktywny napis `Nie masz jeszcze konta? Zarejestruj się`
-                    - [ ] Po naciścięciu napisu, użytkownik przenoszony jest na podstronę `Rejestracja`
+                    - [x] Wyświetla się przycisk `Zaloguj się`
+                    - [x] Po naciścięciu napisu, użytkownik przenoszony jest na podstronę `Logowania` 
+                    - [x] Wyświetla się interaktywny napis `Nie masz jeszcze konta? Zarejestruj się`
+                    - [x] Po naciścięciu napisu, użytkownik przenoszony jest na podstronę `Rejestracja` 
     - [ ] Footer:
         - [ ] Dodanie interaktywnego Logo w formacie PNG
         - [x] Dodanie interaktywnej nazwy sklepu
@@ -114,8 +115,8 @@ Lista rzeczy, będące w tle tworzenia sklepu
 Lista z danymi podstronami oraz tym, co powinno się w nich znajdować
 
 ### Strona główna
-- [ ] Utworzenie pliku main.html
-- [ ] Dodanie interaktywnych paneli:
+- [x] Utworzenie pliku main.html
+- [] Dodanie interaktywnych paneli:
     - [x] Panele same się mają po czasie przesuwać
     - [x] Mają wyświetlać się strzałki dzięki którym użytkownik może przesunąć między sobą panele
     - W dostępnych panelach:
@@ -139,7 +140,7 @@ Lista z danymi podstronami oraz tym, co powinno się w nich znajdować
     - [ ] Po naciśnięciu produktu, otwiera się podstrona z danym produktem
 
 ### Newsletter
-- [ ] Utworzenie pliku statute.html
+- [ ] Utworzenie pliku newsletter.html
 - [ ] Stworzenie wielkiego tytułu strony `Zapisz się do Newsettera`
 - [ ] Dodanie krótniego opisu
 - [ ] Dodanie miejsca na wpisanie maila
@@ -156,12 +157,12 @@ Lista z danymi podstronami oraz tym, co powinno się w nich znajdować
 - [ ] Sprawdzenie czy użytkownik jest zalogowany
 
 ### Logowanie
-- [ ] Utworzenie pliku login.html
-- [ ] Utworzenie miejsca na wpisanie loginu
-- [ ] Utworzenie miejsca na wpisanie hasła
-- [ ] Utworznie przycisku `Zaloguj`
-- [ ] Sprawdzenie danych wpisanych przez użytkownika z Bazą Danych
-- [ ] Dodanie alertów (np. Źle wpisane hasło bądź login)
+- [x] Utworzenie pliku login.html
+- [x] Utworzenie miejsca na wpisanie loginu
+- [x] Utworzenie miejsca na wpisanie hasła
+- [x] Utworznie przycisku `Zaloguj`
+- [x] Sprawdzenie danych wpisanych przez użytkownika z Bazą Danych
+- [x] Dodanie alertów (np. Źle wpisane hasło bądź login)
 
 ### Rejestracja
 - [ ] Utworzenie pliku register.html
@@ -169,7 +170,6 @@ Lista z danymi podstronami oraz tym, co powinno się w nich znajdować
 - [ ] Utworzenie miejsca na wpisanie maila
 - [ ] Utworzenie miejsca na wpisanie hasła
 - [ ] Utworzenie miejsca na powtórzenie hasła
-- [ ] Utworzenie miejsca z płcią do wyboru
 - [ ] Utworznie przycisku `Zarejestruj`
 - [ ] Sprawdzenie danych wpisanych przez użytkownika z Bazą Danych
 - [ ] Dodanie alertów (Np. Źle wpisane hasło bądź zajęty login)

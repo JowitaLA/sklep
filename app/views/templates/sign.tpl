@@ -16,36 +16,22 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 	<link href="{$conf->app_url}/assets/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="{$conf->app_url}/assets/dist/css/sign.css" rel="stylesheet">
-	<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="{$conf->app_url}/assets/dist/css/bootstrap.min.css" rel="stylesheet">
 	<!-- Custom styles for this template -->
 	<link href="sign.css" rel="stylesheet">
 </head>
 
 <body class="d-flex align-items-center py-4 bg-body-tertiary">
 	<main class="form-sign w-100 m-auto">
-		<form>
-			<a href="{$conf->app_url}/main" class="d-flex mb-4">
-				<!-- Dodany link do strony głównej -->
-				<img src="{$conf->app_url}/assets/img/logo.png" alt="" width="50" height="50">
-			</a>
+		{block name=content} Domyślna treść zawartości {/block}
 
-
-			<div class="d-flex justify-content-between align-items-center">
-				<h1 class="h3 mb-3 fw-normal">
-					{$title}
-				</h1>
-
-				<button id="theme-toggle-btn" class="btn nav-link me-2" type="button" aria-label="Zmień motyw"
-					data-bs-toggle="tooltip" data-bs-placement="bottom" title="Zmień motyw">
-					<i id="theme-icon" class="bi bi-moon"></i>
-				</button>
+		{foreach $msgs->getMessages() as $msg}
+			<div class="alert {if $msg->isInfo()}alert-info{/if}
+								  {if $msg->isWarning()}alert-warning{/if}
+								  {if $msg->isError()}alert-danger{/if}" role="alert" style="margin-top: 5px; margin-bottom: 0px;">
+				{$msg->text}
 			</div>
-
-
-			{block name=content} Domyślna treść zawartości {/block}
-
-			<button class="btn btn-primary w-100 py-2" type="submit">{$button_title}</button>
-		</form>
+		{/foreach}
 	</main>
 	<script src="{$conf->app_url}/assets/dist/js/bootstrap.bundle.min.js"></script>
 	<script>

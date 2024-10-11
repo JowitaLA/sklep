@@ -1,5 +1,6 @@
 {extends file="templates/main.tpl"}
 
+
 {block name=content}
    <!-- Panele -->
    <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
@@ -55,7 +56,6 @@
          <span class="visually-hidden">Next</span>
       </button>
    </div>
-
    <!-- Nasze Kategorie -->
    <div id="categories" class="categories">
       <h2>Nasze kategorie</h2>

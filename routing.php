@@ -22,3 +22,4 @@ Utils::addRoute('resetPasswordShow', 'SignCtrl');           # Wygeneruj widok Re
 Utils::addRoute('resetPassword', 'SignCtrl');               # Resetowanie Hasła
 
 Utils::addRoute('logout', 'SignCtrl', ['user','admin']);    # Wylogowanie (Zakończenie sesji)
+Utils::addRoute('logoutShow', 'SignCtrl');                  # Wylogowanie (Zakończenie sesji)

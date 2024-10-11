@@ -53,9 +53,9 @@
                             <div class="input-group" style="width: 200px;">
                                 <select class="form-select" aria-label="Wybierz kategorię">
                                     <option selected>Kategoria</option>
-                                    <option class = "option_select" value="1">Elektronika</option>
-                                    <option class = "option_select" value="2">Roślinność</option>
-                                    <option class = "option_select" value="3">Dom i Ogród</option>
+                                    <option class="option_select" value="1">Elektronika</option>
+                                    <option class="option_select" value="2">Roślinność</option>
+                                    <option class="option_select" value="3">Dom i Ogród</option>
                                 </select>
                             </div>
 
@@ -192,6 +192,20 @@
     </header>
 
     <main>
+
+        <div id="alertsContainer"
+            style="position: fixed; top: 10%; left: 50%; transform: translateX(-50%); z-index: 1050;">
+            {foreach $msgs->getMessages() as $msg}
+                <div class="alert alert-dismissible fade show {if $msg->isInfo()}alert-success{/if}
+                                                    {if $msg->isWarning()}alert-warning{/if}
+                                                    {if $msg->isError()}alert-danger{/if}" role="alert"
+                    style="margin-top: 5px; margin-bottom: 0px;">
+                    {$msg->text}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {/foreach}  
+        </div>
+
         {block name=content} Domyślna treść zawartości {/block}
     </main>
 
@@ -249,6 +263,26 @@
         </footer>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Pobierz wszystkie alerty
+            const alerts = document.querySelectorAll('.alert');
+
+            // Przeiteruj przez każdy alert i ustaw czas zniknięcia
+            alerts.forEach(function(alert) {
+                setTimeout(function() {
+                    // Użycie klasy fade, aby ukryć alert
+                    alert.classList.remove('show');
+                    alert.classList.add('fade');
+
+                    // Usunięcie elementu po zakończeniu animacji
+                    setTimeout(function() {
+                        alert.remove();
+                    }, 500); // Czas na zakończenie animacji (0.5 sekundy)
+                }, 5000); // 10 sekundowe opóźnienie
+            });
+        });
+    </script>
 
 </body>
 
