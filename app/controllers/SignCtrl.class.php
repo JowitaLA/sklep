@@ -20,13 +20,14 @@ class SignCtrl
 {
 	private $login;
 	private $register;
+	private $mail;
+
 	private $name;
 	private $password;
 	private $role;
 	private $idUser;
-
-	private $mail;
-
+	private $status;
+	private $verificationLink;
 
 	public function __construct()
 	{
@@ -41,7 +42,7 @@ class SignCtrl
 		if ($this->validate_login()) {
 			//zalogowany => przekieruj na główną akcję (z przekazaniem messages przez sesję)
 			App::getMessages()->addMessage(new \core\Message("Zalogowano", \core\Message::INFO));
-			App::getSmarty()->display("MainView.tpl");
+			App::getRouter()->forwardTo('main');
 		} else {
 			//niezalogowany => pozostań na stronie logowania			
 			$this->action_loginShow();
@@ -75,10 +76,9 @@ class SignCtrl
 		$this->password = App::getDB()->get("users", "password", [
 			"login" => $this->login->login
 		]);
-		if ($this->login->pass == $this->password) {
-			RoleUtils::addRole('user');
 
-			$this->idUser = App::getDB()->select("users", "id_user", [
+		if ($this->login->pass == $this->password) {
+			$this->idUser = App::getDB()->get("users", "id_user", [
 				"login" => $this->login->login
 			]);
 
@@ -90,7 +90,53 @@ class SignCtrl
 				"id_rang" => $this->role
 			]);
 
-			if ($this->role != "user") RoleUtils::addRole($this->role);
+		//sprawdzenie czy status jest `active`, jeżeli nie, wysłanie ponowne wiadomości i poinformowanie użytkownika
+		$this->status = App::getDB()->get("users", "status", [
+			"id_user" => $this->idUser
+		]);
+
+		if ($this->status != "active") {
+			$mail = App::getDB()->get("users", "mail", [
+				"id_user" => $this->idUser
+			]);
+			echo "<script>console.log('Użytkownik jest nieaktywny');</script>";
+
+			if ($mail) {
+				// Pobranie wszystkich tokenów dla tego użytkownika
+				
+				echo "<script>console.log('Pobieranie tokenów');</script>";
+				$tokens = App::getDB()->select("tokens", [
+					"token_value"
+				], [
+					"id_user" => $this->idUser
+				]);
+
+
+				// Usuń wszystkie tokeny użytkownika
+				if ($tokens) {
+					echo "<script>console.log('Usuwanie tokenów użytkownika');</script>";
+					App::getDB()->delete("tokens", [
+						"id_user" => $this->idUser
+					]);
+				}
+
+				echo "<script>console.log('Generowanie nowego tokena dla ',$this->idUser);</script>";
+				// Wygeneruj nowy token
+				$this->generate_token();
+				$this->mail->addAddress(
+					App::getDB()->get("users", "mail", [
+						"id_user" => $this->idUser
+					])
+				);  // Dodano odbiorce do maila
+				$this->mail->Body = 'Kliknij w poniższy link, aby zweryfikować swój adres e-mail: <a href="' . $this->verificationLink . '">Potwierdź rejestrację</a>.';
+				$this->send_mail();
+			}
+			App::getMessages()->addMessage(new \core\Message("Twoje konto nie jest aktywne bądź zostało usunięte. Wysłaliśmy do Ciebie maila, w celu aktywacji bądź odzyskania konta.", \core\Message::ERROR));
+		}
+
+		if (App::getMessages()->isError()) return false;
+
+		if ($this->role != "user" && (empty($tokens))) RoleUtils::addRole($this->role);
 		} else {
 			App::getMessages()->addMessage(new \core\Message("Niepoprawny login lub hasło", \core\Message::ERROR));
 		}
@@ -104,24 +150,6 @@ class SignCtrl
 		App::getSmarty()->assign("button_title", "Zaloguj się");
 
 		App::getSmarty()->display("SignView.tpl");
-	}
-
-	public function action_logout()
-	{
-		// 1. zakończenie sesji
-		session_destroy();
-		//App::getMessages()->addMessage(new \core\Message("Wylogowano", \core\Message::INFO));
-		// 2. idź na stronę główną - system automatycznie przekieruje do strony logowania
-
-		App::getRouter()->redirectTo("logoutShow");
-	}
-
-	public function action_logoutShow()
-	{
-		// 1. zakończenie sesji
-		App::getMessages()->addMessage(new \core\Message("Wylogowano", \core\Message::INFO));
-		// 2. idź na stronę główną - system automatycznie przekieruje do strony logowania
-		App::getRouter()->forwardTo("main");
 	}
 
 	public function action_register()
@@ -141,20 +169,13 @@ class SignCtrl
 				"id_rang" => "6",
 			]);
 
-			// Tworzenie tokena
-			$token = bin2hex(random_bytes(32));
-
-			// Zapisanie tokena do bazy danych 
-			App::getDB()->query("INSERT INTO tokens (id_user, token_value) VALUES ('$this->idUser', '$token')");
-
-			// Wysłanie linku weryfikacyjnego
-			$verificationLink = "https://twojastrona.pl/verify.php?token=" . $token;
-			
-				$this->mail->Body = 'Kliknij w poniższy link, aby zweryfikować swój adres e-mail: <a href="' . $verificationLink . '">Potwierdź rejestrację</a>.';
-				$this->mail->send();
+			$this->generate_token();
+			$this->mail->addAddress($this->register->email);  // Dodano odbiorce do maila
+			$this->mail->Body = 'Kliknij w poniższy link, aby zweryfikować swój adres e-mail: <a href="' . $this->verificationLink . '">Potwierdź rejestrację</a>.';
+			$this->send_mail();
 
 			//dodany do BD => przekieruj na ekran z logowaniem
-			App::getMessages()->addMessage(new \core\Message("Zarejestrowano", \core\Message::INFO));
+			App::getMessages()->addMessage(new \core\Message("Rejestracja przebiegła pomyślnie. Aktywuj konto klikając w link wysłany emailem", \core\Message::INFO));
 
 			$this->action_loginShow();
 		} else {
@@ -245,9 +266,8 @@ class SignCtrl
 		if ($email == $this->register->email) {
 			App::getMessages()->addMessage(new \core\Message("Użytkownik z takim mailem już istnieje", \core\Message::ERROR));
 		}
-
-		//pomyślne zarejestrowanie użytkownika
 		return ! App::getMessages()->isError();
+		//pomyślne zarejestrowanie użytkownika
 	}
 
 	public function action_registerShow()
@@ -271,6 +291,19 @@ class SignCtrl
 		App::getSmarty()->display("SignView.tpl");
 	}
 
+	public function generate_token()
+	{
+		$token = bin2hex(random_bytes(32));  // Generowanie tokena
+
+		// Tworzenie linku do weryfikacji
+		$this->verificationLink = "http://localhost/sklep/public/verify?token=" . $token;
+
+		App::getDB()->insert("tokens", [
+			"id_user" => $this->idUser,
+			"token_value" => $token,
+		]);
+	}
+
 	public function send_mail()
 	{
 		try {
@@ -288,8 +321,7 @@ class SignCtrl
 			$this->mail->Port       = 587;
 
 			// Odbiorca i nadawca
-			$this->mail->setFrom('jowisz1@onet.pl', 'Jowisz1');
-			$this->mail->addAddress('yloru@onet.pl');  // Odbiorca
+			$this->mail->setFrom('jowisz1@onet.pl', 'Sklep');
 
 			// Treść wiadomości
 			$this->mail->isHTML(true);

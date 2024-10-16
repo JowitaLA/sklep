@@ -35,7 +35,7 @@ Lista rzeczy, będące w tle tworzenia sklepu
     - [x] Historia Zamówień
     - [x] Kategorie
     - [x] Rangi
-    - [ ] Kody Rabatowe
+    - [?] Kody Rabatowe
     - [ ] Feedback
     - [ ] Newsletter
 - [ ] Utworzenie Podstawowego Szablonu: 
@@ -200,6 +200,7 @@ Lista z danymi podstronami oraz tym, co powinno się w nich znajdować
 - [ ] Wygenerowanie zdjęcia produktu
 - [ ] Wygenerowanie opisu produktu
 - [ ] Dodanie przycisku `Kup`/`Dodaj do koszyka`
+- [ ] Dodanie możliwości opini
 - [ ] Dodanie produktu do koszyka użytkownika po naciśnięciu przycisku `Kup`/`Dodaj do koszyka`
 
 ### Koszyk

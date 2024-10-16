@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-10-11 01:48:08
+/* Smarty version 4.3.4, created on 2024-10-15 15:44:56
   from 'C:\xampp\htdocs\Sklep\app\views\templates\sign.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_670867b89c8c63_14983045',
+  'unifunc' => 'content_670e71d88eaad1_95841257',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e8263e0064e572b14a5a4492abbd505035ca8af4' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Sklep\\app\\views\\templates\\sign.tpl',
-      1 => 1728604082,
+      1 => 1728999877,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_670867b89c8c63_14983045 (Smarty_Internal_Template $_smarty_tpl) {
+function content_670e71d88eaad1_95841257 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -58,24 +58,24 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 
 <body class="d-flex align-items-center py-4 bg-body-tertiary">
 	<main class="form-sign w-100 m-auto">
-		<?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_270700008670867b88e1536_15352680', 'content');
+			<?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_974059680670e71d88e0d98_61709710', 'content');
 ?>
 
 
-		<?php
+			<?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['msgs']->value->getMessages(), 'msg');
 $_smarty_tpl->tpl_vars['msg']->do_else = true;
 if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['msg']->value) {
 $_smarty_tpl->tpl_vars['msg']->do_else = false;
 ?>
-			<div class="alert <?php if ($_smarty_tpl->tpl_vars['msg']->value->isInfo()) {?>alert-info<?php }?>
+				<div class="alert <?php if ($_smarty_tpl->tpl_vars['msg']->value->isInfo()) {?>alert-info<?php }?>
 								  <?php if ($_smarty_tpl->tpl_vars['msg']->value->isWarning()) {?>alert-warning<?php }?>
 								  <?php if ($_smarty_tpl->tpl_vars['msg']->value->isError()) {?>alert-danger<?php }?>" role="alert" style="margin-top: 5px; margin-bottom: 0px;">
-				<?php echo $_smarty_tpl->tpl_vars['msg']->value->text;?>
+					<?php echo $_smarty_tpl->tpl_vars['msg']->value->text;?>
 
-			</div>
-		<?php
+				</div>
+			<?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 	</main>
@@ -120,12 +120,12 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
 </html><?php }
 /* {block 'content'} */
-class Block_270700008670867b88e1536_15352680 extends Smarty_Internal_Block
+class Block_974059680670e71d88e0d98_61709710 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_270700008670867b88e1536_15352680',
+    0 => 'Block_974059680670e71d88e0d98_61709710',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

@@ -23,15 +23,15 @@
 
 <body class="d-flex align-items-center py-4 bg-body-tertiary">
 	<main class="form-sign w-100 m-auto">
-		{block name=content} Domyślna treść zawartości {/block}
+			{block name=content} Domyślna treść zawartości {/block}
 
-		{foreach $msgs->getMessages() as $msg}
-			<div class="alert {if $msg->isInfo()}alert-info{/if}
+			{foreach $msgs->getMessages() as $msg}
+				<div class="alert {if $msg->isInfo()}alert-info{/if}
 								  {if $msg->isWarning()}alert-warning{/if}
 								  {if $msg->isError()}alert-danger{/if}" role="alert" style="margin-top: 5px; margin-bottom: 0px;">
-				{$msg->text}
-			</div>
-		{/foreach}
+					{$msg->text}
+				</div>
+			{/foreach}
 	</main>
 	<script src="{$conf->app_url}/assets/dist/js/bootstrap.bundle.min.js"></script>
 	<script>

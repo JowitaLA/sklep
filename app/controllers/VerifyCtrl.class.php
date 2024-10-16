@@ -1,22 +1,84 @@
 <?php
-// Pobranie tokena z URL
-if (isset($_GET['token'])) {
-    $token = $_GET['token'];
 
-    // Sprawdzenie, czy token istnieje w bazie danych (pseudokod)
-    $query = $db->prepare("SELECT * FROM users WHERE token = ?");
-    $query->execute([$token]);
-    $user = $query->fetch();
+namespace app\controllers;
 
-    if ($user) {
-        // Zaktualizowanie statusu weryfikacji konta
-        $update = $db->prepare("UPDATE users SET is_verified = 1, token = NULL WHERE token = ?");
-        $update->execute([$token]);
+use core\App;
+use core\ParamUtils;
+use core\Message;
+use Error;
 
-        echo "Twoje konto zostało zweryfikowane!";
-    } else {
-        echo "Nieprawidłowy token lub token wygasł.";
+class VerifyCtrl
+{
+    private $token;
+    private $userToken;
+    private $status;
+    private $verify_message;
+
+    public function action_verify()
+    {
+        // Pobierz token z URL
+        $this->token = ParamUtils::getFromGet('token');
+
+        if (!$this->token) {
+            $this->verify_message = "Podano zły token.";
+            return $this->generateView();
+        }
+
+        // Sprawdź czy token istnieje w bazie danych, jeżeli nie wyślij wiadomość, że token jest nieaktywny
+        $this->userToken = App::getDB()->get("tokens", "id_user", [
+			"token_value" => $this->token
+		]);
+
+        if (empty($this->userToken)){
+            $this->verify_message = "Token jest nieaktywny.";
+            return $this->generateView();
+        }
+
+        // Sprawdź czy użytkownik posiada status `inactve`, jeżeli nie wyślij wiadomość, że token jest nieaktywny
+        $this->status = App::getDB()->get("users", "status", [
+			"id_user" => $this->userToken
+		]);
+
+        if($this->status == "active"){
+            App::getDB()->delete("tokens", [
+                "id_user" => $this->userToken
+            ]);
+
+            $this->verify_message = "Konto użytkownika zostało już aktywowane.";
+            return $this->generateView();
+        }
+
+
+        // Zmień status użytkownika na `active` (aktywując tak konto użytkownika)
+        try{
+        App::getDB()->update("users", [
+            "status" => "active"
+        ], [
+            "id_user" => $this->userToken
+        ]);
+
+        // Usuń token po weryfikacji (by nie zajmował niepotrzebnie miejsca w bazie danych)
+        App::getDB()->delete("tokens", [
+            "id_user" => $this->userToken
+        ]);
+
+        $this->verify_message = "Aktywacja użytkownika przebiegła pomyślnie. Zaloguj się na swoje konto.";
+        }
+        catch (\PDOException $e) {
+            // Obsługa błędów w przypadku wyjątku PDO
+            $this->verify_message = "Wystąpił błąd podczas aktywacji konta użytkownika: " . $e;
+        } catch (\Exception $e) {
+            // Obsługa innych potencjalnych wyjątków
+            $this->verify_message = "Wystąpił nieoczekiwany błąd: " . $e;
+        }
+
+        return $this->generateView();
     }
-} else {
-    echo "Brak tokena weryfikacyjnego.";
+
+    public function generateView() {
+        App::getSmarty()->assign('title','Yups');
+		App::getSmarty()->assign('verify_message', $this->verify_message);
+
+        App::getSmarty()->display('VerifyView.tpl');
+    }
 }

@@ -4,7 +4,7 @@ use core\App;
 use core\Utils;
 
 App::getRouter()->setDefaultRoute('main');  # Podstawowy Widok 
-App::getRouter()->setLoginRoute('login');   # Widok, do którego użytkownik jest przenoszony gdy nie posiada permisji
+App::getRouter()->setLoginRoute('loginShow');   # Widok, do którego użytkownik jest przenoszony gdy nie posiada permisji
 
 /*===========================/ Główny Widok /===========================*/
 
@@ -20,6 +20,10 @@ Utils::addRoute('register', 'SignCtrl');                    # Rejestracja (Dodan
 
 Utils::addRoute('resetPasswordShow', 'SignCtrl');           # Wygeneruj widok Resetowania Hasła
 Utils::addRoute('resetPassword', 'SignCtrl');               # Resetowanie Hasła
+Utils::addRoute('verify', 'VerifyCtrl');	                # Weryfikacja tokenu rejestracyjnego
 
-Utils::addRoute('logout', 'SignCtrl', ['user','admin']);    # Wylogowanie (Zakończenie sesji)
-Utils::addRoute('logoutShow', 'SignCtrl');                  # Wylogowanie (Zakończenie sesji)
+Utils::addRoute('logout', 'LogoutCtrl');                    # Wylogowanie (Zakończenie sesji)
+Utils::addRoute('logoutShow', 'LogoutCtrl');                # Wylogowanie (Zakończenie sesji)
+
+Utils::addRoute('productsShow', 'LogoutCtrl');                # Wylogowanie (Zakończenie sesji)
+

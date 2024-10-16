@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-10-10 02:52:13
+/* Smarty version 4.3.4, created on 2024-10-16 00:08:01
   from 'C:\xampp\htdocs\Sklep\app\views\MainView.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_6707253d617652_90734130',
+  'unifunc' => 'content_670ee7c1dea209_25236439',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ca7e89cbdf63c3bf3d48a4beeefe85059a5ce279' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Sklep\\app\\views\\MainView.tpl',
-      1 => 1728521420,
+      1 => 1729030078,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6707253d617652_90734130 (Smarty_Internal_Template $_smarty_tpl) {
+function content_670ee7c1dea209_25236439 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
@@ -28,19 +28,20 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_20215968336707253d60c619_00367912', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_693937051670ee7c1dcebd9_94381874', 'content');
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, "templates/main.tpl");
 }
 /* {block 'content'} */
-class Block_20215968336707253d60c619_00367912 extends Smarty_Internal_Block
+class Block_693937051670ee7c1dcebd9_94381874 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_20215968336707253d60c619_00367912',
+    0 => 'Block_693937051670ee7c1dcebd9_94381874',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\xampp\\htdocs\\Sklep\\lib\\smarty\\plugins\\modifier.number_format.php','function'=>'smarty_modifier_number_format',),));
 ?>
 
    <!-- Panele -->
@@ -59,7 +60,9 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
                <div class="carousel-caption text-start">
                   <h1>Gwarancja niskich cen</h1>
                   <p class="opacity-75">Szukaj u nas produktów w przystępnej cenie.</p>
-                  <p><a class="btn btn-lg btn-primary" href="#">Dołącz do nas już teraz</a></p>
+                  <p><a class="btn btn-lg btn-primary" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+registerShow">Dołącz do nas już teraz</a>
+                  </p>
                </div>
             </div>
          </div>
@@ -104,82 +107,23 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
    <div id="categories" class="categories">
       <h2>Nasze kategorie</h2>
       <div class="circle-container">
-         <a href="/elektronika" class="circle-item">
-            <div class="circle">
-               <i class="bi bi-laptop"></i>
-            </div>
-            <p>Elektronika</p>
-         </a>
-
-         <a href="/dom-i-ogród" class="circle-item">
-            <div class="circle">
-               <i class="bi bi-house-door"></i>
-            </div>
-            <p>Dom i ogród</p>
-         </a>
-
-         <a href="/moda-i-akcesoria" class="circle-item">
-            <div class="circle">
-               <i class="bi bi-sunglasses"></i>
-            </div>
-            <p>Moda i akcesoria</p>
-         </a>
-
-         <a href="/zdrowie-i-uroda" class="circle-item">
-            <div class="circle">
-               <i class="fa fa-leaf"></i>
-            </div>
-            <p>Zdrowie i uroda</p>
-         </a>
-
-         <a href="/dzieci" class="circle-item">
-            <div class="circle">
-               <i class="fa fa-rocket"></i>
-            </div>
-            <p>Dzieci</p>
-         </a>
-
-         <a href="/sport" class="circle-item">
-            <div class="circle">
-               <i class="fa fa-futbol-o"></i>
-            </div>
-            <p>Sport</p>
-         </a>
-
-         <a href="/relaks" class="circle-item">
-            <div class="circle">
-               <i class="bi bi-book"></i>
-            </div>
-            <p>Relaks</p>
-         </a>
-
-         <a href="/motoryzacja" class="circle-item">
-            <div class="circle">
-               <i class="bi bi-car-front"></i>
-            </div>
-            <p>Motoryzacja</p>
-         </a>
-
-         <a href="/artykuły-biurowe-i-szkolne" class="circle-item">
-            <div class="circle">
-               <i class="bi bi-mortarboard"></i>
-            </div>
-            <p>Artykuły biurowe i szkolne</p>
-         </a>
-
-         <a href="/hobby-i-kolekcje" class="circle-item">
-            <div class="circle">
-               <i class="fa fa-magic"></i>
-            </div>
-            <p>Hobby i kolekcje</p>
-         </a>
-
-         <a href="/zwierzeta" class="circle-item">
-            <div class="circle">
-               <i class="fa fa-paw"></i>
-            </div>
-            <p>Zwierzęta</p>
-         </a>
+         <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['categories']->value, 'i');
+$_smarty_tpl->tpl_vars['i']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
+$_smarty_tpl->tpl_vars['i']->do_else = false;
+?>
+            <a href="/kategoria" class="circle-item">
+               <div class="circle">
+                  <i class="<?php echo $_smarty_tpl->tpl_vars['i']->value["icon"];?>
+"></i>
+               </div>
+               <p><?php echo $_smarty_tpl->tpl_vars['i']->value["name"];?>
+</p>
+            </a>
+         <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
       </div>
    </div>
 
@@ -189,120 +133,31 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
       <div class="container marketing">
          <h2 class="text-center mb-4">Ostatnio Dodane Produkty</h2>
          <div class="row">
-            <a href="/elektronika" class="col-md-3 mb-4">
-               <div class="product-card" fill="var(--bs-secondary-color)">
-                  <img src="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
-/assets/img/produkt1.jpg" alt="Produkt 1" class="img-fluid">
-                  <h3 class="mt-3">Sukienka Sara Midi Orange</h3>
-                  <i class="fa stars">&#xf005; &#xf005; &#xf005; &#xf005; &#xf005;</i>
-                  <p class="price mt-2">99,99 PLN</p>
-               </div>
-            </a>
-
-            <a href="/elektronika" class="col-md-3 mb-4">
-               <div class="product-card">
-                  <img src="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
-/assets/img/produkt2.jpg" alt="Produkt 2" class="img-fluid">
-                  <h3 class="mt-3">Spodnie męskie joggery</h3>
-                  <i class="fa stars">&#xf005; &#xf005; &#xf005; &#xf006; &#xf006;</i>
-                  <p class="price mt-2">129,99 PLN</p>
-               </div>
-            </a>
-
-            <a href="/elektronika" class="col-md-3 mb-4">
-               <div class="product-card">
-                  <img src="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
-/assets/img/produkt3.jpg" alt="Produkt 3" class="img-fluid">
-                  <h3 class="mt-3">Koszula Męska OTIS Beżowa</h3>
-                  <i class="fa stars">&#xf005; &#xf005; &#xf005; &#xf005; &#xf123;</i>
-                  <p class="price mt-2">149,99 PLN</p>
-               </div>
-            </a>
-
-            <a href="/elektronika" class="col-md-3 mb-4">
-               <div class="product-card">
-                  <img src="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
-/assets/img/produkt4.jpg" alt="Produkt 4" class="img-fluid">
-                  <h3 class="mt-3">Stół rozkładany EVERTON</h3>
-                  <i class="fa stars">&#xf005; &#xf005; &#xf005; &#xf005; &#xf006;</i>
-                  <p class="price mt-2">179,99 PLN</p>
-               </div>
-            </a>
-
-            <a href="/elektronika" class="col-md-3 mb-4">
-               <div class="product-card">
-                  <img src="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
-/assets/img/produkt5.jpg" alt="Produkt 4" class="img-fluid">
-                  <h3 class="mt-3">Plecak Himawari</h3>
-                  <i class="fa stars">&#xf005; &#xf005; &#xf123; &#xf006; &#xf006;</i>
-                  <p class="price mt-2">179,99 PLN</p>
-               </div>
-            </a>
-
-            <a href="/elektronika" class="col-md-3 mb-4">
-               <div class="product-card">
-                  <img src="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
-/assets/img/produkt6.jpg" alt="Produkt 4" class="img-fluid">
-                  <h3 class="mt-3">Retoo Szczotka do włosów</h3>
-                  <i class="fa stars">&#xf005; &#xf005; &#xf123; &#xf006; &#xf006;</i>
-                  <p class="price mt-2">179,99 PLN</p>
-               </div>
-            </a>
-
-            <a href="/elektronika" class="col-md-3 mb-4">
-               <div class="product-card">
-                  <img src="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
-/assets/img/produkt7.jpg" alt="Produkt 4" class="img-fluid">
-                  <h3 class="mt-3">Buty męskie Nike Dunk Low Retro White</h3>
-                  <i class="fa stars">&#xf005; &#xf005; &#xf005; &#xf005; &#xf005;</i>
-                  <p class="price mt-2">179,99 PLN</p>
-               </div>
-            </a>
-            <a href="/elektronika" class="col-md-3 mb-4">
-               <div class="product-card">
-                  <img src="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
-/assets/img/produkt8.jpg" alt="Produkt 4" class="img-fluid">
-                  <h3 class="mt-3">GUIDO fotel wypoczynkowy</h3>
-                  <i class="fa stars">&#xf005; &#xf005; &#xf005; &#xf005; &#xf006;</i>
-                  <p class="price mt-2">179,99 PLN</p>
-               </div>
-            </a>
-            <a href="/elektronika" class="col-md-3 mb-4">
-               <div class="product-card">
-                  <img src="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
-/assets/img/produkt9.jpg" alt="Produkt 4" class="img-fluid">
-                  <h3 class="mt-3">Damskie ocieplane buty sportowe</h3>
-                  <i class="fa stars">&#xf005; &#xf005; &#xf005; &#xf123; &#xf006;</i>
-                  <p class="price mt-2">179,99 PLN</p>
-               </div>
-            </a>
-            <a href="/elektronika" class="col-md-3 mb-4">
-               <div class="product-card">
-                  <img src="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
-/assets/img/produkt10.jpg" alt="Produkt 4" class="img-fluid">
-                  <h3 class="mt-3">Mikrofon Niceboy VOICE</h3>
-                  <i class="fa stars">&#xf005; &#xf005; &#xf005; &#xf005; &#xf123;</i>
-                  <p class="price mt-2">179,99 PLN</p>
-               </div>
-            </a>
-            <a href="/elektronika" class="col-md-3 mb-4">
-               <div class="product-card">
-                  <img src="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
-/assets/img/produkt11.jpg" alt="Produkt 4" class="img-fluid">
-                  <h3 class="mt-3">Słuchawki Bezprzewodowe Sony</h3>
-                  <i class="fa stars">&#xf005; &#xf005; &#xf005; &#xf005; &#xf006;</i>
-                  <p class="price mt-2">179,99 PLN</p>
-               </div>
-            </a>
-            <a href="/elektronika" class="col-md-3 mb-4">
-               <div class="product-card">
-                  <img src="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
-/assets/img/produkt12.jpg" alt="Produkt 4" class="img-fluid">
-                  <h3 class="mt-3">Konsola drewniana czarna</h3>
-                  <i class="fa stars">&#xf006; &#xf006; &#xf006; &#xf006; &#xf006;</i>
-                  <p class="price mt-2">179,99 PLN</p>
-               </div>
-            </a>
+            <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['last_products']->value, 'p');
+$_smarty_tpl->tpl_vars['p']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['p']->value) {
+$_smarty_tpl->tpl_vars['p']->do_else = false;
+?>
+               <a href="/elektronika" class="col-md-3 mb-4">
+                  <div class="product-card" fill="var(--bs-secondary-color)">
+                     <img src="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
+/assets/img/products/<?php echo $_smarty_tpl->tpl_vars['p']->value["image"];?>
+/1.jpg" alt="<?php echo $_smarty_tpl->tpl_vars['p']->value["name"];?>
+" class="img-fluid">
+                     <h3 class="mt-3"><?php echo $_smarty_tpl->tpl_vars['p']->value["name"];?>
+</h3>
+                     <i class="fa stars">&#xf005; &#xf005; &#xf005; &#xf005; &#xf005;</i>
+                     <p class="price mt-2"><?php ob_start();
+echo $_smarty_tpl->tpl_vars['p']->value["price"];
+$_prefixVariable1 = ob_get_clean();
+echo smarty_modifier_number_format($_prefixVariable1,2,","," ");?>
+&nbsp;zł</p>
+                                       </div>
+               </a>
+            <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             <p style="text-align: right;"><a class="btn btn-lg btn-primary" href="#">Więcej...</a></p>
 
          </div>

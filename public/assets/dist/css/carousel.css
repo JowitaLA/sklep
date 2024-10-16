@@ -15,6 +15,13 @@ body {
   outline: none !important; /* Usuwa domyślny outline */
 }
 
+.form-select {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
 .form-control:hover {
   border-color: rgba(233, 125, 1, 0.8) !important; /* Pomarańczowy kolor obramowania */
   box-shadow: 0 0 0 0.10rem rgba(255, 136, 0, 0.5) !important; /* Pomarańczowy cień */

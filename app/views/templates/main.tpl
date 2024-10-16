@@ -47,15 +47,36 @@
 
                     <!-- Środkowa część - Wyszukiwarka (widoczna na desktopach) -->
                     <div class="col-md-6 d-none d-md-flex">
+                        <form class="d-flex w-100" action="search.php" method="GET" role="search">
+                            <input class="form-control me-2" type="text" name="search_query"
+                                placeholder="Wpisz czego szukasz" aria-label="Search">
+                            <div class="input-group" style="width: 300px;">
+                                <select class="form-select" name="category" aria-label="Wybierz kategorię">
+                                    <option value="null">Kategoria</option>
+                                    <!-- Wyświetlanie kategorii z dynamicznie wypełnianej zmiennej -->
+                                    {foreach $categories as $c}
+                                        <option value="{$c['id_category']}">{$c['name']}</option>
+                                    {/foreach}
+                                </select>
+                            </div>
+                            <button class="btn btn-primary ms-2" type="submit" style="flex-grow: 2; max-width: 150px;">
+                                Szukaj
+                            </button>
+                        </form>
+
                         <form class="d-flex w-100" role="search">
                             <input class="form-control me-2" type="search" placeholder="Wpisz czego szukasz"
                                 aria-label="Search">
-                            <div class="input-group" style="width: 200px;">
+                            <div class="input-group" style="width: 300px;">
                                 <select class="form-select" aria-label="Wybierz kategorię">
                                     <option selected>Kategoria</option>
-                                    <option class="option_select" value="1">Elektronika</option>
-                                    <option class="option_select" value="2">Roślinność</option>
-                                    <option class="option_select" value="3">Dom i Ogród</option>
+                                    {assign var="i" value=1}
+                                    <!-- Inicjalizacja zmiennej licznikowej -->
+                                    {foreach $categories as $c}
+                                        <option class="option_select" value="{$i}">{$c["name"]}</option>
+                                        {assign var="i" value=$i+1}
+                                        <!-- Inkrementacja licznika -->
+                                    {/foreach}
                                 </select>
                             </div>
 
@@ -203,7 +224,7 @@
                     {$msg->text}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
-            {/foreach}  
+            {/foreach}
         </div>
 
         {block name=content} Domyślna treść zawartości {/block}
@@ -213,9 +234,12 @@
     <div class="container">
         <footer class=" row row-cols-1 row-cols-sm-2 row-cols-md-5 py-1 my-4">
             <div class="col mb-3">
-                <a href="/" class="fa fa-crow d-flex align-items-center mb-3 link-body-emphasis text-decoration-none"
-                    style="font-size: 25px;"></a>
-                <p class="text-body-secondary">Yups</p>
+                <a href="{$conf->action_url}main">
+                    <img src="{$conf->app_url}/assets/img/logo.png" alt="Logo"
+                        style="height: 30px; width: auto; margin-bottom: 10px; vertical-align: middle;">
+
+                    <p class="text-body-secondary">Yups</p>
+                </a>
             </div>
 
             <div class="col mb-3">

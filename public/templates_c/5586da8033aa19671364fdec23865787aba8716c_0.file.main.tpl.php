@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-10-10 03:43:05
+/* Smarty version 4.3.4, created on 2024-10-16 13:56:00
   from 'C:\xampp\htdocs\Sklep\app\views\templates\main.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_67073129a4ad40_31682200',
+  'unifunc' => 'content_670fa9d06e78c1_52584685',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5586da8033aa19671364fdec23865787aba8716c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Sklep\\app\\views\\templates\\main.tpl',
-      1 => 1728524563,
+      1 => 1729079759,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67073129a4ad40_31682200 (Smarty_Internal_Template $_smarty_tpl) {
+function content_670fa9d06e78c1_52584685 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -82,15 +82,53 @@ main">
 
                     <!-- Środkowa część - Wyszukiwarka (widoczna na desktopach) -->
                     <div class="col-md-6 d-none d-md-flex">
+                    <form class="d-flex w-100" action="search.php" method="GET" role="search">
+                    <input class="form-control me-2" type="text" name="search_query" placeholder="Wpisz czego szukasz" aria-label="Search">
+                    <div class="input-group" style="width: 300px;">
+                        <select class="form-select" name="category" aria-label="Wybierz kategorię">
+                            <option value="null">Kategoria</option>
+                            <!-- Wyświetlanie kategorii z dynamicznie wypełnianej zmiennej -->
+                            <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['categories']->value, 'c');
+$_smarty_tpl->tpl_vars['c']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['c']->value) {
+$_smarty_tpl->tpl_vars['c']->do_else = false;
+?>
+                                <option value="<?php echo $_smarty_tpl->tpl_vars['c']->value['id_category'];?>
+"><?php echo $_smarty_tpl->tpl_vars['c']->value['name'];?>
+</option>
+                            <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary ms-2" type="submit" style="flex-grow: 2; max-width: 150px;">
+                        Szukaj
+                    </button>
+                </form>
+
                         <form class="d-flex w-100" role="search">
                             <input class="form-control me-2" type="search" placeholder="Wpisz czego szukasz"
                                 aria-label="Search">
-                            <div class="input-group" style="width: 200px;">
+                            <div class="input-group" style="width: 300px;">
                                 <select class="form-select" aria-label="Wybierz kategorię">
                                     <option selected>Kategoria</option>
-                                    <option class="option_select" value="1">Elektronika</option>
-                                    <option class="option_select" value="2">Roślinność</option>
-                                    <option class="option_select" value="3">Dom i Ogród</option>
+                                    <?php $_smarty_tpl->_assignInScope('i', 1);?>
+                                    <!-- Inicjalizacja zmiennej licznikowej -->
+                                    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['categories']->value, 'c');
+$_smarty_tpl->tpl_vars['c']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['c']->value) {
+$_smarty_tpl->tpl_vars['c']->do_else = false;
+?>
+                                        <option class="option_select" value="<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+"><?php echo $_smarty_tpl->tpl_vars['c']->value["name"];?>
+</option>
+                                        <?php $_smarty_tpl->_assignInScope('i', $_smarty_tpl->tpl_vars['i']->value+1);?>
+                                        <!-- Inkrementacja licznika -->
+                                    <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                 </select>
                             </div>
 
@@ -249,11 +287,11 @@ $_smarty_tpl->tpl_vars['msg']->do_else = false;
                 </div>
             <?php
 }
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>  
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         </div>
 
         <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_26069200467073129a49a49_93960986', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1468852597670fa9d06e3ed5_01786419', 'content');
 ?>
 
     </main>
@@ -262,9 +300,14 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_26069200467073129a
     <div class="container">
         <footer class=" row row-cols-1 row-cols-sm-2 row-cols-md-5 py-1 my-4">
             <div class="col mb-3">
-                <a href="/" class="fa fa-crow d-flex align-items-center mb-3 link-body-emphasis text-decoration-none"
-                    style="font-size: 25px;"></a>
-                <p class="text-body-secondary">Yups</p>
+                <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+main">
+                    <img src="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
+/assets/img/logo.png" alt="Logo"
+                        style="height: 30px; width: auto; margin-bottom: 10px; vertical-align: middle;">
+
+                    <p class="text-body-secondary">Yups</p>
+                </a>
             </div>
 
             <div class="col mb-3">
@@ -342,12 +385,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_26069200467073129a
 
 </html><?php }
 /* {block 'content'} */
-class Block_26069200467073129a49a49_93960986 extends Smarty_Internal_Block
+class Block_1468852597670fa9d06e3ed5_01786419 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_26069200467073129a49a49_93960986',
+    0 => 'Block_1468852597670fa9d06e3ed5_01786419',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
