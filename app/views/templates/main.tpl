@@ -47,39 +47,19 @@
 
                     <!-- Środkowa część - Wyszukiwarka (widoczna na desktopach) -->
                     <div class="col-md-6 d-none d-md-flex">
-                        <form class="d-flex w-100" action="search.php" method="GET" role="search">
-                            <input class="form-control me-2" type="text" name="search_query"
-                                placeholder="Wpisz czego szukasz" aria-label="Search">
+                        <form class="d-flex w-100" action="{$conf->action_root}searchProducts" method="post"
+                            role="search"> {*powinno być POST, bez role = "search"*}
+                            <input class="form-control me-2" type="text" name="search_name_product"
+                                placeholder="Wpisz czego szukasz" aria-label="Search"
+                                value="{$searchForm->name|default:''}">
                             <div class="input-group" style="width: 300px;">
-                                <select class="form-select" name="category" aria-label="Wybierz kategorię">
-                                    <option value="null">Kategoria</option>
-                                    <!-- Wyświetlanie kategorii z dynamicznie wypełnianej zmiennej -->
+                                <select class="form-select" name="choose_category" aria-label="Wybierz kategorię">
+                                    <option value="0">Kategoria</option>
                                     {foreach $categories as $c}
                                         <option value="{$c['id_category']}">{$c['name']}</option>
                                     {/foreach}
                                 </select>
                             </div>
-                            <button class="btn btn-primary ms-2" type="submit" style="flex-grow: 2; max-width: 150px;">
-                                Szukaj
-                            </button>
-                        </form>
-
-                        <form class="d-flex w-100" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Wpisz czego szukasz"
-                                aria-label="Search">
-                            <div class="input-group" style="width: 300px;">
-                                <select class="form-select" aria-label="Wybierz kategorię">
-                                    <option selected>Kategoria</option>
-                                    {assign var="i" value=1}
-                                    <!-- Inicjalizacja zmiennej licznikowej -->
-                                    {foreach $categories as $c}
-                                        <option class="option_select" value="{$i}">{$c["name"]}</option>
-                                        {assign var="i" value=$i+1}
-                                        <!-- Inkrementacja licznika -->
-                                    {/foreach}
-                                </select>
-                            </div>
-
                             <button class="btn btn-primary ms-2" type="submit" style="flex-grow: 2; max-width: 150px;">
                                 Szukaj
                             </button>

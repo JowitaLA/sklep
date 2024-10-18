@@ -206,7 +206,9 @@ body {
 
 
 
-.recent-products {
+.products-list {
+ margin-top: 20px;
+
 }
 
 .recent-products h2 {
@@ -285,6 +287,19 @@ a {
   position: relative;
 }
 
+.section-background {
+  background: linear-gradient(to right, #bb3e23 50%, #df8d00 50%);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  color: white; /* Kolor tekstu */
+}
+
+@media (max-width: 768px) {
+  .section-background {
+    height: auto; /* Automatyczna wysokość dla mniejszych ekranów */
+  }
+}
 
 .carousel-item img {
   position: absolute;

@@ -84,12 +84,13 @@
                      <img src="{$conf->app_url}/assets/img/products/{$p["image"]}/1.jpg" alt="{$p["name"]}" class="img-fluid">
                      <h3 class="mt-3">{$p["name"]}</h3>
                      <i class="fa stars">&#xf005; &#xf005; &#xf005; &#xf005; &#xf005;</i>
-                     <p class="price mt-2">{{$p["price"]}|number_format:2:",":" "}&nbsp;zł</p>
+                     <p class="price mt-2">
+                     {{$p["price"]}|number_format:2:",":" "}&nbsp;zł </p>
                      {* zmiana formatu z np. 4500.5 na 4 500,50 zł *}
                   </div>
                </a>
             {/foreach}
-            <p style="text-align: right;"><a class="btn btn-lg btn-primary" href="#">Więcej...</a></p>
+            <p style="text-align: right;"><a class="btn btn-lg btn-primary" href="{$conf->action_url}searchProducts">Więcej...</a></p>
 
          </div>
       </div>

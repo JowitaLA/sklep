@@ -25,5 +25,6 @@ Utils::addRoute('verify', 'VerifyCtrl');	                # Weryfikacja tokenu re
 Utils::addRoute('logout', 'LogoutCtrl');                    # Wylogowanie (Zakończenie sesji)
 Utils::addRoute('logoutShow', 'LogoutCtrl');                # Wylogowanie (Zakończenie sesji)
 
-Utils::addRoute('productsShow', 'LogoutCtrl');                # Wylogowanie (Zakończenie sesji)
+Utils::addRoute('productsShow', 'LogoutCtrl');              # Ostatnio dodane produkty
+Utils::addRoute('searchProducts','ProductsListCtrl');        # Wyszukanie produktów
 

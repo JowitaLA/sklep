@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-10-16 00:08:01
+/* Smarty version 4.3.4, created on 2024-10-17 00:56:04
   from 'C:\xampp\htdocs\Sklep\app\views\MainView.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_670ee7c1dea209_25236439',
+  'unifunc' => 'content_67104484e3eea9_25755192',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ca7e89cbdf63c3bf3d48a4beeefe85059a5ce279' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Sklep\\app\\views\\MainView.tpl',
-      1 => 1729030078,
+      1 => 1729119364,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_670ee7c1dea209_25236439 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67104484e3eea9_25755192 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
@@ -28,16 +28,16 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_693937051670ee7c1dcebd9_94381874', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_73501619567104484e27433_13829305', 'content');
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, "templates/main.tpl");
 }
 /* {block 'content'} */
-class Block_693937051670ee7c1dcebd9_94381874 extends Smarty_Internal_Block
+class Block_73501619567104484e27433_13829305 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_693937051670ee7c1dcebd9_94381874',
+    0 => 'Block_73501619567104484e27433_13829305',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -148,17 +148,19 @@ $_smarty_tpl->tpl_vars['p']->do_else = false;
                      <h3 class="mt-3"><?php echo $_smarty_tpl->tpl_vars['p']->value["name"];?>
 </h3>
                      <i class="fa stars">&#xf005; &#xf005; &#xf005; &#xf005; &#xf005;</i>
-                     <p class="price mt-2"><?php ob_start();
+                     <p class="price mt-2">
+                     <?php ob_start();
 echo $_smarty_tpl->tpl_vars['p']->value["price"];
 $_prefixVariable1 = ob_get_clean();
 echo smarty_modifier_number_format($_prefixVariable1,2,","," ");?>
-&nbsp;zł</p>
+&nbsp;zł </p>
                                        </div>
                </a>
             <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-            <p style="text-align: right;"><a class="btn btn-lg btn-primary" href="#">Więcej...</a></p>
+            <p style="text-align: right;"><a class="btn btn-lg btn-primary" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+searchProducts">Więcej...</a></p>
 
          </div>
       </div>
