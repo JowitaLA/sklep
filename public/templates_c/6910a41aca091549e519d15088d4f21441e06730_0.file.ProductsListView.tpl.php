@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-10-17 01:02:51
+/* Smarty version 4.3.4, created on 2024-10-21 17:42:18
   from 'C:\xampp\htdocs\Sklep\app\views\ProductsListView.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_6710461b090513_63517095',
+  'unifunc' => 'content_6716765a195118_24008575',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6910a41aca091549e519d15088d4f21441e06730' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Sklep\\app\\views\\ProductsListView.tpl',
-      1 => 1729119769,
+      1 => 1729525337,
       2 => 'file',
     ),
   ),
@@ -20,22 +20,24 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6710461b090513_63517095 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6716765a195118_24008575 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
+
+
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_699073886710461b078f76_68478115', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_2382378406716765a177d62_16397475', 'content');
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, "templates/main.tpl");
 }
 /* {block 'content'} */
-class Block_699073886710461b078f76_68478115 extends Smarty_Internal_Block
+class Block_2382378406716765a177d62_16397475 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_699073886710461b078f76_68478115',
+    0 => 'Block_2382378406716765a177d62_16397475',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -64,10 +66,12 @@ $_smarty_tpl->tpl_vars['r']->do_else = true;
 if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['r']->value) {
 $_smarty_tpl->tpl_vars['r']->do_else = false;
 ?>
-                <a href="/elektronika" class="col-md-3 mb-2">
+                <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
+/productDetails?product=<?php echo $_smarty_tpl->tpl_vars['r']->value["url"];?>
+" class="col-md-3 mb-2">
                     <div class="product-card" fill="var(--bs-secondary-color)">
                         <img src="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
-/assets/img/products/<?php echo $_smarty_tpl->tpl_vars['r']->value["image"];?>
+/assets/img/products/<?php echo $_smarty_tpl->tpl_vars['r']->value["url"];?>
 /1.jpg" alt="<?php echo $_smarty_tpl->tpl_vars['r']->value["name"];?>
 "
                             class="img-fluid">

@@ -2,29 +2,24 @@
 
 namespace app\controllers;
 
-
 use core\App;
-
-
 
 class LogoutCtrl
 {
 
-public function action_logout()
+	public function action_logout()
 	{
-		// 1. zakończenie sesji
+		// Zakończenie sesji i Wyświetlenie widoku
 		session_destroy();
-		//App::getMessages()->addMessage(new \core\Message("Wylogowano", \core\Message::INFO));
-		// 2. idź na stronę główną - system automatycznie przekieruje do strony logowania
-
 		App::getRouter()->redirectTo("logoutShow");
 	}
 
 	public function action_logoutShow()
 	{
-		// 1. zakończenie sesji
+		// Wyślij wiadomość z informacją o Wylogowaniu Użytkownika
 		App::getMessages()->addMessage(new \core\Message("Wylogowano", \core\Message::INFO));
-		// 2. idź na stronę główną - system automatycznie przekieruje do strony logowania
+
+		// Przeniesienie użytkownika na stronę główną (System automatycznie przenosi do strony logowania)
 		App::getRouter()->forwardTo("main");
 	}
 }

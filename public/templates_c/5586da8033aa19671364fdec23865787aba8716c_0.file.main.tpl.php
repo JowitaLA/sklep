@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-10-17 00:54:37
+/* Smarty version 4.3.4, created on 2024-10-23 15:03:30
   from 'C:\xampp\htdocs\Sklep\app\views\templates\main.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_6710442da11783_14455174',
+  'unifunc' => 'content_6718f4224808c5_31780392',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5586da8033aa19671364fdec23865787aba8716c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Sklep\\app\\views\\templates\\main.tpl',
-      1 => 1729119214,
+      1 => 1729688604,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6710442da11783_14455174 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6718f4224808c5_31780392 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -40,7 +40,8 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
     <link rel="icon" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
 /assets/img/logo.png" type="image/png">
 
-    <title>Yups</title>
+    <title><?php echo (($tmp = $_smarty_tpl->tpl_vars['page_title']->value ?? null)===null||$tmp==='' ? "Yups" ?? null : $tmp);?>
+</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
@@ -114,6 +115,18 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     <!-- Prawa część - Koszyk, Kontakt, Login (widoczna na desktopach) -->
                     <div class="col-md-3 d-none d-md-flex justify-content-end">
                         <ul class="navbar-nav mb-2 mb-lg-0">
+
+                            <!-- Zarządzanie -->
+                            <?php if (\core\RoleUtils::inRole('zarządzanie')) {?>
+                                <li class="nav-item">
+                                    <a class="nav-link text-center" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+managementMain" data-bs-toggle="tooltip"
+                                        data-bs-placement="bottom" title="Zarządzanie">
+                                        <i class="bi bi-info-circle"></i>
+                                        </a>
+                                </li>
+                            <?php }?>
+
                             <!-- kontakt -->
                             <li class="nav-item">
                                 <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="bottom"
@@ -137,7 +150,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                     <i id="theme-icon" class="bi bi-moon"></i>
                                 </button>
                             </li>
-
 
                             <!-- rozwijane menu dla "Moje Konto" -->
                             <li class="nav-item dropdown">
@@ -264,7 +276,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         </div>
 
         <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_6355258296710442da0f380_46330460', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_10681894416718f42247dc84_97778149', 'content');
 ?>
 
     </main>
@@ -358,12 +370,12 @@ main">
 
 </html><?php }
 /* {block 'content'} */
-class Block_6355258296710442da0f380_46330460 extends Smarty_Internal_Block
+class Block_10681894416718f42247dc84_97778149 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_6355258296710442da0f380_46330460',
+    0 => 'Block_10681894416718f42247dc84_97778149',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

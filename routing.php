@@ -26,5 +26,9 @@ Utils::addRoute('logout', 'LogoutCtrl');                    # Wylogowanie (Zako�
 Utils::addRoute('logoutShow', 'LogoutCtrl');                # Wylogowanie (Zakończenie sesji)
 
 Utils::addRoute('productsShow', 'LogoutCtrl');              # Ostatnio dodane produkty
-Utils::addRoute('searchProducts','ProductsListCtrl');        # Wyszukanie produktów
+Utils::addRoute('searchProducts','ProductsListCtrl');       # Wyszukanie produktów
+Utils::addRoute('productDetails','ProductDetailsCtrl');     # Szczegóły produktu
+
+Utils::addRoute('managementMain','ManagementCtrl', ["zarządzanie"]);     # Szczegóły produktu
+
 

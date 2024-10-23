@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-10-17 00:56:04
+/* Smarty version 4.3.4, created on 2024-10-23 00:16:17
   from 'C:\xampp\htdocs\Sklep\app\views\MainView.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_67104484e3eea9_25755192',
+  'unifunc' => 'content_67182431223885_85951433',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ca7e89cbdf63c3bf3d48a4beeefe85059a5ce279' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Sklep\\app\\views\\MainView.tpl',
-      1 => 1729119364,
+      1 => 1729635355,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67104484e3eea9_25755192 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67182431223885_85951433 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
@@ -28,16 +28,16 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_73501619567104484e27433_13829305', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_15639224776718243120a977_10144462', 'content');
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, "templates/main.tpl");
 }
 /* {block 'content'} */
-class Block_73501619567104484e27433_13829305 extends Smarty_Internal_Block
+class Block_15639224776718243120a977_10144462 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_73501619567104484e27433_13829305',
+    0 => 'Block_15639224776718243120a977_10144462',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -52,7 +52,7 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\xampp\\htdocs\\Sklep\\li
          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
       </div>
-      <div class="carousel-inner">
+      <div class="carousel-inner" style="background: linear-gradient(to right, #bb3e23 50%, #df8d00 50%);">
          <div class="carousel-item active">
             <img src="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
 /assets/img/background/3.png" alt="Slide 1">
@@ -66,7 +66,7 @@ registerShow">Dołącz do nas już teraz</a>
                </div>
             </div>
          </div>
-         <div class="carousel-item">
+         <div class="carousel-item"">
             <img src="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
 /assets/img/background/2.png" alt="Slide 2">
             <div class="container">
@@ -96,26 +96,28 @@ registerShow">Dołącz do nas już teraz</a>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-         <span class="visually-hidden">Previous</span>
+         <span class="visually-hidden">Powrót</span>
       </button>
       <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-         <span class="visually-hidden">Next</span>
+         <span class="visually-hidden">Dalej</span>
       </button>
    </div>
    <!-- Nasze Kategorie -->
+      <hr class="featurette-divider" style="height: 1px; margin: 0px 0; margin-bottom: 20px;">
+
    <div id="categories" class="categories">
-      <h2>Nasze kategorie</h2>
-      <div class="circle-container">
+      <h2 style="margin-top:5rem">Nasze kategorie</h2>
+      <div class="circle-container ">
          <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['categories']->value, 'i');
 $_smarty_tpl->tpl_vars['i']->do_else = true;
 if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 $_smarty_tpl->tpl_vars['i']->do_else = false;
 ?>
-            <a href="/kategoria" class="circle-item">
-               <div class="circle">
-                  <i class="<?php echo $_smarty_tpl->tpl_vars['i']->value["icon"];?>
+            <a href="/kategoria" class="circle-item ">
+               <div class="circle bg-body-tertiary">
+                  <i class="link-body-emphasis <?php echo $_smarty_tpl->tpl_vars['i']->value["icon"];?>
 "></i>
                </div>
                <p><?php echo $_smarty_tpl->tpl_vars['i']->value["name"];?>
@@ -139,17 +141,19 @@ $_smarty_tpl->tpl_vars['p']->do_else = true;
 if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['p']->value) {
 $_smarty_tpl->tpl_vars['p']->do_else = false;
 ?>
-               <a href="/elektronika" class="col-md-3 mb-4">
-                  <div class="product-card" fill="var(--bs-secondary-color)">
+               <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
+/productDetails?product=<?php echo $_smarty_tpl->tpl_vars['p']->value["url"];?>
+" class="col-md-3 mb-4">
+                  <div class="product-card bg-body-tertiary">
                      <img src="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
-/assets/img/products/<?php echo $_smarty_tpl->tpl_vars['p']->value["image"];?>
+/assets/img/products/<?php echo $_smarty_tpl->tpl_vars['p']->value["url"];?>
 /1.jpg" alt="<?php echo $_smarty_tpl->tpl_vars['p']->value["name"];?>
 " class="img-fluid">
                      <h3 class="mt-3"><?php echo $_smarty_tpl->tpl_vars['p']->value["name"];?>
 </h3>
                      <i class="fa stars">&#xf005; &#xf005; &#xf005; &#xf005; &#xf005;</i>
-                     <p class="price mt-2">
-                     <?php ob_start();
+                     <p class="price mt-2 link-body-emphasis">
+                        <?php ob_start();
 echo $_smarty_tpl->tpl_vars['p']->value["price"];
 $_prefixVariable1 = ob_get_clean();
 echo smarty_modifier_number_format($_prefixVariable1,2,","," ");?>
@@ -159,7 +163,8 @@ echo smarty_modifier_number_format($_prefixVariable1,2,","," ");?>
             <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-            <p style="text-align: right;"><a class="btn btn-lg btn-primary" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+            <p style="text-align: right;"><a class="btn btn-lg btn-primary"
+                  href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
 searchProducts">Więcej...</a></p>
 
          </div>

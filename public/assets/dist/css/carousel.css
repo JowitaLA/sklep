@@ -22,6 +22,10 @@ body {
   border-bottom-left-radius: 8px;
 }
 
+.product-description {
+  overflow-y: auto;
+}
+
 .form-control:hover {
   border-color: rgba(233, 125, 1, 0.8) !important; /* Pomarańczowy kolor obramowania */
   box-shadow: 0 0 0 0.10rem rgba(255, 136, 0, 0.5) !important; /* Pomarańczowy cień */
@@ -204,11 +208,48 @@ body {
   font-size: 14px; /* Rozmiar tekstu */
 }
 
+.ring-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px; /* Odstęp między kółkami */
+}
 
+.ring-item {
+  display: flex;
+  justify-content: center; /* Wyśrodkowanie kółka */
+  align-items: center; /* Wyśrodkowanie kółka */
+  text-decoration: none; /* Upewnia się, że podkreślenie nie pojawia się podczas najechania */
+  color: inherit; /* Dziedziczy kolor tekstu z rodzica, aby nie zmieniać koloru */
+}
+
+.ring {
+  width: 30px; /* Zmniejszona szerokość kółka */
+  height: 30px; /* Zmniejszona wysokość kółka */
+  background-color: var(--bs-secondary-color); /* Domyślny kolor kółka */
+  border-radius: 50%; /* Zaokrąglenie rogów, aby uzyskać kółko */
+  display: flex;
+  justify-content: center; /* Wyśrodkowanie ikony */
+  align-items: center; /* Wyśrodkowanie ikony */
+  color: white; /* Kolor ikony */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Dodano przejście dla koloru */
+
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.ring-item:hover .ring {
+  border-color: black; /* Powiększa kółko o 10% */
+  font-size: scale(1.05); /* Zmniejszony rozmiar ikony */
+  box-shadow: 0 0 0 .10rem rgba(255, 255, 255, .25);
+}
+
+.ring i {
+  font-size: 20px; /* Zmniejszony rozmiar ikony */
+}
 
 .products-list {
  margin-top: 20px;
-
 }
 
 .recent-products h2 {
@@ -223,12 +264,20 @@ body {
     gap: 20px;
 }
 
+.product-image {
+  border-radius: 8px; 
+  padding: 5px;
+  text-align: center;
+  margin-top:0.25rem;
+  background-color: var(--bs-secondary-color); /* Kolor tła */
+}
+
+
 .product-card {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 5px;
   text-align: center;
-  
   background-color: var(--bs-secondary-color); /* Kolor tła */
 }
 
@@ -270,7 +319,7 @@ a {
 
 /* Carousel base class */
 .carousel {
-  margin-bottom: 4rem;
+  /* margin-bottom: 4rem; */
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
@@ -278,17 +327,32 @@ a {
   z-index: 10;
 }
 
+.product-item{
+  background-size: cover; /* Dopasowanie tła do kontenera */
+  background-position: center; /* Wycentrowanie tła */
+  position: relative;
+}
+
+.product-item img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Dopasowanie obrazu bez rozciągania */
+  z-index: 1; /* Umieszczenie obrazu nad gradientem */
+}
+
 /* Declare heights because of positioning of img element */
 .carousel-item {
   height: 32rem;
-  background: linear-gradient(to right, #bb3e23 50%, #df8d00 50%); /* Lewa strona #bb3e23, prawa #df8d00 */
   background-size: cover; /* Dopasowanie tła do kontenera */
   background-position: center; /* Wycentrowanie tła */
   position: relative;
 }
 
 .section-background {
-  background: linear-gradient(to right, #bb3e23 50%, #df8d00 50%);
   background-size: cover;
   background-position: center;
   position: relative;

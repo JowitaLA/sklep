@@ -1,5 +1,6 @@
-{extends file="templates/main.tpl"}
+{* Główny Widok *}
 
+{extends file="templates/main.tpl"}
 
 {block name=content}
    <!-- Panele -->
@@ -10,7 +11,7 @@
          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
       </div>
-      <div class="carousel-inner">
+      <div class="carousel-inner" style="background: linear-gradient(to right, #bb3e23 50%, #df8d00 50%);">
          <div class="carousel-item active">
             <img src="{$conf->app_url}/assets/img/background/3.png" alt="Slide 1">
             <div class="container">
@@ -22,7 +23,7 @@
                </div>
             </div>
          </div>
-         <div class="carousel-item">
+         <div class="carousel-item"">
             <img src="{$conf->app_url}/assets/img/background/2.png" alt="Slide 2">
             <div class="container">
                <div class="carousel-caption">
@@ -50,21 +51,24 @@
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-         <span class="visually-hidden">Previous</span>
+         <span class="visually-hidden">Powrót</span>
       </button>
       <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-         <span class="visually-hidden">Next</span>
+         <span class="visually-hidden">Dalej</span>
       </button>
    </div>
    <!-- Nasze Kategorie -->
+   {* <hr class="featurette-divider"  style="margin-top: 0px;"> *}
+   <hr class="featurette-divider" style="height: 1px; margin: 0px 0; margin-bottom: 20px;">
+
    <div id="categories" class="categories">
-      <h2>Nasze kategorie</h2>
-      <div class="circle-container">
+      <h2 style="margin-top:5rem">Nasze kategorie</h2>
+      <div class="circle-container ">
          {foreach $categories as $i}
-            <a href="/kategoria" class="circle-item">
-               <div class="circle">
-                  <i class="{$i["icon"]}"></i>
+            <a href="/kategoria" class="circle-item ">
+               <div class="circle bg-body-tertiary">
+                  <i class="link-body-emphasis {$i["icon"]}"></i>
                </div>
                <p>{$i["name"]}</p>
             </a>
@@ -79,18 +83,19 @@
          <h2 class="text-center mb-4">Ostatnio Dodane Produkty</h2>
          <div class="row">
             {foreach $last_products as $p}
-               <a href="/elektronika" class="col-md-3 mb-4">
-                  <div class="product-card" fill="var(--bs-secondary-color)">
-                     <img src="{$conf->app_url}/assets/img/products/{$p["image"]}/1.jpg" alt="{$p["name"]}" class="img-fluid">
+               <a href="{$conf->app_url}/productDetails?product={$p["url"]}" class="col-md-3 mb-4">
+                  <div class="product-card bg-body-tertiary">
+                     <img src="{$conf->app_url}/assets/img/products/{$p["url"]}/1.jpg" alt="{$p["name"]}" class="img-fluid">
                      <h3 class="mt-3">{$p["name"]}</h3>
                      <i class="fa stars">&#xf005; &#xf005; &#xf005; &#xf005; &#xf005;</i>
-                     <p class="price mt-2">
-                     {{$p["price"]}|number_format:2:",":" "}&nbsp;zł </p>
+                     <p class="price mt-2 link-body-emphasis">
+                        {{$p["price"]}|number_format:2:",":" "}&nbsp;zł </p>
                      {* zmiana formatu z np. 4500.5 na 4 500,50 zł *}
                   </div>
                </a>
             {/foreach}
-            <p style="text-align: right;"><a class="btn btn-lg btn-primary" href="{$conf->action_url}searchProducts">Więcej...</a></p>
+            <p style="text-align: right;"><a class="btn btn-lg btn-primary"
+                  href="{$conf->action_url}searchProducts">Więcej...</a></p>
 
          </div>
       </div>

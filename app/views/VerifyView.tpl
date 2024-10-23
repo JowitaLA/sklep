@@ -1,3 +1,5 @@
+{* Widok Weryfikacji Użytkownika *}
+
 {extends file="templates/sign.tpl"}
 
 {block name=content}

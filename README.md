@@ -40,18 +40,18 @@ Lista rzeczy, będące w tle tworzenia sklepu
     - [ ] Newsletter
 - [ ] Utworzenie Podstawowego Szablonu: 
     - [ ] Head:
-        - [ ] Logo: 
+        - [x] Logo: 
             - [x] Interaktywne logo 
             - [x] Format PNG
             - [x] Po naciścięciu, przenosi do Strony Głównej
         - [ ] Wyszukiwarka:
             - [x] Miejsce na wpisanie nazwy wyszukiwanego produktu
             - [x] Miejsce na wybór kategorii
-            - [ ] Wygenerowanie kategorii z tabeli `contacts` z Bazy Danych
+            - [x] Wygenerowanie kategorii z tabeli `contacts` z Bazy Danych
             - [x] Przycisk `Szukaj`
-            - [ ] Po uzupełnieniu wszystkiego, wyszukuje z bazy danych:
-                - [ ] Produkty, zawierające podany tekst w swojej nazwie (`title` bądź `description` z tabelii `products`)
-                - [ ] Produkty z danej kategorii (jak nie została wybrana => jest to `null` => czyli wyszukuje z każdej kategorii)            
+            - [x] Po uzupełnieniu wszystkiego, wyszukuje z bazy danych:
+                - [x] Produkty, zawierające podany tekst w swojej nazwie (`title` bądź `description` z tabelii `products`)
+                - [x] Produkty z danej kategorii (jak nie została wybrana => jest to `null` => czyli wyszukuje z każdej kategorii)            
         - [ ] Kontakt:
             - [x] Interaktywna ikona telefonu
             - [ ] Po naciścięciu przenosi do podstrony `Kontakt`

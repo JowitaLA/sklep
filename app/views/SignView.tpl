@@ -1,3 +1,4 @@
+{* Widok dla Logowania, Rejestracji oraz restartu hasła *}
 {extends file="templates/sign.tpl"}
 
 {block name=content}

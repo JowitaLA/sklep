@@ -42,6 +42,7 @@ class SignCtrl
 		if ($this->validate_login()) {
 			//zalogowany => przekieruj na główną akcję (z przekazaniem messages przez sesję)
 			App::getMessages()->addMessage(new \core\Message("Zalogowano", \core\Message::INFO));
+			RoleUtils::addRole("sklep");
 			App::getRouter()->forwardTo('main');
 		} else {
 			//niezalogowany => pozostań na stronie logowania			
@@ -135,8 +136,8 @@ class SignCtrl
 		}
 
 		if (App::getMessages()->isError()) return false;
-
-		if ($this->role != "user" && (empty($tokens))) RoleUtils::addRole($this->role);
+		if ($this->role == "user" && (empty($tokens))) RoleUtils::addRole("sklep");
+		if ($this->role == "owner" && (empty($tokens))) RoleUtils::addRole("zarządzanie");
 		} else {
 			App::getMessages()->addMessage(new \core\Message("Niepoprawny login lub hasło", \core\Message::ERROR));
 		}

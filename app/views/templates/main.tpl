@@ -9,7 +9,7 @@
     <meta name="description" content="{$page_description|default:"Domyślny opis"}">
     <link rel="icon" href="{$conf->app_url}/assets/img/logo.png" type="image/png">
 
-    <title>Yups</title>
+    <title>{$page_title|default:"Yups"}</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
@@ -69,6 +69,17 @@
                     <!-- Prawa część - Koszyk, Kontakt, Login (widoczna na desktopach) -->
                     <div class="col-md-3 d-none d-md-flex justify-content-end">
                         <ul class="navbar-nav mb-2 mb-lg-0">
+
+                            <!-- Zarządzanie -->
+                            {if \core\RoleUtils::inRole('zarządzanie')}
+                                <li class="nav-item">
+                                    <a class="nav-link text-center" href="{$conf->action_url}managementMain" data-bs-toggle="tooltip"
+                                        data-bs-placement="bottom" title="Zarządzanie">
+                                        <i class="bi bi-info-circle"></i>
+                                        </a>
+                                </li>
+                            {/if}
+
                             <!-- kontakt -->
                             <li class="nav-item">
                                 <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="bottom"
@@ -92,7 +103,6 @@
                                     <i id="theme-icon" class="bi bi-moon"></i>
                                 </button>
                             </li>
-
 
                             <!-- rozwijane menu dla "Moje Konto" -->
                             <li class="nav-item dropdown">
