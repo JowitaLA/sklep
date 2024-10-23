@@ -123,7 +123,7 @@ Lista z danymi podstronami oraz tym, co powinno się w nich znajdować
         - [x] Utworzenie panelu `Gwarancja niskich cen`
         - [x] Utworzenie opisu panelu `Gwarancji niskich cen`
         - [x] Utworzenie interaktywnego przycisku `Dołącz do nas już teraz` dla panelu `Gwarancja niskich cen`
-        - [ ] Po naciśnięciu przycisku z panelu `Gwarancja niskich cen`, użytkownik powinien być przeniesiony na podstronę `Rejestracja`
+        - [s] Po naciśnięciu przycisku z panelu `Gwarancja niskich cen`, użytkownik powinien być przeniesiony na podstronę `Rejestracja`
         - [x] Utworzenie panelu `Nie wiesz co kupić`
         - [x] Utworzenie opisu panelu `Nie wiesz co kupić`
         - [x] Utworzenie interaktywnego przycisku `Nasze Kategorie` dla panelu `Nie wiesz co kupić`
@@ -135,9 +135,9 @@ Lista z danymi podstronami oraz tym, co powinno się w nich znajdować
 - [ ] Dodanie `Nasze Kategorie`
     - [ ] Wygenerowanie interaktywnych ikon i nazw na podstawie `icon` i `title` z tabeli `categories` z Bazy Danych
     - [ ] Po naciśnięciu ikon, użytkownik przenoszony jest na podstronę z produktami, z danej kategorii (podstronę `Produkty`)
-- [ ] Dodanie `Ostatnio Dodane Produkty`
-    - [ ] Wygenerowanie 12 ostatnio dodanych produktów na podstawie `created_at` z tabeli `products` z Bazy Danych
-    - [ ] Po naciśnięciu produktu, otwiera się podstrona z danym produktem
+- [x] Dodanie `Ostatnio Dodane Produkty`
+    - [x] Wygenerowanie 12 ostatnio dodanych produktów na podstawie `created_at` z tabeli `products` z Bazy Danych
+    - [x] Po naciśnięciu produktu, otwiera się podstrona z danym produktem
 
 ### Newsletter
 - [ ] Utworzenie pliku newsletter.html
@@ -165,14 +165,14 @@ Lista z danymi podstronami oraz tym, co powinno się w nich znajdować
 - [x] Dodanie alertów (np. Źle wpisane hasło bądź login)
 
 ### Rejestracja
-- [ ] Utworzenie pliku register.html
-- [ ] Utworzenie miejsca na wpisanie loginu
-- [ ] Utworzenie miejsca na wpisanie maila
-- [ ] Utworzenie miejsca na wpisanie hasła
-- [ ] Utworzenie miejsca na powtórzenie hasła
-- [ ] Utworznie przycisku `Zarejestruj`
-- [ ] Sprawdzenie danych wpisanych przez użytkownika z Bazą Danych
-- [ ] Dodanie alertów (Np. Źle wpisane hasło bądź zajęty login)
+- [x] Utworzenie pliku register.html
+- [x] Utworzenie miejsca na wpisanie loginu
+- [x] Utworzenie miejsca na wpisanie maila
+- [x] Utworzenie miejsca na wpisanie hasła
+- [x] Utworzenie miejsca na powtórzenie hasła
+- [x] Utworznie przycisku `Zarejestruj`
+- [x] Sprawdzenie danych wpisanych przez użytkownika z Bazą Danych
+- [x] Dodanie alertów (Np. Źle wpisane hasło bądź zajęty login)
 
 ### Zarządzanie
 - [ ] Utworzenie pliku management.html
@@ -184,9 +184,9 @@ Lista z danymi podstronami oraz tym, co powinno się w nich znajdować
 - [ ] Dodanie możliwości edycji produktów
 
 ### Lista Produktów
-- [ ] Dodanie pliku products_list.html
-- [ ] Wygenerowanie produktów z tego, co podał użytkownik: z nazwy, kategorii bądź daty
-- [ ] Dodanie stronnicowania (maksymalna ilośc produktów np. 28 na stronę)
+- [x] Dodanie pliku products_list.html
+- [x] Wygenerowanie produktów z tego, co podał użytkownik: z nazwy, kategorii bądź daty
+- [ ] Dodanie stronnicowania (maksymalna ilość produktów np. 28 na stronę)
 
 ### Kategorie
 - [ ] Dodanie pliku categories.html
@@ -195,10 +195,10 @@ Lista z danymi podstronami oraz tym, co powinno się w nich znajdować
 - [ ] Dodanie do każdej kategorii interakcji, przenoszącej do wszystkich przedmiotów, które posiadają kategorię wybraną przez użytkownika
 
 ### Produkty
-- [ ] Utworzenie pliku product.html
-- [ ] Wygenerowanie tytułu produktu
-- [ ] Wygenerowanie zdjęcia produktu
-- [ ] Wygenerowanie opisu produktu
+- [x] Utworzenie pliku product.html
+- [x] Wygenerowanie tytułu produktu
+- [x] Wygenerowanie zdjęcia produktu
+- [x] Wygenerowanie opisu produktu
 - [ ] Dodanie przycisku `Kup`/`Dodaj do koszyka`
 - [ ] Dodanie możliwości opini
 - [ ] Dodanie produktu do koszyka użytkownika po naciśnięciu przycisku `Kup`/`Dodaj do koszyka`
@@ -260,3 +260,13 @@ Lista z danymi podstronami oraz tym, co powinno się w nich znajdować
 - [ ] Utworzenie pliku returns_and_complaints.html
 - [ ] Stworzenie wielkiego tytułu strony `Zwroty i Reklamacje`
 - [ ] Stworzenie opisu związanego z informacją na temat Zwrotów i Reklamacji
+
+## Do poprawy/dodania
+- [ ] Dodanie kodowania haseł
+- [ ] Dodanie opinii dla ProductDetails
+- [ ] Dodanie odpcji działającego ,,Zapomniałem hasła", które będzie tworzyć token, wysyłanego na maila do zmiany hasła
+- [ ] W polu do wyszukwiania, dodać możliwość sprawdzania nie tylko po tytule, ale również po opisie produktu
+- [ ] Dodać listę kategorii dla każdego produktu
+- [ ] W `searchProducts` dodać możliwość sortowania po cenach, popularności oraz ocenach, 
+- [ ] W `searchProducts` dodać filtr tylko -> pokazania produktów od 5,4,3,2 bądź 1 gwiazdki
+- [ ] Dodanie usuwania tokenów po dniu nie użycia go
