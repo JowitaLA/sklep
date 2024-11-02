@@ -1,0 +1,636 @@
+<?php
+/* Smarty version 4.3.4, created on 2024-10-30 15:54:30
+  from 'C:\xampp\htdocs\Sklep\app\views\management\productAdd.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '4.3.4',
+  'unifunc' => 'content_672248a66e2725_89283769',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '53e49271d5bb7692115d260264578e7c49ce88fe' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\Sklep\\app\\views\\management\\productAdd.tpl',
+      1 => 1730300069,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_672248a66e2725_89283769 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_loadInheritance();
+$_smarty_tpl->inheritance->init($_smarty_tpl, true);
+?>
+
+
+<?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_718752499672248a66c1ce0_57148925', 'content');
+$_smarty_tpl->inheritance->endChild($_smarty_tpl, "templates/edit.tpl");
+}
+/* {block 'content'} */
+class Block_718752499672248a66c1ce0_57148925 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'content' => 
+  array (
+    0 => 'Block_718752499672248a66c1ce0_57148925',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+
+    <form method="post" action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+createProduct" enctype="multipart/form-data">
+        <div class="d-flex align-items-center justify-content-between">
+            <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
+/main" class="d-flex align-items-center">
+                <img src="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
+/assets/img/logo.png" alt="Logo" width="50" height="50">
+            </a>
+
+            <a class="nav-link d-flex align-items-center" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+/managementMain">
+                <i class="bi bi-info-circle" style="font-size: 50px; color: #6c757d;" title="Wróć do zarządzania"></i>
+            </a>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h1 class="h3 mb-3 fw-normal">Dodaj produkt</h1>
+            <button id="theme-toggle-btn" class="btn nav-link me-2" type="button" aria-label="Zmień motyw"
+                data-bs-toggle="tooltip" data-bs-placement="bottom" title="Zmień motyw">
+                <i id="theme-icon" class="bi bi-moon"></i>
+            </button>
+        </div>
+
+        <div class="row g-0 mb-0">
+            <!-- G-3 to odstęp między kolumnami -->
+            <div class="col-md-8">
+                <!-- Trzy kolumny o szerokości 4 (z 12 dostępnych) -->
+                <div class="form-floating">
+                    <input type="text" class="form-control top-left-field" name="name" id="name" value="">
+                    <label for="name">Nazwa</label>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <!-- Trzy kolumny o szerokości 4 -->
+                <div class="form-floating">
+                    <input type="text" class="form-control top-mid-field" name="price" id="price" value="">
+                    <label for="price">Cena</label>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <!-- Trzy kolumny o szerokości 4 -->
+                <div class="form-floating">
+                    <input type="text" class="form-control top-right-field" name="amount" id="amount" value="">
+                    <label for="amount">Ilość</label>
+                </div>
+            </div>
+        </div>
+
+
+        
+
+        <div class="form-floating form-control down-field">
+            <div class="toolbar ">
+                <div class="head">
+                    <input type="text" placeholder="Filename" value="plik" id="filename" class="filename-input">
+                    <select onchange="fileHandle(this.value); this.selectedIndex=0" class="file-select">
+                        <option value="" selected="" hidden="" disabled="">Plik</option>
+                        <option value="new">Nowy plik</option>
+                        <option value="txt">Zapisz jako txt</option>
+                        <option value="pdf">Zapisz jako pdf</option>
+                    </select>
+
+                    <select onchange="formatDoc('formatBlock', this.value); this.selectedIndex=0;">
+                        <option value="" selected="" hidden="" disabled="">Format</option>
+                        <option value="h1">Nagłówek 1</option>
+                        <option value="h2">Nagłówek 2</option>
+                        <option value="h3">Nagłówek 3</option>
+                        <option value="h4">Nagłówek 4</option>
+                        <option value="h5">Nagłówek 5</option>
+                        <option value="h6">Nagłówek 6</option>
+                        <option value="p">Paragraf</option>
+                    </select>
+                    <select onchange="formatDoc('fontSize', this.value); this.selectedIndex=0;">
+                        <option value="" selected="" hidden="" disabled="">Wielkość czcionki</option>
+                        <option value="1">Bardzo mała</option>
+                        <option value="2">Mała</option>
+                        <option value="3">Podstawowa</option>
+                        <option value="4">Średnia</option>
+                        <option value="5">Duża</option>
+                        <option value="6">Bardzo duża</option>
+                        <option value="7">Wielka</option>
+                    </select>
+                    <div class="color">
+                    <span style="line-height: 1;"><i class="material-icons" style="font-size: 15px; height: 50%;">format_color_fill</i>
+                        <input type="color" oninput="formatDoc('foreColor', this.value); this.value='#000000';">
+                    </div>
+                    <div class="color">
+                        <span><i class="material-icons" style="height: 50%;">border_color</i>
+                        </span>
+                        <input type="color" oninput="formatDoc('hiliteColor', this.value); this.value='#000000';">
+                    </div>
+
+                                    </div>
+                <div class="btn-toolbar">
+                    <button onclick="formatDoc('undo')"><i class='bi bi-arrow-return-left'></i></button>
+                    <button onclick="formatDoc('redo')"><i class='bi bi-arrow-return-right'></i></button>
+                    <button onclick="formatDoc('bold')"><i class='bi bi-type-bold'></i></button>
+                    <button onclick="formatDoc('underline')"><i class='bi bi-type-underline'></i></button>
+                    <button onclick="formatDoc('italic')"><i class='bi bi-type-italic'></i></button>
+                    <button onclick="formatDoc('strikeThrough')"><i class='bi bi-type-strikethrough'></i></button>
+                    <button onclick="formatDoc('justifyLeft')"><i class='bi bi-text-left'></i></button>
+                    <button onclick="formatDoc('justifyCenter')"><i class='bi bi-text-center'></i></button>
+                    <button onclick="formatDoc('justifyRight')"><i class='bi bi-text-right'></i></button>
+                    <button onclick="formatDoc('justifyFull')"><i class='bi bi-justify'></i></button>
+                    <button onclick="formatDoc('insertOrderedList')"><i class='bi bi-list-ol'></i></button>
+                    <button onclick="formatDoc('insertUnorderedList')"><i class='bi bi-list-ul'></i></button>
+                    <button onclick=""> <i class="bi bi-link-45deg"></i></button>
+                    <button onclick="formatDoc('unlink')"><i class="fa fa-chain-broken"></i></button>
+                    <button id="show-code" data-active="false"><i class="bi bi-braces"></i></button>
+                </div>
+            </div>
+                        <div id="content" contenteditable="true" spellcheck="false">
+                Opis
+            </div>
+        </div>
+
+
+        <div id="additional-images" class="d-flex flex-wrap justify-content-center mt-3"></div>
+        <!-- Kontener na zdjęcia -->
+        <input type="file" name="images[]" id="hidden-file-input" multiple accept="image/*" style="display: none;">
+        <div class="d-flex justify-content-center mt-2">
+            <button type="button" id="add-image-button" class="btn btn-secondary" style="width: 20%; height:50px">Dodaj
+                zdjęcie</button>
+        </div>
+
+        <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['categories']->value, 'category');
+$_smarty_tpl->tpl_vars['category']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['category']->value) {
+$_smarty_tpl->tpl_vars['category']->do_else = false;
+?>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="categories[]" value="<?php echo $_smarty_tpl->tpl_vars['category']->value['id_category'];?>
+"
+                    id="category<?php echo $_smarty_tpl->tpl_vars['category']->value['id_category'];?>
+">
+                <label class="form-check-label" for="category<?php echo $_smarty_tpl->tpl_vars['category']->value['id_category'];?>
+">
+                    <?php echo $_smarty_tpl->tpl_vars['category']->value['name'];?>
+
+                </label>
+            </div>
+        <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+
+
+        <div class="d-flex justify-content-center mt-2">
+            <button type="submit" class="btn btn-primary py-2" style="width: 20%; height:50px">Dodaj produkt</button>
+        </div>
+    </form>
+
+    <style>
+        #additional-images {
+            display: flex;
+            /* Użyj Flexbox */
+            flex-wrap: wrap;
+            /* Pozwól na łamanie wierszy */
+            justify-content: center;
+            /* Wycentruj w poziomie */
+        }
+
+        .image-upload-square {
+            width: 300px;
+            /* Szerokość na cały kontener */
+            height: 300px;
+            /* Wysokość kwadratu */
+            background-color: #f0f0f02d;
+            /* Kolor tła kwadratu */
+            border: 3px dashed #000000;
+            /* Daszowane krawędzie */
+            display: flex;
+            /* Flexbox dla wyrównania */
+            align-items: center;
+            /* Wyrównanie w pionie */
+            justify-content: center;
+            /* Wyrównanie w poziomie */
+            cursor: pointer;
+            /* Kursor wskazujący na interaktywność */
+            margin: 10px;
+            /* Odstęp między kwadratami */
+            position: relative;
+            /* Umożliwia przesunięcia */
+            border-radius: 5px;
+        }
+
+
+        .preview-image {
+            max-width: 100%;
+            /* Ustal maksymalną szerokość obrazu */
+            max-height: 100%;
+            /* Ustal maksymalną wysokość obrazu */
+            object-fit: cover;
+            /* Utrzymaj proporcje */
+            border-radius: 5px;
+
+        }
+
+        .move-buttons {
+            position: absolute;
+            /* Umiejscowienie przycisków w kwadracie */
+            top: 10px;
+            /* Odstęp od góry */
+            right: 10px;
+            /* Odstęp od prawej */
+            display: flex;
+            /* Flexbox dla wyrównania */
+            gap: 5px;
+            /* Odstęp między przyciskami */
+            z-index: 10;
+            /* Upewnij się, że przyciski są nad obrazem */
+        }
+
+
+        .move-buttons button {
+            background: none;
+            /* Bez tła */
+            border: none;
+            /* Bez ramki */
+            cursor: pointer;
+            /* Wskaźnik kursor */
+        }
+
+        .move-button {
+            position: absolute;
+            background: none;
+            /* Bez tła */
+            border: none;
+            /* Bez ramki */
+            z-index: 5;
+            /* Upewnij się, że przyciski są nad obrazem */
+        }
+
+        .up-button {
+            top: 5px;
+            /* Pozycja u góry */
+            left: 10px;
+            /* Przesunięcie w lewo */
+        }
+
+        .down-button {
+            top: 5px;
+            /* Pozycja na dole */
+            left: 10px;
+            /* Przesunięcie w lewo */
+        }
+
+        .index-number {
+            position: absolute;
+            min-width: 30px;
+            text-align: center;
+            top: 10px;
+            /* Możesz dostosować tę wartość */
+            left: 50%;
+            /* Wyśrodkowanie poziome */
+            transform: translateX(-50%);
+            /* Przesunięcie w lewo o 50% szerokości */
+            background: rgba(0, 119, 255, 0.8);
+            /* Lekko przezroczyste tło */
+            padding: 5px;
+            /* Odstęp wewnętrzny */
+            border-radius: 5px;
+            /* Zaokrąglone rogi */
+            font-weight: bold;
+            /* Pogrubiony tekst */
+        }
+
+        .plus {
+            font-size: 50px;
+            /* Zwiększ rozmiar znaku „+” */
+            line-height: 300px;
+            /* Wyśrodkowanie w pionie */
+            text-align: center;
+            /* Wyśrodkowanie w poziomie */
+        }
+    </style>
+    <?php echo '<script'; ?>
+>
+        let uploadedFiles = []; // Tablica do przechowywania przesłanych plików
+
+        document.getElementById('add-image-button').addEventListener('click', function() {
+            addNewImageContainer(); // Funkcja dodająca nowy kontener
+        });
+
+        function addNewImageContainer() {
+            const newImageDiv = document.createElement('div');
+            newImageDiv.classList.add('image-upload-square');
+
+            const newInput = document.createElement('input');
+            newInput.type = 'file';
+            newInput.name = 'images[]';
+            newInput.accept = 'image/*';
+            newInput.style.display = 'none';
+
+            newInput.onchange = function() {
+                const files = Array.from(this.files);
+                if (files.length > 0) {
+                    const index = getAvailableIndex(); // Pobierz dostępny indeks
+                    uploadedFiles[index] = files[0]; // Ustaw plik na właściwym indeksie
+                    previewImage(); // Odśwież podgląd zdjęcia
+                    updateHiddenInput();
+                }
+            };
+
+            newImageDiv.appendChild(newInput);
+
+            newImageDiv.onclick = function() {
+                newInput.click();
+            };
+
+            const plusSpan = document.createElement('span');
+            plusSpan.classList.add('plus');
+            plusSpan.textContent = '+';
+            newImageDiv.appendChild(plusSpan);
+
+            document.getElementById('additional-images').appendChild(newImageDiv);
+            uploadedFiles.push(null); // Dodaj `null` jako symboliczne miejsce dla nowego pliku
+        }
+
+        function getAvailableIndex() {
+            return uploadedFiles.findIndex(file => file === null);
+        }
+
+        function updateHiddenInput() {
+            const hiddenInput = document.getElementById('hidden-file-input');
+            const dataTransfer = new DataTransfer();
+
+            console.log(uploadedFiles);
+
+            uploadedFiles.filter(file => file).forEach(file => dataTransfer.items.add(file));
+
+            hiddenInput.files = dataTransfer.files; // Ustaw pliki w ukrytym polu
+            removeNullFiles();
+            for (let i = 0; i < dataTransfer.files.length; i++) {
+                const file = dataTransfer.files[i];
+                console.log((i + 1) + " " + file.name); // Pokazuje aktualny porządek plików
+            }
+        }
+
+        function removeNullFiles() {
+            uploadedFiles = uploadedFiles.filter(file => file instanceof File);
+        }
+
+        function createTrashIcon(container, index) {
+            const trashIcon = document.createElement('button');
+            trashIcon.innerHTML = '<i class="bi bi-trash"></i>';
+            trashIcon.classList.add('btn', 'btn-danger', 'btn-sm', 'trash-button');
+            trashIcon.onclick = function(event) {
+                event.stopPropagation(); // Zapobiegaj propagacji kliknięcia
+
+                // Usuń kontener ze zdjęciem
+                container.remove();
+
+                // Ustaw miejsce jako null
+                uploadedFiles[index] = null;
+
+                // Przesuń elementy w tablicy w lewo
+                for (let i = index; i < uploadedFiles.length - 1; i++) {
+                    uploadedFiles[i] = uploadedFiles[i + 1];
+                }
+                uploadedFiles.pop(); // Usuń ostatni element
+
+                // Odśwież podgląd zdjęcia i ukryte pole po usunięciu zdjęcia
+                previewImage();
+                updateHiddenInput();
+            };
+
+            trashIcon.style.position = 'absolute';
+            trashIcon.style.bottom = '10px';
+            trashIcon.style.right = '10px';
+
+            return trashIcon;
+        }
+
+        function createMoveUpIcon(container, index) {
+            const moveUpIcon = document.createElement('button');
+            moveUpIcon.innerHTML = '<i class="bi bi-chevron-left"></i>';
+            moveUpIcon.classList.add('btn', 'btn-secondary', 'btn-sm');
+
+            moveUpIcon.onclick = function(event) {
+                event.stopPropagation();
+                event.preventDefault();
+
+                if (index > 0) {
+                    swapElements(uploadedFiles, index, index - 1); // Zamień elementy
+                    previewImage(); // Odśwież podgląd zdjęcia
+                }
+                updateHiddenInput(); // Aktualizuj ukryte pole po usunięciu zdjęcia
+            };
+
+            moveUpIcon.style.position = 'absolute';
+            moveUpIcon.style.top = '10px';
+            moveUpIcon.style.left = '10px';
+
+            return moveUpIcon;
+        }
+
+        function createMoveDownIcon(container, index) {
+            const moveDownIcon = document.createElement('button');
+            moveDownIcon.innerHTML = '<i class="bi bi-chevron-right"></i>';
+            moveDownIcon.classList.add('btn', 'btn-secondary', 'btn-sm');
+
+            moveDownIcon.onclick = function(event) {
+                event.stopPropagation();
+                event.preventDefault();
+
+                if (index < uploadedFiles.length - 1) {
+                    swapElements(uploadedFiles, index, index + 1); // Zamień elementy
+                    previewImage(); // Odśwież podgląd zdjęcia
+                }
+                updateHiddenInput(); // Aktualizuj ukryte pole po usunięciu zdjęcia
+            };
+
+            moveDownIcon.style.position = 'absolute';
+            moveDownIcon.style.top = '10px';
+            moveDownIcon.style.right = '10px';
+
+            return moveDownIcon;
+        }
+
+        function swapElements(array, index1, index2) {
+            if (index1 >= 0 && index1 < array.length && index2 >= 0 && index2 < array.length) {
+                let temp = array[index1];
+                array[index1] = array[index2];
+                array[index2] = temp;
+            } else {
+                console.log("Indeksy są poza zakresem tablicy.");
+            }
+        }
+
+        function previewImage() {
+            const parentContainer = document.getElementById('additional-images');
+            parentContainer.innerHTML = ''; // Wyczyść kontener przed dodaniem nowych obrazów
+
+            uploadedFiles.forEach((file, index) => {
+                if (!file) return; // Pomiń puste miejsca w tablicy
+
+                const container = document.createElement('div');
+                container.classList.add('image-upload-square');
+
+                const image = document.createElement('img');
+                image.classList.add('preview-image');
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    image.src = e.target.result;
+                    container.appendChild(image); // Dodaj obraz do kontenera
+                };
+                reader.readAsDataURL(file); // Wczytaj plik jako URL
+
+                image.onclick = function() {
+                    const editInput = document.createElement('input');
+                    editInput.type = 'file';
+                    editInput.accept = 'image/*';
+                    editInput.style.display = 'none';
+
+                    editInput.onchange = function() {
+                        const newFile = this.files[0];
+                        if (newFile) {
+                            uploadedFiles[index] =
+                                newFile; // Aktualizuj plik w tablicy na odpowiednim indeksie
+
+                            const newReader = new FileReader();
+                            newReader.onload = function(e) {
+                                image.src = e.target.result; // Zaktualizuj obraz na nowy plik
+                            };
+                            newReader.readAsDataURL(newFile);
+                            updateHiddenInput(); // Aktualizuj ukryte pole
+                        }
+                    };
+
+                    editInput.click();
+                };
+
+                const indexDiv = document.createElement('div');
+                indexDiv.classList.add('index-number');
+                indexDiv.textContent = index + 1; // Ustaw tekst na numer indeksu
+                container.appendChild(indexDiv); // Dodaj div do kontenera
+
+                const trashIcon = createTrashIcon(container, index);
+                container.appendChild(trashIcon);
+
+                const upIcon = createMoveUpIcon(container, index);
+                container.appendChild(upIcon);
+
+                const downIcon = createMoveDownIcon(container, index);
+                container.appendChild(downIcon);
+
+                parentContainer.appendChild(container);
+            });
+        }
+    <?php echo '</script'; ?>
+>
+
+    <?php echo '<script'; ?>
+ src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+        integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"><?php echo '</script'; ?>
+>
+
+    <?php echo '<script'; ?>
+>
+        function formatDoc(cmd, value = null) {
+            event.preventDefault();
+            event.stopPropagation(); // zatrzymuje propagację zdarzenia
+            if (value) {
+                document.execCommand(cmd, false, value);
+            } else {
+                document.execCommand(cmd);
+            }
+        }
+
+        const linkButton = document.querySelector('.bi-link-45deg').parentElement;
+
+        linkButton.addEventListener('click', function(event) {
+            event.preventDefault(); // Zapobiega akcji przycisku
+            addLink(event); // Przekazuje event do addLink
+        });
+
+
+        function addLink(event) {
+            event.preventDefault();
+            const url = prompt('Insert url');
+            if (url) {
+                formatDoc('createLink', url);
+            }
+        }
+
+
+        const content = document.getElementById('content');
+
+        content.addEventListener('mouseenter', function() {
+            event.preventDefault();
+            event.stopPropagation();
+            const a = content.querySelectorAll('a');
+            a.forEach(item => {
+                event.preventDefault(); // zapobiega domyślnej akcji linka
+                item.addEventListener('click', function(event) {});
+                item.addEventListener('mouseenter', function() {
+                    content.setAttribute('contenteditable', false);
+                    item.target = '_blank';
+                });
+                item.addEventListener('mouseleave', function() {
+                    content.setAttribute('contenteditable', true);
+                });
+            });
+        });
+
+        const showCode = document.getElementById('show-code');
+        let active = false;
+
+        showCode.addEventListener('click', function(event) {
+            event.preventDefault(); // zapobiega domyślnej akcji kliknięcia
+            showCode.dataset.active = !active;
+            active = !active;
+            if (active) {
+                content.textContent = content.innerHTML;
+                content.setAttribute('contenteditable', false);
+            } else {
+                content.innerHTML = content.textContent;
+                content.setAttribute('contenteditable', true);
+            }
+        });
+
+        const filename = document.getElementById('filename');
+
+        function fileHandle(value) {
+            if (value === 'new') {
+                content.innerHTML = '';
+                filename.value = 'untitled';
+            } else if (value === 'txt') {
+                const blob = new Blob([content.innerText]);
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = filename.value + ".txt";
+                link.click();
+            } else if (value === 'pdf') {
+                html2pdf(content).save(filename.value);
+            }
+        }
+    <?php echo '</script'; ?>
+>
+
+<?php
+}
+}
+/* {/block 'content'} */
+}

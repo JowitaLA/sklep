@@ -1,37 +1,4 @@
-{* Wykresy wykazujące 
-    UŻYTKOWNICY: ile osób zostało zalogowanych, ile zarejestrowanych, ile dezaktywowanych (usuniętych po 30 dniach);
-    MAGAZYN: ile produktów zostało dodanych, ile usuniętych;
-    SKLEP: ile produktów zostało sprzedanych, ile zwróconych;
-    FINANSE: zyski, koszta i marże;
-    *}
-{extends file="templates/management.tpl"}
-
-{block name=content}
-
-
-    {* <nav>
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link {if $activeTab == 'management'}active{/if}" href="management.php">Zarządzanie</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {if $activeTab == 'users'}active{/if}" href="users.php">Użytkownicy</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {if $activeTab == 'inventory'}active{/if}" href="inventory.php">Magazyn</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {if $activeTab == 'sales'}active{/if}" href="sales.php">Sprzedaż</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {if $activeTab == 'finance'}active{/if}" href="finance.php">Finanse</a>
-            </li>
-        </ul>
-    </nav>  *}
-    
-
-
-    {* <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Dashboard</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
@@ -47,7 +14,7 @@
         </div>
     </div>
 
-    <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+    {* <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> *}
 
     <h2>Section title</h2>
     <div class="table-responsive small">
@@ -176,5 +143,4 @@
                 </tr>
             </tbody>
         </table>
-    </div> *}
-{/block}
+    </div>

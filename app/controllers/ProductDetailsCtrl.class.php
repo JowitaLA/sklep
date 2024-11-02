@@ -10,6 +10,7 @@ class ProductDetailsCtrl
 {
     private $url;
     private $product;
+    private $categories = [];
     private $images = [];  // Dodanie zmiennej do przechowywania obrazów
 
     public function action_productDetails()
@@ -40,6 +41,18 @@ class ProductDetailsCtrl
             // Przekonwertowanie opisu
             $this->loadDescription();
 
+            $sql = "
+                SELECT c.name 
+                FROM categories AS c
+                JOIN categories_products AS cp ON c.id_category = cp.id_category
+                WHERE cp.id_product = :id_product
+            ";
+
+            $params = [
+                ':id_product' => $this->product['id_product']
+            ];
+
+            $this->categories = App::getDB()->query($sql, $params);
         } catch (PDOException $e) {
             App::getMessages()->addMessage(new \core\Message("Wystąpił błąd podczas pobierania danych produktu", \core\Message::ERROR));
         }
@@ -50,7 +63,7 @@ class ProductDetailsCtrl
 
     private function loadProductImages()
     {
-        
+
         $imagesPath = "assets/img/products/{$this->url}/";  // Ścieżka do folderu ze zdjęciami
         if (is_dir($imagesPath)) {
             $this->images = array_filter(scandir($imagesPath), function ($file) use ($imagesPath) {
@@ -59,16 +72,18 @@ class ProductDetailsCtrl
         }
     }
 
-    private function loadDescription(){
+    private function loadDescription()
+    {
         $this->product['description'] = nl2br($this->product['description']);
     }
 
     public function generateView()
     {
         App::getSmarty()->assign('product', $this->product);
+        App::getSmarty()->assign('categories', $this->categories);
+
         App::getSmarty()->assign('images', $this->images);  // Przekazywanie obrazów do widoku
         App::getSmarty()->assign('page_title', $this->product['name']);  // Tytuł strony ("Yups")
-        
         App::getSmarty()->display('ProductDetailsView.tpl');
     }
 }

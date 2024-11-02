@@ -46,7 +46,7 @@ class ProductsListCtrl
         $this->categoriesList();    // Wywołanie funkcji categoriesList();
 
         /* Przygotowanie zmiennej zapytania */
-        $query = "SELECT products.* FROM products";
+        $query = "SELECT products.* FROM products WHERE products.status='active' ";
 
         /* Sprawdzenie, czy jakaś kategoria została wybrana przez użytkownika (czy wartość z `choose_category` jest różna od 0) */
         if (isset($this->searchProducts->c_id) && $this->searchProducts->c_id != 0) {
@@ -72,7 +72,6 @@ class ProductsListCtrl
 
             $query .= "(" . implode(' AND ', $nameConditions) . ")";
         }
-
         $this->records = App::getDB()->query($query)->fetchAll();   // Wykonanie zapytania
         $this->generateView();                                      // Wygenerowanie widoku z wyszukanymi produktami
     }

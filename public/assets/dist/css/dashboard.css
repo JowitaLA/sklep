@@ -24,6 +24,11 @@
   font-weight: 500;
 }
 
+.alert {
+  z-index: 1050; /* Upewnij się, że z-index jest wyższy niż inne elementy */
+  position: relative; /* Musisz ustawić pozycjonowanie, aby z-index zadziałał */
+}
+
 .sidebar .nav-link.active {
   color: #2470dc;
 }

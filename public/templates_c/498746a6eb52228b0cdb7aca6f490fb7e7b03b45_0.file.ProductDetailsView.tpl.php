@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-10-23 17:49:48
+/* Smarty version 4.3.4, created on 2024-10-31 18:16:41
   from 'C:\xampp\htdocs\Sklep\app\views\ProductDetailsView.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_67191b1cab0675_60183315',
+  'unifunc' => 'content_6723bb792ac2a2_01480064',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '498746a6eb52228b0cdb7aca6f490fb7e7b03b45' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Sklep\\app\\views\\ProductDetailsView.tpl',
-      1 => 1729680343,
+      1 => 1730395000,
       2 => 'file',
     ),
   ),
@@ -20,22 +20,22 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67191b1cab0675_60183315 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6723bb792ac2a2_01480064 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_157808294667191b1c82d8d7_79787374', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_15241666996723bb792880b0_89839568', 'content');
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, "templates/main.tpl");
 }
 /* {block 'content'} */
-class Block_157808294667191b1c82d8d7_79787374 extends Smarty_Internal_Block
+class Block_15241666996723bb792880b0_89839568 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_157808294667191b1c82d8d7_79787374',
+    0 => 'Block_15241666996723bb792880b0_89839568',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -203,7 +203,19 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                             <h4>
                                 <span style="color: rgba(255, 136, 0, 0.5);">Kategorie:</span>
                             </h4>
-                            <h5><span style="color: rgba(233, 125, 1, 0.7);">jakieś tam kategorie</span>
+                            <h5><span style="color: rgba(233, 125, 1, 0.7);">
+                            <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['categories']->value, 'category');
+$_smarty_tpl->tpl_vars['category']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['category']->value) {
+$_smarty_tpl->tpl_vars['category']->do_else = false;
+?>
+                                <?php echo $_smarty_tpl->tpl_vars['category']->value['name'];?>
+ 
+                            <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>                            
+                            </span>
                             </h5>
                         </div>
                     </div>

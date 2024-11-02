@@ -12,6 +12,7 @@ use PHPMailer\PHPMailer\Exception;
 use core\App;
 use core\ParamUtils;
 use core\RoleUtils;
+use core\SessionUtils;
 use app\forms\LoginForm;
 use app\forms\RegisterForm;
 
@@ -43,6 +44,7 @@ class SignCtrl
 			//zalogowany => przekieruj na główną akcję (z przekazaniem messages przez sesję)
 			App::getMessages()->addMessage(new \core\Message("Zalogowano", \core\Message::INFO));
 			RoleUtils::addRole("sklep");
+			SessionUtils::store('id_user', $this->idUser);
 			App::getRouter()->forwardTo('main');
 		} else {
 			//niezalogowany => pozostań na stronie logowania			
@@ -294,8 +296,11 @@ class SignCtrl
 
 	public function generate_token()
 	{
-		$token = bin2hex(random_bytes(32));  // Generowanie tokena
-
+		do {
+			$token = bin2hex(random_bytes(32));  // Generowanie tokena
+			$isTokenUnique = !App::getDB()->has("tokens", ["token_value" => $token]);  // Sprawdzanie unikalności
+		} while (!$isTokenUnique);
+	
 		// Tworzenie linku do weryfikacji
 		$this->verificationLink = "http://localhost/sklep/public/verify?token=" . $token;
 

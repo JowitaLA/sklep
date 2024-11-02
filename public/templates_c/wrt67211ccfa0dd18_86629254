@@ -1,0 +1,273 @@
+<?php
+/* Smarty version 4.3.4, created on 2024-10-29 18:35:11
+  from 'C:\xampp\htdocs\Sklep\app\views\management\productAdd.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '4.3.4',
+  'unifunc' => 'content_67211ccfa0bd33_69340889',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '53e49271d5bb7692115d260264578e7c49ce88fe' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\Sklep\\app\\views\\management\\productAdd.tpl',
+      1 => 1730223310,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_67211ccfa0bd33_69340889 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_loadInheritance();
+$_smarty_tpl->inheritance->init($_smarty_tpl, true);
+?>
+
+
+<?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_106333441067211ccfa04630_02362792', 'content');
+?>
+
+<?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "templates/edit.tpl");
+}
+/* {block 'content'} */
+class Block_106333441067211ccfa04630_02362792 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'content' => 
+  array (
+    0 => 'Block_106333441067211ccfa04630_02362792',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+    <form method="post" action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+createProduct" enctype="multipart/form-data">
+        <div class="d-flex align-items-center justify-content-between">
+            <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
+/main" class="d-flex align-items-center">
+                <img src="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
+/assets/img/logo.png" alt="Logo" width="50" height="50">
+            </a>
+
+            <a class="nav-link d-flex align-items-center" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+/managementMain">
+                <i class="bi bi-info-circle" style="font-size: 50px; color: #6c757d;" title="Wróć do zarządzania"></i>
+            </a>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h1 class="h3 mb-3 fw-normal">Dodaj produkt</h1>
+            <button id="theme-toggle-btn" class="btn nav-link me-2" type="button" aria-label="Zmień motyw"
+                data-bs-toggle="tooltip" data-bs-placement="bottom" title="Zmień motyw">
+                <i id="theme-icon" class="bi bi-moon"></i>
+            </button>
+        </div>
+
+        <div class="row g-0 mb-0">
+            <div class="col-md-8">
+                <div class="form-floating">
+                    <input type="text" class="form-control top-left-field" name="name" id="name" value="">
+                    <label for="name">Nazwa</label>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="form-floating">
+                    <input type="text" class="form-control top-mid-field" name="price" id="price" value="">
+                    <label for="price">Cena</label>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="form-floating">
+                    <input type="text" class="form-control top-right-field" name="amount" id="amount" value="">
+                    <label for="amount">Ilość</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-floating">
+            <textarea class="form-control down-field" name="description" id="description" style="height: 100px;"></textarea>
+            <label for="description">Opis</label>
+        </div>
+
+        <div id="additional-images" class="d-flex flex-wrap justify-content-center mt-3"></div> <!-- Kontener na zdjęcia -->
+        <input type="file" name="images[]" id="hidden-file-input" multiple accept="image/*" style="display: none;">
+        
+        <div class="d-flex justify-content-center mt-2">
+            <button type="submit" class="btn btn-primary py-2" style="width: 20%; height:50px">Dodaj produkt</button>
+        </div>
+    </form>
+
+    <style>
+        #additional-images {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .image-upload-square {
+            width: 300px;
+            height: 300px;
+            background-color: #f0f0f02d;
+            border: 3px dashed #000000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin: 10px;
+            position: relative;
+            border-radius: 5px;
+        }
+
+        .preview-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .move-buttons {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 5px;
+            z-index: 10;
+        }
+
+        .move-buttons button {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .trash-button {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+
+        .plus {
+            font-size: 50px;
+            line-height: 300px;
+            text-align: center;
+        }
+    </style>
+
+    <?php echo '<script'; ?>
+>
+        let uploadedFiles = []; // Tablica do przechowywania przesłanych plików
+
+        // Funkcja dodająca pusty kontener dla nowego zdjęcia
+        function addImageContainer() {
+            const newImageDiv = document.createElement('div');
+            newImageDiv.classList.add('image-upload-square');
+
+            const newInput = document.createElement('input');
+            newInput.type = 'file';
+            newInput.name = 'images[]';
+            newInput.accept = 'image/*';
+            newInput.style.display = 'none';
+            newInput.dataset.index = uploadedFiles.length; // Ustawiamy indeks dla inputa
+
+            newInput.onchange = function() {
+                const files = Array.from(this.files);
+                if (files.length > 0) {
+                    uploadedFiles[newInput.dataset.index] = files[0]; // Ustawiamy plik na właściwym indeksie
+                    previewImage(this, newImageDiv);
+                    updateHiddenInput();
+                    addImageContainer(); // Dodaj kolejny pusty kontener
+                }
+            };
+
+            newImageDiv.appendChild(newInput);
+            newImageDiv.onclick = function() {
+                newInput.click();
+            };
+
+            const plusSpan = document.createElement('span');
+            plusSpan.classList.add('plus');
+            plusSpan.textContent = '+';
+            newImageDiv.appendChild(plusSpan);
+
+            document.getElementById('additional-images').appendChild(newImageDiv);
+            uploadedFiles.push(null); // Dodajemy `null` jako symboliczne miejsce dla nowego pliku
+        }
+
+        // Funkcja do aktualizacji ukrytego inputa
+        function updateHiddenInput() {
+            const hiddenInput = document.getElementById('hidden-file-input');
+            const dataTransfer = new DataTransfer();
+
+            uploadedFiles.filter(file => file).forEach(file => dataTransfer.items.add(file));
+
+            hiddenInput.files = dataTransfer.files; // Ustaw pliki w ukrytym polu
+
+            // Wyświetl pliki w konsoli
+            for (let i = 0; i < dataTransfer.files.length; i++) {
+                const file = dataTransfer.files[i];
+                console.log((i + 1) + " " + file.name); // Pokazuje aktualny porządek plików
+            }
+        }
+
+        // Funkcja do podglądu zdjęcia
+        function previewImage(input, container) {
+            const image = document.createElement('img');
+            image.classList.add('preview-image');
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                image.src = e.target.result;
+                container.innerHTML = ''; // Wyczyść kontener przed dodaniem obrazu
+                container.appendChild(image); // Dodaj obraz do kontenera
+            };
+            reader.readAsDataURL(input.files[0]); // Wczytaj plik jako URL
+
+            const trashIcon = createTrashIcon(container, uploadedFiles[input.dataset.index]);
+            container.appendChild(trashIcon);
+        }
+
+        function createTrashIcon(container, file) {
+            const trashIcon = document.createElement('button');
+            trashIcon.innerHTML = '<i class="bi bi-trash"></i>';
+            trashIcon.classList.add('btn', 'btn-danger', 'btn-sm', 'trash-button');
+            trashIcon.onclick = function(event) {
+                event.stopPropagation(); // Zapobiegaj propagacji kliknięcia
+                container.remove(); // Usuń kontener ze zdjęciem
+
+                const index = uploadedFiles.indexOf(file); // Znajdź indeks pliku
+                if (index > -1) {
+                    uploadedFiles.splice(index, 1); // Usuń plik z tablicy
+                }
+                updateHiddenInput(); // Aktualizuj ukryte pole po usunięciu zdjęcia
+            };
+
+            return trashIcon;
+        }
+
+        // Rozpocznij z pierwszym kontenerem
+        addImageContainer();
+
+        document.querySelector('form').onsubmit = function() {
+            const imageOrder = Array.from(document.querySelectorAll('.image-upload-square')).map((container) => {
+                const img = container.querySelector('img');
+                return img ? img.src : null;
+            }).filter(src => src !== null);
+
+            console.log('Aktualny układ zdjęć:', imageOrder);
+            const hiddenInput = document.getElementById('hidden-file-input');
+            hiddenInput.value = JSON.stringify(imageOrder);
+        };
+    <?php echo '</script'; ?>
+>
+
+<?php
+}
+}
+/* {/block 'content'} */
+}

@@ -136,7 +136,11 @@
                             <h4>
                                 <span style="color: rgba(255, 136, 0, 0.5);">Kategorie:</span>
                             </h4>
-                            <h5><span style="color: rgba(233, 125, 1, 0.7);">jakieś tam kategorie</span>
+                            <h5><span style="color: rgba(233, 125, 1, 0.7);">
+                            {foreach $categories as $category}
+                                {$category.name} 
+                            {/foreach}                            
+                            </span>
                             </h5>
                         </div>
                     </div>

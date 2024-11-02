@@ -3,6 +3,28 @@ body {
   height: 100%;
 }
 
+.image-upload-square {
+  width: 100%; /* Szerokość na cały kontener */
+  height: 100px; /* Ustal wysokość */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer; /* Kursor wskazujący, że element jest interaktywny */
+  position: relative; /* Umożliwia pozycjonowanie + */
+  margin-bottom: 10px; /* Odstęp między kwadratami */
+}
+
+.image-upload-square .plus {
+  font-size: 30px; /* Ustal rozmiar + */
+  color: #6c757d; /* Kolor ikony */
+}
+
+.image-upload-square:hover {
+  background-color: #c0c0c0; /* Jaśniejszy szary przy najechaniu */
+}
+
+
+
 /* Zmieniamy obramowanie i cień na pomarańczowy, gdy pole jest zaznaczone */
 .form-control:focus {
   border-color:  rgba(233, 125, 1, 1); /* Pomarańczowy kolor obramowania */

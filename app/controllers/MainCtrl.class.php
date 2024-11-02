@@ -22,7 +22,7 @@ class MainCtrl
 
         /* Pobranie ostatnich 12 rekordów z tabeli `products` */
         try {
-            $this->last_products = App::getDB()->query("SELECT * FROM products ORDER BY id_product DESC LIMIT 12");
+            $this->last_products = App::getDB()->query("SELECT * FROM products WHERE status='active' ORDER BY id_product DESC LIMIT 12");
         } catch (PDOException $e) {
             App::getMessages()->addMessage(new \core\Message("Wystąpił błąd z pobieraniem ostatnich produktów", \core\Message::ERROR));
         }
