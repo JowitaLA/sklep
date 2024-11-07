@@ -94,8 +94,8 @@
                     </span>
                 </td>
                 <td>
-                    <form action="{$conf->action_url}editUser" method="post" style="display:inline;">
-                        <input type="hidden" name="idUser" value="{$product.id_produktu}">
+                    <form action="{$conf->action_url}editProduct" method="post" style="display:inline;">
+                        <input type="hidden" name="idProduct" value="{$product.id_produktu}">
                         <button type="submit" class="btn btn-sm btn-outline-secondary">Edytuj</button>
                     </form>
                     {if $product.status_produktu != 'inactive'}

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-10-31 18:16:41
+/* Smarty version 4.3.4, created on 2024-11-05 11:57:35
   from 'C:\xampp\htdocs\Sklep\app\views\ProductDetailsView.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_6723bb792ac2a2_01480064',
+  'unifunc' => 'content_6729fa1ff2bf98_42445383',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '498746a6eb52228b0cdb7aca6f490fb7e7b03b45' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Sklep\\app\\views\\ProductDetailsView.tpl',
-      1 => 1730395000,
+      1 => 1730804253,
       2 => 'file',
     ),
   ),
@@ -20,22 +20,22 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6723bb792ac2a2_01480064 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6729fa1ff2bf98_42445383 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_15241666996723bb792880b0_89839568', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_7470173766729fa1ff07fb1_78827247', 'content');
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, "templates/main.tpl");
 }
 /* {block 'content'} */
-class Block_15241666996723bb792880b0_89839568 extends Smarty_Internal_Block
+class Block_7470173766729fa1ff07fb1_78827247 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_15241666996723bb792880b0_89839568',
+    0 => 'Block_7470173766729fa1ff07fb1_78827247',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -200,22 +200,31 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                         <!-- Opis produktu -->
                         <div class="mb-4">
                             <br>
-                            <h4>
-                                <span style="color: rgba(255, 136, 0, 0.5);">Kategorie:</span>
+                            <h4><b>
+                                Kategorie:</b>
                             </h4>
-                            <h5><span style="color: rgba(233, 125, 1, 0.7);">
-                            <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['categories']->value, 'category');
+                            <h5><i>
+                                    <?php if (count($_smarty_tpl->tpl_vars['categories']->value) == 0) {?>
+                                        Brak kategorii dla tego produktu.
+                                    <?php } else { ?>
+                                        <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['categories']->value, 'category', false, NULL, 'catLoop', array (
+  'last' => true,
+  'iteration' => true,
+  'total' => true,
+));
 $_smarty_tpl->tpl_vars['category']->do_else = true;
 if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['category']->value) {
 $_smarty_tpl->tpl_vars['category']->do_else = false;
+$_smarty_tpl->tpl_vars['__smarty_foreach_catLoop']->value['iteration']++;
+$_smarty_tpl->tpl_vars['__smarty_foreach_catLoop']->value['last'] = $_smarty_tpl->tpl_vars['__smarty_foreach_catLoop']->value['iteration'] === $_smarty_tpl->tpl_vars['__smarty_foreach_catLoop']->value['total'];
 ?>
-                                <?php echo $_smarty_tpl->tpl_vars['category']->value['name'];?>
- 
-                            <?php
+                                            <?php echo $_smarty_tpl->tpl_vars['category']->value['name'];
+if (!(isset($_smarty_tpl->tpl_vars['__smarty_foreach_catLoop']->value['last']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_catLoop']->value['last'] : null)) {?>, <?php }?>
+                                        <?php
 }
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>                            
-                            </span>
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                                    <?php }?> </i>
                             </h5>
                         </div>
                     </div>

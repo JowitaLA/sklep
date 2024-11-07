@@ -83,13 +83,14 @@
          <h2 class="text-center mb-4">Ostatnio Dodane Produkty</h2>
          <div class="row">
             {foreach $last_products as $p}
-               <a href="{$conf->app_url}/productDetails?product={$p["url"]}" class="col-md-3 mb-4">
+               <a href="{$conf->app_url}/productDetails?product={$p.url}" class="col-md-3 mb-4">
                   <div class="product-card bg-body-tertiary">
-                     <img src="{$conf->app_url}/assets/img/products/{$p["url"]}/1.jpg" alt="{$p["name"]}" class="img-fluid">
+                  <img src="{$p.image_url}" alt="{$p.name}" class="img-fluid">
                      <h3 class="mt-3">{$p["name"]}</h3>
                      <i class="fa stars">&#xf005; &#xf005; &#xf005; &#xf005; &#xf005;</i>
                      <p class="price mt-2 link-body-emphasis">
-                        {{$p["price"]}|number_format:2:",":" "}&nbsp;zł </p>
+                        {{$p["price"]}|number_format:2:",":" "}&nbsp;zł
+                     </p>
                      {* zmiana formatu z np. 4500.5 na 4 500,50 zł *}
                   </div>
                </a>

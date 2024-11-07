@@ -16,6 +16,8 @@ class ManagementCtrl
     private $products;
     private $user;
     private $categories;
+    private $relatedCategories;
+    private $images;
     private $management;
 
     public function __construct()
@@ -326,30 +328,118 @@ class ManagementCtrl
 
     public function action_updateProduct()
     {
-        $userId = $_POST['idUser'] ?? null;
-        $login = $_POST['login'] ?? '';
-        $mail = $_POST['mail'] ?? '';
+        $productId = $_POST['idProduct'] ?? null;
         $name = $_POST['name'] ?? '';
-        $surname = $_POST['surname'] ?? '';
+        $description = $_POST['description'] ?? '';
+        $amount = $_POST['amount'] ?? '';
+        $price = $_POST['price'] ?? '';
+        $selectedCategories = $_POST['categories'] ?? [];
 
-        if ($userId) {
+        if ($productId) {
             try {
                 // Aktualizuj dane użytkownika
-                App::getDB()->update("users", [
-                    "login" => $login,
-                    "mail" => $mail,
+                App::getDB()->update("products", [
                     "name" => $name,
-                    "surname" => $surname
+                    "description" => $description,
+                    "amount" => $amount,
+                    "price" => $price
                 ], [
-                    "id_user" => $userId
+                    "id_product" => $productId
                 ]);
 
-                $this->management->messages[] = "Dane użytkownika zostały zaktualizowane.";
+                $this->management->messages[] = "Produkt został zedytowany pomyślnie.";
             } catch (PDOException $e) {
                 $this->management->messages[] = "Wystąpił błąd podczas aktualizacji danych.";
             }
+
+            // 1. Usuwanie kategorii, które nie są w selectedCategories
+            $existingCategories = App::getDB()->select("categories_products", [
+                "id_category"
+            ], [
+                "id_product" => $productId
+            ]);
+
+            $existingCategoryIds = array_column($existingCategories, "id_category"); // Uzyskaj tablicę ID istniejących kategorii
+
+            // Kategoria do usunięcia to te, które są w istniejących, ale nie w selectedCategories
+            $categoriesToRemove = array_diff($existingCategoryIds, $selectedCategories);
+
+            if (!empty($categoriesToRemove)) {
+                App::getDB()->delete("categories_products", [
+                    "id_product" => $productId,
+                    "id_category" => $categoriesToRemove
+                ]);
+            }
+
+            // Dodawanie nowych kategorii z selectedCategories
+            foreach ($selectedCategories as $categoryId) {
+                // Sprawdź, czy kategoria już istnieje
+                if (!in_array($categoryId, $existingCategoryIds)) {
+                    App::getDB()->insert("categories_products", [
+                        "id_product" => $productId,
+                        "id_category" => $categoryId
+                    ]);
+                }
+            }
+
+            /* EDYCJA ZDJĘĆ */
+
+            $url = App::getDB()->get("products", "url", [
+                "id_product" => $productId
+            ]);
+
+            // Ścieżka do folderu ze zdjęciami
+            $folderPath = __DIR__ . '/../../public/assets/img/products/' . $url;
+
+            if (!is_dir($folderPath)) {
+                mkdir($folderPath, 0777, true);
+                $this->management->messages[] = "Folder $folderPath został utworzony.";
+            }
+
+            // Sprawdzenie, czy folder istnieje
+            if (is_dir($folderPath)) {
+                // Odczytanie wszystkich plików w folderze
+                $files = scandir($folderPath);
+
+                // Iteracja przez pliki
+                foreach ($files as $file) {
+                    // Sprawdzanie, czy plik zawiera "old" w nazwie
+                    // Pełna ścieżka do pliku
+                    $filePath = $folderPath . '/' . $file;
+                    unlink($filePath);
+                }
+
+                /* Dodawanie nowych zdjęć bądź zamiana ich nazw */
+                if (!file_exists($folderPath)) {
+                    mkdir($folderPath, 0777, true);
+                }
+
+                $i = 1; // Zmienna do nazewnictwa plików
+                foreach ($_FILES['images']['tmp_name'] as $key => $tmpName) {
+                    $originalName = $_FILES['images']['name'][$key];
+                    $extension = pathinfo($originalName, PATHINFO_EXTENSION);
+
+                    if (is_uploaded_file($tmpName)) {
+                        $originalName = $_FILES['images']['name'][$key];
+                        $extension = pathinfo($originalName, PATHINFO_EXTENSION);
+                        // W przypadku, gdy nie zawiera 'public/assets'
+                        $fileName = $i . "." . $extension;
+
+                        if (move_uploaded_file($tmpName, $folderPath . '/' . $fileName)) {
+                            $this->management->messages[] = "Plik zapisany pomyślnie!";
+                        } else {
+                            $this->management->messages[] = "Błąd przy zapisie pliku";
+                        }
+                        $i++; // Inkrementacja zmiennej dla kolejnych plików
+                    } else {
+                        $this->management->messages[] = "Plik nie został poprawnie przesłany.";
+                    }
+                }
+            } else {
+                $this->management->messages[] = "Folder $folderPath nie istnieje.";
+            }
         } else {
-            $this->management->messages[] = "Brak ID użytkownika do aktualizacji.";
+            $this->management->messages[] = "Brak ID produktu do aktualizacji.";
         }
 
         // Zapisz wiadomości do sesji i przekieruj
@@ -386,6 +476,7 @@ class ManagementCtrl
         // Przekierowanie
         App::getRouter()->redirectTo('managementMain');
     }
+    
     public function action_changeStatusProduct()
     {
         $this->validateChangeStatusProduct();
@@ -399,19 +490,86 @@ class ManagementCtrl
 
     public function action_editProduct()
     {
-        $userId = $_POST['idUser'] ?? null;
+        // Sprawdź, czy idProduct zostało przesłane w formularzu
+        if (isset($_POST['idProduct'])) {
+            $productId = $_POST['idProduct'];
 
-        if ($userId) {
-            // Pobierz dane użytkownika na podstawie ID
-            $this->user = App::getDB()->get("users", "*", ["id_user" => $userId]);
+            try {
+                // Pobierz dane produktu z tabeli products
+                $product = App::getDB()->get("products", "*", [
+                    "id_product" => $productId
+                ]);
 
-            // Przekaż dane użytkownika do widoku
-            App::getSmarty()->assign('user', $this->user);
-            App::getSmarty()->display('management/userEdit.tpl');
+                // Sprawdź, czy produkt został znaleziony
+                if (empty($product)) {
+                    $this->management->messages[] = "Nie znaleziono produktu.";
+                }
+            } catch (PDOException $e) {
+                $this->management->messages[] = "Wystąpił błąd z pobieraniem produktu.";
+            }
+
+            try {
+                // Pobierz wszystkie aktywne kategorie
+                $this->categories = App::getDB()->select("categories", "*");
+            } catch (PDOException $e) {
+                $this->management->messages[] = "Wystąpił błąd z pobieraniem kategorii.";
+            }
+
+            // Pobierz powiązane kategorie dla produktu
+            $this->relatedCategories = App::getDB()->select("categories_products", [
+                "[><]categories" => ["id_category" => "id_category"]
+            ], [
+                "categories.id_category",
+                "categories.name" // Zakładając, że nazwa kategorii jest w kolumnie 'name'
+            ], [
+                "id_product" => $productId
+            ]);
+
+            // Pobierz zdjęcia produktu z folderu
+            $imagesDir = __DIR__ . '/../../public/assets/img/products/' . $product['url']; // Upewnij się, że to jest odpowiednia ścieżka
+            if (is_dir($imagesDir)) {
+                $images = array_diff(scandir($imagesDir), ['.', '..']); // Odczytaj pliki w folderze, pomijając "." i ".."
+                $this->images = array_filter($images, function ($file) {
+                    return preg_match('/\.(jpg|jpeg|png|gif)$/i', $file); // Sprawdź, czy to obraz
+                });
+            } else {
+                $this->images = [];
+            }
+
+            // Przekaż dane do widoku
+            App::getSmarty()->assign('existingImages', json_encode($this->images)); // Przekazanie danych jako JSON
+            App::getSmarty()->assign('messages', $this->management->messages);
+            App::getSmarty()->assign('categories', $this->categories);
+            App::getSmarty()->assign('relatedCategories', $this->relatedCategories); // Przekazanie powiązanych kategorii
+            App::getSmarty()->assign('product', $product); // Przekazanie danych produktu
+            App::getSmarty()->display('management/productEdit.tpl');
         } else {
-            $this->management->messages[] = "Brak ID użytkownika do edycji.";
-            App::getRouter()->redirectTo('managementMain');
+            $this->management->messages[] = "Nie podano ID produktu.";
+            App::getSmarty()->assign('messages', $this->management->messages);
+            App::getSmarty()->display('management/productEdit.tpl');
         }
+    }
+
+    public function action_editContact()
+    {
+        $subpage = [
+            'title' => 'Kontakt',
+            'description' => 'assets/pages/contact.txt'
+        ];
+
+        // Przetwarzanie tablicy: odczyt zawartości plików opisów
+        $subpage['description'] = file_exists($subpage['description'])
+                ? file_get_contents($subpage['description'])
+                : 'Brak opisu dla tej podstrony.';
+        
+
+        // Przekaż dane użytkownika do widoku
+        App::getSmarty()->assign('subpage', $subpage);
+        App::getSmarty()->display('management/subpage.tpl');
+    }
+
+    public function action_subpage(){
+        
     }
 
     public function generateView()

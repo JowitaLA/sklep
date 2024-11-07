@@ -1,6 +1,6 @@
 {* Widok dla Podstron tj: Kontakt, Regulamin, Zwroty i Reklamacje, Polityka RODO etc. *}
 
-{extends file="templates/sign.tpl"}
+{extends file="templates/main.tpl"}
 
 {block name=content}
     {* KONTAKT *}

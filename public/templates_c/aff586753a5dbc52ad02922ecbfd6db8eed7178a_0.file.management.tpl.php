@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-10-31 14:13:36
+/* Smarty version 4.3.4, created on 2024-11-07 15:23:13
   from 'C:\xampp\htdocs\Sklep\app\views\templates\management.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_672382806a01c1_95636582',
+  'unifunc' => 'content_672ccd51215b96_66987383',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'aff586753a5dbc52ad02922ecbfd6db8eed7178a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Sklep\\app\\views\\templates\\management.tpl',
-      1 => 1730380412,
+      1 => 1730989392,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_672382806a01c1_95636582 (Smarty_Internal_Template $_smarty_tpl) {
+function content_672ccd51215b96_66987383 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -114,7 +114,7 @@ main">
                                 <a class="nav-link d-flex align-items-center gap-2"
                                     href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
 managementMain" id="panel">
-                                    <i class="bi bi-info-circle" style="height:20px;" fill="currentColor"></i>
+                                    <i class="bi bi-house-door" style="height:20px;" fill="currentColor"></i>
                                     Panel
                                 </a>
                             </li>
@@ -122,7 +122,7 @@ managementMain" id="panel">
                                 <a class="nav-link d-flex align-items-center gap-2" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
 showProducts"
                                     id="showProducts">
-                                    <i class="bi bi-info-circle" style="height:20px;" fill="currentColor"></i>
+                                    <i class="bi bi-cart" style="height:20px;" fill="currentColor"></i>
                                     Produkty
                                 </a>
                             </li>
@@ -130,7 +130,7 @@ showProducts"
                                 <a class="nav-link d-flex align-items-center gap-2" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
 showOrders"
                                     id="showOrders">
-                                    <i class="bi bi-info-circle" style="height:20px;" fill="currentColor"></i>
+                                    <i class="bi bi-card-checklist" style="height:20px;" fill="currentColor"></i>
                                     Zamówienia
                                 </a>
                             </li>
@@ -138,7 +138,7 @@ showOrders"
                                 <a class="nav-link d-flex align-items-center gap-2" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
 showUsers"
                                     id="showUsers">
-                                    <i class="bi bi-person-circle" style="height:20px;" fill="currentColor"></i>
+                                    <i class="bi bi-person" style="height:20px;" fill="currentColor"></i>
                                     Użytkownicy
                                 </a>
                             </li>
@@ -214,7 +214,8 @@ showUsers"
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
+                                    <a class="nav-link d-flex align-items-center gap-2" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+editContact">
                                         <svg class="bi">
                                             <use xlink:href="#file-earmark-text" />
                                         </svg>
@@ -345,9 +346,9 @@ $_smarty_tpl->tpl_vars['msg']->do_else = false;
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                 
-                <div id="content-block" class="col-md-9 ms-sm-auto col-lg-10 px-4">
+                <div id="content-block" class="col-md-9 ms-sm-auto col-lg-12 px-4">
                     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_159821641967238280694835_87818969', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_476702977672ccd5120f884_43754905', 'content');
 ?>
 
                 </div>
@@ -475,12 +476,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_159821641967238280
 
 </html><?php }
 /* {block 'content'} */
-class Block_159821641967238280694835_87818969 extends Smarty_Internal_Block
+class Block_476702977672ccd5120f884_43754905 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_159821641967238280694835_87818969',
+    0 => 'Block_476702977672ccd5120f884_43754905',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

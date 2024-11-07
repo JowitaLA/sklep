@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-10-23 00:16:17
+/* Smarty version 4.3.4, created on 2024-11-05 13:30:10
   from 'C:\xampp\htdocs\Sklep\app\views\MainView.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_67182431223885_85951433',
+  'unifunc' => 'content_672a0fd2611952_86186938',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ca7e89cbdf63c3bf3d48a4beeefe85059a5ce279' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Sklep\\app\\views\\MainView.tpl',
-      1 => 1729635355,
+      1 => 1730809734,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67182431223885_85951433 (Smarty_Internal_Template $_smarty_tpl) {
+function content_672a0fd2611952_86186938 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
@@ -28,16 +28,16 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_15639224776718243120a977_10144462', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_616077691672a0fd25fa896_05150837', 'content');
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, "templates/main.tpl");
 }
 /* {block 'content'} */
-class Block_15639224776718243120a977_10144462 extends Smarty_Internal_Block
+class Block_616077691672a0fd25fa896_05150837 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_15639224776718243120a977_10144462',
+    0 => 'Block_616077691672a0fd25fa896_05150837',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -142,12 +142,11 @@ if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['p']->value) {
 $_smarty_tpl->tpl_vars['p']->do_else = false;
 ?>
                <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
-/productDetails?product=<?php echo $_smarty_tpl->tpl_vars['p']->value["url"];?>
+/productDetails?product=<?php echo $_smarty_tpl->tpl_vars['p']->value['url'];?>
 " class="col-md-3 mb-4">
                   <div class="product-card bg-body-tertiary">
-                     <img src="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
-/assets/img/products/<?php echo $_smarty_tpl->tpl_vars['p']->value["url"];?>
-/1.jpg" alt="<?php echo $_smarty_tpl->tpl_vars['p']->value["name"];?>
+                  <img src="<?php echo $_smarty_tpl->tpl_vars['p']->value['image_url'];?>
+" alt="<?php echo $_smarty_tpl->tpl_vars['p']->value['name'];?>
 " class="img-fluid">
                      <h3 class="mt-3"><?php echo $_smarty_tpl->tpl_vars['p']->value["name"];?>
 </h3>
@@ -157,7 +156,8 @@ $_smarty_tpl->tpl_vars['p']->do_else = false;
 echo $_smarty_tpl->tpl_vars['p']->value["price"];
 $_prefixVariable1 = ob_get_clean();
 echo smarty_modifier_number_format($_prefixVariable1,2,","," ");?>
-&nbsp;zł </p>
+&nbsp;zł
+                     </p>
                                        </div>
                </a>
             <?php

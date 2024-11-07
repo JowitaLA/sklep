@@ -52,7 +52,7 @@ class ProductDetailsCtrl
                 ':id_product' => $this->product['id_product']
             ];
 
-            $this->categories = App::getDB()->query($sql, $params);
+            $this->categories = App::getDB()->query($sql, $params)->fetchAll();
         } catch (PDOException $e) {
             App::getMessages()->addMessage(new \core\Message("Wystąpił błąd podczas pobierania danych produktu", \core\Message::ERROR));
         }
@@ -63,7 +63,6 @@ class ProductDetailsCtrl
 
     private function loadProductImages()
     {
-
         $imagesPath = "assets/img/products/{$this->url}/";  // Ścieżka do folderu ze zdjęciami
         if (is_dir($imagesPath)) {
             $this->images = array_filter(scandir($imagesPath), function ($file) use ($imagesPath) {

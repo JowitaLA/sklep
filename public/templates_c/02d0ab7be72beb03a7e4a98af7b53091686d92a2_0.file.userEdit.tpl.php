@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-10-30 01:31:31
+/* Smarty version 4.3.4, created on 2024-11-07 16:20:44
   from 'C:\xampp\htdocs\Sklep\app\views\management\userEdit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_67217e63681456_83099224',
+  'unifunc' => 'content_672cdacc97cdd1_66948727',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '02d0ab7be72beb03a7e4a98af7b53091686d92a2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Sklep\\app\\views\\management\\userEdit.tpl',
-      1 => 1730220023,
+      1 => 1730992840,
       2 => 'file',
     ),
   ),
@@ -20,23 +20,23 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67217e63681456_83099224 (Smarty_Internal_Template $_smarty_tpl) {
+function content_672cdacc97cdd1_66948727 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_91168790167217e636775a7_65142460', 'content');
-$_smarty_tpl->inheritance->endChild($_smarty_tpl, "templates/sign.tpl");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_830369303672cdacc973dd1_47285170', 'content');
+$_smarty_tpl->inheritance->endChild($_smarty_tpl, "templates/edit.tpl");
 }
 /* {block 'content'} */
-class Block_91168790167217e636775a7_65142460 extends Smarty_Internal_Block
+class Block_830369303672cdacc973dd1_47285170 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_91168790167217e636775a7_65142460',
+    0 => 'Block_830369303672cdacc973dd1_47285170',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -79,17 +79,17 @@ updateUser">
             <label for="login">Login</label>
         </div>
         <div class="form-floating">
-            <input type="email" class="form-control top-field" name="mail" id="mail" value="<?php echo $_smarty_tpl->tpl_vars['user']->value['mail'];?>
+            <input type="email" class="form-control middle-field" name="mail" id="mail" value="<?php echo $_smarty_tpl->tpl_vars['user']->value['mail'];?>
 ">
             <label for="mail">E-mail</label>
         </div>
         <div class="form-floating">
-            <input type="text" class="form-control top-field" name="name" id="name" value="<?php echo $_smarty_tpl->tpl_vars['user']->value['name'];?>
+            <input type="text" class="form-control middle-field" name="name" id="name" value="<?php echo $_smarty_tpl->tpl_vars['user']->value['name'];?>
 ">
             <label for="name">Imię</label>
         </div>
         <div class="form-floating">
-            <input type="text" class="form-control top-field" name="surname" id="surname" value="<?php echo $_smarty_tpl->tpl_vars['user']->value['surname'];?>
+            <input type="text" class="form-control down-field" name="surname" id="surname" value="<?php echo $_smarty_tpl->tpl_vars['user']->value['surname'];?>
 ">
             <label for="surname">Nazwisko</label>
         </div>

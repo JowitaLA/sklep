@@ -133,14 +133,17 @@
                         <!-- Opis produktu -->
                         <div class="mb-4">
                             <br>
-                            <h4>
-                                <span style="color: rgba(255, 136, 0, 0.5);">Kategorie:</span>
+                            <h4><b>
+                                Kategorie:</b>
                             </h4>
-                            <h5><span style="color: rgba(233, 125, 1, 0.7);">
-                            {foreach $categories as $category}
-                                {$category.name} 
-                            {/foreach}                            
-                            </span>
+                            <h5><i>
+                                    {if count($categories) == 0}
+                                        Brak kategorii dla tego produktu.
+                                    {else}
+                                        {foreach $categories as $category name=catLoop}
+                                            {$category.name}{if not $smarty.foreach.catLoop.last}, {/if}
+                                        {/foreach}
+                                    {/if} </i>
                             </h5>
                         </div>
                     </div>

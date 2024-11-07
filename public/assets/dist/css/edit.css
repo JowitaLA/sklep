@@ -39,6 +39,15 @@ select {
   height: 50px; /* Ustalona wysokość komórek */
 }
 
+.toolbar-subpage {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
 
 .toolbar .head {
   display: flex;
@@ -174,10 +183,10 @@ select {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-	grid-gap: 10px;
+	grid-gap: 5px;
 }
-.toolbar .btn-toolbar button {
 
+.toolbar .btn-toolbar button {
 	border-radius: 6px;
 	cursor: pointer;
 	width: 40px;
@@ -187,9 +196,11 @@ select {
 	justify-content: center;
 	font-size: 18px;
 }
+
 .toolbar .btn-toolbar button:hover {
   background-color: transparent;
 }
+
 #content {
 	padding: 16px;
 	outline: none;

@@ -32,15 +32,15 @@
             <label for="login">Login</label>
         </div>
         <div class="form-floating">
-            <input type="email" class="form-control top-field" name="mail" id="mail" value="{$user.mail}">
+            <input type="email" class="form-control middle-field" name="mail" id="mail" value="{$user.mail}">
             <label for="mail">E-mail</label>
         </div>
         <div class="form-floating">
-            <input type="text" class="form-control top-field" name="name" id="name" value="{$user.name}">
+            <input type="text" class="form-control middle-field" name="name" id="name" value="{$user.name}">
             <label for="name">Imię</label>
         </div>
         <div class="form-floating">
-            <input type="text" class="form-control top-field" name="surname" id="surname" value="{$user.surname}">
+            <input type="text" class="form-control down-field" name="surname" id="surname" value="{$user.surname}">
             <label for="surname">Nazwisko</label>
         </div>
         <button type="submit" class="btn btn-primary w-100 py-2 mt-4">Dodaj użytkownika</button>

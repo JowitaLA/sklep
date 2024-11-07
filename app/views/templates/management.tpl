@@ -74,28 +74,28 @@
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center gap-2"
                                     href="{$conf->action_url}managementMain" id="panel">
-                                    <i class="bi bi-info-circle" style="height:20px;" fill="currentColor"></i>
+                                    <i class="bi bi-house-door" style="height:20px;" fill="currentColor"></i>
                                     Panel
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center gap-2" href="{$conf->action_url}showProducts"
                                     id="showProducts">
-                                    <i class="bi bi-info-circle" style="height:20px;" fill="currentColor"></i>
+                                    <i class="bi bi-cart" style="height:20px;" fill="currentColor"></i>
                                     Produkty
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center gap-2" href="{$conf->action_url}showOrders"
                                     id="showOrders">
-                                    <i class="bi bi-info-circle" style="height:20px;" fill="currentColor"></i>
+                                    <i class="bi bi-card-checklist" style="height:20px;" fill="currentColor"></i>
                                     Zamówienia
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center gap-2" href="{$conf->action_url}showUsers"
                                     id="showUsers">
-                                    <i class="bi bi-person-circle" style="height:20px;" fill="currentColor"></i>
+                                    <i class="bi bi-person" style="height:20px;" fill="currentColor"></i>
                                     Użytkownicy
                                 </a>
                             </li>
@@ -171,7 +171,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
+                                    <a class="nav-link d-flex align-items-center gap-2" href="{$conf->action_url}editContact">
                                         <svg class="bi">
                                             <use xlink:href="#file-earmark-text" />
                                         </svg>
@@ -294,7 +294,7 @@
                     </div>
                 {/foreach}
                 
-                <div id="content-block" class="col-md-9 ms-sm-auto col-lg-10 px-4">
+                <div id="content-block" class="col-md-9 ms-sm-auto col-lg-12 px-4">
                     {block name=content}
                         Domyślna treść
                     {/block}

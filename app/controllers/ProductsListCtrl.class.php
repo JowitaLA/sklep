@@ -46,14 +46,17 @@ class ProductsListCtrl
         $this->categoriesList();    // Wywołanie funkcji categoriesList();
 
         /* Przygotowanie zmiennej zapytania */
-        $query = "SELECT products.* FROM products WHERE products.status='active' ";
+        $query = "SELECT products.* FROM products";
 
-        /* Sprawdzenie, czy jakaś kategoria została wybrana przez użytkownika (czy wartość z `choose_category` jest różna od 0) */
+        // Dodajemy `JOIN`, jeśli jest wybrana kategoria
         if (isset($this->searchProducts->c_id) && $this->searchProducts->c_id != 0) {
-            $categoryId = (int)$this->searchProducts->c_id;             // Rzutowanie na int dla bezpieczeństwa
+            $categoryId = (int)$this->searchProducts->c_id; // Rzutowanie na int dla bezpieczeństwa
             $query .= " JOIN categories_products ON products.id_product = categories_products.id_product
-                WHERE categories_products.id_category = $categoryId";   // Dodanie zmiennej do zapytania
+                WHERE categories_products.id_category = $categoryId";
+        } else {
+            $query .= " WHERE products.status='active'";
         }
+
 
         /* Wyszukiwanie po nazwie produktu */
         if (isset($this->searchProducts->p_name) && strlen($this->searchProducts->p_name) > 0) {

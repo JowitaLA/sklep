@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-10-31 17:47:43
+/* Smarty version 4.3.4, created on 2024-11-04 12:16:07
   from 'C:\xampp\htdocs\Sklep\app\views\management\productsList.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_6723b4afb8c150_78951866',
+  'unifunc' => 'content_6728acf718c326_42377670',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4606219e0800ab45ad0e8e5719a60e425795c8be' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Sklep\\app\\views\\management\\productsList.tpl',
-      1 => 1730393263,
+      1 => 1730718963,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6723b4afb8c150_78951866 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6728acf718c326_42377670 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_assignInScope('showInactive', true);?>
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -138,8 +138,8 @@ echo $_smarty_tpl->tpl_vars['product']->value['kto_stworzyl_produkt'];
                 </td>
                 <td>
                     <form action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
-editUser" method="post" style="display:inline;">
-                        <input type="hidden" name="idUser" value="<?php echo $_smarty_tpl->tpl_vars['product']->value['id_produktu'];?>
+editProduct" method="post" style="display:inline;">
+                        <input type="hidden" name="idProduct" value="<?php echo $_smarty_tpl->tpl_vars['product']->value['id_produktu'];?>
 ">
                         <button type="submit" class="btn btn-sm btn-outline-secondary">Edytuj</button>
                     </form>
