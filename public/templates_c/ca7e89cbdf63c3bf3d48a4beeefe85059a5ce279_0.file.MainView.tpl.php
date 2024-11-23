@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-11-05 13:30:10
+/* Smarty version 4.3.4, created on 2024-11-21 01:08:05
   from 'C:\xampp\htdocs\Sklep\app\views\MainView.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_672a0fd2611952_86186938',
+  'unifunc' => 'content_673e79e51b93a1_80237863',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ca7e89cbdf63c3bf3d48a4beeefe85059a5ce279' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Sklep\\app\\views\\MainView.tpl',
-      1 => 1730809734,
+      1 => 1732147289,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_672a0fd2611952_86186938 (Smarty_Internal_Template $_smarty_tpl) {
+function content_673e79e51b93a1_80237863 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
@@ -28,16 +28,16 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_616077691672a0fd25fa896_05150837', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_773457020673e79e519ea05_05476644', 'content');
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, "templates/main.tpl");
 }
 /* {block 'content'} */
-class Block_616077691672a0fd25fa896_05150837 extends Smarty_Internal_Block
+class Block_773457020673e79e519ea05_05476644 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_616077691672a0fd25fa896_05150837',
+    0 => 'Block_773457020673e79e519ea05_05476644',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -52,8 +52,8 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\xampp\\htdocs\\Sklep\\li
          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
       </div>
-      <div class="carousel-inner" style="background: linear-gradient(to right, #bb3e23 50%, #df8d00 50%);">
-         <div class="carousel-item active">
+      <div class="carousel-inner" style="background: linear-gradient(to right, #bb3e23 48%, #d96912 50%, #df8d00 52%);">
+      <div class="carousel-item active">
             <img src="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
 /assets/img/background/3.png" alt="Slide 1">
             <div class="container">
@@ -89,7 +89,8 @@ registerShow">Dołącz do nas już teraz</a>
                      że zakupy online są nie tylko wygodne, ale i bezpieczne, dlatego stale rozszerzamy nasz asortyment,
                      aby
                      zapewnić potrzebom każdego z Was.</p>
-                  <p><a class="btn btn-lg btn-primary" href="#">Czytaj więcej...</a></p>
+                  <p><a class="btn btn-lg btn-primary" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+about">Czytaj więcej...</a></p>
                </div>
             </div>
          </div>

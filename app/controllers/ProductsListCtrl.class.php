@@ -40,6 +40,36 @@ class ProductsListCtrl
         App::getSmarty()->assign('categories', $this->categories);  // Pobranie listy rekordów z tabeli `categories` w Bazie Danych
     }
 
+    private function mini_cart()
+    {
+        // Sprawdź, czy koszyk istnieje w sesji
+        if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+            // Tablica do przechowywania danych produktów
+            $productsInfo = [];
+
+            // Iteracja po productID w koszyku
+            foreach ($_SESSION['cart'] as $productID => $quantity) {
+                // Pobierz dane produktu na podstawie productID (może to być zapytanie do bazy danych)
+                $product = App::getDB()->get("products", ["id_product","amount","url","name","price"], ["id_product" => $productID]);
+
+                // Jeśli produkt został znaleziony, dodaj go do tablicy
+                if ($product) {
+                    $productsInfo[$product['id_product']] = [
+                        'url' => $product['url'],
+                        'name' => $product['name'],
+                        'amount' => $product['amount'],
+                        'price' => $product['price'],
+                        'quantity' => $quantity // Dodajemy ilość z koszyka
+                    ];
+                }
+            }
+
+            return $productsInfo;
+        }
+
+        return []; // Zwróć pustą tablicę, jeśli koszyk jest pusty
+    }
+
     public function action_searchProducts()
     {
         $this->validate();          // Wywołanie funkcji validate();
@@ -81,12 +111,15 @@ class ProductsListCtrl
 
     public function generateView()
     {
+        $miniCart = $this->mini_cart();
+
         App::getSmarty()->assign('categories', $this->categories);  // lista rekordów z bazy danych
         App::getSmarty()->assign('searchForm', $this->searchProducts); // dane formularza (wyszukiwania w tym wypadku)
         App::getSmarty()->assign('records',    $this->records); // dane formularza (wyszukiwania w tym wypadku)
         App::getSmarty()->assign('countProducts', count($this->records)); // dane formularza (wyszukiwania w tym wypadku)
         App::getSmarty()->assign('searchName', $this->searchProducts->p_name); // dane formularza (wyszukiwania w tym wypadku)
-
+        App::getSmarty()->assign('cart', $_SESSION['cart']);          // Lista rekordów z bazy danych
+        App::getSmarty()->assign('miniCart', $miniCart);          // Lista rekordów z bazy danych
         App::getSmarty()->display('ProductsListView.tpl');
     }
 }

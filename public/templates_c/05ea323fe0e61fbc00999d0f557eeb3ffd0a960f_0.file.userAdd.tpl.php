@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-10-31 17:57:14
+/* Smarty version 4.3.4, created on 2024-11-22 00:12:09
   from 'C:\xampp\htdocs\Sklep\app\views\management\userAdd.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_6723b6ea1d50f2_00909615',
+  'unifunc' => 'content_673fbe490391f0_37950978',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '05ea323fe0e61fbc00999d0f557eeb3ffd0a960f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Sklep\\app\\views\\management\\userAdd.tpl',
-      1 => 1730220018,
+      1 => 1732230726,
       2 => 'file',
     ),
   ),
@@ -20,23 +20,23 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6723b6ea1d50f2_00909615 (Smarty_Internal_Template $_smarty_tpl) {
+function content_673fbe490391f0_37950978 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_8225412426723b6ea1ceff7_58783073', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_471971694673fbe49033441_10308668', 'content');
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, "templates/sign.tpl");
 }
 /* {block 'content'} */
-class Block_8225412426723b6ea1ceff7_58783073 extends Smarty_Internal_Block
+class Block_471971694673fbe49033441_10308668 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_8225412426723b6ea1ceff7_58783073',
+    0 => 'Block_471971694673fbe49033441_10308668',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -76,22 +76,22 @@ createUser">
         </div>
 
         <div class="form-floating">
-            <input type="text" class="form-control top-field" name="password" id="password" value="">
+            <input type="text" class="form-control middle-field" name="password" id="password" value="">
             <label for="login">Hasło</label>
         </div>
 
         <div class="form-floating">
-            <input type="email" class="form-control top-field" name="mail" id="mail" value="">
+            <input type="email" class="form-control middle-field" name="mail" id="mail" value="">
             <label for="mail">E-mail</label>
         </div>
 
         <div class="form-floating">
-            <input type="text" class="form-control top-field" name="name" id="name" value="">
+            <input type="text" class="form-control middle-field" name="name" id="name" value="">
             <label for="name">Imię</label>
         </div>
 
         <div class="form-floating">
-            <input type="text" class="form-control top-field" name="surname" id="surname" value="">
+            <input type="text" class="form-control down-field" name="surname" id="surname" value="">
             <label for="surname">Nazwisko</label>
         </div>
 

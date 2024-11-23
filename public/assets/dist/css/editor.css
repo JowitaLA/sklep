@@ -1,0 +1,307 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+html,
+body {
+  height: 100%;
+}
+
+/* Editor */
+
+a {
+  cursor: pointer;
+}
+
+select {
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  background-color: transparent; /* Tło transparentne */
+  padding: 6px 10px; /* Padding dla select */
+  outline: none; /* Bez obramowania przy focussie */
+}
+
+.toolbar {
+  padding: 16px;
+}
+
+.table {
+  table-layout: fixed; /* Ustalony układ tabeli */
+  width: 100%; /* Szerokość tabeli */
+}
+
+.table th,
+.table td {
+  overflow: hidden; /* Ukryj nadmiar tekstu */
+  text-overflow: ellipsis; /* Użyj wielokropka dla nadmiaru */
+  white-space: nowrap; /* Zatrzymaj łamanie wierszy */
+  width: 150px; /* Ustalona szerokość komórek */
+  height: 50px; /* Ustalona wysokość komórek */
+}
+
+.toolbar-subpage {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.toolbar .head {
+  display: flex;
+  grid-gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.toolbar .head > input {
+  background-color: transparent;
+  max-width: 100px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 2px solid #ddd;
+  outline: none;
+}
+
+.import-file {
+  display: none; /* Ukryj przycisk pliku */
+}
+
+.import-label {
+  display: inline-block;
+  padding: 6px 10px; /* Padding dla etykiety */
+  border: 2px solid #ddd; /* Stylizowanie etykiety jak input */
+  border-radius: 6px; /* Zaokrąglone rogi */
+  cursor: pointer; /* Wskaźnik ręki po najechaniu */
+  background-color: transparent; /* Tło transparentne */
+  transition: background-color 0.2s; /* Płynne przejście */
+}
+
+.import-label:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* Efekt hover */
+}
+
+.color {
+  display: flex;
+  align-items: center;
+  grid-gap: 6px;
+  padding: 0 10px;
+}
+
+.color input {
+  border: none;
+  padding: 0;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+}
+
+.crossed {
+  position: relative; /* Umożliwia pozycjonowanie pseudo-elementu */
+  display: inline-block; /* Umożliwia wyśrodkowanie linii */
+}
+
+.crossed {
+  position: relative; /* Umożliwia pozycjonowanie pseudo-elementu */
+  display: inline-block; /* Umożliwia wyśrodkowanie linii */
+}
+
+.crossed::after {
+  content: ''; /* Tworzy pseudo-element */
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 45%; /* Pozycjonowanie linii w poziomie */
+  height: 1.5px; /* Grubość linii */
+  background-color: currentColor; /* Kolor linii zgodny z kolorem tekstu */
+  transform: translateY(-50%) rotate(60deg); /* Wyrównanie do środka ikony i kąt 15 stopni */
+}
+
+.toolbar {
+	padding: 16px;
+}
+.toolbar .head {
+	display: flex;
+	grid-gap: 10px;
+	margin-bottom: 16px;
+	flex-wrap: wrap;
+}
+.toolbar .head > input {
+  background-color: transparent;
+
+	max-width: 100px;
+	padding: 6px 10px;
+	border-radius: 6px;
+	border: 2px solid #ddd;
+	outline: none;
+}
+.toolbar .head select {
+	background: rgb(0, 0, 0,0.5);
+  background-color: transparent;
+	border-radius: 6px;
+	outline: none;
+	cursor: pointer;
+}
+
+.toolbar .head option {
+  background-color: rgb(0, 0, 0,0.5);
+	border-radius: 6px;
+	outline: none;
+	cursor: pointer;
+}
+
+.toolbar .head .color {
+  background-color: transparent;
+	border-radius: 6px;
+	outline: none;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	grid-gap: 6px;
+	padding: 0 10px;
+}
+.toolbar .head .color span {
+	font-size: 14px;
+}
+.toolbar .head .color input {
+	border: none;
+	padding: 0;
+	width: 26px;
+	height: 26px;
+	cursor: pointer;
+}
+.toolbar .head .color input::-moz-color-swatch {
+	width: 20px;
+	height: 20px;
+	border: none;
+
+	border-radius: 50%;
+}
+.toolbar .btn-toolbar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	grid-gap: 5px;
+}
+
+.toolbar .btn-toolbar button {
+	border-radius: 6px;
+	cursor: pointer;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 18px;
+}
+
+.toolbar .btn-toolbar button:hover {
+  background-color: transparent;
+}
+
+#content {
+	padding: 16px;
+	outline: none;
+	max-height: 50vh;
+	overflow: auto;
+}
+#show-code[data-active="true"] {
+  background-color: transparent;
+}
+
+/* Zmieniamy obramowanie i cień na pomarańczowy, gdy pole jest zaznaczone */
+.form-control:focus {
+  border-color:  rgba(233, 125, 1, 1); /* Pomarańczowy kolor obramowania */
+  box-shadow: 0 0 0 0.10rem rgba(255, 136, 0, 0.5); /* Pomarańczowy cień */
+  outline: none; /* Usuwa domyślny outline */
+}
+
+/* Zmiana koloru zaznaczonego tekstu w całej stronie */
+::selection {
+  background-color:  rgba(233, 125, 1, 0.8); /* Pomarańczowe tło */
+  color: white; /* Kolor tekstu */
+}
+
+/* Dla Firefoxa */
+::-moz-selection {
+  background-color:  rgba(233, 125, 1, 0.8); /* Pomarańczowe tło */
+  color: white; /* Kolor tekstu */
+}
+
+.form-sign {
+  max-width: 80%;
+  padding: 1rem;
+}
+
+.form-sign .top-field {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-sign .top-left-field {
+  margin-bottom: -1px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-sign .top-right-field {
+  margin-bottom: -1px;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-sign .top-mid-field {
+  margin-bottom: -1px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-sign .middle-field {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-sign .down-field {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.form-sign .solo-field {
+  margin-bottom: 10px;
+}
+
+.form-sign .form-floating:focus-within {
+  z-index: 2;
+}
+
+.no-underline {
+  text-decoration: none;
+  color: inherit; /* lub możesz ustawić na konkretny kolor, np. black */
+}
+
+.color-orange {
+  text-decoration: none;
+  color: rgba(233, 125, 1, 0.904); /* lub możesz ustawić na konkretny kolor, np. black */
+}
+
+.edit {
+    display: flex;
+    justify-content: center;
+    /* Wyśrodkowanie w poziomie */
+    align-items: center;
+    /* Wyśrodkowanie w pionie */
+    gap: 10px;
+    /* Opcjonalnie: odstęp między elementami */
+}
+
+.color {
+    display: flex;
+    align-items: center;
+}

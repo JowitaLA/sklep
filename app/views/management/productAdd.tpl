@@ -35,7 +35,7 @@
                 <!-- Trzy kolumny o szerokości 4 -->
                 <div class="form-floating">
                     <input type="text" class="form-control top-mid-field" name="price" id="price" value="">
-                    <label for="price">Cena</label>
+                    <label for="price">Cena (zł.gr)</label>
                 </div>
             </div>
 

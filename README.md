@@ -116,25 +116,22 @@ Lista z danymi podstronami oraz tym, co powinno się w nich znajdować
 
 ### Strona główna
 - [x] Utworzenie pliku main.html
-- [] Dodanie interaktywnych paneli:
+- [x] Dodanie interaktywnych paneli:
     - [x] Panele same się mają po czasie przesuwać
     - [x] Mają wyświetlać się strzałki dzięki którym użytkownik może przesunąć między sobą panele
     - W dostępnych panelach:
         - [x] Utworzenie panelu `Gwarancja niskich cen`
         - [x] Utworzenie opisu panelu `Gwarancji niskich cen`
         - [x] Utworzenie interaktywnego przycisku `Dołącz do nas już teraz` dla panelu `Gwarancja niskich cen`
-        - [s] Po naciśnięciu przycisku z panelu `Gwarancja niskich cen`, użytkownik powinien być przeniesiony na podstronę `Rejestracja`
+        - [x] Po naciśnięciu przycisku z panelu `Gwarancja niskich cen`, użytkownik powinien być przeniesiony na podstronę `Rejestracja`
         - [x] Utworzenie panelu `Nie wiesz co kupić`
         - [x] Utworzenie opisu panelu `Nie wiesz co kupić`
         - [x] Utworzenie interaktywnego przycisku `Nasze Kategorie` dla panelu `Nie wiesz co kupić`
-        - [ ] Po naciśnięciu przycisku z panelu `Nie wiesz co kupić`, użytkownik powinien być przeniesiony na podstronę `Kategorie`
+        - [x] Po naciśnięciu przycisku z panelu `Nie wiesz co kupić`, użytkownik powinien być przeniesiony na podstronę `Kategorie`
         - [x] Utworzenie panelu `O nas`
         - [x] Utworzenie opisu panelu `O nas`
         - [x] Utworzenie interaktywnego przycisku `Czytaj więcej...` dla panelu `O nas`
-        - [ ] Po naciśnięciu przycisku z panelu `O nas`, użytkownik powinien być przeniesiony na podstronę `O nas`
-- [ ] Dodanie `Nasze Kategorie`
-    - [ ] Wygenerowanie interaktywnych ikon i nazw na podstawie `icon` i `title` z tabeli `categories` z Bazy Danych
-    - [ ] Po naciśnięciu ikon, użytkownik przenoszony jest na podstronę z produktami, z danej kategorii (podstronę `Produkty`)
+        - [x] Po naciśnięciu przycisku z panelu `O nas`, użytkownik powinien być przeniesiony na podstronę `O nas`
 - [x] Dodanie `Ostatnio Dodane Produkty`
     - [x] Wygenerowanie 12 ostatnio dodanych produktów na podstawie `created_at` z tabeli `products` z Bazy Danych
     - [x] Po naciśnięciu produktu, otwiera się podstrona z danym produktem
@@ -175,44 +172,38 @@ Lista z danymi podstronami oraz tym, co powinno się w nich znajdować
 - [x] Dodanie alertów (Np. Źle wpisane hasło bądź zajęty login)
 
 ### Zarządzanie
-- [ ] Utworzenie pliku management.html
-- [ ] Utworzenie listy użytkowników 
-- [ ] Dodanie możliwości edycji użytkowników
-- [ ] Utworzenie listy kategorii
-- [ ] Dodanie możliwości edycji kategorii
-- [ ] Utworzenie listy produktów
-- [ ] Dodanie możliwości edycji produktów
+- [x] Utworzenie pliku management.html
+- [x] Utworzenie listy użytkowników 
+- [x] Dodanie możliwości edycji użytkowników
+- [x] Utworzenie listy kategorii
+- [x] Dodanie możliwości edycji kategorii
+- [x] Utworzenie listy produktów
+- [x] Dodanie możliwości edycji produktów
 
 ### Lista Produktów
 - [x] Dodanie pliku products_list.html
 - [x] Wygenerowanie produktów z tego, co podał użytkownik: z nazwy, kategorii bądź daty
 - [ ] Dodanie stronnicowania (maksymalna ilość produktów np. 28 na stronę)
 
-### Kategorie
-- [ ] Dodanie pliku categories.html
-- [ ] Wyświetlenie wszystkich kategorii z tabeli `categories` z Bazy Danych
-- [ ] Wyświetlenie ich wszystkich tytułów i opisów
-- [ ] Dodanie do każdej kategorii interakcji, przenoszącej do wszystkich przedmiotów, które posiadają kategorię wybraną przez użytkownika
-
 ### Produkty
 - [x] Utworzenie pliku product.html
 - [x] Wygenerowanie tytułu produktu
 - [x] Wygenerowanie zdjęcia produktu
 - [x] Wygenerowanie opisu produktu
-- [ ] Dodanie przycisku `Kup`/`Dodaj do koszyka`
+- [x] Dodanie przycisku `Kup`/`Dodaj do koszyka`
 - [ ] Dodanie możliwości opini
-- [ ] Dodanie produktu do koszyka użytkownika po naciśnięciu przycisku `Kup`/`Dodaj do koszyka`
+- [x] Dodanie produktu do koszyka użytkownika po naciśnięciu przycisku `Kup`/`Dodaj do koszyka`
 
 ### Koszyk
-- [ ] Utworzenie pliku basket.html
+- [x] Utworzenie pliku basket.html
 - Gdy użytkownik dodał jakiś produkt do koszyka:
-- [ ] Wygenerowanie wszystkich produktów dodanych przez użytkownika
+- [x] Wygenerowanie wszystkich produktów dodanych przez użytkownika
 - [ ] Dodanie miejsca do wpisania kodu
 - [ ] Sprawdzenie kodu wpisanego przez użytkownika z tabelą `codes` w Bazie Danych
 - [ ] Dodanie alertów (np. z wpisaniem błędnego kodu)
-- [ ] Dodanie na dole przycisku `Przejdź do płatności`
+- [x] Dodanie na dole przycisku `Przejdź do płatności`
 - Gdy użytkownik nie dodał produktu:
-- [ ] Wyświetlenie wiadomości `Nie posiadasz żadnych produktów w koszyku`
+- [x] Wyświetlenie wiadomości `Nie posiadasz żadnych produktów w koszyku`
 
 ### Historia Zamówień
 - [ ] Utworzenie pliku history_orders.html
@@ -231,42 +222,24 @@ Lista z danymi podstronami oraz tym, co powinno się w nich znajdować
     - [ ] zmiana statusu historii zamówień
 - [ ] Dodanie przycisku `Wróć do strony głównej`, dzięki któremu użytkownik wróci na podstronę `Strona Główna`
 
-### O Nas
-- [ ] Utworzenie pliku about.html
-- [ ] Stworzenie wielkiego tytułu strony `O nas`
-- [ ] Stworzenie opisu związanego z informacją na temat firmy
-
-### Kontakt
-- [ ] Utworzenie pliku contact.html
-- [ ] Stworzenie wielkiego tytułu strony `Kontakt`
-- [ ] Stworzenie opisu związanego z Kontaktem ze stroną i pracownikami strony
-
-### Dostawy
-- [ ] Utworzenie pliku delivery.html
-- [ ] Stworzenie wielkiego tytułu strony `Dostawy`
-- [ ] Stworzenie opisu związanego z informacją na temat Dostaw
-
-### Regulamin
-- [ ] Utworzenie pliku statute.html
-- [ ] Stworzenie wielkiego tytułu strony `Regulamin Sklepu`
-- [ ] Stworzenie podpunktów regulaminu
-
-### Polityka Prywatności
-- [ ] Utworzenie pliku privacy_policy.html
-- [ ] Stworzenie wielkiego tytułu strony `Polityka Prywatności`
-- [ ] Stworzenie opisu związanego z Polityką Prywatności i ciasteczkami (jeżeli są)
-
-### Zwroty i Reklamacje
-- [ ] Utworzenie pliku returns_and_complaints.html
-- [ ] Stworzenie wielkiego tytułu strony `Zwroty i Reklamacje`
-- [ ] Stworzenie opisu związanego z informacją na temat Zwrotów i Reklamacji
+### Podwstrony
+- [x] Utworzenie pliku subage.html
+- [x] Stworzenie tytułu strony
+- [x] Stworzenie opisu związanego z informacją na temat firmy
 
 ## Do poprawy/dodania
-- [ ] Dodanie kodowania haseł
+- [x] Dodanie kodowania haseł
 - [ ] Dodanie opinii dla ProductDetails
-- [ ] Dodanie odpcji działającego ,,Zapomniałem hasła", które będzie tworzyć token, wysyłanego na maila do zmiany hasła
-- [ ] W polu do wyszukwiania, dodać możliwość sprawdzania nie tylko po tytule, ale również po opisie produktu
+- [-] Dodanie opcji działającego ,,Zapomniałem hasła", które będzie tworzyć token, wysyłanego na maila do zmiany hasła
 - [ ] Dodać listę kategorii dla każdego produktu
-- [ ] W `searchProducts` dodać możliwość sortowania po cenach, popularności oraz ocenach, 
-- [ ] W `searchProducts` dodać filtr tylko -> pokazania produktów od 5,4,3,2 bądź 1 gwiazdki
+- [-] W `searchProducts` dodać możliwość sortowania po cenach, popularności oraz ocenach, 
+- [-] W `searchProducts` dodać filtr tylko -> pokazania produktów od 5,4,3,2 bądź 1 gwiazdki
 - [ ] Dodanie usuwania tokenów po dniu nie użycia go
+- [-] Stronnicowanie 
+- [ ] Dodanie że nie wyśwetla produktów gdy jest ich 0 i zmiana statusu na nieaktywny
+- [ ] Newsletter i Feedback
+- [ ] Dodanie płatności
+- [ ] Dodanie wyboru sposobu dostawy
+- [ ] Dodanie kodów
+- [ ] Dodanie Listy życzeń (a potem opcji do dodania do koszyka + detale produktów)
+- [-] Dodanie możliwości resetu hasła w management

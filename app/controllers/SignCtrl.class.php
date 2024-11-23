@@ -80,7 +80,9 @@ class SignCtrl
 			"login" => $this->login->login
 		]);
 
-		if ($this->login->pass == $this->password) {
+
+
+		if (password_verify($this->login->pass, $this->password)) {
 			$this->idUser = App::getDB()->get("users", "id_user", [
 				"login" => $this->login->login
 			]);
@@ -93,53 +95,53 @@ class SignCtrl
 				"id_rang" => $this->role
 			]);
 
-		//sprawdzenie czy status jest `active`, jeżeli nie, wysłanie ponowne wiadomości i poinformowanie użytkownika
-		$this->status = App::getDB()->get("users", "status", [
-			"id_user" => $this->idUser
-		]);
-
-		if ($this->status != "active") {
-			$mail = App::getDB()->get("users", "mail", [
+			//sprawdzenie czy status jest `active`, jeżeli nie, wysłanie ponowne wiadomości i poinformowanie użytkownika
+			$this->status = App::getDB()->get("users", "status", [
 				"id_user" => $this->idUser
 			]);
-			echo "<script>console.log('Użytkownik jest nieaktywny');</script>";
 
-			if ($mail) {
-				// Pobranie wszystkich tokenów dla tego użytkownika
-				
-				echo "<script>console.log('Pobieranie tokenów');</script>";
-				$tokens = App::getDB()->select("tokens", [
-					"token_value"
-				], [
+			if ($this->status != "active") {
+				$mail = App::getDB()->get("users", "mail", [
 					"id_user" => $this->idUser
 				]);
+				echo "<script>console.log('Użytkownik jest nieaktywny');</script>";
 
+				if ($mail) {
+					// Pobranie wszystkich tokenów dla tego użytkownika
 
-				// Usuń wszystkie tokeny użytkownika
-				if ($tokens) {
-					echo "<script>console.log('Usuwanie tokenów użytkownika');</script>";
-					App::getDB()->delete("tokens", [
+					echo "<script>console.log('Pobieranie tokenów');</script>";
+					$tokens = App::getDB()->select("tokens", [
+						"token_value"
+					], [
 						"id_user" => $this->idUser
 					]);
+
+
+					// Usuń wszystkie tokeny użytkownika
+					if ($tokens) {
+						echo "<script>console.log('Usuwanie tokenów użytkownika');</script>";
+						App::getDB()->delete("tokens", [
+							"id_user" => $this->idUser
+						]);
+					}
+
+					echo "<script>console.log('Generowanie nowego tokena dla ',$this->idUser);</script>";
+					// Wygeneruj nowy token
+					$this->generate_token('verify');
+					$this->mail->addAddress(
+						App::getDB()->get("users", "mail", [
+							"id_user" => $this->idUser
+						])
+					);  // Dodano odbiorce do maila
+					$this->mail->Body = 'Kliknij w poniższy link, aby zweryfikować swój adres e-mail: <a href="' . $this->verificationLink . '">Potwierdź rejestrację</a>.';
+					$this->send_mail();
 				}
-
-				echo "<script>console.log('Generowanie nowego tokena dla ',$this->idUser);</script>";
-				// Wygeneruj nowy token
-				$this->generate_token();
-				$this->mail->addAddress(
-					App::getDB()->get("users", "mail", [
-						"id_user" => $this->idUser
-					])
-				);  // Dodano odbiorce do maila
-				$this->mail->Body = 'Kliknij w poniższy link, aby zweryfikować swój adres e-mail: <a href="' . $this->verificationLink . '">Potwierdź rejestrację</a>.';
-				$this->send_mail();
+				App::getMessages()->addMessage(new \core\Message("Twoje konto nie jest aktywne bądź zostało usunięte. Wysłaliśmy do Ciebie maila, w celu aktywacji bądź odzyskania konta.", \core\Message::ERROR));
 			}
-			App::getMessages()->addMessage(new \core\Message("Twoje konto nie jest aktywne bądź zostało usunięte. Wysłaliśmy do Ciebie maila, w celu aktywacji bądź odzyskania konta.", \core\Message::ERROR));
-		}
 
-		if (App::getMessages()->isError()) return false;
-		if ($this->role == "user" && (empty($tokens))) RoleUtils::addRole("sklep");
-		if ($this->role == "owner" && (empty($tokens))) RoleUtils::addRole("zarządzanie");
+			if (App::getMessages()->isError()) return false;
+			if ($this->role == "user" && (empty($tokens))) RoleUtils::addRole("sklep");
+			if ($this->role == "owner" && (empty($tokens))) RoleUtils::addRole("zarządzanie");
 		} else {
 			App::getMessages()->addMessage(new \core\Message("Niepoprawny login lub hasło", \core\Message::ERROR));
 		}
@@ -158,23 +160,19 @@ class SignCtrl
 	public function action_register()
 	{
 		if ($this->validate_register()) {
+			$hashedPassword = password_hash($this->register->first_password, PASSWORD_BCRYPT);
 			App::getDB()->insert("users", [
 				"login" => $this->register->register,
-				"password" => $this->register->first_password,
+				"password" => $hashedPassword,
 				"mail" => $this->register->email,
 				"status" => "inactive"
 			]);
 
 			$this->idUser = App::getDB()->id();
 
-			App::getDB()->insert("users_rangs", [
-				"id_user" => $this->idUser,
-				"id_rang" => "6",
-			]);
-
-			$this->generate_token();
+			$this->generate_token('verify');
 			$this->mail->addAddress($this->register->email);  // Dodano odbiorce do maila
-			$this->mail->Body = 'Kliknij w poniższy link, aby zweryfikować swój adres e-mail: <a href="' . $this->verificationLink . '">Potwierdź rejestrację</a>.';
+			$this->mail->Body = 'Kliknij w link, aby zweryfikować swój adres e-mail: <a href="' . $this->verificationLink . '">Potwierdź rejestrację</a>.';
 			$this->send_mail();
 
 			//dodany do BD => przekieruj na ekran z logowaniem
@@ -195,7 +193,6 @@ class SignCtrl
 		$this->register->second_password 	= ParamUtils::getFromRequest('r_second_password');
 		$this->register->terms_accepted 	= ParamUtils::getFromRequest('terms_accepted');
 
-
 		//nie ma sensu walidować dalej, gdy brak parametrów
 		if (!isset($this->register->register)) {
 			App::getMessages()->addMessage(new \core\Message("Brak parametrów", \core\Message::WARNING));
@@ -206,6 +203,7 @@ class SignCtrl
 		if (empty($this->register->register)) {
 			App::getMessages()->addMessage(new \core\Message("Nie podano nazwy użytkownika", \core\Message::WARNING));
 		}
+
 		if (empty($this->register->email)) {
 			App::getMessages()->addMessage(new \core\Message("Nie podano e-maila", \core\Message::WARNING));
 		}
@@ -277,37 +275,77 @@ class SignCtrl
 	{
 		App::getSmarty()->assign("title", "Rejestracja");
 		App::getSmarty()->assign("button_title", "Zarejestruj się");
+		App::getSmarty()->display("SignView.tpl");
+	}
+
+	public function action_resetPass()
+	{
+		$email = ParamUtils::getFromRequest('email');
+		$validateEmail = App::getDB()->has("users", [
+			"mail" => $email
+		]);
+
+		if ($validateEmail) {
+			$this->idUser = App::getDB()->get("users", "id_user", ["mail" => $email]);
+			$this->generate_token('resetPassword');
+
+			$this->mail->addAddress($email);  // Dodano odbiorce do maila
+			$this->mail->Body = 'Kliknij w link, aby zresetować swoje hasło: <a href="' . $this->verificationLink . '">Zresetuj Hasło</a>.';
+			$this->send_mail();
+
+			App::getMessages()->addMessage(new \core\Message("Prośba o zresetowanie hasła przebiegła pomyślnie. Zresetuj je klikając w link wysłany emailem", \core\Message::INFO));
+			$this->action_loginShow();
+		} else {
+			App::getMessages()->addMessage(new \core\Message("Osoba o takim mailu nie istnieje.", \core\Message::INFO));
+			$this->action_resetPassShow();
+		}
+	}
+
+	public function action_resetPassShow()
+	{
+		App::getSmarty()->assign("title", "Nie pamiętasz hasła?");
+		App::getSmarty()->assign("button_title", "Wyślij link do zresetowania hasła");
 
 		App::getSmarty()->display("SignView.tpl");
 	}
 
-	public function action_resetPassword()
-	{
-		// reset hasła
-	}
-
-	public function action_resetPasswordShow()
-	{
-		App::getSmarty()->assign("title", "Resetuj Hasło");
-		App::getSmarty()->assign("button_title", "Zresetuj Hasło");
-
-		App::getSmarty()->display("SignView.tpl");
-	}
-
-	public function generate_token()
+	public function generate_token($action)
 	{
 		do {
 			$token = bin2hex(random_bytes(32));  // Generowanie tokena
 			$isTokenUnique = !App::getDB()->has("tokens", ["token_value" => $token]);  // Sprawdzanie unikalności
 		} while (!$isTokenUnique);
-	
+
 		// Tworzenie linku do weryfikacji
-		$this->verificationLink = "http://localhost/sklep/public/verify?token=" . $token;
+		$this->verificationLink = "http://localhost/sklep/public/" . $action . "?token=" . $token;
 
 		App::getDB()->insert("tokens", [
 			"id_user" => $this->idUser,
 			"token_value" => $token,
 		]);
+	}
+
+	public function action_newPassword()
+	{
+		$idUser = $_POST['idUser'] ?? null;
+		$newPassword = ParamUtils::getFromRequest('password');
+		try {
+			$hashedPassword = password_hash($newPassword, PASSWORD_BCRYPT);
+			App::getDB()->update(
+				"users",
+				[
+					"password" => $hashedPassword,
+				],
+				[
+					"id_user" => $idUser,
+				]
+			);
+			App::getMessages()->addMessage(new \core\Message("Hasło zostało zmienione.", \core\Message::INFO));
+		} catch (Exception $e) {
+			App::getMessages()->addMessage(new \core\Message("Wystąpił błąd podczas zmiany hasła", \core\Message::ERROR));
+			echo "<script>console.log('Wystąpił błąd podczas zmiany hasła. Błąd: {$this->mail->ErrorInfo}');</script>";
+		}
+		$this->action_loginShow();
 	}
 
 	public function send_mail()
@@ -331,11 +369,10 @@ class SignCtrl
 
 			// Treść wiadomości
 			$this->mail->isHTML(true);
-			$this->mail->Subject = 'Weryfikacja Sklep';
+			$this->mail->Subject = 'Yups';
 
 			// Wyślij wiadomość
 			$this->mail->send();
-			echo "<script>console.log('Wysłano wiadomość');</script>";
 		} catch (Exception $e) {
 			echo "<script>console.log('Nie udało się wysłać wiadomości. Błąd: {$this->mail->ErrorInfo}');</script>";
 		}

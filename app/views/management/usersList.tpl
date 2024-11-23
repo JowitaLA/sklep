@@ -68,7 +68,10 @@
                             <button type="submit" class="btn btn-sm btn-outline-secondary">Aktywuj</button>
                         </form>
                     {/if}
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Resetuj hasło</button>
+                    <form action="{$conf->action_url}resetPass" method="post" style="display:inline;">
+                        <input type="hidden" name="email" value="{$user.mail}">
+                        <button type="submit" class="btn btn-sm btn-outline-secondary">Resetuj hasło</button>
+                    </form>
                 </td>
             </tr>
         {/foreach}

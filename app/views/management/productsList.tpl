@@ -85,7 +85,8 @@
                 </td>
 
                 <td>{$product.ilosc_produktow}</td>
-                <td>{$product.cena_produktu}</td>
+                <td>{$product.cena_produktu|number_format:2:",":" "}&nbsp;zł
+                </td>
                 <td>{if $product.kto_stworzyl_produkt == ""}- {else}{$product.kto_stworzyl_produkt}{/if}</td>
                 <td>{$product.data_utworzenia_produktu}</td>
                 <td>

@@ -12,6 +12,10 @@ class MainCtrl
 
     public function action_main()
     {
+        if (!isset($_SESSION['cart'])) {
+            $_SESSION['cart'] = 0;
+        }
+
         // Pobranie rekordów z tabeli `categories`
         try {
             $this->categories = App::getDB()->select("categories", "*");
@@ -39,6 +43,36 @@ class MainCtrl
         $this->generateView();
     }
 
+    private function mini_cart()
+    {
+        // Sprawdź, czy koszyk istnieje w sesji
+        if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+            // Tablica do przechowywania danych produktów
+            $productsInfo = [];
+
+            // Iteracja po productID w koszyku
+            foreach ($_SESSION['cart'] as $productID => $quantity) {
+                // Pobierz dane produktu na podstawie productID (może to być zapytanie do bazy danych)
+                $product = App::getDB()->get("products", ["id_product","amount","url","name","price"], ["id_product" => $productID]);
+
+                // Jeśli produkt został znaleziony, dodaj go do tablicy
+                if ($product) {
+                    $productsInfo[$product['id_product']] = [
+                        'url' => $product['url'],
+                        'name' => $product['name'],
+                        'amount' => $product['amount'],
+                        'price' => $product['price'],
+                        'quantity' => $quantity // Dodajemy ilość z koszyka
+                    ];
+                }
+            }
+
+            return $productsInfo;
+        }
+
+        return []; // Zwróć pustą tablicę, jeśli koszyk jest pusty
+    }
+
     /**
      * Funkcja do sprawdzania dostępności pierwszego obrazu w różnych formatach.
      */
@@ -48,7 +82,7 @@ class MainCtrl
         $formats = ['jpg', 'png', 'gif']; // Dodaj inne formaty, które chcesz sprawdzić
         foreach ($formats as $format) {
             $imagePath = "assets/img/products/{$url}/1.{$format}";
-    
+
             if (is_file("$imagePath")) { // Sprawdza, czy plik istnieje
                 return "$imagePath"; // Zwraca pierwszą znalezioną wersję obrazu
             }
@@ -59,7 +93,10 @@ class MainCtrl
 
     public function generateView()
     {
+        $miniCart = $this->mini_cart();
         App::getSmarty()->assign('categories', $this->categories);          // Lista rekordów z bazy danych
+        App::getSmarty()->assign('cart', $_SESSION['cart']);          // Lista rekordów z bazy danych
+        App::getSmarty()->assign('miniCart', $miniCart);          // Lista rekordów z bazy danych
         App::getSmarty()->assign('last_products', $this->last_products);    // Lista rekordów z bazy danych
         App::getSmarty()->assign('page_title', 'Yups');                     // Tytuł strony ("Yups")
 

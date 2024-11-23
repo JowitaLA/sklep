@@ -57,11 +57,27 @@
                             <hr class="featurette-divider" style="height: 1px; margin: 10px 0;">
                         </div>
 
+
+
                         <!-- Cena produktu -->
                         <div class="link-body-emphasis mb-4">
-                            <h1 style="color:rgba(255, 136, 0, 0.7); ">{$product.price|number_format:2:",":" "}&nbsp;zł</h1>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h1 style="color:rgba(255, 136, 0, 0.7);">{$product.price|number_format:2:",":" "}&nbsp;zł
+                                </h1>
+                                {if count($conf->roles)>0}
+                                    <form action="{$conf->app_url}/addToWishlist" method="post" style="display:inline;">
+                                        <input type="hidden" name="idProduct" value="{$product.id_product}">
+                                        <input type="hidden" name="action" value='productDetails?product={$product.url}'>
+                                        <button type="submit" class="btn btn-sm btn-outline-secondary"
+                                            title="Dodaj do Listy Życzeń">
+                                            <i class="bi bi-bookmark-heart"></i>
+                                        </button>
+                                    </form>
+                                {/if}
+                            </div>
                             <h7><i>Cena zawiera podatek VAT</i></h7>
                         </div>
+
 
                         <hr class="featurette-divider" style="height: 1px; margin: 10px 0; margin-bottom: 20px;">
 
@@ -84,7 +100,8 @@
                                         <i class="bi bi-dash link-body-emphasis"></i>
                                     </div>
                                 </a>
-                                <span id="valueDisplay" class="mx-2 link-body-emphasis h5" style="margin-top: 10px">0</span>
+                                <span id="valueDisplay" name="value" class="mx-2 link-body-emphasis h5"
+                                    style="margin-top: 10px"></span>
                                 <a class="ring-item">
                                     <div onclick="updateValue(1)" class="ring bg-body-tertiary">
                                         <i class="bi bi-plus link-body-emphasis"></i>
@@ -92,29 +109,22 @@
                                 </a>
                             </div>
 
-                            <!-- Przycisk dodawania do koszyka -->
-                            {* <button class="btn btn-secondary w-100 mt-2 link-body-emphasis">
-                                Dodaj do koszyka
-                            </button>
-                            <br>
-                            <!-- Przycisk zakupu -->
-                            <button class="btn btn-primary w-100 mt-2 link-body-emphasis"
-                                style="background-color: var(--bs-secondary-color); border-color: black">
+                            <form method="POST" action="{$conf->action_url}addToCart">
+                                <input type="hidden" name="product_ID" value="{$product.id_product}">
+                                <input type="hidden" name="quantity" id="quantityInput"> <!-- Ukryte pole dla ilości -->
+
+                                <button type="submit" class="btn btn-secondary w-100 mt-3 link-body-emphasis"
+                                    style="background-color: rgba(233, 125, 1, 0.7); border-color: rgba(255, 136, 0, 0.5); color: black">
+                                    Dodaj do koszyka
+                                </button>
+                            </form>
+
+                            <a class="btn btn-primary w-100 mt-2 link-body-emphasis" href="{$conf->action_url}showCart"
+                                style="background-color: rgba(255, 136, 0, 0.5); border-color: rgba(233, 125, 1, 0.5); color: black">
+                                <input type="hidden" name="product_ID" value="{$product.id_product}">
+                                <input type="hidden" name="quantity" id="quantityInput">
                                 Kup teraz
-                            </button> *}
-
-                            <button class="btn btn-secondary w-100 mt-3 link-body-emphasis"
-                                style="background-color: rgba(233, 125, 1, 0.7); border-color: rgba(255, 136, 0, 0.5); color: black">
-
-                                Dodaj do koszyka
-                            </button>
-                            <br>
-                            <!-- Przycisk zakupu -->
-                            <button class="btn btn-primary w-100 mt-2 link-body-emphasis"
-                                style="background-color: rgba(255, 136, 0, 0.5); border-color: rgba(233, 125, 1, 0.5); color:black">
-                                Kup teraz
-                            </button>
-
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -132,15 +142,14 @@
                         </div>
                         <!-- Opis produktu -->
                         <div class="mb-4">
-                            <br>
-                            <h4><b>
-                                Kategorie:</b>
+                            <h4 style="font-weight: bold;">
+                                Kategorie:
                             </h4>
                             <h5><i>
-                                    {if count($categories) == 0}
+                                    {if count($product_categories) == 0}
                                         Brak kategorii dla tego produktu.
                                     {else}
-                                        {foreach $categories as $category name=catLoop}
+                                        {foreach $product_categories as $category name=catLoop}
                                             {$category.name}{if not $smarty.foreach.catLoop.last}, {/if}
                                         {/foreach}
                                     {/if} </i>
@@ -169,18 +178,42 @@
     </section>
 
     <script>
-        let vault = 0; // Początkowa wartość vault
+        let vault = 1; // Początkowa wartość vault
 
+        // Funkcja do aktualizacji wartości ilości w formularzu
+        function updateQuantityInput() {
+            const quantityInput = document.getElementById("quantityInput");
+            quantityInput.value = vault; // Przypisujemy wartość 'vault' do ukrytego pola quantityInput
+        }
+
+        // Funkcja do ustawiania początkowej wartości w elemencie span
+        function initializeValue() {
+            document.getElementById('valueDisplay').textContent = vault;
+            updateQuantityInput(); // Ustawiamy wartość również w ukrytym polu
+        }
+
+        // Funkcja do aktualizacji wartości ilości
         function updateValue(change) {
             vault += change;
+
             // Zapobiegamy, aby wartość nie była mniejsza niż 0
             if (vault < 0) {
                 vault = 0;
             }
-            if (vault > {$product.amount}) {
-            vault = 0;
+
+            // Zapobiegamy, aby wartość nie była większa niż dostępna ilość produktu
+            if (vault > 10) { // Możesz zmienić 10 na odpowiednią liczbę
+                vault = 10;
+            }
+
+            // Wyświetlanie zaktualizowanej wartości
+            document.getElementById('valueDisplay').textContent = vault;
+            updateQuantityInput(); // Zaktualizuj wartość również w ukrytym polu
         }
-        document.getElementById('valueDisplay').textContent = vault;
-        }
+
+        // Wywołanie funkcji initializeValue po załadowaniu strony, aby ustawić początkową wartość
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeValue();
+        });
     </script>
 {/block}

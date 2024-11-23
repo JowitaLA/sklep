@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-11-07 16:20:44
+/* Smarty version 4.3.4, created on 2024-11-22 00:05:26
   from 'C:\xampp\htdocs\Sklep\app\views\management\userEdit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_672cdacc97cdd1_66948727',
+  'unifunc' => 'content_673fbcb6d84ad8_98897047',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '02d0ab7be72beb03a7e4a98af7b53091686d92a2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Sklep\\app\\views\\management\\userEdit.tpl',
-      1 => 1730992840,
+      1 => 1731505465,
       2 => 'file',
     ),
   ),
@@ -20,23 +20,23 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_672cdacc97cdd1_66948727 (Smarty_Internal_Template $_smarty_tpl) {
+function content_673fbcb6d84ad8_98897047 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_830369303672cdacc973dd1_47285170', 'content');
-$_smarty_tpl->inheritance->endChild($_smarty_tpl, "templates/edit.tpl");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_30655779673fbcb6d78889_29476268', 'content');
+$_smarty_tpl->inheritance->endChild($_smarty_tpl, "templates/sign.tpl");
 }
 /* {block 'content'} */
-class Block_830369303672cdacc973dd1_47285170 extends Smarty_Internal_Block
+class Block_30655779673fbcb6d78889_29476268 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_830369303672cdacc973dd1_47285170',
+    0 => 'Block_30655779673fbcb6d78889_29476268',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -61,7 +61,7 @@ updateUser">
 
         <div class="d-flex justify-content-between align-items-center">
             <h1 class="h3 mb-3 fw-normal">
-                Dodaj użytkownika
+                Edytuj użytkownika
             </h1>
 
             <button id="theme-toggle-btn" class="btn nav-link me-2" type="button" aria-label="Zmień motyw"

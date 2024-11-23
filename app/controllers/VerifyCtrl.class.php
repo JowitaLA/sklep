@@ -13,11 +13,13 @@ class VerifyCtrl
     private $userToken;
     private $status;
     private $verify_message;
+    private $action;
 
     public function action_verify()
     {
         // Pobierz token z URL
         $this->token = ParamUtils::getFromGet('token');
+        $this->action = "Weryfikacja konta";
 
         if (!$this->token) {
             $this->verify_message = "Podano zły token.";
@@ -74,9 +76,36 @@ class VerifyCtrl
         return $this->generateView();
     }
 
+    public function action_resetPassword()
+    {
+        // Pobierz token z URL
+        $this->token = ParamUtils::getFromGet('token');
+        $this->action = "Resetowanie hasła";
+
+        if (!$this->token) {
+            $this->verify_message = "Podano zły token.";
+            return $this->generateView();
+        }
+
+        // Sprawdź czy token istnieje w bazie danych, jeżeli nie wyślij wiadomość, że token jest nieaktywny
+        $this->userToken = App::getDB()->get("tokens", "id_user", [
+            "token_value" => $this->token
+        ]);
+
+        if (empty($this->userToken)) {
+            $this->verify_message = "Token jest nieaktywny.";
+            return $this->generateView();
+        }
+
+        $this->verify_message = "Hasło";
+        return $this->generateView();
+    }
+
     public function generateView()
     {
         App::getSmarty()->assign('title', 'Yups');
+        App::getSmarty()->assign('action_title', $this->action);
+        App::getSmarty()->assign('idUser', $this->userToken);
         App::getSmarty()->assign('verify_message', $this->verify_message);
 
         App::getSmarty()->display('VerifyView.tpl');

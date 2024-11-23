@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-10-22 15:44:31
+/* Smarty version 4.3.4, created on 2024-11-21 12:40:10
   from 'C:\xampp\htdocs\Sklep\app\views\SignView.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_6717ac3f29d3e7_02817137',
+  'unifunc' => 'content_673f1c1ad25920_41444781',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f1b5a238da8f507f668bcd705929b911aa8155e6' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Sklep\\app\\views\\SignView.tpl',
-      1 => 1729604668,
+      1 => 1732189033,
       2 => 'file',
     ),
   ),
@@ -20,23 +20,23 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6717ac3f29d3e7_02817137 (Smarty_Internal_Template $_smarty_tpl) {
+function content_673f1c1ad25920_41444781 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1067244806717ac3f28bac9_51218576', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_596263237673f1c1ad10726_23385064', 'content');
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, "templates/sign.tpl");
 }
 /* {block 'content'} */
-class Block_1067244806717ac3f28bac9_51218576 extends Smarty_Internal_Block
+class Block_596263237673f1c1ad10726_23385064 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_1067244806717ac3f28bac9_51218576',
+    0 => 'Block_596263237673f1c1ad10726_23385064',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -103,7 +103,7 @@ registerShow" class="form-check-label no-underline">Nie masz jeszcze konta?
 
 				<div class="text-center my-3">
 					<a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
-resetPasswordShow" class="form-check-label no-underline">Nie pamiętasz hasła?</a>
+resetPassShow" class="form-check-label no-underline">Nie pamiętasz hasła?</a>
 				</div>
 
 				<!-- Przycisk submit, który wysyła formularz -->
@@ -182,8 +182,9 @@ loginShow" class="form-check-label no-underline">Masz już konto? Zaloguj się</
 			</form>
 		<?php }?>
 
-		<?php if ($_smarty_tpl->tpl_vars['title']->value == "Resetuj Hasło") {?>
-			<form>
+		<?php if ($_smarty_tpl->tpl_vars['title']->value == "Nie pamiętasz hasła?") {?>
+			<form method="post" action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+resetPass">
 				<a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
 /main" class="d-flex mb-4">
 					<!-- Dodany link do strony głównej -->
@@ -204,13 +205,13 @@ loginShow" class="form-check-label no-underline">Masz już konto? Zaloguj się</
 					</button>
 				</div>
 				<div class="form-floating">
-					<input type="email" class="form-control solo-field" id="email" placeholder="name@example.com">
+					<input type="email" class="form-control middle-field" name="email" id="email" placeholder="name@example.com">
 					<label for="email">E-mail</label>
 				</div>
 
 				<div class="text-center my-3">
 					<a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
-loginShow" class="form-check-label no-underline">Nie pamiętasz e-maila? Napisz do
+contact" class="form-check-label no-underline">Nie pamiętasz e-maila? Napisz do
 						nas!</a>
 				</div>
 				<button type="submit" class="btn btn-primary w-100 py-2"><?php echo $_smarty_tpl->tpl_vars['button_title']->value;?>

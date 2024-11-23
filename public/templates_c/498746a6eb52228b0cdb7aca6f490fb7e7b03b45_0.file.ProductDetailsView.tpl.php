@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-11-05 11:57:35
+/* Smarty version 4.3.4, created on 2024-11-21 14:25:41
   from 'C:\xampp\htdocs\Sklep\app\views\ProductDetailsView.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_6729fa1ff2bf98_42445383',
+  'unifunc' => 'content_673f34d5949790_84911856',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '498746a6eb52228b0cdb7aca6f490fb7e7b03b45' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Sklep\\app\\views\\ProductDetailsView.tpl',
-      1 => 1730804253,
+      1 => 1732195540,
       2 => 'file',
     ),
   ),
@@ -20,22 +20,22 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6729fa1ff2bf98_42445383 (Smarty_Internal_Template $_smarty_tpl) {
+function content_673f34d5949790_84911856 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_7470173766729fa1ff07fb1_78827247', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1368543410673f34d5921c79_15848328', 'content');
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, "templates/main.tpl");
 }
 /* {block 'content'} */
-class Block_7470173766729fa1ff07fb1_78827247 extends Smarty_Internal_Block
+class Block_1368543410673f34d5921c79_15848328 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_7470173766729fa1ff07fb1_78827247',
+    0 => 'Block_1368543410673f34d5921c79_15848328',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -130,12 +130,31 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                             <hr class="featurette-divider" style="height: 1px; margin: 10px 0;">
                         </div>
 
+
+
                         <!-- Cena produktu -->
                         <div class="link-body-emphasis mb-4">
-                            <h1 style="color:rgba(255, 136, 0, 0.7); "><?php echo smarty_modifier_number_format($_smarty_tpl->tpl_vars['product']->value['price'],2,","," ");?>
-&nbsp;zł</h1>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h1 style="color:rgba(255, 136, 0, 0.7);"><?php echo smarty_modifier_number_format($_smarty_tpl->tpl_vars['product']->value['price'],2,","," ");?>
+&nbsp;zł
+                                </h1>
+                                <?php if (count($_smarty_tpl->tpl_vars['conf']->value->roles) > 0) {?>
+                                    <form action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
+/addToWishlist" method="post" style="display:inline;">
+                                        <input type="hidden" name="idProduct" value="<?php echo $_smarty_tpl->tpl_vars['product']->value['id_product'];?>
+">
+                                        <input type="hidden" name="action" value='productDetails?product=<?php echo $_smarty_tpl->tpl_vars['product']->value['url'];?>
+'>
+                                        <button type="submit" class="btn btn-sm btn-outline-secondary"
+                                            title="Dodaj do Listy Życzeń">
+                                            <i class="bi bi-bookmark-heart"></i>
+                                        </button>
+                                    </form>
+                                <?php }?>
+                            </div>
                             <h7><i>Cena zawiera podatek VAT</i></h7>
                         </div>
+
 
                         <hr class="featurette-divider" style="height: 1px; margin: 10px 0; margin-bottom: 20px;">
 
@@ -159,7 +178,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                         <i class="bi bi-dash link-body-emphasis"></i>
                                     </div>
                                 </a>
-                                <span id="valueDisplay" class="mx-2 link-body-emphasis h5" style="margin-top: 10px">0</span>
+                                <span id="valueDisplay" name="value" class="mx-2 link-body-emphasis h5"
+                                    style="margin-top: 10px"></span>
                                 <a class="ring-item">
                                     <div onclick="updateValue(1)" class="ring bg-body-tertiary">
                                         <i class="bi bi-plus link-body-emphasis"></i>
@@ -167,20 +187,26 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                 </a>
                             </div>
 
-                            <!-- Przycisk dodawania do koszyka -->
-                            
-                            <button class="btn btn-secondary w-100 mt-3 link-body-emphasis"
-                                style="background-color: rgba(233, 125, 1, 0.7); border-color: rgba(255, 136, 0, 0.5); color: black">
+                            <form method="POST" action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+addToCart">
+                                <input type="hidden" name="product_ID" value="<?php echo $_smarty_tpl->tpl_vars['product']->value['id_product'];?>
+">
+                                <input type="hidden" name="quantity" id="quantityInput"> <!-- Ukryte pole dla ilości -->
 
-                                Dodaj do koszyka
-                            </button>
-                            <br>
-                            <!-- Przycisk zakupu -->
-                            <button class="btn btn-primary w-100 mt-2 link-body-emphasis"
-                                style="background-color: rgba(255, 136, 0, 0.5); border-color: rgba(233, 125, 1, 0.5); color:black">
+                                <button type="submit" class="btn btn-secondary w-100 mt-3 link-body-emphasis"
+                                    style="background-color: rgba(233, 125, 1, 0.7); border-color: rgba(255, 136, 0, 0.5); color: black">
+                                    Dodaj do koszyka
+                                </button>
+                            </form>
+
+                            <a class="btn btn-primary w-100 mt-2 link-body-emphasis" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+showCart"
+                                style="background-color: rgba(255, 136, 0, 0.5); border-color: rgba(233, 125, 1, 0.5); color: black">
+                                <input type="hidden" name="product_ID" value="<?php echo $_smarty_tpl->tpl_vars['product']->value['id_product'];?>
+">
+                                <input type="hidden" name="quantity" id="quantityInput">
                                 Kup teraz
-                            </button>
-
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -199,16 +225,15 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                         </div>
                         <!-- Opis produktu -->
                         <div class="mb-4">
-                            <br>
-                            <h4><b>
-                                Kategorie:</b>
+                            <h4 style="font-weight: bold;">
+                                Kategorie:
                             </h4>
                             <h5><i>
-                                    <?php if (count($_smarty_tpl->tpl_vars['categories']->value) == 0) {?>
+                                    <?php if (count($_smarty_tpl->tpl_vars['product_categories']->value) == 0) {?>
                                         Brak kategorii dla tego produktu.
                                     <?php } else { ?>
                                         <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['categories']->value, 'category', false, NULL, 'catLoop', array (
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['product_categories']->value, 'category', false, NULL, 'catLoop', array (
   'last' => true,
   'iteration' => true,
   'total' => true,
@@ -251,20 +276,43 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
     <?php echo '<script'; ?>
 >
-        let vault = 0; // Początkowa wartość vault
+        let vault = 1; // Początkowa wartość vault
 
+        // Funkcja do aktualizacji wartości ilości w formularzu
+        function updateQuantityInput() {
+            const quantityInput = document.getElementById("quantityInput");
+            quantityInput.value = vault; // Przypisujemy wartość 'vault' do ukrytego pola quantityInput
+        }
+
+        // Funkcja do ustawiania początkowej wartości w elemencie span
+        function initializeValue() {
+            document.getElementById('valueDisplay').textContent = vault;
+            updateQuantityInput(); // Ustawiamy wartość również w ukrytym polu
+        }
+
+        // Funkcja do aktualizacji wartości ilości
         function updateValue(change) {
             vault += change;
+
             // Zapobiegamy, aby wartość nie była mniejsza niż 0
             if (vault < 0) {
                 vault = 0;
             }
-            if (vault > <?php echo $_smarty_tpl->tpl_vars['product']->value['amount'];?>
-) {
-            vault = 0;
+
+            // Zapobiegamy, aby wartość nie była większa niż dostępna ilość produktu
+            if (vault > 10) { // Możesz zmienić 10 na odpowiednią liczbę
+                vault = 10;
+            }
+
+            // Wyświetlanie zaktualizowanej wartości
+            document.getElementById('valueDisplay').textContent = vault;
+            updateQuantityInput(); // Zaktualizuj wartość również w ukrytym polu
         }
-        document.getElementById('valueDisplay').textContent = vault;
-        }
+
+        // Wywołanie funkcji initializeValue po załadowaniu strony, aby ustawić początkową wartość
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeValue();
+        });
     <?php echo '</script'; ?>
 >
 <?php

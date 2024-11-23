@@ -22,7 +22,6 @@
 </head>
 
 <body>
-
     <header data-bs-theme="dark">
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <div class="container-fluid">
@@ -73,25 +72,18 @@
                             <!-- Zarządzanie -->
                             {if \core\RoleUtils::inRole('zarządzanie')}
                                 <li class="nav-item">
-                                    <a class="nav-link text-center" href="{$conf->action_url}managementMain" data-bs-toggle="tooltip"
-                                        data-bs-placement="bottom" title="Zarządzanie">
+                                    <a class="nav-link text-center" href="{$conf->action_url}managementMain"
+                                        data-bs-toggle="tooltip" data-bs-placement="bottom" title="Zarządzanie">
                                         <i class="bi bi-info-circle"></i>
-                                        </a>
+                                    </a>
                                 </li>
                             {/if}
 
                             <!-- kontakt -->
                             <li class="nav-item">
-                                <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                <a class="nav-link" href="{$conf->action_url}contact" data-bs-toggle="tooltip" data-bs-placement="bottom"
                                     title="Kontakt">
                                     <i class="bi bi-telephone"></i> <!-- Ikona telefonu -->
-                                </a>
-                            </li>
-                            <!-- koszyk-->
-                            <li class="nav-item">
-                                <a class="nav-link text-center" href="#" data-bs-toggle="tooltip"
-                                    data-bs-placement="bottom" title="Koszyk">
-                                    <i class="bi bi-cart"></i> <!-- Ikona koszyka -->
                                 </a>
                             </li>
 
@@ -135,6 +127,71 @@
                                     </ul>
                             </li>
 
+                            <!-- Koszyk z rozwijanym menu -->
+                            <li class="nav-item dropdown position-relative">
+                                <a class="nav-link dropdown-toggle" href="#" id="cartDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-cart"></i>
+                                    <span class="badge cart-badge d-none"></span> <!-- Liczba produktów w koszyku -->
+                                </a>
+                                {if isset($miniCart) && count($miniCart) > 0}
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cartDropdown"
+                                        style="width: 30rem; max-height: 80vh; overflow-y: auto;">
+                                        {assign var="cartCount" value=0}
+
+                                        {foreach $miniCart as $productId => $productData}
+                                            <li style="display: flex; align-items: center; height: 4rem;" href="#">
+                                                <a class="dropdown-item text-center"
+                                                    href="{$conf->app_url}/productDetails?product={$productData["url"]}"
+                                                    style="display: flex; width: 100%; align-items: center;">
+                                                    <!-- Obrazek -->
+                                                    <img src="{$conf->app_url}/assets/img/products/{$productData["url"]}/1.jpg"
+                                                        alt="{$productData.name}"
+                                                        style="width: 50px; height: 50px; object-fit: cover; margin-right: 10px; border-radius: 5px;"
+                                                        onerror="
+                                                        let formats = ['png', 'gif'];
+                                                        let img = this;
+                                                        let index = 0;
+                                                        
+                                                        function tryNextFormat() {
+                                                            if (index < formats.length) {
+                                                                img.src = '{$conf->app_url}/assets/img/products/{$productData["url"]}/1.' + formats[index++];
+                                                                } else {
+                                                                    img.src = '{$conf->app_url}/assets/img/products/default.png';
+                                                                    }
+                                                                }
+
+                                                        tryNextFormat();
+                                                        this.onerror = tryNextFormat;
+                                                    ">
+
+                                                    <!-- Tytuł po lewej -->
+                                                    <span style="flex: 7; text-align: left;">{$productData.name}</span>
+                                                    <!-- Ilość i cena po prawej -->
+                                                    <span style="flex: 3; text-align: right; margin-left: auto;">
+                                                        {$productData.quantity} x
+                                                        {$productData.price|number_format:2:",":" "}&nbsp;zł
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        {/foreach}
+
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li style="display: flex; justify-content: space-between;">
+                                            <a class="dropdown-item text-center" href="{$conf->action_url}cart"
+                                                style="flex: 1; margin-right: 5px;">Przejdź do koszyka</a>
+                                            <a class="dropdown-item text-center" href="{$conf->action_url}checkout"
+                                                style="flex: 1;">Przejdź do płatności</a>
+                                        </li>
+                                    </ul>
+                                {else}
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cartDropdown">
+                                        <li><a class="dropdown-item text-center" href="#">Koszyk jest pusty</a></li>
+                                    </ul>
+                                {/if}
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -218,6 +275,7 @@
         </div>
 
         {block name=content} Domyślna treść zawartości {/block}
+
     </main>
 
     <hr class="featurette-divider">
@@ -240,25 +298,25 @@
                 <h5>Zakupy</h5>
                 <ul class="nav flex-column">
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Konto</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Koszyk</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Polityka
+                    <li class="nav-item mb-2"><a href="{$conf->action_url}cart" class="nav-link p-0 text-body-secondary">Koszyk</a></li>
+                    <li class="nav-item mb-2"><a href="{$conf->action_url}rodo" class="nav-link p-0 text-body-secondary">Polityka
                             prywatności</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Zwroty i
+                    <li class="nav-item mb-2"><a href="{$conf->action_url}return_and_complaints" class="nav-link p-0 text-body-secondary">Zwroty i
                             reklamacje</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pomoc</a></li>
+                    <li class="nav-item mb-2"><a href="{$conf->action_url}help" class="nav-link p-0 text-body-secondary">Pomoc</a></li>
                 </ul>
             </div>
 
             <div class="col mb-3">
                 <h5>Informacje</h5>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Sposoby
+                    <li class="nav-item mb-2"><a href="{$conf->action_url}delivery" class="nav-link p-0 text-body-secondary">Sposoby
                             dostawy</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Kategorie</a>
+                    <li class="nav-item mb-2"><a href="#categories" class="nav-link p-0 text-body-secondary">Kategorie</a>
                     </li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Regulamin</a>
+                    <li class="nav-item mb-2"><a href="{$conf->action_url}statute" class="nav-link p-0 text-body-secondary">Regulamin</a>
                     </li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">O nas</a></li>
+                    <li class="nav-item mb-2"><a href="{$conf->action_url}about" class="nav-link p-0 text-body-secondary">O nas</a></li>
                 </ul>
             </div>
 
@@ -276,6 +334,65 @@
             </div>
         </footer>
     </div>
+    <style>
+        .cart-badge {
+            position: absolute;
+            top: 20px;
+            right: -2px;
+            background-color: rgba(233, 125, 1, 0.8);
+            color: black;
+            font-size: 7px;
+            font-weight: bold;
+            padding: 2px 2px;
+            border-radius: 50%;
+            min-width: 14px;
+            min-height: 14px;
+            text-align: center;
+            z-index: 10;
+
+            /* Dodane style do pełnego wyśrodkowania */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .d-none {
+            display: none;
+        }
+
+        /* Ukryj rozwijane menu koszyka */
+        .cart-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 9999;
+            background-color: white;
+            width: 200px;
+            /* Szerokość menu */
+        }
+
+        /* Pokaż menu koszyka po najechaniu */
+        .nav-item:hover .cart-dropdown-menu {
+            display: block;
+        }
+
+        /* Stylowanie pozycji w menu koszyka */
+        .cart-item {
+            padding: 10px;
+        }
+
+        .cart-item a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .cart-item a:hover {
+            background-color: #f8f9fa;
+        }
+    </style>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -297,7 +414,41 @@
             });
         });
     </script>
+    {if isset($cart)}
+        {assign var="cartCount" value=0}
+        {foreach $cart as $productId => $quantity}
+            {assign var="cartCount" value=$cartCount + $quantity}
+        {/foreach}
+        <script>
+            // Przekazanie danych koszyka z PHP do JavaScript
+            const cart = {$cart|json_encode};
+            const cartCount = {$cartCount}; // Liczba produktów w koszyku
+            const miniCart = {$miniCart|json_encode};
 
+            // Wyświetlenie koszyka w konsoli
+            console.log('Zawartość koszyka:', cart);
+            console.log('Liczba produktów w koszyku:', cartCount);
+            console.log('Liczba mini_cart:', miniCart);
+
+            // Aktualizacja liczby produktów w koszyku
+            updateCartCount(cartCount);
+
+            function updateCartCount(count) {
+                const cartBadge = document.querySelector('.cart-badge');
+
+                if (count > 0) {
+                    cartBadge.textContent = count > 99 ? '99+' : count; // Wyświetl "99+" jeśli liczba > 99
+                    cartBadge.classList.remove('d-none'); // Pokaż kółko
+                } else {
+                    cartBadge.classList.add('d-none'); // Ukryj kółko, jeśli koszyk jest pusty
+                }
+            }
+        </script>
+    {else}
+        <script>
+            console.log('Brak zawartości koszyka:', cart);
+        </script>
+    {/if}
 </body>
 
 

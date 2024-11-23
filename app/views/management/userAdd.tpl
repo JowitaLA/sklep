@@ -31,22 +31,22 @@
         </div>
 
         <div class="form-floating">
-            <input type="text" class="form-control top-field" name="password" id="password" value="">
+            <input type="text" class="form-control middle-field" name="password" id="password" value="">
             <label for="login">Hasło</label>
         </div>
 
         <div class="form-floating">
-            <input type="email" class="form-control top-field" name="mail" id="mail" value="">
+            <input type="email" class="form-control middle-field" name="mail" id="mail" value="">
             <label for="mail">E-mail</label>
         </div>
 
         <div class="form-floating">
-            <input type="text" class="form-control top-field" name="name" id="name" value="">
+            <input type="text" class="form-control middle-field" name="name" id="name" value="">
             <label for="name">Imię</label>
         </div>
 
         <div class="form-floating">
-            <input type="text" class="form-control top-field" name="surname" id="surname" value="">
+            <input type="text" class="form-control down-field" name="surname" id="surname" value="">
             <label for="surname">Nazwisko</label>
         </div>
 

@@ -19,8 +19,24 @@
             {foreach $records as $r}
                 <a href="{$conf->app_url}/productDetails?product={$r["url"]}" class="col-md-3 mb-2">
                     <div class="product-card" fill="var(--bs-secondary-color)">
-                        <img src="{$conf->app_url}/assets/img/products/{$r["url"]}/1.jpg" alt="{$r["name"]}"
-                            class="img-fluid">
+                        <img src="{$conf->app_url}/assets/img/products/{$r["url"]}/1.jpg"
+                            alt="{$r.name}"
+                            onerror="
+                            let formats = ['png', 'gif'];
+                            let img = this;
+                            let index = 0;
+                            
+                            function tryNextFormat() {
+                                if (index < formats.length) {
+                                    img.src = '{$conf->app_url}/assets/img/products/{$r["url"]}/1.' + formats[index++];
+                                    } else {
+                                        img.src = '{$conf->app_url}/assets/img/products/default.png';
+                                        }
+                                    }
+
+                            tryNextFormat();
+                            this.onerror = tryNextFormat;
+                        " class="img-fluid">
                         <h3 class="mt-3">{$r["name"]}</h3>
                         <i class="fa stars">&#xf005; &#xf005; &#xf005; &#xf005; &#xf005;</i>
                         <p class="price mt-2">{{$r["price"]}|number_format:2:",":" "}&nbsp;zł</p>

@@ -16,7 +16,7 @@
 
         <div class="d-flex justify-content-between align-items-center">
             <h1 class="h3 mb-3 fw-normal">
-                Dodaj użytkownika
+                Edytuj użytkownika
             </h1>
 
             <button id="theme-toggle-btn" class="btn nav-link me-2" type="button" aria-label="Zmień motyw"

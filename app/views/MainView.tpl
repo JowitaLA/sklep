@@ -11,8 +11,8 @@
          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
       </div>
-      <div class="carousel-inner" style="background: linear-gradient(to right, #bb3e23 50%, #df8d00 50%);">
-         <div class="carousel-item active">
+      <div class="carousel-inner" style="background: linear-gradient(to right, #bb3e23 48%, #d96912 50%, #df8d00 52%);">
+      <div class="carousel-item active">
             <img src="{$conf->app_url}/assets/img/background/3.png" alt="Slide 1">
             <div class="container">
                <div class="carousel-caption text-start">
@@ -44,7 +44,7 @@
                      że zakupy online są nie tylko wygodne, ale i bezpieczne, dlatego stale rozszerzamy nasz asortyment,
                      aby
                      zapewnić potrzebom każdego z Was.</p>
-                  <p><a class="btn btn-lg btn-primary" href="#">Czytaj więcej...</a></p>
+                  <p><a class="btn btn-lg btn-primary" href="{$conf->action_url}about">Czytaj więcej...</a></p>
                </div>
             </div>
          </div>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-11-04 12:16:07
+/* Smarty version 4.3.4, created on 2024-11-22 02:24:36
   from 'C:\xampp\htdocs\Sklep\app\views\management\productsList.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_6728acf718c326_42377670',
+  'unifunc' => 'content_673fdd54d88327_51078637',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4606219e0800ab45ad0e8e5719a60e425795c8be' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Sklep\\app\\views\\management\\productsList.tpl',
-      1 => 1730718963,
+      1 => 1732238675,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6728acf718c326_42377670 (Smarty_Internal_Template $_smarty_tpl) {
+function content_673fdd54d88327_51078637 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\xampp\\htdocs\\Sklep\\lib\\smarty\\plugins\\modifier.number_format.php','function'=>'smarty_modifier_number_format',),));
 $_smarty_tpl->_assignInScope('showInactive', true);?>
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -123,8 +124,9 @@ $_smarty_tpl->tpl_vars['product']->do_else = false;
 
                 <td><?php echo $_smarty_tpl->tpl_vars['product']->value['ilosc_produktow'];?>
 </td>
-                <td><?php echo $_smarty_tpl->tpl_vars['product']->value['cena_produktu'];?>
-</td>
+                <td><?php echo smarty_modifier_number_format($_smarty_tpl->tpl_vars['product']->value['cena_produktu'],2,","," ");?>
+&nbsp;zł
+                </td>
                 <td><?php if ($_smarty_tpl->tpl_vars['product']->value['kto_stworzyl_produkt'] == '') {?>- <?php } else {
 echo $_smarty_tpl->tpl_vars['product']->value['kto_stworzyl_produkt'];
 }?></td>

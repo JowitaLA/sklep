@@ -54,7 +54,7 @@
 				</div>
 
 				<div class="text-center my-3">
-					<a href="{$conf->action_url}resetPasswordShow" class="form-check-label no-underline">Nie pamiętasz hasła?</a>
+					<a href="{$conf->action_url}resetPassShow" class="form-check-label no-underline">Nie pamiętasz hasła?</a>
 				</div>
 
 				<!-- Przycisk submit, który wysyła formularz -->
@@ -125,8 +125,8 @@
 			</form>
 		{/if}
 
-		{if $title == "Resetuj Hasło"}
-			<form>
+		{if $title == "Nie pamiętasz hasła?"}
+			<form method="post" action="{$conf->action_url}resetPass">
 				<a href="{$conf->app_url}/main" class="d-flex mb-4">
 					<!-- Dodany link do strony głównej -->
 					<img src="{$conf->app_url}/assets/img/logo.png" alt="" width="50" height="50">
@@ -144,12 +144,12 @@
 					</button>
 				</div>
 				<div class="form-floating">
-					<input type="email" class="form-control solo-field" id="email" placeholder="name@example.com">
+					<input type="email" class="form-control middle-field" name="email" id="email" placeholder="name@example.com">
 					<label for="email">E-mail</label>
 				</div>
 
 				<div class="text-center my-3">
-					<a href="{$conf->action_url}loginShow" class="form-check-label no-underline">Nie pamiętasz e-maila? Napisz do
+					<a href="{$conf->action_url}contact" class="form-check-label no-underline">Nie pamiętasz e-maila? Napisz do
 						nas!</a>
 				</div>
 				<button type="submit" class="btn btn-primary w-100 py-2">{$button_title}</button>

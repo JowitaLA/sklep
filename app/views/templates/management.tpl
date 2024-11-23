@@ -70,33 +70,54 @@
                             data-bs-target="#sidebarMenu" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
-                        <ul class="nav flex-column">
+                        <ul class="nav flex-column" style="height-min:100%">
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center gap-2"
                                     href="{$conf->action_url}managementMain" id="panel">
-                                    <i class="bi bi-house-door" style="height:20px;" fill="currentColor"></i>
+                                    <i class="bi bi-house-door" fill="currentColor"></i>
                                     Panel
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2" href="{$conf->action_url}showProducts"
-                                    id="showProducts">
-                                    <i class="bi bi-cart" style="height:20px;" fill="currentColor"></i>
+                                <a class="nav-link d-flex align-items-center gap-2"
+                                    href="{$conf->action_url}showProducts" id="showProducts">
+                                    <i class="bi bi-cart" fill="currentColor"></i>
                                     Produkty
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2" href="{$conf->action_url}showOrders"
-                                    id="showOrders">
-                                    <i class="bi bi-card-checklist" style="height:20px;" fill="currentColor"></i>
-                                    Zamówienia
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center gap-2" href="{$conf->action_url}showUsers"
                                     id="showUsers">
-                                    <i class="bi bi-person" style="height:20px;" fill="currentColor"></i>
+                                    <i class="bi bi-person" fill="currentColor"></i>
                                     Użytkownicy
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center gap-2" href="{$conf->action_url}showCategories"
+                                    id="showCategories">
+                                    <i class="bi bi-award"></i>
+                                    Kategorie
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center gap-2" href="{$conf->action_url}showDeliveries"
+                                    id="showDeliveries">
+                                    <i class="bi bi-box-seam"></i>
+                                    Dostawy
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center gap-2" href="{$conf->action_url}showOrders"
+                                    id="showOrders">
+                                    <i class="bi bi-card-checklist" fill="currentColor"></i>
+                                    Zamówienia
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center gap-2"
+                                    href="{$conf->action_url}showWishlists" id="showWishlists">
+                                    <i class="bi bi-bookmark-heart"></i>
+                                    Listy Życzeń
                                 </a>
                             </li>
 
@@ -104,36 +125,28 @@
                                 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
                                 <span>Płatności</span>
                                 <a class="link-secondary" href="#" aria-label="Add a new report">
-                                    <i class="bi bi-info-circle" style="height:20px;" fill="currentColor"></i>
+                                    <i class="bi bi-info-circle" fill="currentColor"></i>
                                 </a>
                             </h6>
 
-                            <ul class="nav flex-column mb-auto">
-                                <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                        <svg class="bi">
-                                            <use xlink:href="#file-earmark-text" />
-                                        </svg>
-                                        Metody płatności
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                        <svg class="bi">
-                                            <use xlink:href="#file-earmark-text" />
-                                        </svg>
-                                        Zarządzanie fakturami
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                        <svg class="bi">
-                                            <use xlink:href="#file-earmark-text" />
-                                        </svg>
-                                        Zwroty i gwarancje
-                                    </a>
-                                </li>
-                            </ul>
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center gap-2" href="#">
+                                    <i class="bi bi-cash-coin"></i>
+                                    Metody płatności
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center gap-2" href="#">
+                                    <i class="bi bi-pencil"></i>
+                                    Zarządzanie fakturami
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center gap-2" href="#">
+                                    <i class="bi bi-recycle"></i>
+                                    Zwroty i gwarancje
+                                </a>
+                            </li>
 
                             <h6
                                 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
@@ -145,65 +158,55 @@
                                 </a>
                             </h6>
 
-                            <ul class="nav flex-column mb-auto">
-                                <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                        <svg class="bi">
-                                            <use xlink:href="#file-earmark-text" />
-                                        </svg>
-                                        O nas
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                        <svg class="bi">
-                                            <use xlink:href="#file-earmark-text" />
-                                        </svg>
-                                        Regulamin
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                        <svg class="bi">
-                                            <use xlink:href="#file-earmark-text" />
-                                        </svg>
-                                        Polityka prywatności
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2" href="{$conf->action_url}editContact">
-                                        <svg class="bi">
-                                            <use xlink:href="#file-earmark-text" />
-                                        </svg>
-                                        Kontakt
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                        <svg class="bi">
-                                            <use xlink:href="#file-earmark-text" />
-                                        </svg>
-                                        Zwroty i reklamacje
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                        <svg class="bi">
-                                            <use xlink:href="#file-earmark-text" />
-                                        </svg>
-                                        Pomoc
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                        <svg class="bi">
-                                            <use xlink:href="#file-earmark-text" />
-                                        </svg>
-                                        Sposoby Dostawy
-                                    </a>
-                                </li>
-                            </ul>
-
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center gap-2" href="{$conf->action_url}showAbout"
+                                    id="showAbout">
+                                    <i class="bi bi-shop"></i>
+                                    O nas
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center gap-2"
+                                    href="{$conf->action_url}showStatute" id="showStatute">
+                                    <i class="bi bi-shield"></i>
+                                    Regulamin
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center gap-2" href="{$conf->action_url}showRodo"
+                                    id="showRodo">
+                                    <i class="bi bi-lock"></i>
+                                    Polityka prywatności
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center gap-2"
+                                    href="{$conf->action_url}showContact" id="showContact">
+                                    <i class="bi bi-telephone"></i>
+                                    Kontakt
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center gap-2"
+                                    href="{$conf->action_url}showReturn_and_complaints" id="showReturn_and_complaints">
+                                    <i class="bi bi-arrow-counterclockwise"></i>
+                                    Zwroty i reklamacje
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center gap-2" href="{$conf->action_url}showHelp"
+                                    id="showHelp">
+                                    <i class="bi bi-question-circle"></i>
+                                    Pomoc
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center gap-2"
+                                    href="{$conf->action_url}showDelivery" id="showDelivery">
+                                    <i class="bi bi-truck"></i>
+                                    Sposoby Dostawy
+                                </a>
+                            </li>
 
                             <h6
                                 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
@@ -217,10 +220,8 @@
 
                             <ul class="nav flex-column mb-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                        <svg class="bi">
-                                            <use xlink:href="#file-earmark-text" />
-                                        </svg>
+                                    <a class="nav-link d-flex align-items-center gap-2" href="{$conf->action_url}showDiscountCodes" id="showDiscountCodes">
+                                        <i class="bi bi-tag"></i>
                                         Kody rabatowe
                                     </a>
                                 </li>
@@ -229,9 +230,7 @@
                             <ul class="nav flex-column mb-auto">
                                 <li class="nav-item">
                                     <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                        <svg class="bi">
-                                            <use xlink:href="#file-earmark-text" />
-                                        </svg>
+                                        <i class="bi bi-newspaper"></i>
                                         Newsletter
                                     </a>
                                 </li>
@@ -240,9 +239,7 @@
                             <ul class="nav flex-column mb-auto">
                                 <li class="nav-item">
                                     <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                        <svg class="bi">
-                                            <use xlink:href="#file-earmark-text" />
-                                        </svg>
+                                        <i class="bi bi-clipboard-check"></i>
                                         Feedback
                                     </a>
                                 </li>
@@ -251,18 +248,22 @@
 
                             <hr class="my-3">
 
-                            <ul class="nav flex-column mb-auto">
 
-                                <!-- zmiana motywu -->
-                                <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                        <svg class="bi">
-                                            <use xlink:href="#file-earmark-text" />
-                                        </svg>
-                                        Logi
-                                    </a>
-                                </li>
-                            </ul>
+                            <!-- zmiana motywu -->
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center gap-2" href="#">
+                                    <i class="bi bi-activity"></i>
+                                    Logi
+                                </a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center gap-2" href="#">
+                                <i class="bi bi-gear"></i>                                
+                                Dostęp i uprawnienia
+                                </a>
+                            </li>
+
                             <li class="nav-item">
                                 <button id="theme-toggle-btn" class="btn nav-link" type="button"
                                     aria-label="Zmień motyw" data-bs-toggle="tooltip" data-bs-placement="bottom"
@@ -270,15 +271,6 @@
                                     <i id="theme-icon" class="bi bi-moon"></i> Zmień Motyw
                                 </button>
                             </li>
-                            <ul class="nav flex-column mb-auto">
-                                <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                        <svg class="bi">
-                                            <use xlink:href="#file-earmark-text" />
-                                        </svg>
-                                        Dostępy i uprawnienia
-                                    </a>
-                                </li>
                     </div>
                 </div>
             </div>
@@ -293,7 +285,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 {/foreach}
-                
+
                 <div id="content-block" class="col-md-9 ms-sm-auto col-lg-12 px-4">
                     {block name=content}
                         Domyślna treść
