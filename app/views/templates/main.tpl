@@ -46,8 +46,7 @@
 
                     <!-- Środkowa część - Wyszukiwarka (widoczna na desktopach) -->
                     <div class="col-md-6 d-none d-md-flex">
-                        <form class="d-flex w-100" action="{$conf->action_root}searchProducts" method="post"
-                            role="search"> {*powinno być POST, bez role = "search"*}
+                        <form class="d-flex w-100" action="{$conf->action_root}searchProducts" method="get">
                             <input class="form-control me-2" type="text" name="search_name_product"
                                 placeholder="Wpisz czego szukasz" aria-label="Search"
                                 value="{$searchForm->name|default:''}">
@@ -55,7 +54,10 @@
                                 <select class="form-select" name="choose_category" aria-label="Wybierz kategorię">
                                     <option value="0">Kategoria</option>
                                     {foreach $categories as $c}
-                                        <option value="{$c['id_category']}">{$c['name']}</option>
+                                        <option value="{$c['id_category']}"
+                                            {if $c['id_category'] == $searchForm->c_id}selected{/if}>
+                                            {$c['name']}
+                                        </option>
                                     {/foreach}
                                 </select>
                             </div>
@@ -81,8 +83,8 @@
 
                             <!-- kontakt -->
                             <li class="nav-item">
-                                <a class="nav-link" href="{$conf->action_url}contact" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                    title="Kontakt">
+                                <a class="nav-link" href="{$conf->action_url}contact" data-bs-toggle="tooltip"
+                                    data-bs-placement="bottom" title="Kontakt">
                                     <i class="bi bi-telephone"></i> <!-- Ikona telefonu -->
                                 </a>
                             </li>
@@ -104,9 +106,28 @@
                                 </a>
                                 {if count($conf->roles)>0}
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
-                                        <li><a class="dropdown-item text-center" href="#">Profil</a></li>
-                                        <li><a class="dropdown-item text-center" href="#">Zamówienia</a></li>
-                                        <li><a class="dropdown-item text-center" href="#">Ustawienia</a></li>
+                                        <li><a class="dropdown-item text-center"
+                                                href="{$conf->action_url}account">Profil</a></li>
+                                        <li><a class="dropdown-item text-center" href="{$conf->action_url}addresses">Twoje
+                                                Adresy</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item text-center"
+                                                href="{$conf->action_url}orders">Zamówienia</a></li>
+                                        <li><a class="dropdown-item text-center" href="{$conf->action_url}ratings">Oceń
+                                                Produkty</a></li>
+                                        <li><a class="dropdown-item text-center"
+                                                href="{$conf->action_url}wishlistShow">Lista Życzeń</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item text-center" href="{$conf->action_url}main">Strona
+                                                Główna</a></li>
+                                        <li><a class="dropdown-item text-center"
+                                                href="{$conf->action_url}newsletter">Newsletter</a></li>
+                                        <li><a class="dropdown-item text-center" href="{$conf->action_url}feedback">Wyślij
+                                                feedback</a></li>
                                         <li>
                                             <hr class="dropdown-divider">
                                         </li>
@@ -152,7 +173,7 @@
                                                         let formats = ['png', 'gif'];
                                                         let img = this;
                                                         let index = 0;
-                                                        
+
                                                         function tryNextFormat() {
                                                             if (index < formats.length) {
                                                                 img.src = '{$conf->app_url}/assets/img/products/{$productData["url"]}/1.' + formats[index++];
@@ -297,26 +318,33 @@
             <div class="col mb-3">
                 <h5>Zakupy</h5>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Konto</a></li>
-                    <li class="nav-item mb-2"><a href="{$conf->action_url}cart" class="nav-link p-0 text-body-secondary">Koszyk</a></li>
-                    <li class="nav-item mb-2"><a href="{$conf->action_url}rodo" class="nav-link p-0 text-body-secondary">Polityka
+                    <li class="nav-item mb-2"><a href="{$conf->action_url}orderStatus"
+                            class="nav-link p-0 text-body-secondary">Śledzenie Zamówienia</a></li>
+                    <li class="nav-item mb-2"><a href="{$conf->action_url}rodo"
+                            class="nav-link p-0 text-body-secondary">Polityka
                             prywatności</a></li>
-                    <li class="nav-item mb-2"><a href="{$conf->action_url}return_and_complaints" class="nav-link p-0 text-body-secondary">Zwroty i
+                    <li class="nav-item mb-2"><a href="{$conf->action_url}return_and_complaints"
+                            class="nav-link p-0 text-body-secondary">Zwroty i
                             reklamacje</a></li>
-                    <li class="nav-item mb-2"><a href="{$conf->action_url}help" class="nav-link p-0 text-body-secondary">Pomoc</a></li>
+                    <li class="nav-item mb-2"><a href="{$conf->action_url}payments"
+                            class="nav-link p-0 text-body-secondary">Metody Płatności</a></li>
                 </ul>
             </div>
 
             <div class="col mb-3">
                 <h5>Informacje</h5>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="{$conf->action_url}delivery" class="nav-link p-0 text-body-secondary">Sposoby
+                    <li class="nav-item mb-2"><a href="{$conf->action_url}delivery"
+                            class="nav-link p-0 text-body-secondary">Sposoby
                             dostawy</a></li>
-                    <li class="nav-item mb-2"><a href="#categories" class="nav-link p-0 text-body-secondary">Kategorie</a>
+                    <li class="nav-item mb-2"><a href="{$conf->action_url}main#categories"
+                            class="nav-link p-0 text-body-secondary">Kategorie</a>
                     </li>
-                    <li class="nav-item mb-2"><a href="{$conf->action_url}statute" class="nav-link p-0 text-body-secondary">Regulamin</a>
+                    <li class="nav-item mb-2"><a href="{$conf->action_url}statute"
+                            class="nav-link p-0 text-body-secondary">Regulamin</a>
                     </li>
-                    <li class="nav-item mb-2"><a href="{$conf->action_url}about" class="nav-link p-0 text-body-secondary">O nas</a></li>
+                    <li class="nav-item mb-2"><a href="{$conf->action_url}about"
+                            class="nav-link p-0 text-body-secondary">O nas</a></li>
                 </ul>
             </div>
 

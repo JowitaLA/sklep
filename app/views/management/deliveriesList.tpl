@@ -22,38 +22,60 @@
             <th>Nazwa</th>
             <th>Koszt</th>
             <th>Szacowany czas</th>
+            <th>Ikona Dostawy</th>
             <th>Utworzona przez</th>
             <th>Data utworzenia</th>
             <th>Akcje</th>
         </tr>
     </thead>
     <tbody>
-        {foreach $deliveries as $delivery}
-            <tr>
-                <td>{$delivery.id_delivery}</td>
-                <td>{$delivery.name}</td>
-                <td>{$delivery.cost|number_format:2:",":" "}&nbsp;zł</td>
-                <td>{$delivery.estimated_time}</td>
-                <td>{$delivery.who_created|default:"Nieznany"}</td>
-                <td>{$delivery.created_at|date_format:"%Y-%m-%d %H:%M:%S"}</td>
-                <td>
-                    <form method="post" action="{$conf->action_root}editDelivery" class="d-inline">
-                        <input type="hidden" name="idDelivery" value="{$delivery.id_delivery}">
-                        <button class="btn btn-sm btn-sm btn-outline-secondary">Edytuj</button>
-                    </form>
-                    <form method="post" action="{$conf->action_root}deleteDelivery" class="d-inline" 
-                          onsubmit="return confirm('Czy na pewno chcesz usunąć tę dostawę?')">
-                        <input type="hidden" name="idDelivery" value="{$delivery.id_delivery}">
-                        <button class="btn btn-sm btn-sm btn-outline-secondary">Usuń</button>
-                    </form>
-                </td>
-            </tr>
-        {/foreach}
-    </tbody>
+    {foreach $deliveries as $delivery}
+        <tr>
+            <td>{$delivery.id_delivery}</td>
+            <td>{$delivery.name}</td>
+            <td>{$delivery.cost|number_format:2:",":" "}&nbsp;zł</td>
+            <td>{$delivery.estimated_time}</td>
+            <td>
+                <img src="{$conf->app_url}/assets/img/delivery/{$delivery.name}.jpg" alt="Ikona dostawy: {$delivery.name}"
+                    style="width: 70px; height: 70px; object-fit: cover;"
+                    onerror="
+                        let formats = ['png'];
+                        let img = this;
+                        let index = 0;
+
+                        function tryNextFormat() {
+                            if (index < formats.length) {
+                                img.src = '{$conf->app_url}/assets/img/delivery/{$delivery.name}.' + formats[index++];
+                            } else {
+                                img.src = '{$conf->app_url}/assets/img/delivery/default.jpg';
+                            }
+                        }
+
+                        tryNextFormat();
+                        this.onerror = tryNextFormat;
+                    ">
+            </td>
+            <td>{$delivery.who_created|default:"Nieznany"}</td>
+            <td>{$delivery.created_at|date_format:"%Y-%m-%d %H:%M:%S"}</td>
+            <td>
+                <form method="post" action="{$conf->action_root}editDelivery" class="d-inline">
+                    <input type="hidden" name="idDelivery" value="{$delivery.id_delivery}">
+                    <button class="btn btn-sm btn-outline-secondary">Edytuj</button>
+                </form>
+                <form method="post" action="{$conf->action_root}deleteDelivery" class="d-inline"
+                    onsubmit="return confirm('Czy na pewno chcesz usunąć tę dostawę?')">
+                    <input type="hidden" name="idDelivery" value="{$delivery.id_delivery}">
+                    <button class="btn btn-sm btn-outline-secondary">Usuń</button>
+                </form>
+            </td>
+        </tr>
+    {/foreach}
+</tbody>
 </table>
 
+
 <script>
-    document.getElementById('search').addEventListener('input', function () {
+    document.getElementById('search').addEventListener('input', function() {
         let filter = this.value.toLowerCase();
         let rows = document.querySelectorAll('tbody tr');
 

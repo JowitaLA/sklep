@@ -1,7 +1,8 @@
 {extends file="templates/sign.tpl"}
 
 {block name=content}
-    <form method="post" action="{$conf->action_url}createDelivery">
+    <form method="post" action="{$conf->action_url}createDelivery" enctype="multipart/form-data">
+
         <div class="d-flex align-items-center justify-content-between">
             <!-- Logo po lewej stronie -->
             <a href="{$conf->app_url}/main" class="d-flex align-items-center">
@@ -38,6 +39,11 @@
         <div class="form-floating">
             <input type="text" class="form-control middle-field" name="estimated_time" id="estimated_time" value="">
             <label for="estimated_time">Czas dostawy</label>
+        </div>
+
+        <div class="form-floating">
+            <input type="file" class="form-control down-field" name="delivery_icon" id="delivery-icon" accept="image/*">
+            <label for="delivery-icon">Ikona dostawy (JPG/PNG)</label>
         </div>
 
         <button type="submit" class="btn btn-primary w-100 py-2 mt-4">Dodaj dostawę</button>

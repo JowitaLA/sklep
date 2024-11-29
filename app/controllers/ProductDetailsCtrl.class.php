@@ -15,6 +15,11 @@ class ProductDetailsCtrl
     private $cart = [];
     private $allCategories;
 
+    private $rating = [];
+    private $ratings = [];
+    private $reviews_count;
+
+
     public function action_productDetails()
     {
         $this->allCategories = App::getDB()->select('categories', '*');
@@ -26,7 +31,6 @@ class ProductDetailsCtrl
             echo '<script>console.log("tutaj");</script>';
             return;
         }
-        
 
         // Pobranie szczegółów produktu na podstawie kolumny `url`
         try {
@@ -45,6 +49,7 @@ class ProductDetailsCtrl
             // Przekonwertowanie opisu
             $this->loadDescription();
 
+            // Pobranie kategorii produktu
             $sql = "
                 SELECT c.name 
                 FROM categories AS c
@@ -57,6 +62,9 @@ class ProductDetailsCtrl
             ];
 
             $this->categories = App::getDB()->query($sql, $params)->fetchAll();
+
+            // Pobranie ocen produktu
+            $this->loadProductRatings();
         } catch (PDOException $e) {
             App::getMessages()->addMessage(new \core\Message("Wystąpił błąd podczas pobierania danych produktu", \core\Message::ERROR));
         }
@@ -64,6 +72,37 @@ class ProductDetailsCtrl
         // Przekazanie danych produktu do widoku
         $this->generateView();
     }
+
+    private function loadProductRatings()
+    {
+        $this->ratings = App::getDB()->select("product_ratings", "*", [
+            "id_product" => $this->product['id_product']
+        ]);
+
+        // Liczymy tylko recenzje (opinie) na podstawie tego, że pole 'review' nie jest puste
+        $this->reviews_count = 0;
+        foreach ($this->ratings as $rating) {
+            if (!empty($rating['review'])) {
+                $this->reviews_count++;
+            }
+        }
+
+        $this->rating = [
+            'reviews' => $this->ratings,
+            'average_rating' => 0,
+        ];
+
+        // Obliczanie średniej oceny
+        if (count($this->ratings) > 0) {
+            $sum = 0;
+            foreach ($this->ratings as $rating) {
+                $sum += $rating['rating'];
+            }
+            $this->rating['average_rating'] = round($sum / count($this->ratings), 1);
+        }
+    }
+
+
 
     private function mini_cart()
     {
@@ -75,7 +114,7 @@ class ProductDetailsCtrl
             // Iteracja po productID w koszyku
             foreach ($_SESSION['cart'] as $productID => $quantity) {
                 // Pobierz dane produktu na podstawie productID (może to być zapytanie do bazy danych)
-                $product = App::getDB()->get("products", ["id_product","amount","url","name","price"], ["id_product" => $productID]);
+                $product = App::getDB()->get("products", ["id_product", "amount", "url", "name", "price"], ["id_product" => $productID]);
 
                 // Jeśli produkt został znaleziony, dodaj go do tablicy
                 if ($product) {
@@ -123,10 +162,13 @@ class ProductDetailsCtrl
         App::getSmarty()->assign('product', $this->product);
         App::getSmarty()->assign('product_categories', $this->categories);
         App::getSmarty()->assign('categories', $this->allCategories);
-        App::getSmarty()->assign('cart', $_SESSION['cart']);          // Lista rekordów z bazy danych
-        App::getSmarty()->assign('miniCart', $miniCart);          // Lista rekordów z bazy danych
-        App::getSmarty()->assign('images', $this->images);  // Przekazywanie obrazów do widoku
-        App::getSmarty()->assign('page_title', $this->product['name']);  // Tytuł strony ("Yups")
+        App::getSmarty()->assign('cart', $_SESSION['cart']);
+        App::getSmarty()->assign('miniCart', $miniCart);
+        App::getSmarty()->assign('images', $this->images);
+        App::getSmarty()->assign('reviews_count', $this->reviews_count);
+        App::getSmarty()->assign('ratings', $this->ratings);
+        App::getSmarty()->assign('rating', $this->rating);  // Przekazanie ocen i średniej do widoku
+        App::getSmarty()->assign('page_title', $this->product['name']);
         App::getSmarty()->display('ProductDetailsView.tpl');
     }
 }

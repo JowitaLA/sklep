@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-11-21 14:25:41
+/* Smarty version 4.3.4, created on 2024-11-29 03:36:11
   from 'C:\xampp\htdocs\Sklep\app\views\ProductDetailsView.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_673f34d5949790_84911856',
+  'unifunc' => 'content_6749289bd59e08_91607571',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '498746a6eb52228b0cdb7aca6f490fb7e7b03b45' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Sklep\\app\\views\\ProductDetailsView.tpl',
-      1 => 1732195540,
+      1 => 1732847771,
       2 => 'file',
     ),
   ),
@@ -20,22 +20,22 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_673f34d5949790_84911856 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6749289bd59e08_91607571 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1368543410673f34d5921c79_15848328', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_13967501646749289bd11994_96404525', 'content');
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, "templates/main.tpl");
 }
 /* {block 'content'} */
-class Block_1368543410673f34d5921c79_15848328 extends Smarty_Internal_Block
+class Block_13967501646749289bd11994_96404525 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_1368543410673f34d5921c79_15848328',
+    0 => 'Block_13967501646749289bd11994_96404525',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -123,9 +123,64 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 </h2>
                             <div class="mb-4 d-flex justify-content-between align-items-center">
                                 <div>
-                                    <i class="fa stars">&#xf005; &#xf005; &#xf005; &#xf005; &#xf005;</i> 4.8
+                                    <div class="stars">
+                                        <?php $_smarty_tpl->_assignInScope('rating', (($tmp = $_smarty_tpl->tpl_vars['rating']->value['average_rating'] ?? null)===null||$tmp==='' ? 0 ?? null : $tmp));?>
+                                        <?php $_smarty_tpl->_assignInScope('fullStars', floor($_smarty_tpl->tpl_vars['rating']->value));?>
+                                        <?php $_smarty_tpl->_assignInScope('halfStar', floor($_smarty_tpl->tpl_vars['rating']->value*2)%2);?>
+                                        <?php $_smarty_tpl->_assignInScope('emptyStars', 5-$_smarty_tpl->tpl_vars['fullStars']->value-$_smarty_tpl->tpl_vars['halfStar']->value);?>
+
+                                        <!-- Renderowanie pełnych gwiazdek -->
+                                        <?php
+$__section_fullStars_0_loop = (is_array(@$_loop=$_smarty_tpl->tpl_vars['fullStars']->value) ? count($_loop) : max(0, (int) $_loop));
+$__section_fullStars_0_total = $__section_fullStars_0_loop;
+$_smarty_tpl->tpl_vars['__smarty_section_fullStars'] = new Smarty_Variable(array());
+if ($__section_fullStars_0_total !== 0) {
+for ($__section_fullStars_0_iteration = 1, $_smarty_tpl->tpl_vars['__smarty_section_fullStars']->value['index'] = 0; $__section_fullStars_0_iteration <= $__section_fullStars_0_total; $__section_fullStars_0_iteration++, $_smarty_tpl->tpl_vars['__smarty_section_fullStars']->value['index']++){
+?>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        <?php
+}
+}
+?>
+
+                                        <!-- Renderowanie pół gwiazdki -->
+                                        <?php if ($_smarty_tpl->tpl_vars['halfStar']->value == 1) {?>
+                                            <i class="fa fa-star-half" aria-hidden="true"></i>
+                                        <?php }?>
+
+                                        <!-- Renderowanie pustych gwiazdek -->
+                                        <?php
+$__section_emptyStars_1_loop = (is_array(@$_loop=$_smarty_tpl->tpl_vars['emptyStars']->value) ? count($_loop) : max(0, (int) $_loop));
+$__section_emptyStars_1_total = $__section_emptyStars_1_loop;
+$_smarty_tpl->tpl_vars['__smarty_section_emptyStars'] = new Smarty_Variable(array());
+if ($__section_emptyStars_1_total !== 0) {
+for ($__section_emptyStars_1_iteration = 1, $_smarty_tpl->tpl_vars['__smarty_section_emptyStars']->value['index'] = 0; $__section_emptyStars_1_iteration <= $__section_emptyStars_1_total; $__section_emptyStars_1_iteration++, $_smarty_tpl->tpl_vars['__smarty_section_emptyStars']->value['index']++){
+?>
+                                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        <?php
+}
+}
+?>
+                                    </div>
+                                    <i><?php echo $_smarty_tpl->tpl_vars['rating']->value;?>
+</i>
                                 </div>
-                                <div href="#">150 Recenzji</div>
+                                <div href="#"> <?php echo $_smarty_tpl->tpl_vars['reviews_count']->value;?>
+ Recenzj<?php ob_start();
+echo $_smarty_tpl->tpl_vars['reviews_count']->value;
+$_prefixVariable1 = ob_get_clean();
+if ($_prefixVariable1 == 1) {?>a<?php }
+ob_start();
+echo $_smarty_tpl->tpl_vars['reviews_count']->value;
+$_prefixVariable2 = ob_get_clean();
+ob_start();
+echo $_smarty_tpl->tpl_vars['reviews_count']->value;
+$_prefixVariable3 = ob_get_clean();
+if ($_prefixVariable2 >= 2 && $_prefixVariable3 <= 4) {?>e<?php }
+ob_start();
+echo $_smarty_tpl->tpl_vars['reviews_count']->value;
+$_prefixVariable4 = ob_get_clean();
+if ($_prefixVariable4 > 4) {?>i<?php }?></div>
                             </div>
                             <hr class="featurette-divider" style="height: 1px; margin: 10px 0;">
                         </div>
@@ -266,8 +321,71 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                             <span>Opinie</span>
                         </h1>
                         <h4 class="d-inline">
-                            <i>(165)</i>
+                            <i>(<?php echo $_smarty_tpl->tpl_vars['reviews_count']->value;?>
+)</i>
                         </h4>
+                        <div class="row m-4">
+                            <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['ratings']->value, 'r');
+$_smarty_tpl->tpl_vars['r']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['r']->value) {
+$_smarty_tpl->tpl_vars['r']->do_else = false;
+?>
+                                <div class="col-md-12 mb-1 mt-1">
+                                    <div class="row border rounded pb-3 pt-3">
+                                        <div class="col-md-3 stars">
+                                            <?php $_smarty_tpl->_assignInScope('rating', (($tmp = $_smarty_tpl->tpl_vars['r']->value['rating'] ?? null)===null||$tmp==='' ? 0 ?? null : $tmp));?>
+                                            <!-- Ustawienie wartości domyślnej dla ratingu -->
+                                            <?php $_smarty_tpl->_assignInScope('fullStars', floor($_smarty_tpl->tpl_vars['rating']->value));?>
+                                            <!-- Liczba pełnych gwiazdek -->
+                                            <?php $_smarty_tpl->_assignInScope('halfStar', floor($_smarty_tpl->tpl_vars['rating']->value*2)%2);?>
+                                            <!-- Sprawdzamy, czy jest połowa gwiazdki -->
+                                            <?php $_smarty_tpl->_assignInScope('emptyStars', 5-$_smarty_tpl->tpl_vars['fullStars']->value-$_smarty_tpl->tpl_vars['halfStar']->value);?>
+                                            <!-- Liczba pustych gwiazdek -->
+
+                                            <!-- Renderowanie pełnych gwiazdek -->
+                                            <?php
+$__section_fullStars_2_loop = (is_array(@$_loop=$_smarty_tpl->tpl_vars['fullStars']->value) ? count($_loop) : max(0, (int) $_loop));
+$__section_fullStars_2_total = $__section_fullStars_2_loop;
+$_smarty_tpl->tpl_vars['__smarty_section_fullStars'] = new Smarty_Variable(array());
+if ($__section_fullStars_2_total !== 0) {
+for ($__section_fullStars_2_iteration = 1, $_smarty_tpl->tpl_vars['__smarty_section_fullStars']->value['index'] = 0; $__section_fullStars_2_iteration <= $__section_fullStars_2_total; $__section_fullStars_2_iteration++, $_smarty_tpl->tpl_vars['__smarty_section_fullStars']->value['index']++){
+?>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            <?php
+}
+}
+?>
+
+                                            <!-- Renderowanie pół gwiazdki -->
+                                            <?php if ($_smarty_tpl->tpl_vars['halfStar']->value == 1) {?>
+                                                <i class="fa fa-star-half" aria-hidden="true"></i>
+                                            <?php }?>
+
+                                            <!-- Renderowanie pustych gwiazdek -->
+                                            <?php
+$__section_emptyStars_3_loop = (is_array(@$_loop=$_smarty_tpl->tpl_vars['emptyStars']->value) ? count($_loop) : max(0, (int) $_loop));
+$__section_emptyStars_3_total = $__section_emptyStars_3_loop;
+$_smarty_tpl->tpl_vars['__smarty_section_emptyStars'] = new Smarty_Variable(array());
+if ($__section_emptyStars_3_total !== 0) {
+for ($__section_emptyStars_3_iteration = 1, $_smarty_tpl->tpl_vars['__smarty_section_emptyStars']->value['index'] = 0; $__section_emptyStars_3_iteration <= $__section_emptyStars_3_total; $__section_emptyStars_3_iteration++, $_smarty_tpl->tpl_vars['__smarty_section_emptyStars']->value['index']++){
+?>
+                                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                            <?php
+}
+}
+?>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <?php echo $_smarty_tpl->tpl_vars['r']->value['review'];?>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                        </div>
                     </div>
                 </div>
             </div>

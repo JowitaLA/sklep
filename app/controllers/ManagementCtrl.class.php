@@ -14,6 +14,7 @@ class ManagementCtrl
 {
     private $users;
     private $products;
+    private $orders;
     private $user;
     private $categories;
     private $category;
@@ -206,7 +207,7 @@ class ManagementCtrl
             App::getRouter()->redirectTo('managementMain');
         }
     }
-
+    // PRODUCTS
     public function action_showProducts()
     {
         try {
@@ -232,7 +233,7 @@ class ManagementCtrl
             users u ON p.who_created = u.id_user -- Połączenie z tabelą users
         GROUP BY 
             p.id_product;
-    ")->fetchAll(); // Pobranie wszystkich wyników jako tablicy
+        ")->fetchAll(); // Pobranie wszystkich wyników jako tablicy
         } catch (PDOException $e) {
             $this->management->messages[] = "Wystąpił błąd z pobieraniem produktów i kategorii";
         }
@@ -319,7 +320,7 @@ class ManagementCtrl
         $_SESSION['messages'] = $this->management->messages;
         App::getRouter()->redirectTo('managementMain');
     }
-    // PRODUCTS
+
     public function action_addProduct()
     {
         try {
@@ -557,6 +558,233 @@ class ManagementCtrl
             App::getSmarty()->display('management/productEdit.tpl');
         }
     }
+    // ORDERS
+    public function action_showOrders()
+    {
+        try {
+            $this->orders = App::getDB()->query("
+                SELECT 
+                    ho.id_order,
+                    ho.id_user,
+                    u.login AS user_name,
+                    ho.total_amount,
+                    ho.status AS order_status,
+                    ho.payment_status,
+                    ho.delivery_status,
+                    ho.delivery_address,
+                    ho.billing_address,
+                    ho.payment_method,
+                    ho.delivery_method,
+                    ho.created_at AS order_date,
+                    GROUP_CONCAT(
+                        CONCAT(
+                            p.name, ' ', oi.quantity, ' x  ', FORMAT(oi.product_cost, 2), ' zł'
+                        ) SEPARATOR '<br>'
+                    ) AS products_list
+                FROM 
+                    history_orders ho
+                LEFT JOIN 
+                    users u ON ho.id_user = u.id_user
+                LEFT JOIN 
+                    order_items oi ON ho.id_order = oi.id_order
+                LEFT JOIN 
+                    products p ON oi.id_product = p.id_product
+                GROUP BY 
+                    ho.id_order
+                ORDER BY 
+                    ho.created_at DESC;
+            ")->fetchAll();
+
+            // Dekodowanie JSON dla każdego zamówienia
+            foreach ($this->orders as &$order) {
+                $order['delivery_address'] = json_decode($order['delivery_address'], true);
+                $order['billing_address'] = json_decode($order['billing_address'], true);
+            }
+        } catch (PDOException $e) {
+            $this->management->messages[] = "Wystąpił błąd z pobieraniem produktów i kategorii";
+        }
+
+        App::getSmarty()->assign('messages', $this->management->messages);
+        App::getSmarty()->assign('orders', $this->orders);
+        App::getSmarty()->display('management/ordersList.tpl');
+    }
+
+    public function action_updateOrder()
+    {
+        $user_last_name = $_POST['user_last_name'] ?? null;
+        $user_name = $_POST['user_name'] ?? null;
+        $id_user = $_POST['id_user'] ?? null;
+        $id_order = $_POST['id_order'] ?? null;
+
+        $delivery_method = $_POST['delivery_method'] ?? null;
+
+        $order_status = $_POST['order_status'] ?? null;
+        $payment_status = $_POST['payment_status'] ?? null;
+        $delivery_status = $_POST['delivery_status'] ?? null;
+
+        $delivery_address = [
+            'first_name' => $_POST['firstName'],
+            'last_name' => $_POST['lastName'],
+            'email' => $_POST['email'],
+            'phone_number' => $_POST['phone_number'],
+            'street' => $_POST['street'],
+            'house_number' => $_POST['house_number'],
+            'postal_code' => $_POST['postal_code'],
+            'city' => $_POST['city'],
+            'additional_info' => $_POST['additional_info'] ?? null,
+        ];
+        $billing_address = [
+            'first_name' => $_POST['r_firstName'] ?? $_POST['firstName'],
+            'last_name' => $_POST['r_lastName'] ?? $_POST['lastName'],
+            'email' => $_POST['r_email'] ?? $_POST['email'],
+            'phone_number' => $_POST['r_phone_number'] ?? $_POST['phone_number'],
+            'street' => $_POST['r_street'] ?? $_POST['street'],
+            'house_number' => $_POST['r_house_number'] ?? $_POST['house_number'],
+            'postal_code' => $_POST['r_postal_code'] ?? $_POST['postal_code'],
+            'city' => $_POST['r_city'] ?? $_POST['city'],
+        ];
+
+        if ($id_order) {
+            if (App::getDB()->has('users', ["login" => $user_name]) || $user_name == null) {
+                if ($user_name != $user_last_name || $user_name == null) {
+                    if ($user_name != null) {
+                        $id_user = App::getDB()->get('users',"id_user",["login"=>$user_name]);
+                    } else {
+                        $id_user = null;
+                    }
+                }
+
+                try {
+                    App::getDB()->update('history_orders', [
+                        'id_user' => $id_user,
+                        'status' => $order_status,
+                        'delivery_address' => $delivery_address ? json_encode($delivery_address) : null,
+                        'billing_address' => $billing_address ? json_encode($billing_address) : null,
+                        'payment_status' => $payment_status,
+                        'delivery_method' => $delivery_method,
+                        'delivery_status' => $delivery_status,
+                    ], [
+                        "id_order" => $id_order
+                    ]);
+
+                    $this->management->messages[] = "Zamówienie zostało zedytowane pomyślnie.";
+                } catch (PDOException $e) {
+                    $this->management->messages[] = "Wystąpił błąd podczas aktualizacji danych ".$e;
+                }
+            } else {
+                $this->management->messages[] = "Nie ma użytkownika o takim loginie.";
+            }
+        } else {
+            $this->management->messages[] = "Brak ID zamówienia do aktualizacji.";
+        }
+
+        // Zapisz wiadomości do sesji i przekieruj
+        $_SESSION['messages'] = $this->management->messages;
+        App::getRouter()->redirectTo('managementMain');
+    }
+
+    public function validateChangeStatusOrder()
+    {
+        $idOrder = $_POST['idOrder'] ?? null;
+        $orderStatus = $_POST['orderStatus'] ?? null;
+
+        if ($orderStatus != "anulowane") {
+            try {
+                App::getDB()->update("history_orders", ["status" => "oczekujące"], ["id_order" => $idOrder]);
+                $this->management->messages[] = "Zamówienie zostało aktywowane.";
+            } catch (PDOException $e) {
+                $this->management->messages[] = "Wystąpił błąd podczas aktywacji zamówienia.";
+            }
+        } else {
+            try {
+                App::getDB()->update("history_orders", ["status" => "anulowane"], ["id_order" => $idOrder]);
+                $this->management->messages[] = "Zamówienie zostało anulowane.";
+            } catch (PDOException $e) {
+                $this->management->messages[] = "Wystąpił błąd podczas dezaktywacji zamówienia.";
+            }
+        }
+
+        return empty($this->management->messages);
+
+        // Zapisz wiadomości do sesji przed przekierowaniem
+        $_SESSION['messages'] = $this->management->messages;
+
+        // Przekierowanie
+        App::getRouter()->redirectTo('managementMain');
+    }
+
+    public function action_changeStatusOrder()
+    {
+        $this->validateChangeStatusOrder();
+
+        // Zapisz wiadomości do sesji przed przekierowaniem
+        $_SESSION['messages'] = $this->management->messages;
+
+        // Przekierowanie
+        App::getRouter()->redirectTo('managementMain');
+    }
+
+    public function action_editOrder()
+    {
+        // Sprawdź, czy idOrder zostało przesłane w formularzu
+        if (isset($_POST['idOrder'])) {
+            $idOrder = $_POST['idOrder'];
+
+            try {
+                $order = App::getDB()->query("
+                SELECT 
+                    ho.id_order,
+                    ho.id_user,
+                    u.login AS user_name,
+                    ho.status AS order_status,
+                    ho.payment_status,
+                    ho.delivery_status,
+                    ho.delivery_address,
+                    ho.billing_address,
+                    ho.payment_method,
+                    ho.delivery_method,
+                    ho.created_at AS order_date,
+                    GROUP_CONCAT(
+                        CONCAT(
+                            p.name, ' ', oi.quantity, ' x  ', FORMAT(oi.product_cost, 2), ' zł'
+                        ) SEPARATOR '<br>'
+                    ) AS products_list
+                FROM 
+                    history_orders ho
+                LEFT JOIN 
+                    users u ON ho.id_user = u.id_user
+                LEFT JOIN 
+                    order_items oi ON ho.id_order = oi.id_order
+                LEFT JOIN 
+                    products p ON oi.id_product = p.id_product
+                WHERE
+                    ho.id_order = :idOrder
+                GROUP BY 
+                    ho.id_order
+                ORDER BY 
+                    ho.created_at DESC;
+            ", ['idOrder' => $idOrder])->fetch();
+
+                // Dekodowanie JSON dla każdego zamówienia
+                $order['delivery_address'] = json_decode($order['delivery_address'], true);
+                $order['billing_address'] = json_decode($order['billing_address'], true);
+            } catch (PDOException $e) {
+                $this->management->messages[] = "Wystąpił błąd z pobieraniem zamówienia.";
+            }
+
+            // Przekaż dane do widoku
+            App::getSmarty()->assign('title', 'Edycja Zamówienia'); // Przekazanie zamówienia
+            App::getSmarty()->assign('order', $order); // Przekazanie zamówienia
+            App::getSmarty()->assign('messages', $this->management->messages);
+            App::getSmarty()->display('management/orderEdit.tpl'); // Możesz dostosować widok do swoich potrzeb
+        } else {
+            $this->management->messages[] = "Nie podano ID zamówienia.";
+            App::getSmarty()->assign('messages', $this->management->messages);
+            App::getSmarty()->display('management/ordersList.tpl');
+        }
+    }
+
+
     // CATEGORIES
     public function action_showCategories()
     {
@@ -828,6 +1056,16 @@ class ManagementCtrl
             return false;
         }
         try {
+            $name = App::getDB()->get("delivery", "name", ["id_delivery" => $idDelivery]);
+            $fileNamejpg = __DIR__ . '/../../public/assets/img/delivery/' . $name . '.jpg';
+            $fileNamepng = __DIR__ . '/../../public/assets/img/delivery/' . $name . '.png';
+
+            if (file_exists($fileNamejpg)) {
+                unlink($fileNamejpg);
+            }
+            if (file_exists($fileNamepng)) {
+                unlink($fileNamepng);
+            }
             App::getDB()->delete("delivery", ["id_delivery" => $idDelivery]);
             $this->management->messages[] = "Dostawa została pomyślnie usunięta.";
         } catch (PDOException $e) {
@@ -866,6 +1104,32 @@ class ManagementCtrl
             }
         }
 
+        // Obsługa pliku
+        if (isset($_FILES['delivery_icon']) && $_FILES['delivery_icon']['error'] === UPLOAD_ERR_OK) {
+            $fileTmpPath = $_FILES['delivery_icon']['tmp_name'];
+            $fileName = $_FILES['delivery_icon']['name'];
+            $fileSize = $_FILES['delivery_icon']['size'];
+            $fileType = $_FILES['delivery_icon']['type'];
+
+            // Sprawdzenie rozszerzenia pliku
+            $allowedTypes = ['image/jpeg', 'image/png'];
+            if (!in_array($fileType, $allowedTypes)) {
+                $this->management->messages[] = "Dozwolone są tylko pliki JPG i PNG.";
+            } else {
+                // Zmieniamy nazwę pliku na nazwę dostawy
+                $newFileName = $name . '.' . pathinfo($fileName, PATHINFO_EXTENSION);
+                $uploadPath = __DIR__ . '/../../public/assets/img/delivery/' . $newFileName;
+
+                // Przenosimy plik do folderu
+                if (move_uploaded_file($fileTmpPath, $uploadPath)) {
+                } else {
+                    $this->management->messages[] = "Wystąpił błąd podczas zapisywania pliku.";
+                }
+            }
+        } else {
+            $this->management->messages[] = "Nie wybrano pliku.";
+        }
+
         // Zapisz wiadomości do sesji i przekieruj
         $_SESSION['messages'] = $this->management->messages;
         App::getRouter()->redirectTo('managementMain');
@@ -884,7 +1148,10 @@ class ManagementCtrl
         $cost = $_POST['cost'] ?? null;
         $estimated_time = $_POST['estimated_time'] ?? null;
 
-        if ($idDelivery) {
+        // Walidacja danych
+        if (!$idDelivery || !$name || !$cost || !$estimated_time) {
+            $this->management->messages[] = "Wszystkie dane są wymagane.";
+        } else {
             try {
                 // Aktualizuj dane dostawy
                 App::getDB()->update("delivery", [
@@ -894,13 +1161,34 @@ class ManagementCtrl
                 ], [
                     "id_delivery" => $idDelivery
                 ]);
-
                 $this->management->messages[] = "Dostawa została zaktualizowana.";
             } catch (PDOException $e) {
-                $this->management->messages[] = "Wystąpił błąd podczas aktualizacji dostawy.";
+                $this->management->messages[] = "Wystąpił błąd podczas aktualizacji dostawy: " . $e->getMessage();
             }
-        } else {
-            $this->management->messages[] = "Brak ID dostawy do aktualizacji.";
+
+            // Obsługa pliku
+            if (isset($_FILES['delivery_icon']) && $_FILES['delivery_icon']['error'] === UPLOAD_ERR_OK) {
+                $fileTmpPath = $_FILES['delivery_icon']['tmp_name'];
+                $fileName = $_FILES['delivery_icon']['name'];
+                $fileSize = $_FILES['delivery_icon']['size'];
+                $fileType = $_FILES['delivery_icon']['type'];
+
+                // Sprawdzenie rozszerzenia pliku
+                $allowedTypes = ['image/jpeg', 'image/png'];
+                if (!in_array($fileType, $allowedTypes)) {
+                    $this->management->messages[] = "Dozwolone są tylko pliki JPG i PNG.";
+                } else {
+                    // Zmieniamy nazwę pliku na nazwę dostawy
+                    $newFileName = $name . '.' . pathinfo($fileName, PATHINFO_EXTENSION);
+                    $uploadPath = __DIR__ . '/../../public/assets/img/delivery/' . $newFileName;
+
+                    // Przenosimy plik do folderu
+                    if (move_uploaded_file($fileTmpPath, $uploadPath)) {
+                    } else {
+                        $this->management->messages[] = "Wystąpił błąd podczas zapisywania pliku.";
+                    }
+                }
+            }
         }
 
         // Zapisz wiadomości do sesji i przekieruj
@@ -1058,12 +1346,12 @@ class ManagementCtrl
         App::getSmarty()->display('management/subpage.tpl');
     }
 
-    public function action_showHelp()
+    public function action_showPayments()
     {
         $subpage = [
-            'title' => 'Pomoc',
-            'description' => 'assets/pages/help.txt',
-            'file' => "assets/pages/help.txt"
+            'title' => 'Metody Płatności',
+            'description' => 'assets/pages/payments.txt',
+            'file' => "assets/pages/payments.txt"
         ];
 
         // Przetwarzanie tablicy: odczyt zawartości plików opisów

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-11-22 02:21:42
+/* Smarty version 4.3.4, created on 2024-11-26 15:17:36
   from 'C:\xampp\htdocs\Sklep\app\views\management\deliveryEdit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_673fdca6958064_85087417',
+  'unifunc' => 'content_6745d8804d5251_57373912',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ab60f6b8e116bf2e7449018bfd6c6ed68150aedb' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Sklep\\app\\views\\management\\deliveryEdit.tpl',
-      1 => 1732238496,
+      1 => 1732630654,
       2 => 'file',
     ),
   ),
@@ -20,32 +20,30 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_673fdca6958064_85087417 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6745d8804d5251_57373912 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_681891870673fdca694fd52_57387930', 'content');
-?>
-
-<?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "templates/sign.tpl");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_3061631636745d8804cc813_17161351', 'content');
+$_smarty_tpl->inheritance->endChild($_smarty_tpl, "templates/sign.tpl");
 }
 /* {block 'content'} */
-class Block_681891870673fdca694fd52_57387930 extends Smarty_Internal_Block
+class Block_3061631636745d8804cc813_17161351 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_681891870673fdca694fd52_57387930',
+    0 => 'Block_3061631636745d8804cc813_17161351',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
     <form method="post" action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
-updateDelivery">
+updateDelivery" enctype="multipart/form-data">
         <div class="d-flex align-items-center justify-content-between">
             <!-- Logo po lewej stronie -->
             <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
@@ -84,14 +82,21 @@ updateDelivery">
         <div class="form-floating">
             <input type="text" class="form-control middle-field" name="cost" id="cost" value="<?php echo $_smarty_tpl->tpl_vars['delivery']->value['cost'];?>
 ">
-            <label for="cost">Koszt dostawy</label>
+            <label for="cost">Koszt dostawy (zł.gr)</label>
         </div>
 
         <div class="form-floating">
-            <input type="text" class="form-control down-field" name="estimated_time" id="estimated_time" value="<?php echo $_smarty_tpl->tpl_vars['delivery']->value['estimated_time'];?>
+            <input type="text" class="form-control middle-field" name="estimated_time" id="estimated_time"
+                value="<?php echo $_smarty_tpl->tpl_vars['delivery']->value['estimated_time'];?>
 ">
             <label for="estimated_time">Czas dostawy</label>
         </div>
+
+        <div class="form-floating">
+            <input type="file" class="form-control down-field" name="delivery_icon" id="delivery-icon" accept="image/*">
+            <label for="delivery-icon">Ikona dostawy (JPG/PNG)</label>
+        </div>
+
 
         <button type="submit" class="btn btn-primary w-100 py-2 mt-4">Edytuj dostawę</button>
     </form>

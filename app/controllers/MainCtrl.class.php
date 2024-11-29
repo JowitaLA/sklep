@@ -25,7 +25,17 @@ class MainCtrl
 
         // Pobranie ostatnich 12 aktywnych produktów
         try {
-            $this->last_products = App::getDB()->query("SELECT * FROM products WHERE status='active' ORDER BY id_product DESC LIMIT 12")->fetchAll();
+            $this->last_products = App::getDB()->query("
+            SELECT products.*, 
+                   COALESCE(AVG(product_ratings.rating), 0) AS rating
+            FROM products
+            LEFT JOIN product_ratings ON products.id_product = product_ratings.id_product
+            WHERE products.status = 'active' 
+              AND products.amount != '0'
+            GROUP BY products.id_product
+            ORDER BY products.id_product DESC
+            LIMIT 12
+        ")->fetchAll();
         } catch (PDOException $e) {
             App::getMessages()->addMessage(new \core\Message("Wystąpił błąd z pobieraniem ostatnich produktów", \core\Message::ERROR));
         }
@@ -53,7 +63,7 @@ class MainCtrl
             // Iteracja po productID w koszyku
             foreach ($_SESSION['cart'] as $productID => $quantity) {
                 // Pobierz dane produktu na podstawie productID (może to być zapytanie do bazy danych)
-                $product = App::getDB()->get("products", ["id_product","amount","url","name","price"], ["id_product" => $productID]);
+                $product = App::getDB()->get("products", ["id_product", "amount", "url", "name", "price"], ["id_product" => $productID]);
 
                 // Jeśli produkt został znaleziony, dodaj go do tablicy
                 if ($product) {

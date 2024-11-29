@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-11-22 02:22:48
+/* Smarty version 4.3.4, created on 2024-11-26 15:36:54
   from 'C:\xampp\htdocs\Sklep\app\views\management\deliveryAdd.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_673fdce86524f8_97195109',
+  'unifunc' => 'content_6745dd06e773f0_76020207',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7e238172d091e36f12fc5f4e19e2595cd38af01b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Sklep\\app\\views\\management\\deliveryAdd.tpl',
-      1 => 1732238565,
+      1 => 1732630640,
       2 => 'file',
     ),
   ),
@@ -20,32 +20,31 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_673fdce86524f8_97195109 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6745dd06e773f0_76020207 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_637951635673fdce864cba2_92385243', 'content');
-?>
-
-<?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "templates/sign.tpl");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_15745392596745dd06e70914_01962238', 'content');
+$_smarty_tpl->inheritance->endChild($_smarty_tpl, "templates/sign.tpl");
 }
 /* {block 'content'} */
-class Block_637951635673fdce864cba2_92385243 extends Smarty_Internal_Block
+class Block_15745392596745dd06e70914_01962238 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_637951635673fdce864cba2_92385243',
+    0 => 'Block_15745392596745dd06e70914_01962238',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
     <form method="post" action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
-createDelivery">
+createDelivery" enctype="multipart/form-data">
+
         <div class="d-flex align-items-center justify-content-between">
             <!-- Logo po lewej stronie -->
             <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
@@ -85,6 +84,11 @@ createDelivery">
         <div class="form-floating">
             <input type="text" class="form-control middle-field" name="estimated_time" id="estimated_time" value="">
             <label for="estimated_time">Czas dostawy</label>
+        </div>
+
+        <div class="form-floating">
+            <input type="file" class="form-control down-field" name="delivery_icon" id="delivery-icon" accept="image/*">
+            <label for="delivery-icon">Ikona dostawy (JPG/PNG)</label>
         </div>
 
         <button type="submit" class="btn btn-primary w-100 py-2 mt-4">Dodaj dostawę</button>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-11-22 02:26:04
+/* Smarty version 4.3.4, created on 2024-11-26 15:31:52
   from 'C:\xampp\htdocs\Sklep\app\views\management\deliveriesList.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_673fddac0097d6_03426898',
+  'unifunc' => 'content_6745dbd8117d77_30140313',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fa1111e6e70f80d20f61a0d289f129f35038a3fd' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Sklep\\app\\views\\management\\deliveriesList.tpl',
-      1 => 1732238725,
+      1 => 1732631511,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_673fddac0097d6_03426898 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6745dbd8117d77_30140313 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\xampp\\htdocs\\Sklep\\lib\\smarty\\plugins\\modifier.number_format.php','function'=>'smarty_modifier_number_format',),1=>array('file'=>'C:\\xampp\\htdocs\\Sklep\\lib\\smarty\\plugins\\modifier.date_format.php','function'=>'smarty_modifier_date_format',),));
 ?>
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -49,56 +49,84 @@ addDelivery" method="get" style="display:inline;">
             <th>Nazwa</th>
             <th>Koszt</th>
             <th>Szacowany czas</th>
+            <th>Ikona Dostawy</th>
             <th>Utworzona przez</th>
             <th>Data utworzenia</th>
             <th>Akcje</th>
         </tr>
     </thead>
     <tbody>
-        <?php
+    <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['deliveries']->value, 'delivery');
 $_smarty_tpl->tpl_vars['delivery']->do_else = true;
 if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['delivery']->value) {
 $_smarty_tpl->tpl_vars['delivery']->do_else = false;
 ?>
-            <tr>
-                <td><?php echo $_smarty_tpl->tpl_vars['delivery']->value['id_delivery'];?>
+        <tr>
+            <td><?php echo $_smarty_tpl->tpl_vars['delivery']->value['id_delivery'];?>
 </td>
-                <td><?php echo $_smarty_tpl->tpl_vars['delivery']->value['name'];?>
+            <td><?php echo $_smarty_tpl->tpl_vars['delivery']->value['name'];?>
 </td>
-                <td><?php echo smarty_modifier_number_format($_smarty_tpl->tpl_vars['delivery']->value['cost'],2,","," ");?>
+            <td><?php echo smarty_modifier_number_format($_smarty_tpl->tpl_vars['delivery']->value['cost'],2,","," ");?>
 &nbsp;zł</td>
-                <td><?php echo $_smarty_tpl->tpl_vars['delivery']->value['estimated_time'];?>
+            <td><?php echo $_smarty_tpl->tpl_vars['delivery']->value['estimated_time'];?>
 </td>
-                <td><?php echo (($tmp = $_smarty_tpl->tpl_vars['delivery']->value['who_created'] ?? null)===null||$tmp==='' ? "Nieznany" ?? null : $tmp);?>
+            <td>
+                <img src="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
+/assets/img/delivery/<?php echo $_smarty_tpl->tpl_vars['delivery']->value['name'];?>
+.jpg" alt="Ikona dostawy: <?php echo $_smarty_tpl->tpl_vars['delivery']->value['name'];?>
+"
+                    style="width: 70px; height: 70px; object-fit: cover;"
+                    onerror="
+                        let formats = ['png'];
+                        let img = this;
+                        let index = 0;
+
+                        function tryNextFormat() {
+                            if (index < formats.length) {
+                                img.src = '<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
+/assets/img/delivery/<?php echo $_smarty_tpl->tpl_vars['delivery']->value['name'];?>
+.' + formats[index++];
+                            } else {
+                                img.src = '<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
+/assets/img/delivery/default.jpg';
+                            }
+                        }
+
+                        tryNextFormat();
+                        this.onerror = tryNextFormat;
+                    ">
+            </td>
+            <td><?php echo (($tmp = $_smarty_tpl->tpl_vars['delivery']->value['who_created'] ?? null)===null||$tmp==='' ? "Nieznany" ?? null : $tmp);?>
 </td>
-                <td><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['delivery']->value['created_at'],"%Y-%m-%d %H:%M:%S");?>
+            <td><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['delivery']->value['created_at'],"%Y-%m-%d %H:%M:%S");?>
 </td>
-                <td>
-                    <form method="post" action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
+            <td>
+                <form method="post" action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
 editDelivery" class="d-inline">
-                        <input type="hidden" name="idDelivery" value="<?php echo $_smarty_tpl->tpl_vars['delivery']->value['id_delivery'];?>
+                    <input type="hidden" name="idDelivery" value="<?php echo $_smarty_tpl->tpl_vars['delivery']->value['id_delivery'];?>
 ">
-                        <button class="btn btn-sm btn-sm btn-outline-secondary">Edytuj</button>
-                    </form>
-                    <form method="post" action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-deleteDelivery" class="d-inline" 
-                          onsubmit="return confirm('Czy na pewno chcesz usunąć tę dostawę?')">
-                        <input type="hidden" name="idDelivery" value="<?php echo $_smarty_tpl->tpl_vars['delivery']->value['id_delivery'];?>
+                    <button class="btn btn-sm btn-outline-secondary">Edytuj</button>
+                </form>
+                <form method="post" action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
+deleteDelivery" class="d-inline"
+                    onsubmit="return confirm('Czy na pewno chcesz usunąć tę dostawę?')">
+                    <input type="hidden" name="idDelivery" value="<?php echo $_smarty_tpl->tpl_vars['delivery']->value['id_delivery'];?>
 ">
-                        <button class="btn btn-sm btn-sm btn-outline-secondary">Usuń</button>
-                    </form>
-                </td>
-            </tr>
-        <?php
+                    <button class="btn btn-sm btn-outline-secondary">Usuń</button>
+                </form>
+            </td>
+        </tr>
+    <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-    </tbody>
+</tbody>
 </table>
+
 
 <?php echo '<script'; ?>
 >
-    document.getElementById('search').addEventListener('input', function () {
+    document.getElementById('search').addEventListener('input', function() {
         let filter = this.value.toLowerCase();
         let rows = document.querySelectorAll('tbody tr');
 
@@ -114,6 +142,5 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         });
     });
 <?php echo '</script'; ?>
->
-<?php }
+><?php }
 }

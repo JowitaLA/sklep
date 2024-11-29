@@ -93,25 +93,33 @@
                 <h5>Zakupy</h5>
                 <ul class="nav flex-column">
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Konto</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Koszyk</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Polityka
+                    <li class="nav-item mb-2"><a href="{$conf->action_url}cart"
+                            class="nav-link p-0 text-body-secondary">Koszyk</a></li>
+                    <li class="nav-item mb-2"><a href="{$conf->action_url}rodo"
+                            class="nav-link p-0 text-body-secondary">Polityka
                             prywatności</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Zwroty i
+                    <li class="nav-item mb-2"><a href="{$conf->action_url}return_and_complaints"
+                            class="nav-link p-0 text-body-secondary">Zwroty i
                             reklamacje</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pomoc</a></li>
+                    <li class="nav-item mb-2"><a href="{$conf->action_url}payments"
+                            class="nav-link p-0 text-body-secondary">Metody Płatności</a></li>
                 </ul>
             </div>
 
             <div class="col mb-3">
                 <h5>Informacje</h5>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Sposoby
+                    <li class="nav-item mb-2"><a href="{$conf->action_url}delivery"
+                            class="nav-link p-0 text-body-secondary">Sposoby
                             dostawy</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Kategorie</a>
+                    <li class="nav-item mb-2"><a href="{$conf->action_url}main#categories"
+                            class="nav-link p-0 text-body-secondary">Kategorie</a>
                     </li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Regulamin</a>
+                    <li class="nav-item mb-2"><a href="{$conf->action_url}statute"
+                            class="nav-link p-0 text-body-secondary">Regulamin</a>
                     </li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">O nas</a></li>
+                    <li class="nav-item mb-2"><a href="{$conf->action_url}about"
+                            class="nav-link p-0 text-body-secondary">O nas</a></li>
                 </ul>
             </div>
 

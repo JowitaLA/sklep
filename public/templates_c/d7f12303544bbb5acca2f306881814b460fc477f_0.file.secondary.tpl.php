@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-11-19 15:26:12
+/* Smarty version 4.3.4, created on 2024-11-25 20:55:53
   from 'C:\xampp\htdocs\Sklep\app\views\templates\secondary.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_673ca004732657_19561751',
+  'unifunc' => 'content_6744d649e5e8f8_28633502',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd7f12303544bbb5acca2f306881814b460fc477f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Sklep\\app\\views\\templates\\secondary.tpl',
-      1 => 1732026371,
+      1 => 1732548969,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_673ca004732657_19561751 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6744d649e5e8f8_28633502 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -73,7 +73,7 @@ main">
 
                     <div class="col-md-10 d-none d-md-flex">
                         <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_2041924924673ca004725aa9_53388970', 'head');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_17027486796744d649e4d668_30465325', 'head');
 ?>
 
                     </div>
@@ -117,7 +117,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         </div>
 
         <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1364743825673ca004730676_37851739', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_15289604056744d649e58d36_14585368', 'content');
 ?>
 
 
@@ -145,25 +145,41 @@ main">
                 <h5>Zakupy</h5>
                 <ul class="nav flex-column">
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Konto</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Koszyk</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Polityka
+                    <li class="nav-item mb-2"><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+cart"
+                            class="nav-link p-0 text-body-secondary">Koszyk</a></li>
+                    <li class="nav-item mb-2"><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+rodo"
+                            class="nav-link p-0 text-body-secondary">Polityka
                             prywatności</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Zwroty i
+                    <li class="nav-item mb-2"><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+return_and_complaints"
+                            class="nav-link p-0 text-body-secondary">Zwroty i
                             reklamacje</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pomoc</a></li>
+                    <li class="nav-item mb-2"><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+payments"
+                            class="nav-link p-0 text-body-secondary">Metody Płatności</a></li>
                 </ul>
             </div>
 
             <div class="col mb-3">
                 <h5>Informacje</h5>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Sposoby
+                    <li class="nav-item mb-2"><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+delivery"
+                            class="nav-link p-0 text-body-secondary">Sposoby
                             dostawy</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Kategorie</a>
+                    <li class="nav-item mb-2"><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+main#categories"
+                            class="nav-link p-0 text-body-secondary">Kategorie</a>
                     </li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Regulamin</a>
+                    <li class="nav-item mb-2"><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+statute"
+                            class="nav-link p-0 text-body-secondary">Regulamin</a>
                     </li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">O nas</a></li>
+                    <li class="nav-item mb-2"><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+about"
+                            class="nav-link p-0 text-body-secondary">O nas</a></li>
                 </ul>
             </div>
 
@@ -212,12 +228,12 @@ main">
 
 </html><?php }
 /* {block 'head'} */
-class Block_2041924924673ca004725aa9_53388970 extends Smarty_Internal_Block
+class Block_17027486796744d649e4d668_30465325 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'head' => 
   array (
-    0 => 'Block_2041924924673ca004725aa9_53388970',
+    0 => 'Block_17027486796744d649e4d668_30465325',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -225,12 +241,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'head'} */
 /* {block 'content'} */
-class Block_1364743825673ca004730676_37851739 extends Smarty_Internal_Block
+class Block_15289604056744d649e58d36_14585368 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_1364743825673ca004730676_37851739',
+    0 => 'Block_15289604056744d649e58d36_14585368',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

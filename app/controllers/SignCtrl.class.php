@@ -133,7 +133,15 @@ class SignCtrl
 							"id_user" => $this->idUser
 						])
 					);  // Dodano odbiorce do maila
-					$this->mail->Body = 'Kliknij w poniższy link, aby zweryfikować swój adres e-mail: <a href="' . $this->verificationLink . '">Potwierdź rejestrację</a>.';
+					$mess = "
+    					<h1>Witaj!</h1>
+    					<p>Dziękujemy za zarejestrowanie się w naszym sklepie! Aby zakończyć proces rejestracji i aktywować swoje konto, kliknij w poniższy link:</p>
+    					<p><a href='" . $this->verificationLink . "'>Potwierdź rejestrację</a></p>
+    					<p>Jeśli nie rejestrowałeś się w naszym sklepie, zignoruj tę wiadomość.</p>
+    					<p class='footer'>W razie jakichkolwiek pytań, skontaktuj się z naszym działem obsługi klienta.</p>
+    					<p class='footer'>Zespół Sklepu Yups</p>
+					";
+					$this->mail->Body = $mess;
 					$this->send_mail();
 				}
 				App::getMessages()->addMessage(new \core\Message("Twoje konto nie jest aktywne bądź zostało usunięte. Wysłaliśmy do Ciebie maila, w celu aktywacji bądź odzyskania konta.", \core\Message::ERROR));
@@ -172,7 +180,15 @@ class SignCtrl
 
 			$this->generate_token('verify');
 			$this->mail->addAddress($this->register->email);  // Dodano odbiorce do maila
-			$this->mail->Body = 'Kliknij w link, aby zweryfikować swój adres e-mail: <a href="' . $this->verificationLink . '">Potwierdź rejestrację</a>.';
+			$mess = "
+				<h1>Witaj!</h1>
+				<p>Dziękujemy za zarejestrowanie się w naszym sklepie! Aby zakończyć proces rejestracji i aktywować swoje konto, kliknij w poniższy link:</p>
+				<p><a href='" . $this->verificationLink . "'>Potwierdź rejestrację</a></p>
+				<p>Jeśli nie rejestrowałeś się w naszym sklepie, zignoruj tę wiadomość.</p>
+				<p class='footer'>W razie jakichkolwiek pytań, skontaktuj się z naszym działem obsługi klienta.</p>
+				<p class='footer'>Zespół Sklepu Yups</p>
+			";
+			$this->mail->Body = $mess;
 			$this->send_mail();
 
 			//dodany do BD => przekieruj na ekran z logowaniem
@@ -290,7 +306,13 @@ class SignCtrl
 			$this->generate_token('resetPassword');
 
 			$this->mail->addAddress($email);  // Dodano odbiorce do maila
-			$this->mail->Body = 'Kliknij w link, aby zresetować swoje hasło: <a href="' . $this->verificationLink . '">Zresetuj Hasło</a>.';
+			$mess = '
+				<h1>Witaj!</h1>
+                <p>Dziękujemy za korzystanie z naszego sklepu. Aby zresetować swoje hasło, kliknij w poniższy link:</p>
+                <p><a href="' . $this->verificationLink . '">Zresetuj Hasło</a></p>
+                <p>Jeśli to nie byłaś Ty, zignoruj tę wiadomość.</p>
+                <p class="footer">Zespół Sklepu Yups</p>';
+			$this->mail->Body = $mess;
 			$this->send_mail();
 
 			App::getMessages()->addMessage(new \core\Message("Prośba o zresetowanie hasła przebiegła pomyślnie. Zresetuj je klikając w link wysłany emailem", \core\Message::INFO));
@@ -363,6 +385,7 @@ class SignCtrl
 			$this->mail->Password   = 'Ddipcdp$c1';
 			$this->mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
 			$this->mail->Port       = 587;
+			$this->mail->CharSet = 'UTF-8'; // Ustaw kodowanie na UTF-8
 
 			// Odbiorca i nadawca
 			$this->mail->setFrom('jowisz1@onet.pl', 'Sklep');

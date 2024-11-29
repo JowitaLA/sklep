@@ -41,7 +41,7 @@
 				</div>
 
 				<div class="form-floating position-relative">
-					<input type="password" class="form-control middle-field" name="l_password" id="pass" placeholder="Password">
+					<input type="password" class="form-control down-field" name="l_password" id="pass" placeholder="Password">
 					<label for="pass">Hasło</label>
 					<!-- Ikona do pokazania/ukrycia hasła -->
 					<i class="bi bi-eye-slash position-absolute top-50 end-0 translate-middle-y me-3 cursor-pointer"
@@ -144,7 +144,7 @@
 					</button>
 				</div>
 				<div class="form-floating">
-					<input type="email" class="form-control middle-field" name="email" id="email" placeholder="name@example.com">
+					<input type="email" class="form-control solo-field" name="email" id="email" placeholder="name@example.com">
 					<label for="email">E-mail</label>
 				</div>
 

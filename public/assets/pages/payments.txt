@@ -1,0 +1,122 @@
+<h1>Centrum Pomocy</h1>
+<p>
+  Witaj w Centrum Pomocy! Znajdziesz tu odpowiedzi na najczęściej zadawane pytania, szczegółowe przewodniki oraz cenne informacje, które pomogą Ci w pełni wykorzystać nasze usługi. Jesteśmy tu, aby zapewnić Ci jak najlepsze doświadczenie zakupowe, dlatego w każdej chwili możesz się z nami skontaktować, jeśli nie znajdziesz odpowiedzi na swoje pytania.
+</p>
+<p>
+  Jeśli potrzebujesz pomocy z zamówieniem, płatnościami, dostawą lub zwrotem, zapoznaj się z poniższymi sekcjami. Jeśli Twoje pytanie nie zostało uwzględnione, nasz dział obsługi klienta jest zawsze gotowy, by Ci pomóc.
+</p>
+<p>
+  Nie ma tutaj odpowiedzi na Twoje pytanie? <a href="contact_us">Skontaktuj się z nami!</a>
+</p>
+
+<h2>Newsletter</h2>
+<p>
+  Zapisz się do naszego newslettera, aby być na bieżąco z najnowszymi promocjami, wydarzeniami i ofertami specjalnymi. Nasz newsletter to także świetna okazja, by dowiedzieć się o nowych produktach oraz ekskluzywnych rabatach, które przygotowujemy tylko dla naszych subskrybentów.
+</p>
+<p>
+  Po zapisaniu się, otrzymasz informacje bezpośrednio na swoją skrzynkę e-mail. Będziesz mieć dostęp do:
+  <ul>
+    <li>Specjalnych promocji i rabatów</li>
+    <li>Informacji o nowinkach w ofercie</li>
+    <li>Zaproszeń do udziału w akcjach marketingowych i konkursach</li>
+  </ul>
+  <p>Chcesz się zapisać? <a href="newsletter_signup">Kliknij tutaj, aby dołączyć!</a></p>
+  <p>Jeżeli nie chcesz już dostawać naszych ofert na swoją skrzynkę e-mail, wejdź w linka zamieszczonego na dole każdej naszej wiadomości, bądź gdy masz konto, wypisz się klikając tutaj.</p>
+</p>
+
+<h2>Konto</h2>
+<p>
+  W tej sekcji znajdziesz informacje na temat zarządzania Twoim kontem. Jeśli chcesz:
+  <ul>
+    <li>Założyć nowe konto</li>
+    <li>Zaktualizować swoje dane osobowe</li>
+    <li>Zmienić hasło</li>
+    <li>Sprawdzić historię zamówień i status przesyłek</li>
+  </ul>
+  Możesz również skorzystać z opcji, które pozwolą Ci łatwo śledzić Twoje zamówienia lub zwroty.
+</p>
+<p>
+  <a href="account_management">Zaloguj się lub załóż konto teraz</a>
+</p>
+
+<h2>Zwroty</h2>
+<p>
+  Jeśli zakupiłeś produkt, który nie spełnia Twoich oczekiwań lub po prostu chcesz go zwrócić, zapoznaj się z naszymi zasadami dotyczącymi zwrotów. Oferujemy łatwy i szybki proces zwrotu, który obejmuje:
+  <ul>
+    <li>Okres zwrotu do 30 dni od zakupu</li>
+    <li>Bezproblemową procedurę zwrotu online</li>
+    <li>Zwrot środków na konto w ciągu 7 dni roboczych</li>
+  </ul>
+  Pamiętaj, że zwrot może dotyczyć tylko produktów w stanie nieużywanym, z oryginalnym opakowaniem i metkami.
+</p>
+<p>
+  Masz pytania dotyczące zwrotu? <a href="returns">Kliknij tutaj, aby dowiedzieć się więcej o procedurze zwrotu</a>
+</p>
+
+<h2>FAQ - Najczęściej zadawane pytania</h2>
+<p>
+  W tej sekcji znajdziesz odpowiedzi na najczęściej zadawane pytania przez naszych klientów. Przejrzyj poniższe pytania, aby szybko rozwiązać swoje wątpliwości:
+  <ul>
+    <li><a href="faq_shipping">Jakie są opcje dostawy?</a></li>
+    <li><a href="faq_payment">Jak mogę zapłacić za zamówienie?</a></li>
+    <li><a href="faq_order_tracking">Jak śledzić moje zamówienie?</a></li>
+    <li><a href="faq_cancellations">Jak anulować zamówienie?</a></li>
+  </ul>
+</p>
+
+<h2>Wysyłka i Dostawa</h2>
+<p>
+  Oferujemy różne opcje dostawy, które mogą być dostosowane do Twoich potrzeb. W tej sekcji dowiesz się:
+  <ul>
+    <li>Jakie opcje dostawy są dostępne?</li>
+    <li>Ile kosztuje dostawa?</li>
+    <li>Jak długo trwa dostawa?</li>
+    <li>Jak śledzić status przesyłki?</li>
+  </ul>
+  Jeśli masz pytania dotyczące dostawy, <a href="shipping">kliknij tutaj, aby dowiedzieć się więcej!</a>
+</p>
+
+<h2>Płatności</h2>
+<p>
+  Nasza strona obsługuje różne metody płatności, aby ułatwić Ci zakupy. Możesz skorzystać z opcji takich jak:
+  <ul>
+    <li>Przelew bankowy</li>
+    <li>Karta kredytowa/debetowa</li>
+    <li>PayPal</li>
+    <li>Raty i płatności na raty</li>
+  </ul>
+  Dowiedz się, jak szybko i bezpiecznie zapłacić za swoje zamówienie, <a href="payments">klikając tutaj</a>.
+</p>
+
+<h2>Problemy z Zamówieniem</h2>
+<p>
+  Jeśli napotkałeś jakiekolwiek problemy z zamówieniem, np. błędne produkty lub opóźnioną dostawę, skontaktuj się z nami jak najszybciej. W tej sekcji znajdziesz:
+  <ul>
+    <li>Jak złożyć reklamację</li>
+    <li>Jak zgłosić problem z dostawą</li>
+    <li>Jak skontaktować się z obsługą klienta</li>
+  </ul>
+  <p>Masz problem z zamówieniem? <a href="order_issues">Kliknij tutaj, aby dowiedzieć się, jak rozwiązać swoje problemy!</a></p>
+</p>
+
+<h2>Kontakt z Obsługą Klienta</h2>
+<p>
+  Jeśli nie możesz znaleźć odpowiedzi na swoje pytanie, nasz zespół obsługi klienta jest zawsze gotowy, by Ci pomóc. Możesz skontaktować się z nami na kilka sposobów:
+  <ul>
+    <li>Telefonicznie: <a href="tel:+123456789">+123 456 789</a></li>
+    <li>Wysyłając wiadomość e-mail na adres: <a href="mailto:support@store.com">support@store.com</a></li>
+    <li>Poprzez formularz kontaktowy: <a href="contact_us">Kliknij tutaj, aby wysłać wiadomość</a></li>
+  </ul>
+</p>
+
+<h2>Bezpieczeństwo</h2>
+<p>
+  Twoje bezpieczeństwo i prywatność są dla nas bardzo ważne. W tej sekcji znajdziesz:
+  <ul>
+    <li>Jak chronimy Twoje dane osobowe</li>
+    <li>Jakie środki bezpieczeństwa stosujemy przy płatnościach online</li>
+    <li>Polityka prywatności i cookies</li>
+  </ul>
+  <p>Więcej informacji o naszej polityce prywatności znajdziesz <a href="privacy_policy">tutaj</a>.</p>
+</p>
+

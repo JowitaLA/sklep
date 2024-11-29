@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-11-21 01:35:37
+/* Smarty version 4.3.4, created on 2024-11-29 02:11:22
   from 'C:\xampp\htdocs\Sklep\app\views\templates\main.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_673e8059e24e63_86837007',
+  'unifunc' => 'content_674914bae27aa3_68361786',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5586da8033aa19671364fdec23865787aba8716c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Sklep\\app\\views\\templates\\main.tpl',
-      1 => 1732149306,
+      1 => 1732842681,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_673e8059e24e63_86837007 (Smarty_Internal_Template $_smarty_tpl) {
+function content_674914bae27aa3_68361786 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\xampp\\htdocs\\Sklep\\lib\\smarty\\plugins\\modifier.number_format.php','function'=>'smarty_modifier_number_format',),));
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
@@ -84,8 +84,8 @@ main">
                     <!-- Środkowa część - Wyszukiwarka (widoczna na desktopach) -->
                     <div class="col-md-6 d-none d-md-flex">
                         <form class="d-flex w-100" action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-searchProducts" method="post"
-                            role="search">                             <input class="form-control me-2" type="text" name="search_name_product"
+searchProducts" method="get">
+                            <input class="form-control me-2" type="text" name="search_name_product"
                                 placeholder="Wpisz czego szukasz" aria-label="Search"
                                 value="<?php echo (($tmp = $_smarty_tpl->tpl_vars['searchForm']->value->name ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 ">
@@ -99,8 +99,11 @@ if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['c']->value) {
 $_smarty_tpl->tpl_vars['c']->do_else = false;
 ?>
                                         <option value="<?php echo $_smarty_tpl->tpl_vars['c']->value['id_category'];?>
-"><?php echo $_smarty_tpl->tpl_vars['c']->value['name'];?>
-</option>
+"
+                                            <?php if ($_smarty_tpl->tpl_vars['c']->value['id_category'] == $_smarty_tpl->tpl_vars['searchForm']->value->c_id) {?>selected<?php }?>>
+                                            <?php echo $_smarty_tpl->tpl_vars['c']->value['name'];?>
+
+                                        </option>
                                     <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
@@ -130,8 +133,8 @@ managementMain"
                             <!-- kontakt -->
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
-contact" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                    title="Kontakt">
+contact" data-bs-toggle="tooltip"
+                                    data-bs-placement="bottom" title="Kontakt">
                                     <i class="bi bi-telephone"></i> <!-- Ikona telefonu -->
                                 </a>
                             </li>
@@ -153,9 +156,36 @@ contact" data-bs-toggle="tooltip" data-bs-placement="bottom"
                                 </a>
                                 <?php if (count($_smarty_tpl->tpl_vars['conf']->value->roles) > 0) {?>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
-                                        <li><a class="dropdown-item text-center" href="#">Profil</a></li>
-                                        <li><a class="dropdown-item text-center" href="#">Zamówienia</a></li>
-                                        <li><a class="dropdown-item text-center" href="#">Ustawienia</a></li>
+                                        <li><a class="dropdown-item text-center"
+                                                href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+account">Profil</a></li>
+                                        <li><a class="dropdown-item text-center" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+addresses">Twoje
+                                                Adresy</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item text-center"
+                                                href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+orders">Zamówienia</a></li>
+                                        <li><a class="dropdown-item text-center" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+ratings">Oceń
+                                                Produkty</a></li>
+                                        <li><a class="dropdown-item text-center"
+                                                href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+wishlistShow">Lista Życzeń</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item text-center" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+main">Strona
+                                                Główna</a></li>
+                                        <li><a class="dropdown-item text-center"
+                                                href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+newsletter">Newsletter</a></li>
+                                        <li><a class="dropdown-item text-center" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+feedback">Wyślij
+                                                feedback</a></li>
                                         <li>
                                             <hr class="dropdown-divider">
                                         </li>
@@ -214,7 +244,7 @@ $_smarty_tpl->tpl_vars['productData']->do_else = false;
                                                         let formats = ['png', 'gif'];
                                                         let img = this;
                                                         let index = 0;
-                                                        
+
                                                         function tryNextFormat() {
                                                             if (index < formats.length) {
                                                                 img.src = '<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
@@ -355,7 +385,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         </div>
 
         <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1421146254673e8059e16c11_65891677', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_282444067674914bae16ee4_46706689', 'content');
 ?>
 
 
@@ -382,17 +412,20 @@ main">
             <div class="col mb-3">
                 <h5>Zakupy</h5>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Konto</a></li>
                     <li class="nav-item mb-2"><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
-cart" class="nav-link p-0 text-body-secondary">Koszyk</a></li>
+orderStatus"
+                            class="nav-link p-0 text-body-secondary">Śledzenie Zamówienia</a></li>
                     <li class="nav-item mb-2"><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
-rodo" class="nav-link p-0 text-body-secondary">Polityka
+rodo"
+                            class="nav-link p-0 text-body-secondary">Polityka
                             prywatności</a></li>
                     <li class="nav-item mb-2"><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
-return_and_complaints" class="nav-link p-0 text-body-secondary">Zwroty i
+return_and_complaints"
+                            class="nav-link p-0 text-body-secondary">Zwroty i
                             reklamacje</a></li>
                     <li class="nav-item mb-2"><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
-help" class="nav-link p-0 text-body-secondary">Pomoc</a></li>
+payments"
+                            class="nav-link p-0 text-body-secondary">Metody Płatności</a></li>
                 </ul>
             </div>
 
@@ -400,15 +433,20 @@ help" class="nav-link p-0 text-body-secondary">Pomoc</a></li>
                 <h5>Informacje</h5>
                 <ul class="nav flex-column">
                     <li class="nav-item mb-2"><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
-delivery" class="nav-link p-0 text-body-secondary">Sposoby
+delivery"
+                            class="nav-link p-0 text-body-secondary">Sposoby
                             dostawy</a></li>
-                    <li class="nav-item mb-2"><a href="#categories" class="nav-link p-0 text-body-secondary">Kategorie</a>
+                    <li class="nav-item mb-2"><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+main#categories"
+                            class="nav-link p-0 text-body-secondary">Kategorie</a>
                     </li>
                     <li class="nav-item mb-2"><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
-statute" class="nav-link p-0 text-body-secondary">Regulamin</a>
+statute"
+                            class="nav-link p-0 text-body-secondary">Regulamin</a>
                     </li>
                     <li class="nav-item mb-2"><a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
-about" class="nav-link p-0 text-body-secondary">O nas</a></li>
+about"
+                            class="nav-link p-0 text-body-secondary">O nas</a></li>
                 </ul>
             </div>
 
@@ -564,12 +602,12 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
 </html><?php }
 /* {block 'content'} */
-class Block_1421146254673e8059e16c11_65891677 extends Smarty_Internal_Block
+class Block_282444067674914bae16ee4_46706689 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_1421146254673e8059e16c11_65891677',
+    0 => 'Block_282444067674914bae16ee4_46706689',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {

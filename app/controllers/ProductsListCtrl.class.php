@@ -21,8 +21,8 @@ class ProductsListCtrl
 
     public function validate()
     {
-        $this->searchProducts->p_name = ParamUtils::getFromRequest('search_name_product');  // Pobranie danych z "search_name_product" 
-        $this->searchProducts->c_id = ParamUtils::getFromRequest('choose_category');        // Pobranie danych z "choose_category" 
+        $this->searchProducts->p_name = ParamUtils::getFromGet('search_name_product');  // Pobranie danych z "search_name_product" 
+        $this->searchProducts->c_id = ParamUtils::getFromGet('choose_category');        // Pobranie danych z "choose_category" 
 
         return ! App::getMessages()->isError(); // Zwróć wiadomość z błędem, jeżeli występuje
     }
@@ -50,7 +50,7 @@ class ProductsListCtrl
             // Iteracja po productID w koszyku
             foreach ($_SESSION['cart'] as $productID => $quantity) {
                 // Pobierz dane produktu na podstawie productID (może to być zapytanie do bazy danych)
-                $product = App::getDB()->get("products", ["id_product","amount","url","name","price"], ["id_product" => $productID]);
+                $product = App::getDB()->get("products", ["id_product", "amount", "url", "name", "price"], ["id_product" => $productID]);
 
                 // Jeśli produkt został znaleziony, dodaj go do tablicy
                 if ($product) {
@@ -76,17 +76,23 @@ class ProductsListCtrl
         $this->categoriesList();    // Wywołanie funkcji categoriesList();
 
         /* Przygotowanie zmiennej zapytania */
-        $query = "SELECT products.* FROM products";
+        $query = "SELECT products.*, 
+                         COALESCE(AVG(product_ratings.rating), 0) AS rating 
+                  FROM products";
 
         // Dodajemy `JOIN`, jeśli jest wybrana kategoria
         if (isset($this->searchProducts->c_id) && $this->searchProducts->c_id != 0) {
             $categoryId = (int)$this->searchProducts->c_id; // Rzutowanie na int dla bezpieczeństwa
             $query .= " JOIN categories_products ON products.id_product = categories_products.id_product
-                WHERE categories_products.id_category = $categoryId";
+                        LEFT JOIN product_ratings ON products.id_product = product_ratings.id_product
+                        WHERE categories_products.id_category = $categoryId 
+                          AND products.status='active' 
+                          AND products.amount!='0'";
         } else {
-            $query .= " WHERE products.status='active'";
+            $query .= " LEFT JOIN product_ratings ON products.id_product = product_ratings.id_product
+                        WHERE products.status='active' 
+                          AND products.amount!='0'";
         }
-
 
         /* Wyszukiwanie po nazwie produktu */
         if (isset($this->searchProducts->p_name) && strlen($this->searchProducts->p_name) > 0) {
@@ -105,9 +111,16 @@ class ProductsListCtrl
 
             $query .= "(" . implode(' AND ', $nameConditions) . ")";
         }
+
+        // Grupowanie po produkcie, aby obliczyć średnią ocenę
+        $query .= " GROUP BY products.id_product";
+
         $this->records = App::getDB()->query($query)->fetchAll();   // Wykonanie zapytania
         $this->generateView();                                      // Wygenerowanie widoku z wyszukanymi produktami
     }
+
+
+
 
     public function generateView()
     {

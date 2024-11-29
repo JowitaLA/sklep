@@ -194,10 +194,10 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2" href="{$conf->action_url}showHelp"
-                                    id="showHelp">
+                                <a class="nav-link d-flex align-items-center gap-2" href="{$conf->action_url}showPayments"
+                                    id="showPayments">
                                     <i class="bi bi-question-circle"></i>
-                                    Pomoc
+                                    Metody Płatności
                                 </a>
                             </li>
                             <li class="nav-item">

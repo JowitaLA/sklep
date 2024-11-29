@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-11-21 12:40:10
+/* Smarty version 4.3.4, created on 2024-11-25 22:17:45
   from 'C:\xampp\htdocs\Sklep\app\views\SignView.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_673f1c1ad25920_41444781',
+  'unifunc' => 'content_6744e97934b455_41809266',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f1b5a238da8f507f668bcd705929b911aa8155e6' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Sklep\\app\\views\\SignView.tpl',
-      1 => 1732189033,
+      1 => 1732544665,
       2 => 'file',
     ),
   ),
@@ -20,23 +20,23 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_673f1c1ad25920_41444781 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6744e97934b455_41809266 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_596263237673f1c1ad10726_23385064', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_7206431196744e979336b42_19375267', 'content');
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, "templates/sign.tpl");
 }
 /* {block 'content'} */
-class Block_596263237673f1c1ad10726_23385064 extends Smarty_Internal_Block
+class Block_7206431196744e979336b42_19375267 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_596263237673f1c1ad10726_23385064',
+    0 => 'Block_7206431196744e979336b42_19375267',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -88,7 +88,7 @@ login">
 				</div>
 
 				<div class="form-floating position-relative">
-					<input type="password" class="form-control middle-field" name="l_password" id="pass" placeholder="Password">
+					<input type="password" class="form-control down-field" name="l_password" id="pass" placeholder="Password">
 					<label for="pass">Hasło</label>
 					<!-- Ikona do pokazania/ukrycia hasła -->
 					<i class="bi bi-eye-slash position-absolute top-50 end-0 translate-middle-y me-3 cursor-pointer"
@@ -205,7 +205,7 @@ resetPass">
 					</button>
 				</div>
 				<div class="form-floating">
-					<input type="email" class="form-control middle-field" name="email" id="email" placeholder="name@example.com">
+					<input type="email" class="form-control solo-field" name="email" id="email" placeholder="name@example.com">
 					<label for="email">E-mail</label>
 				</div>
 

@@ -50,9 +50,31 @@
                             <h2 class="fw-light">{$product.name}</h2>
                             <div class="mb-4 d-flex justify-content-between align-items-center">
                                 <div>
-                                    <i class="fa stars">&#xf005; &#xf005; &#xf005; &#xf005; &#xf005;</i> 4.8
+                                    <div class="stars">
+                                        {assign var="rating" value=$rating.average_rating|default:0}
+                                        {assign var="fullStars" value=floor($rating)}
+                                        {assign var="halfStar" value=floor($rating*2) % 2}
+                                        {assign var="emptyStars" value=5 - $fullStars - $halfStar}
+
+                                        <!-- Renderowanie pełnych gwiazdek -->
+                                        {section name=fullStars loop=$fullStars}
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        {/section}
+
+                                        <!-- Renderowanie pół gwiazdki -->
+                                        {if $halfStar == 1}
+                                            <i class="fa fa-star-half" aria-hidden="true"></i>
+                                        {/if}
+
+                                        <!-- Renderowanie pustych gwiazdek -->
+                                        {section name=emptyStars loop=$emptyStars}
+                                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                                        {/section}
+                                    </div>
+                                    <i>{$rating}</i>
                                 </div>
-                                <div href="#">150 Recenzji</div>
+                                <div href="#"> {$reviews_count} Recenzj{if {$reviews_count} == 1}a{/if}{if {$reviews_count}
+                                    >= 2 && {$reviews_count} <= 4}e{/if}{if {$reviews_count}> 4}i{/if}</div>
                             </div>
                             <hr class="featurette-divider" style="height: 1px; margin: 10px 0;">
                         </div>
@@ -169,8 +191,44 @@
                             <span>Opinie</span>
                         </h1>
                         <h4 class="d-inline">
-                            <i>(165)</i>
+                            <i>({$reviews_count})</i>
                         </h4>
+                        <div class="row m-4">
+                            {foreach from=$ratings item=r}
+                                <div class="col-md-12 mb-1 mt-1">
+                                    <div class="row border rounded pb-3 pt-3">
+                                        <div class="col-md-3 stars">
+                                            {assign var="rating" value=$r.rating|default:0}
+                                            <!-- Ustawienie wartości domyślnej dla ratingu -->
+                                            {assign var="fullStars" value=floor($rating)}
+                                            <!-- Liczba pełnych gwiazdek -->
+                                            {assign var="halfStar" value=floor($rating*2) % 2}
+                                            <!-- Sprawdzamy, czy jest połowa gwiazdki -->
+                                            {assign var="emptyStars" value=5 - $fullStars - $halfStar}
+                                            <!-- Liczba pustych gwiazdek -->
+
+                                            <!-- Renderowanie pełnych gwiazdek -->
+                                            {section name=fullStars loop=$fullStars}
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            {/section}
+
+                                            <!-- Renderowanie pół gwiazdki -->
+                                            {if $halfStar == 1}
+                                                <i class="fa fa-star-half" aria-hidden="true"></i>
+                                            {/if}
+
+                                            <!-- Renderowanie pustych gwiazdek -->
+                                            {section name=emptyStars loop=$emptyStars}
+                                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                            {/section}
+                                        </div>
+                                        <div class="col-md-9">
+                                            {$r.review}
+                                        </div>
+                                    </div>
+                                </div>
+                            {/foreach}
+                        </div>
                     </div>
                 </div>
             </div>

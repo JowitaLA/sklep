@@ -69,8 +69,6 @@
             Zresetuj Hasło</button>
         </form>
 
-
-
         <script>
             document.addEventListener("DOMContentLoaded", () => {
                 const passwordField = document.getElementById("pass");

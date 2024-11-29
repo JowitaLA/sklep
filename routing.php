@@ -38,8 +38,15 @@ Utils::addRoute('productDetails', 'ProductDetailsCtrl');    # Szczegóły produk
 
 Utils::addRoute('addToCart', 'CartCtrl');           # Dodanie produktu do koszyka
 Utils::addRoute('cart', 'CartCtrl');                # Wyświetlenie koszyka
-Utils::addRoute('changeCart', 'CartCtrl');          # Wyświetlenie koszyka
-Utils::addRoute('deleteCart', 'CartCtrl');          # Wyświetlenie koszyka
+Utils::addRoute('changeCart', 'CartCtrl');          # Zmiany w koszyku
+Utils::addRoute('deleteCart', 'CartCtrl');          # Usunięcie produktu z koszyka
+Utils::addRoute('applyDiscountCode', 'CartCtrl');   # Użycie kodu
+Utils::addRoute('submitCart', 'CartCtrl');          # Zapisanie danych z koszyka
+Utils::addRoute('submitDelivery', 'CartCtrl');      # Zapisanie danych z dostaw
+Utils::addRoute('submitPayment', 'CartCtrl');       # Zapisanie danych z płatności
+Utils::addRoute('finalization', 'CartCtrl');       # Zapisanie danych z płatności
+Utils::addRoute('deliveryShow', 'CartCtrl');        # Wyświetlenie metod dostaw
+Utils::addRoute('payment', 'CartCtrl');             # Wyświetlenie opcji płatności
 
 /*==========================/ Lista Życzeń /==========================*/
 
@@ -47,8 +54,39 @@ Utils::addRoute('addToWishlist', 'WishlistCtrl');           # Dodanie produktu d
 Utils::addRoute('removeToWishlist', 'WishlistCtrl');        # Usunięcie produktu z Listy Życzeń
 Utils::addRoute('wishlistShow', 'WishlistCtrl');            # Wyświetlenie Listy Życzeń
 
+/* ZWROTY I GWARANCJE */
+
+Utils::addRoute('returns', 'ReturnsCtrl');          # Wyświetlenie ocen produktów, edycja, usunięcie oraz dodanie oceny
+Utils::addRoute('showOrderReturns', 'ReturnsCtrl');          # Wyświetlenie ocen produktów, edycja, usunięcie oraz dodanie oceny
+Utils::addRoute('addReturn', 'ReturnsCtrl');          # Wyświetlenie ocen produktów, edycja, usunięcie oraz dodanie oceny
+Utils::addRoute('statusReturn', 'ReturnsCtrl');          # Wyświetlenie ocen produktów, edycja, usunięcie oraz dodanie oceny
+
+
 /*=====================/ Ustawienia Użytkownika /=====================*/
 
+Utils::addRoute('account', 'AccountCtrl');           # Wyświetlenie głównego panelu użytkownika
+Utils::addRoute('userEdit', 'AccountCtrl');           # Wyświetlenie edycji danych
+
+Utils::addRoute('userEditPassword', 'AccountCtrl');           # Wyświetlenie edycji danych
+Utils::addRoute('userEditPersonalData', 'AccountCtrl');           # Wyświetlenie edycji danych
+
+Utils::addRoute('userEditDeliveryAddress', 'AccountCtrl');           # Wyświetlenie edycji danych
+Utils::addRoute('userEditBillingAddress', 'AccountCtrl');           # Wyświetlenie edycji danych
+Utils::addRoute('userEditDeleteDeliveryAddress', 'AccountCtrl');           # Wyświetlenie edycji danych
+Utils::addRoute('userEditDeleteBillingAddress', 'AccountCtrl');           # Wyświetlenie edycji danych
+
+Utils::addRoute('userEditDeleteAccount', 'AccountCtrl');           # Wyświetlenie edycji danych
+
+Utils::addRoute('orderStatus', 'OrderCtrl');           # Wyświetlenie zamówień
+Utils::addRoute('orderStatusShow', 'OrderCtrl');           # Wyświetlenie zamówień
+
+Utils::addRoute('orders', 'OrderCtrl');           # Wyświetlenie zamówień
+Utils::addRoute('orderDetails', 'OrderCtrl');           # Wyświetlenie zamówień
+
+Utils::addRoute('ratings', 'RatingCtrl');          # Wyświetlenie ocen produktów, edycja, usunięcie oraz dodanie oceny
+Utils::addRoute('submitRating', 'RatingCtrl');          # Wyświetlenie ocen produktów, edycja, usunięcie oraz dodanie oceny
+Utils::addRoute('deleteRating', 'RatingCtrl');          # Wyświetlenie ocen produktów, edycja, usunięcie oraz dodanie oceny
+Utils::addRoute('editorRating', 'RatingCtrl');          # Wyświetlenie ocen produktów, edycja, usunięcie oraz dodanie oceny
 
 /*==========================/ Zarządzanie /==========================*/
 
@@ -73,15 +111,16 @@ Utils::addRoute('changeStatusUser',             'ManagementCtrl', ["zarządzanie
 /* ZAMÓWIENIA */
 Utils::addRoute('showOrders',                   'ManagementCtrl', ["zarządzanie"]);     # Wyświetlenie listy zamówień
 Utils::addRoute('editOrder',                    'ManagementCtrl', ["zarządzanie"]);     # Edycja wybranego zamówienia
-Utils::addRoute('deleteOrder',                  'ManagementCtrl', ["zarządzanie"]);     # Zmiana statusu zamówienia
+Utils::addRoute('updateOrder',                  'ManagementCtrl', ["zarządzanie"]);     # Edycja wybranego zamówienia
+Utils::addRoute('changeStatusOrder',            'ManagementCtrl', ["zarządzanie"]);     # Zmiana statusu zamówienia
 
 /* KATEGORIE */
-Utils::addRoute('showCategories',                   'ManagementCtrl', ["zarządzanie"]);     # Wyświetlenie listy kategorii
-Utils::addRoute('editCategory',                    'ManagementCtrl', ["zarządzanie"]);     # Edycja wybranej kategorii
-Utils::addRoute('deleteCategory',                  'ManagementCtrl', ["zarządzanie"]);     # Usunięcie wybranej kategorii
-Utils::addRoute('createCategory',                   'ManagementCtrl', ["zarządzanie"]);     # Dodanie wybranego użytkownika
+Utils::addRoute('showCategories',                'ManagementCtrl', ["zarządzanie"]);     # Wyświetlenie listy kategorii
+Utils::addRoute('editCategory',                  'ManagementCtrl', ["zarządzanie"]);     # Edycja wybranej kategorii
+Utils::addRoute('deleteCategory',                'ManagementCtrl', ["zarządzanie"]);     # Usunięcie wybranej kategorii
+Utils::addRoute('createCategory',                'ManagementCtrl', ["zarządzanie"]);     # Dodanie wybranego użytkownika
 Utils::addRoute('addCategory',                   'ManagementCtrl', ["zarządzanie"]);     # Dodanie kategorii
-Utils::addRoute('updateCategory',                   'ManagementCtrl', ["zarządzanie"]);     # Edycja wybranego użytkownika
+Utils::addRoute('updateCategory',                'ManagementCtrl', ["zarządzanie"]);     # Edycja wybranego użytkownika
 
 /* DOSTAWY */
 Utils::addRoute('showDeliveries',                   'ManagementCtrl', ["zarządzanie"]);     # Wyświetlenie listy dostaw
@@ -106,7 +145,7 @@ Utils::addRoute('showWishlists',                    'ManagementCtrl', ["zarządz
 Utils::addRoute('showContact',                  'ManagementCtrl', ["zarządzanie"]);     # Edycja podstrony "Kontakt"
 Utils::addRoute('showAbout',                    'ManagementCtrl', ["zarządzanie"]);     # Edycja podstrony "O Nas"
 Utils::addRoute('showDelivery',                 'ManagementCtrl', ["zarządzanie"]);     # Edycja podstrony "Dostawy"
-Utils::addRoute('showHelp',                     'ManagementCtrl', ["zarządzanie"]);     # Edycja podstrony "Pomoc"
+Utils::addRoute('showPayments',                 'ManagementCtrl', ["zarządzanie"]);     # Edycja podstrony "Metody Płatności"
 Utils::addRoute('showReturn_and_complaints',    'ManagementCtrl', ["zarządzanie"]);     # Edycja podstrony "Zwroty i Reklamacje"
 Utils::addRoute('showRodo',                     'ManagementCtrl', ["zarządzanie"]);     # Edycja podstrony "Polityka RODO"
 Utils::addRoute('showStatute',                  'ManagementCtrl', ["zarządzanie"]);     # Edycja podstrony "Regulamin"
@@ -115,10 +154,19 @@ Utils::addRoute('updateSubpage',                'ManagementCtrl', ["zarządzanie
 
 /*==========================/ Podstrony /==========================*/
 
-Utils::addRoute('contact',                  'SubpagesCtrl');     # Wyświetlenie podstrony "Kontakt"
-Utils::addRoute('about',                    'SubpagesCtrl');     # Wyświetlenie podstrony "O Nas"
-Utils::addRoute('delivery',                 'SubpagesCtrl');     # Wyświetlenie podstrony "Dostawy"
-Utils::addRoute('help',                     'SubpagesCtrl');     # Wyświetlenie podstrony "Pomoc"
-Utils::addRoute('return_and_complaints',    'SubpagesCtrl');     # Wyświetlenie podstrony "Zwroty i Reklamacje"
-Utils::addRoute('rodo',                     'SubpagesCtrl');     # Wyświetlenie podstrony "Polityka RODO"
-Utils::addRoute('statute',                  'SubpagesCtrl');     # Wyświetlenie podstrony "Regulamin"
+Utils::addRoute('contact',                  'SubpagesCtrl');    # Wyświetlenie podstrony "Kontakt"
+Utils::addRoute('about',                    'SubpagesCtrl');    # Wyświetlenie podstrony "O Nas"
+Utils::addRoute('delivery',                 'SubpagesCtrl');    # Wyświetlenie podstrony "Dostawy"
+Utils::addRoute('payments',                 'SubpagesCtrl');    # Wyświetlenie podstrony "Metody Płatności"
+Utils::addRoute('return_and_complaints',    'SubpagesCtrl');    # Wyświetlenie podstrony "Zwroty i Reklamacje"
+Utils::addRoute('rodo',                     'SubpagesCtrl');    # Wyświetlenie podstrony "Polityka RODO"
+Utils::addRoute('statute',                  'SubpagesCtrl');    # Wyświetlenie podstrony "Regulamin"
+
+Utils::addRoute('newsletter',               'SubpagesCtrl');    # Wyświetlenie podstrony "Newsletter"
+Utils::addRoute('submitNewsletter',         'SubpagesCtrl');    # Zapisanie się do Newslettera
+Utils::addRoute('deleteNewsletter',         'SubpagesCtrl');    # Rezygnacja z Newslettera
+
+Utils::addRoute('feedback',                 'SubpagesCtrl');    # Wyświetlenie podstrony "Feedback"
+Utils::addRoute('submitFeedback',           'SubpagesCtrl');    # Wyświetlenie podstrony "Feedback"
+
+

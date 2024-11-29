@@ -222,24 +222,35 @@ Lista z danymi podstronami oraz tym, co powinno się w nich znajdować
     - [ ] zmiana statusu historii zamówień
 - [ ] Dodanie przycisku `Wróć do strony głównej`, dzięki któremu użytkownik wróci na podstronę `Strona Główna`
 
-### Podwstrony
+### Podstrony
 - [x] Utworzenie pliku subage.html
 - [x] Stworzenie tytułu strony
 - [x] Stworzenie opisu związanego z informacją na temat firmy
 
 ## Do poprawy/dodania
-- [x] Dodanie kodowania haseł
-- [ ] Dodanie opinii dla ProductDetails
-- [-] Dodanie opcji działającego ,,Zapomniałem hasła", które będzie tworzyć token, wysyłanego na maila do zmiany hasła
-- [ ] Dodać listę kategorii dla każdego produktu
+
+### W trybie natychmiastowym
+- [ ] Zwroty i Gwarancje management
+
+### Potem
+- [ ] Poprawa stopki i heada w secondary.tpl (+ dodaj zwróć przedmiot)
+- [ ] Poprawa "Moje Konto" w main
+
+- [ ] Utworzenie panelu administracyjnego (na ten czas ładne kafelki)
+
+- [ ] Każdy zmieniony status to wysłanie do użytkownika maila
+
+- [ ] Metody płatności - tymczasem usuń
+- [ ] Zarządzanie fakturami - tymczasem usuń
+
+- [ ] Newsletter - dodawanie użytkowników i usuwanie maili
+
+- [ ] Menedżer newsletter -> lista ludzi z możliwością usuwania oraz guzik który tworzy do wszystkich wiadomość grupową
+- [ ] Menedżer feedback -> lista od najmłodszej do najstarszej z możliwością usuwania
+
+Dodatki:
+- jak będzie czas- utworzenie menadżera opinii - usuwanie i wyświetlanie
 - [-] W `searchProducts` dodać możliwość sortowania po cenach, popularności oraz ocenach, 
 - [-] W `searchProducts` dodać filtr tylko -> pokazania produktów od 5,4,3,2 bądź 1 gwiazdki
-- [ ] Dodanie usuwania tokenów po dniu nie użycia go
-- [-] Stronnicowanie 
-- [ ] Dodanie że nie wyśwetla produktów gdy jest ich 0 i zmiana statusu na nieaktywny
-- [ ] Newsletter i Feedback
-- [ ] Dodanie płatności
-- [ ] Dodanie wyboru sposobu dostawy
-- [ ] Dodanie kodów
-- [ ] Dodanie Listy życzeń (a potem opcji do dodania do koszyka + detale produktów)
-- [-] Dodanie możliwości resetu hasła w management
+- [ ] stronnicowanie
+- [ ] zarządzanie fakturami

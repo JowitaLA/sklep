@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-11-22 22:49:41
+/* Smarty version 4.3.4, created on 2024-11-26 14:01:25
   from 'C:\xampp\htdocs\Sklep\app\views\templates\management.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_6740fc75795a32_07096995',
+  'unifunc' => 'content_6745c6a599d842_01486516',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'aff586753a5dbc52ad02922ecbfd6db8eed7178a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Sklep\\app\\views\\templates\\management.tpl',
-      1 => 1732312180,
+      1 => 1732548848,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6740fc75795a32_07096995 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6745c6a599d842_01486516 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -246,10 +246,10 @@ showReturn_and_complaints" id="showReturn_and_complaints">
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center gap-2" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
-showHelp"
-                                    id="showHelp">
+showPayments"
+                                    id="showPayments">
                                     <i class="bi bi-question-circle"></i>
-                                    Pomoc
+                                    Metody Płatności
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -350,7 +350,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
                 <div id="content-block" class="col-md-9 ms-sm-auto col-lg-12 px-4">
                     <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_3479647766740fc7578ddc8_02768854', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_13402737526745c6a5994178_97094299', 'content');
 ?>
 
                 </div>
@@ -478,12 +478,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_3479647766740fc757
 
 </html><?php }
 /* {block 'content'} */
-class Block_3479647766740fc7578ddc8_02768854 extends Smarty_Internal_Block
+class Block_13402737526745c6a5994178_97094299 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_3479647766740fc7578ddc8_02768854',
+    0 => 'Block_13402737526745c6a5994178_97094299',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
